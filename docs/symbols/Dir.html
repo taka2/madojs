@@ -1,0 +1,859 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>MadoJS リファレンス - Dir</title>
+
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 24px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2 { font-size: 110%; }
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul.inheritsList
+{
+	list-style: square;
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px; 
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+
+#logo
+{
+	text-align: center;
+	font-size: 28px;
+	color: #3A6EA5;
+	text-shadow: 3px 3px 3px gray;
+	font-family: Verdana, Helvetica, sans-serif;
+}
+
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->	
+		<!-- begin static/header.html -->
+		<div id="header">
+</div>
+		<!-- end static/header.html -->
+
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<p id="logo">
+MadoJS
+</p>
+<div align="center"><a href="../index.html">クラス索引</a>
+| <a href="../files.html">ファイル索引</a></div>
+<hr />
+<h2>クラス</h2>
+<ul class="classList">
+	
+	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+	
+	<li><a href="../symbols/Array.html">Array</a></li>
+	
+	<li><a href="../symbols/Clipboard.html">Clipboard</a></li>
+	
+	<li><a href="../symbols/Const.html">Const</a></li>
+	
+	<li><a href="../symbols/Date.html">Date</a></li>
+	
+	<li><a href="../symbols/Dir.html">Dir</a></li>
+	
+	<li><a href="../symbols/HTTP.html">HTTP</a></li>
+	
+</ul>
+<hr />
+			<!-- end publish.classesIndex -->
+		</div>
+		
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Dir クラス 
+			</h1>
+
+<!-- ============================== class summary ========================== -->			
+			<p class="description">
+				
+				
+			
+				ディレクトリの操作を行うためのクラスです。
+				
+				
+					<br /><i></i> <a href="../symbols/src/src_dir.js.html">dir.js</a>で定義されています。
+				
+			</p>
+
+<!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Dir.">
+				<caption>クラス 概要</caption>
+				<thead>
+					<tr>
+						<th scope="col">コンストラクタの属性</th>
+						<th scope="col">コンストラクタ名と説明</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/Dir.html#constructor">Dir</a></b>(path)
+							</div>
+							<div class="description">pathの存在チェックを行った上で、ディレクトリオブジェクトを作成します。</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Dir.">
+					<caption>メソッドの概要</caption>
+					<thead>
+						<tr>
+							<th scope="col">メソッド</th>
+							<th scope="col">メソッド名と説明</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">Dir.<b><a href="../symbols/Dir.html#.chdir">chdir</a></b>(path, block)
+								</div>
+								<div class="description">カレントディレクトリをpathに変更します。ブロックが指定された場合、カレントディレクトリの変更はブロックの実行中に限られます。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Dir.html#each">each</a></b>(block)
+								</div>
+								<div class="description">このオブジェクトが持つpathに含まれるファイルエントリ名の配列を返します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">Dir.<b><a href="../symbols/Dir.html#.entries">entries</a></b>(path)
+								</div>
+								<div class="description">ディレクトリpathに含まれるファイルエントリ名の配列を返します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">Dir.<b><a href="../symbols/Dir.html#.exist">exist</a></b>(file_name)
+								</div>
+								<div class="description">file_nameで与えられたディレクトリが存在するかどうかをチェックします。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">Dir.<b><a href="../symbols/Dir.html#.find">find</a></b>(path, pattern, block)
+								</div>
+								<div class="description">ディレクトリpathに含まれる(サブディレクトリも含む)ファイルエントリ名の配列を返します。patternを指定した場合、patternの正規表現にマッチするファイルのみ抽出します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">Dir.<b><a href="../symbols/Dir.html#.getParentDir">getParentDir</a></b>(path)
+								</div>
+								<div class="description">pathで指定されたディレクトリの親ディレクトリのパスを文字列で取得します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Dir.html#getParentDir">getParentDir</a></b>()
+								</div>
+								<div class="description">このオブジェクトが持つpathで指定されたディレクトリの親ディレクトリのパスを文字列で取得します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">Dir.<b><a href="../symbols/Dir.html#.getwd">getwd</a></b>()
+								</div>
+								<div class="description">カレントディレクトリのフルパスを文字列で返します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">Dir.<b><a href="../symbols/Dir.html#.mkdir">mkdir</a></b>(path)
+								</div>
+								<div class="description">pathで指定された新しいディレクトリを作ります。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">Dir.<b><a href="../symbols/Dir.html#.pwd">pwd</a></b>()
+								</div>
+								<div class="description"><a href = "#.getwd">Dir#getwd</a>のエイリアスです。</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== constructor details ==================== -->		
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					クラス 詳細
+				</div>
+				
+				<div class="fixedFont">
+						<b>Dir</b>(path)
+				</div>
+				
+				<div class="description">
+					pathの存在チェックを行った上で、ディレクトリオブジェクトを作成します。
+					
+				</div>
+				
+				
+				
+				
+					
+						<dl class="detailList">
+						<dt class="heading">引数:</dt>
+						
+							<dt>
+								<span class="light fixedFont">{String}</span>  <b>path</b>
+								
+							</dt>
+								<dd>ディレクトリのパスを文字列で指定します。</dd>
+						
+						</dl>
+					
+					
+					
+					
+						<dl class="detailList">
+						<dt class="heading">例外:</dt>
+						
+							<dt>
+								 <b></b>
+							</dt>
+								<dd>ディレクトリが存在しない場合にスローされます。</dd>
+						
+						</dl>
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== field details ========================== -->		
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<div class="sectionTitle">
+					メソッドの詳細
+				</div>
+				
+					<a name=".chdir"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">Dir.</span><b>chdir</b>(path, block)
+					
+					</div>
+					<div class="description">
+						カレントディレクトリをpathに変更します。ブロックが指定された場合、カレントディレクトリの変更はブロックの実行中に限られます。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>path</b>
+									
+								</dt>
+								<dd>ディレクトリのパスを文字列で指定します。</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>block</b>
+									
+								</dt>
+								<dd>ブロック</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="each"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Boolean}</span>
+					<b>each</b>(block)
+					
+					</div>
+					<div class="description">
+						このオブジェクトが持つpathに含まれるファイルエントリ名の配列を返します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<b>block</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{Boolean}</span> ファイルエントリ名の配列</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".entries"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Boolean}</span>
+					<span class="light">Dir.</span><b>entries</b>(path)
+					
+					</div>
+					<div class="description">
+						ディレクトリpathに含まれるファイルエントリ名の配列を返します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>path</b>
+									
+								</dt>
+								<dd>ディレクトリのパスを文字列で指定します。</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{Boolean}</span> ファイルエントリ名の配列</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".exist"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Boolean}</span>
+					<span class="light">Dir.</span><b>exist</b>(file_name)
+					
+					</div>
+					<div class="description">
+						file_nameで与えられたディレクトリが存在するかどうかをチェックします。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>file_name</b>
+									
+								</dt>
+								<dd>ディレクトリのパスを文字列で指定します。</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{Boolean}</span> 存在する場合はtrue、存在しない場合はfalseを返します。</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".find"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Boolean}</span>
+					<span class="light">Dir.</span><b>find</b>(path, pattern, block)
+					
+					</div>
+					<div class="description">
+						ディレクトリpathに含まれる(サブディレクトリも含む)ファイルエントリ名の配列を返します。patternを指定した場合、patternの正規表現にマッチするファイルのみ抽出します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>path</b>
+									
+								</dt>
+								<dd>ディレクトリのパスを文字列で指定します。</dd>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>pattern</b>
+									
+								</dt>
+								<dd>抽出するファイル名の正規表現パターン</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>block</b>
+									
+								</dt>
+								<dd>ブロック</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{Boolean}</span> ファイルエントリ名の配列</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".getParentDir"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{String}</span>
+					<span class="light">Dir.</span><b>getParentDir</b>(path)
+					
+					</div>
+					<div class="description">
+						pathで指定されたディレクトリの親ディレクトリのパスを文字列で取得します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>path</b>
+									
+								</dt>
+								<dd>ディレクトリのパスを文字列で指定します。</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{String}</span> 親ディレクトリのパス</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="getParentDir"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{String}</span>
+					<b>getParentDir</b>()
+					
+					</div>
+					<div class="description">
+						このオブジェクトが持つpathで指定されたディレクトリの親ディレクトリのパスを文字列で取得します。
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{String}</span> 親ディレクトリのパス</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".getwd"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{String}</span>
+					<span class="light">Dir.</span><b>getwd</b>()
+					
+					</div>
+					<div class="description">
+						カレントディレクトリのフルパスを文字列で返します。
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{String}</span> カレントディレクトリのフルパス</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".mkdir"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Object}</span>
+					<span class="light">Dir.</span><b>mkdir</b>(path)
+					
+					</div>
+					<div class="description">
+						pathで指定された新しいディレクトリを作ります。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>path</b>
+									
+								</dt>
+								<dd>ディレクトリのパスを文字列で指定します。</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{Object}</span> 作成したディレクトリのディレクトリオブジェクト</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".pwd"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">Dir.</span><b>pwd</b>()
+					
+					</div>
+					<div class="description">
+						<a href = "#.getwd">Dir#getwd</a>のエイリアスです。
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+			
+			<hr />
+		</div>
+
+		
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			このドキュメントは、Thu Feb 24 2011 15:45:56 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+		</div>
+	</body>
+</html>

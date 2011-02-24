@@ -1,0 +1,539 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>MadoJS リファレンス - Const</title>
+
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 24px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2 { font-size: 110%; }
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul.inheritsList
+{
+	list-style: square;
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px; 
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+
+#logo
+{
+	text-align: center;
+	font-size: 28px;
+	color: #3A6EA5;
+	text-shadow: 3px 3px 3px gray;
+	font-family: Verdana, Helvetica, sans-serif;
+}
+
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->	
+		<!-- begin static/header.html -->
+		<div id="header">
+</div>
+		<!-- end static/header.html -->
+
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<p id="logo">
+MadoJS
+</p>
+<div align="center"><a href="../index.html">クラス索引</a>
+| <a href="../files.html">ファイル索引</a></div>
+<hr />
+<h2>クラス</h2>
+<ul class="classList">
+	
+	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+	
+	<li><a href="../symbols/Array.html">Array</a></li>
+	
+	<li><a href="../symbols/Clipboard.html">Clipboard</a></li>
+	
+	<li><a href="../symbols/Const.html">Const</a></li>
+	
+	<li><a href="../symbols/Date.html">Date</a></li>
+	
+	<li><a href="../symbols/Dir.html">Dir</a></li>
+	
+	<li><a href="../symbols/HTTP.html">HTTP</a></li>
+	
+</ul>
+<hr />
+			<!-- end publish.classesIndex -->
+		</div>
+		
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Const クラス 
+			</h1>
+
+<!-- ============================== class summary ========================== -->			
+			<p class="description">
+				
+				
+			
+				MadoJSの定数を定義するクラス。
+				
+				
+					<br /><i></i> <a href="../symbols/src/src_const.js.html">const.js</a>で定義されています。
+				
+			</p>
+
+<!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Const.">
+				<caption>クラス 概要</caption>
+				<thead>
+					<tr>
+						<th scope="col">コンストラクタの属性</th>
+						<th scope="col">コンストラクタ名と説明</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/Const.html#constructor">Const</a></b>()
+							</div>
+							<div class="description">インスタンス化しません。</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class Const.">
+					<caption>フィールドの概要</caption>
+					<thead>
+						<tr>
+							<th scope="col">フィールド</th>
+							<th scope="col">フィールド名と説明</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								Const.<b><a href="../symbols/Const.html#.IOMODE_FORAPPENDING">IOMODE_FORAPPENDING</a></b>
+								</div>
+								<div class="description">IO Modeの定数：追加書き込み(8)</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								Const.<b><a href="../symbols/Const.html#.IOMODE_FORREADING">IOMODE_FORREADING</a></b>
+								</div>
+								<div class="description">IO Modeの定数：読み取り専用(1)</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								Const.<b><a href="../symbols/Const.html#.IOMODE_FORWRITING">IOMODE_FORWRITING</a></b>
+								</div>
+								<div class="description">IO Modeの定数：書き込み専用(2)</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								Const.<b><a href="../symbols/Const.html#.WINDOW_STYLE_MAX">WINDOW_STYLE_MAX</a></b>
+								</div>
+								<div class="description">Window Styleの定数：最大化(3)</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								Const.<b><a href="../symbols/Const.html#.WINDOW_STYLE_MIN">WINDOW_STYLE_MIN</a></b>
+								</div>
+								<div class="description">Window Styleの定数：最小化(2)</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								Const.<b><a href="../symbols/Const.html#.WINDOW_STYLE_NORMAL">WINDOW_STYLE_NORMAL</a></b>
+								</div>
+								<div class="description">Window Styleの定数：通常(1)</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== constructor details ==================== -->		
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					クラス 詳細
+				</div>
+				
+				<div class="fixedFont">
+						<b>Const</b>()
+				</div>
+				
+				<div class="description">
+					インスタンス化しません。
+					
+				</div>
+				
+				
+				
+				
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== field details ========================== -->		
+			
+				<div class="sectionTitle">
+					フィールドの詳細
+				</div>
+				
+					<a name=".IOMODE_FORAPPENDING"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">Const.</span><b>IOMODE_FORAPPENDING</b>
+					
+					</div>
+					<div class="description">
+						IO Modeの定数：追加書き込み(8)
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".IOMODE_FORREADING"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">Const.</span><b>IOMODE_FORREADING</b>
+					
+					</div>
+					<div class="description">
+						IO Modeの定数：読み取り専用(1)
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".IOMODE_FORWRITING"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">Const.</span><b>IOMODE_FORWRITING</b>
+					
+					</div>
+					<div class="description">
+						IO Modeの定数：書き込み専用(2)
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".WINDOW_STYLE_MAX"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">Const.</span><b>WINDOW_STYLE_MAX</b>
+					
+					</div>
+					<div class="description">
+						Window Styleの定数：最大化(3)
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".WINDOW_STYLE_MIN"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">Const.</span><b>WINDOW_STYLE_MIN</b>
+					
+					</div>
+					<div class="description">
+						Window Styleの定数：最小化(2)
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".WINDOW_STYLE_NORMAL"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">Const.</span><b>WINDOW_STYLE_NORMAL</b>
+					
+					</div>
+					<div class="description">
+						Window Styleの定数：通常(1)
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== method details ========================= -->		
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+			
+			<hr />
+		</div>
+
+		
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			このドキュメントは、Thu Feb 24 2011 15:45:56 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+		</div>
+	</body>
+</html>

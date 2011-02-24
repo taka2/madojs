@@ -1,0 +1,682 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>MadoJS リファレンス - HTTP</title>
+
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 24px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2 { font-size: 110%; }
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul.inheritsList
+{
+	list-style: square;
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px; 
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+
+#logo
+{
+	text-align: center;
+	font-size: 28px;
+	color: #3A6EA5;
+	text-shadow: 3px 3px 3px gray;
+	font-family: Verdana, Helvetica, sans-serif;
+}
+
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->	
+		<!-- begin static/header.html -->
+		<div id="header">
+</div>
+		<!-- end static/header.html -->
+
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<p id="logo">
+MadoJS
+</p>
+<div align="center"><a href="../index.html">クラス索引</a>
+| <a href="../files.html">ファイル索引</a></div>
+<hr />
+<h2>クラス</h2>
+<ul class="classList">
+	
+	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+	
+	<li><a href="../symbols/Array.html">Array</a></li>
+	
+	<li><a href="../symbols/Clipboard.html">Clipboard</a></li>
+	
+	<li><a href="../symbols/Const.html">Const</a></li>
+	
+	<li><a href="../symbols/Date.html">Date</a></li>
+	
+	<li><a href="../symbols/Dir.html">Dir</a></li>
+	
+	<li><a href="../symbols/HTTP.html">HTTP</a></li>
+	
+</ul>
+<hr />
+			<!-- end publish.classesIndex -->
+		</div>
+		
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				HTTP クラス 
+			</h1>
+
+<!-- ============================== class summary ========================== -->			
+			<p class="description">
+				
+				
+			
+				HTTPの操作を行うためのクラスです。
+				
+				
+					<br /><i></i> <a href="../symbols/src/src_http.js.html">http.js</a>で定義されています。
+				
+			</p>
+
+<!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class HTTP.">
+				<caption>クラス 概要</caption>
+				<thead>
+					<tr>
+						<th scope="col">コンストラクタの属性</th>
+						<th scope="col">コンストラクタ名と説明</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/HTTP.html#constructor">HTTP</a></b>(host, port)
+							</div>
+							<div class="description">hostとportを指定してHTTPオブジェクトを作成します。</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class HTTP.">
+					<caption>フィールドの概要</caption>
+					<thead>
+						<tr>
+							<th scope="col">フィールド</th>
+							<th scope="col">フィールド名と説明</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								HTTP.<b><a href="../symbols/HTTP.html#.DEFAULT_PORT_NUMBER">DEFAULT_PORT_NUMBER</a></b>
+								</div>
+								<div class="description">定数：デフォルトのポート番号(80)</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class HTTP.">
+					<caption>メソッドの概要</caption>
+					<thead>
+						<tr>
+							<th scope="col">メソッド</th>
+							<th scope="col">メソッド名と説明</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">HTTP.<b><a href="../symbols/HTTP.html#.get">get</a></b>(address, path, port)
+								</div>
+								<div class="description">指定されたaddress、path、portに対して、GETリクエストを行います。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/HTTP.html#get">get</a></b>(path, header, block)
+								</div>
+								<div class="description">指定されたpath、headerでGETリクエストを行い、ブロックを実行します。ブロックが指定されていない場合は、レスポンステキストを返します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">HTTP.<b><a href="../symbols/HTTP.html#.get_print">get_print</a></b>(address, path, port)
+								</div>
+								<div class="description">指定されたaddress、path、portに対して、GETリクエストを行い、printします。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">HTTP.<b><a href="../symbols/HTTP.html#.start">start</a></b>(host, port, block)
+								</div>
+								<div class="description">hostとportを指定してHTTPオブジェクトを作成し、ブロックを実行します。ブロックが指定されていない場合は、作成したHTTPオブジェクトを返します。</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== constructor details ==================== -->		
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					クラス 詳細
+				</div>
+				
+				<div class="fixedFont">
+						<b>HTTP</b>(host, port)
+				</div>
+				
+				<div class="description">
+					hostとportを指定してHTTPオブジェクトを作成します。
+					
+				</div>
+				
+				
+				
+				
+					
+						<dl class="detailList">
+						<dt class="heading">引数:</dt>
+						
+							<dt>
+								<span class="light fixedFont">{String}</span>  <b>host</b>
+								
+							</dt>
+								<dd>HTTP操作の対象ホスト</dd>
+						
+							<dt>
+								<span class="light fixedFont">{Number}</span>  <b>port</b>
+								
+							</dt>
+								<dd>(オプション)HTTP操作の対象ポート(初期値 80)</dd>
+						
+						</dl>
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== field details ========================== -->		
+			
+				<div class="sectionTitle">
+					フィールドの詳細
+				</div>
+				
+					<a name=".DEFAULT_PORT_NUMBER"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">HTTP.</span><b>DEFAULT_PORT_NUMBER</b>
+					
+					</div>
+					<div class="description">
+						定数：デフォルトのポート番号(80)
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<div class="sectionTitle">
+					メソッドの詳細
+				</div>
+				
+					<a name=".get"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{String}</span>
+					<span class="light">HTTP.</span><b>get</b>(address, path, port)
+					
+					</div>
+					<div class="description">
+						指定されたaddress、path、portに対して、GETリクエストを行います。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>address</b>
+									
+								</dt>
+								<dd>HTTP操作の対象ホスト</dd>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>path</b>
+									
+								</dt>
+								<dd>HTTP操作の対象パス</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>port</b>
+									
+								</dt>
+								<dd>(オプション)HTTP操作の対象ポート(初期値 80)</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{String}</span> レスポンステキスト</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="get"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{String}</span>
+					<b>get</b>(path, header, block)
+					
+					</div>
+					<div class="description">
+						指定されたpath、headerでGETリクエストを行い、ブロックを実行します。ブロックが指定されていない場合は、レスポンステキストを返します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>path</b>
+									
+								</dt>
+								<dd>HTTP操作の対象パス</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>header</b>
+									
+								</dt>
+								<dd>(オプション)HTTPヘッダ</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>block</b>
+									
+								</dt>
+								<dd>(オプション)ブロック</dd>
+							
+							</dl>
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">例外:</dt>
+							
+								<dt>
+									 <b></b>
+								</dt>
+								<dd>200OK以外のレスポンスが返された場合にスローされます。</dd>
+							
+							</dl>
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{String}</span> ブロックが指定されていない場合は、レスポンステキスト</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".get_print"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">HTTP.</span><b>get_print</b>(address, path, port)
+					
+					</div>
+					<div class="description">
+						指定されたaddress、path、portに対して、GETリクエストを行い、printします。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>address</b>
+									
+								</dt>
+								<dd>HTTP操作の対象ホスト</dd>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>path</b>
+									
+								</dt>
+								<dd>HTTP操作の対象パス</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>port</b>
+									
+								</dt>
+								<dd>(オプション)HTTP操作の対象ポート(初期値 80)</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".start"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Object}</span>
+					<span class="light">HTTP.</span><b>start</b>(host, port, block)
+					
+					</div>
+					<div class="description">
+						hostとportを指定してHTTPオブジェクトを作成し、ブロックを実行します。ブロックが指定されていない場合は、作成したHTTPオブジェクトを返します。
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">使用例：HTTP.start("www.yahoo.co.jp", 80, function(http) {  print(http.get("/index.html"));});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>host</b>
+									
+								</dt>
+								<dd>HTTP操作の対象ホスト</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>port</b>
+									
+								</dt>
+								<dd>(オプション)HTTP操作の対象ポート(初期値 80)</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>block</b>
+									
+								</dt>
+								<dd>(オプション)ブロック</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{Object}</span> ブロックが指定されていない場合は、作成したHTTPオブジェクト</dd>
+							
+							</dl>
+						
+						
+						
+
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+			
+			<hr />
+		</div>
+
+		
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			このドキュメントは、Thu Feb 24 2011 15:45:56 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+		</div>
+	</body>
+</html>

@@ -1,6 +1,12 @@
 /** 
  * hostとportを指定してHTTPオブジェクトを作成します。
  * @class HTTPの操作を行うためのクラスです。
+<pre class = "code">
+使用例：
+HTTP.start("www.yahoo.co.jp", 80, function(http) {
+  print(http.get("/index.html"));
+});
+</pre>
  * @param {String} host HTTP操作の対象ホスト
  * @param {Number} port (オプション)HTTP操作の対象ポート(初期値 80)
  */
@@ -21,10 +27,6 @@ HTTP.DEFAULT_PORT_NUMBER = 80;
  * @param {Number} port (オプション)HTTP操作の対象ポート(初期値 80)
  * @param {Function} block (オプション)ブロック
  * @return {Object} ブロックが指定されていない場合は、作成したHTTPオブジェクト
- * @example 使用例：
- * HTTP.start("www.yahoo.co.jp", 80, function(http) {
- *   print(http.get("/index.html"));
- * });
  */
 HTTP.start = function(host, port, block) {
   var http = new HTTP(host, port);
@@ -41,6 +43,8 @@ HTTP.start = function(host, port, block) {
  * @param {String} path HTTP操作の対象パス
  * @param {Number} port (オプション)HTTP操作の対象ポート(初期値 80)
  * @return {String} レスポンステキスト
+ * @example 使用例：
+print(HTTP.get("www.yahoo.co.jp", "/index.html", 80));
  */
 HTTP.get = function(address, path, port) {
   var myPort = port || DEFAULT_PORT_NUMBER;
@@ -53,6 +57,8 @@ HTTP.get = function(address, path, port) {
  * @param {String} address HTTP操作の対象ホスト
  * @param {String} path HTTP操作の対象パス
  * @param {Number} port (オプション)HTTP操作の対象ポート(初期値 80)
+ * @example 使用例：
+HTTP.get_print("www.yahoo.co.jp", "/index.html", 80);
  */
 HTTP.get_print = function(address, path, port) {
   print(HTTP.get(address, path, port));

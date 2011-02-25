@@ -214,7 +214,13 @@ MadoJS
 	
 	<li><a href="../symbols/Dir.html">Dir</a></li>
 	
+	<li><a href="../symbols/File.html">File</a></li>
+	
 	<li><a href="../symbols/HTTP.html">HTTP</a></li>
+	
+	<li><a href="../symbols/Process.html">Process</a></li>
+	
+	<li><a href="../symbols/String.html">String</a></li>
 	
 </ul>
 <hr />
@@ -261,9 +267,99 @@ MadoJS
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/_global_.html#exit">exit</a></b>(status)
+								</div>
+								<div class="description">プログラムを指定したステータスで終了します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/_global_.html#getComputerName">getComputerName</a></b>()
+								</div>
+								<div class="description">ホスト名を取得します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/_global_.html#getEnv">getEnv</a></b>(name)
+								</div>
+								<div class="description">指定したnameの環境変数を取得します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/_global_.html#isFunction">isFunction</a></b>(fn)
+								</div>
+								<div class="description">fnが関数かどうか判定します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/_global_.html#isWScriptRunning">isWScriptRunning</a></b>()
+								</div>
+								<div class="description">WScript.exeで実行しているかどうか判定します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/_global_.html#osReboot">osReboot</a></b>(timeout, option)
+								</div>
+								<div class="description">OSを再起動します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/_global_.html#osShutdown">osShutdown</a></b>(timeout)
+								</div>
+								<div class="description">OSをシャットダウンします。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/_global_.html#print">print</a></b>(msg)
+								</div>
+								<div class="description">msgを表示します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/_global_.html#sendKeys">sendKeys</a></b>(key)
+								</div>
+								<div class="description">指定したkeyのキー入力を行います。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/_global_.html#sleep">sleep</a></b>(msec)
 								</div>
 								<div class="description">指定したmsec(ミリ秒)スリープします。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/_global_.html#sleepif">sleepif</a></b>(msec, fn, args)
+								</div>
+								<div class="description">指定したfnがtrueを返すまで、msec(ミリ秒)間隔でfnを実行します。</div>
 							</td>
 						</tr>
 					
@@ -288,6 +384,369 @@ MadoJS
 					メソッドの詳細
 				</div>
 				
+					<a name="exit"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>exit</b>(status)
+					
+					</div>
+					<div class="description">
+						プログラムを指定したステータスで終了します。
+						
+							<br />
+							<a href="../symbols/src/src_global.js.html">global.js</a>で<i>定義されています</i>。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>status</b>
+									
+								</dt>
+								<dd>(オプション)終了ステータス(初期値 0)</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="getComputerName"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<b>getComputerName</b>()
+					
+					</div>
+					<div class="description">
+						ホスト名を取得します。
+						
+							<br />
+							<a href="../symbols/src/src_global.js.html">global.js</a>で<i>定義されています</i>。
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> ホスト名</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="getEnv"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<b>getEnv</b>(name)
+					
+					</div>
+					<div class="description">
+						指定したnameの環境変数を取得します。
+						
+							<br />
+							<a href="../symbols/src/src_global.js.html">global.js</a>で<i>定義されています</i>。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>name</b>
+									
+								</dt>
+								<dd>取得する環境変数名</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> 環境変数の値</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="isFunction"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Boolean}</span>
+					<b>isFunction</b>(fn)
+					
+					</div>
+					<div class="description">
+						fnが関数かどうか判定します。
+						
+							<br />
+							<a href="../symbols/src/src_global.js.html">global.js</a>で<i>定義されています</i>。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>fn</b>
+									
+								</dt>
+								<dd>オブジェクト</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{Boolean}</span> 関数の場合はtrue、そうでない場合はfalseを返す。</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="isWScriptRunning"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Boolean}</span>
+					<b>isWScriptRunning</b>()
+					
+					</div>
+					<div class="description">
+						WScript.exeで実行しているかどうか判定します。
+						
+							<br />
+							<a href="../symbols/src/src_global.js.html">global.js</a>で<i>定義されています</i>。
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{Boolean}</span> WScript.exeで実行している場合はtrue、そうでない場合(CScript.exe)はfalseを返す。</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="osReboot"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>osReboot</b>(timeout, option)
+					
+					</div>
+					<div class="description">
+						OSを再起動します。
+						
+							<br />
+							<a href="../symbols/src/src_global.js.html">global.js</a>で<i>定義されています</i>。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>timeout</b>
+									
+								</dt>
+								<dd>タイムアウトを秒で指定</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>option</b>
+									
+								</dt>
+								<dd>"-f"を指定すると、実行中のプロセスを警告なしで閉じます</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="osShutdown"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>osShutdown</b>(timeout)
+					
+					</div>
+					<div class="description">
+						OSをシャットダウンします。
+						
+							<br />
+							<a href="../symbols/src/src_global.js.html">global.js</a>で<i>定義されています</i>。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>timeout</b>
+									
+								</dt>
+								<dd>タイムアウトを秒で指定</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="print"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>print</b>(msg)
+					
+					</div>
+					<div class="description">
+						msgを表示します。
+						
+							<br />
+							<a href="../symbols/src/src_global.js.html">global.js</a>で<i>定義されています</i>。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>msg</b>
+									
+								</dt>
+								<dd>メッセージ</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="sendKeys"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>sendKeys</b>(key)
+					
+					</div>
+					<div class="description">
+						指定したkeyのキー入力を行います。
+						
+							<br />
+							<a href="../symbols/src/src_global.js.html">global.js</a>で<i>定義されています</i>。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>key</b>
+									
+								</dt>
+								<dd>入力する文字列</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
 					<a name="sleep"> </a>
 					<div class="fixedFont">
 					
@@ -299,7 +758,7 @@ MadoJS
 						指定したmsec(ミリ秒)スリープします。
 						
 							<br />
-							<i>Defined in: </i> <a href="../symbols/src/src_global.js.html">global.js</a>.
+							<a href="../symbols/src/src_global.js.html">global.js</a>で<i>定義されています</i>。
 						
 						
 					</div>
@@ -325,6 +784,57 @@ MadoJS
 						
 						
 
+					<hr />
+				
+					<a name="sleepif"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>sleepif</b>(msec, fn, args)
+					
+					</div>
+					<div class="description">
+						指定したfnがtrueを返すまで、msec(ミリ秒)間隔でfnを実行します。
+						
+							<br />
+							<a href="../symbols/src/src_global.js.html">global.js</a>で<i>定義されています</i>。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>msec</b>
+									
+								</dt>
+								<dd>スリープするミリ秒</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>fn</b>
+									
+								</dt>
+								<dd>実行する関数</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/Array.html">Array</a>}</span> <b>args</b>
+									
+								</dt>
+								<dd>関数に渡す引数</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
 					
 				
 			
@@ -339,7 +849,7 @@ MadoJS
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Thu Feb 24 2011 15:45:56 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Fri Feb 25 2011 18:36:25 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

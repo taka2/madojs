@@ -1,6 +1,8 @@
 /** 
  * 日付をYYYYMMDD形式で返します。
  * @return {String} YYYYMMDD形式の日付
+ * @example 使用例：
+print(new Date().getYYYYMMDD());
  */
 Date.prototype.getYYYYMMDD = function() {
   var yyyy = this.getFullYear();
@@ -14,6 +16,8 @@ Date.prototype.getYYYYMMDD = function() {
 /** 
  * 日付をYYYYMMDDHH24MISS形式で返します。
  * @return {String} YYYYMMDDHH24MISS形式の日付
+ * @example 使用例：
+print(new Date().getYYYYMMDDHH24MISS());
  */
 Date.prototype.getYYYYMMDDHH24MISS = function() {
   var yyyy = this.getFullYear();
@@ -33,6 +37,8 @@ Date.prototype.getYYYYMMDDHH24MISS = function() {
 /** 
  * 日付をYYYY/MM/DD HH:MI:SS形式で返します。
  * @return {String} YYYY/MM/DD HH:MM:SS形式の日付
+ * @example 使用例：
+print(new Date().getFormattedDate());
  */
 Date.prototype.getFormattedDate = function() {
   var yyyy = this.getFullYear();

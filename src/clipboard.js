@@ -1,6 +1,14 @@
 /** 
  * 新しいクリップボードを作成する
  * @class クリップボードへの格納、および、取得を行うクラス。
+<pre class = "code">
+使用例：
+// "日本語"という文字列をクリップボードへコピーして、ペーストします。
+Clipboard.open(function(clip) {
+  clip.set("日本語");
+  sendKeys("^v");
+});
+</pre>
  */
 var Clipboard = function() {
   this._ie = new ActiveXObject('InternetExplorer.Application');

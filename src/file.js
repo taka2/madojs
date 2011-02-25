@@ -1,4 +1,25 @@
-// Constructor of File
+/** 
+ * ファイルオブジェクトを作成します。
+ * @class ファイルの操作と読み書きを行うためのクラスです。
+<pre class = "code">
+使用例：
+File.open("copy_of_mado.js", "w", function(outfile) {
+  File.open("mado.js", "r", function(infile) {
+    infile.each(function(line) {
+      outfile.puts(line);
+    });
+  });
+});
+</pre>
+ * @param {String} path ファイルのパスを文字列で指定します。
+ * @param {String} mode ファイルを読み書きするためのモードを指定します。
+ * <ul>
+ *   <li>'r': 読み取り専用</li>
+ *   <li>'w': 書き込み専用</li>
+ *   <li>'a': 追加書き込み</li>
+ * </ul>
+ * @throws モードが'r'または'a'のときで、ファイルが存在しない場合にスローされます。
+ */
 var File = function(path, mode) {
   this.path = path;
   this.mode = mode;
@@ -16,7 +37,14 @@ var File = function(path, mode) {
   }
 };
 
-// Static methods of File
+/** 
+ * 指定したpathのファイルを指定したmodeで開き、ブロックを実行します。
+ * ブロックが指定されていない場合は、作成したファイルオブジェクトを返します。
+ * @param {String} path ファイルのパスを文字列で指定します。
+ * @param {String} mode ファイルを読み書きするためのモードを指定します。
+ * @param {Function} block ブロック
+ * <a href = "File.html#constructor">コンストラクタ</a>参照
+ */
 File.open = function(path, mode, block) {
   var file = new File(path, mode);
   if(block) {
@@ -30,6 +58,12 @@ File.open = function(path, mode, block) {
   }
 };
 
+/** 
+ * fromファイルの名前をtoに変更します。
+ * @param {String} from 変更前のファイル名
+ * @param {String} to 変更後のファイル名
+ * @throws ファイルが存在しない場合にスローされます。
+ */
 File.rename = function(from, to) {
   if(Const.FSO.FolderExists(from)) {
     Const.FSO.MoveFolder(from, to);
@@ -40,6 +74,12 @@ File.rename = function(from, to) {
   }
 };
 
+/** 
+ * fromファイルをtoにコピーします。
+ * @param {String} from コピー元ファイル名
+ * @param {String} to コピー先ファイル名
+ * @throws ファイルが存在しない場合にスローされます。
+ */
 File.copy = function(from, to) {
   if(Const.FSO.FolderExists(from)) {
     Const.FSO.CopyFolder(from, to);
@@ -50,6 +90,11 @@ File.copy = function(from, to) {
   }
 };
 
+/** 
+ * ファイル、または、ディレクトリが存在するかどうか判定します。
+ * @param {String} path ファイル、または、ディレクトリのパス
+ * @return {Boolean} ファイル、または、ディレクトリが存在する場合はtrue、そうでない場合はfalseを返します。
+ */
 File.exist = function(path) {
   if(Const.FSO.FolderExists(path)) {
     return true;
@@ -60,7 +105,12 @@ File.exist = function(path) {
   }
 };
 
-// force: �ǂݎ���p���폜���邩�ǂ���
+/** 
+ * 指定したpathのファイル、または、ディレクトリを削除します。
+ * @param {String} path ファイル、または、ディレクトリのパス
+ * @param {Boolean} force 読み取り専用も削除するかどうか
+ * @throws ファイルが存在しない場合にスローされます。
+ */
 File.unlink = function(path, force) {
   if(!force) {
     force = false;
@@ -74,6 +124,12 @@ File.unlink = function(path, force) {
   }
 };
 
+/** 
+ * 指定したpathのファイル、または、ディレクトリのサイズを取得します。
+ * @param {String} path ファイル、または、ディレクトリのパス
+ * @return {Number} ファイル、または、ディレクトリのサイズ(Byte単位)
+ * @throws ファイルが存在しない場合にスローされます。
+ */
 File.size = function(path) {
   if(Const.FSO.FolderExists(path)) {
     return Const.FSO.GetFolder(path).Size;
@@ -84,6 +140,12 @@ File.size = function(path) {
   }
 };
 
+/** 
+ * 指定したbasedirからの相対パスで、pathnameのフルパスを取得します。
+ * @param {String} pathname ファイル、または、ディレクトリのパス
+ * @param {String} basedir (オプション)起点となるディレクトリ(初期値 カレントディレクトリ)
+ * @return {String} ファイル、または、ディレクトリのフルパス
+ */
 File.realpath = function(pathname, basedir) {
   if(!basedir) {
     basedir = Dir.getwd();
@@ -96,6 +158,14 @@ File.realpath = function(pathname, basedir) {
   return realpath;
 };
 
+/** 
+ * 指定したfilenameの拡張子を取得します。
+ * @param {String} filename ファイルのパス
+ * @return {String} filenameの拡張子(ドット付き; .ext)
+ * @example 使用例：
+print(File.extname("c:\work")); // ""
+print(File.extname("c:\work\build_y2.xml")); // ".xml"
+ */
 File.extname = function(filename) {
   var extensionName = Const.FSO.GetExtensionName(filename);
   if(extensionName === "") {
@@ -105,6 +175,11 @@ File.extname = function(filename) {
   }
 };
 
+/** 
+ * 指定したfilenameのパスを除いたファイル名を取得します。
+ * @param {String} filename ファイルのパス
+ * @return {String} パスを除いたファイル名(/path/to/file.txt → file.txt)
+ */
 File.basename = function(filename) {
   var file = Const.FSO.GetFile(filename);
   return file.Name;
@@ -112,14 +187,25 @@ File.basename = function(filename) {
 
 // Prototypes of File
 File.prototype = {
+  /** 
+   * ファイルから一行ずつ読み取り、ブロックを呼び出します。
+   * @param {Function} block ブロック
+   */
   each: function(block) {
     while(!this.ts.AtEndOfStream) {
       block(this.ts.ReadLine());
     }
   },
+  /** 
+   * ファイルへ一行書き込みます。
+   * @param {String} line 書きこむ文字列
+   */
   puts: function(line) {
     this.ts.WriteLine(line);
   },
+  /** 
+   * ファイルをクローズします。
+   */
   close: function() {
     this.ts.Close();
   }

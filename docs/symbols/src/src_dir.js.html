@@ -8,176 +8,195 @@
 	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/** 
 <span class='line'>  2</span>  * pathの存在チェックを行った上で、ディレクトリオブジェクトを作成します。
 <span class='line'>  3</span>  * @class ディレクトリの操作を行うためのクラスです。
-<span class='line'>  4</span>  * @param  {String} path ディレクトリのパスを文字列で指定します。
-<span class='line'>  5</span>  * @throws ディレクトリが存在しない場合にスローされます。
-<span class='line'>  6</span>  */</span><span class="WHIT">
-<span class='line'>  7</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Dir</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>  8</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">Dir.exist</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>  9</span> </span><span class="WHIT">    </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Error</span><span class="PUNC">(</span><span class="NAME">path</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">" not found or is not directory."</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 10</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'> 11</span> </span><span class="WHIT">  </span><span class="NAME">this.path</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">path</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 12</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 13</span> 
-<span class='line'> 14</span> </span><span class="COMM">/**
-<span class='line'> 15</span>  * カレントディレクトリのフルパスを文字列で返します。
-<span class='line'> 16</span>  * @return {String} カレントディレクトリのフルパス
-<span class='line'> 17</span>  */</span><span class="WHIT">
-<span class='line'> 18</span> </span><span class="NAME">Dir.getwd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 19</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Const.WSHELL.CurrentDirectory</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>  4</span> &lt;pre class = "code">
+<span class='line'>  5</span> 使用例：
+<span class='line'>  6</span> // src以下のファイル一覧を表示
+<span class='line'>  7</span> var d = new Dir("src");
+<span class='line'>  8</span> d.each(function(item) {
+<span class='line'>  9</span>   print(item);
+<span class='line'> 10</span> });
+<span class='line'> 11</span> &lt;/pre>
+<span class='line'> 12</span>  * @param  {String} path ディレクトリのパスを文字列で指定します。
+<span class='line'> 13</span>  * @throws ディレクトリが存在しない場合にスローされます。
+<span class='line'> 14</span>  */</span><span class="WHIT">
+<span class='line'> 15</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Dir</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 16</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">Dir.exist</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 17</span> </span><span class="WHIT">    </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Error</span><span class="PUNC">(</span><span class="NAME">path</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">" not found or is not directory."</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 18</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 19</span> </span><span class="WHIT">  </span><span class="NAME">this.path</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">path</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 20</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 21</span> 
 <span class='line'> 22</span> </span><span class="COMM">/**
-<span class='line'> 23</span>  * &lt;a href = "#.getwd">Dir#getwd&lt;/a>のエイリアスです。
-<span class='line'> 24</span>  * @function
+<span class='line'> 23</span>  * カレントディレクトリのフルパスを文字列で返します。
+<span class='line'> 24</span>  * @return {String} カレントディレクトリのフルパス
 <span class='line'> 25</span>  */</span><span class="WHIT">
-<span class='line'> 26</span> </span><span class="NAME">Dir.pwd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Dir.getwd</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 27</span> 
-<span class='line'> 28</span> </span><span class="COMM">/**
-<span class='line'> 29</span>  * カレントディレクトリをpathに変更します。
-<span class='line'> 30</span>  * ブロックが指定された場合、カレントディレクトリの変更はブロックの実行中に限られます。
-<span class='line'> 31</span>  * @param {String} path ディレクトリのパスを文字列で指定します。
-<span class='line'> 32</span>  * @param {Function} block ブロック
+<span class='line'> 26</span> </span><span class="NAME">Dir.getwd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 27</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Const.WSHELL.CurrentDirectory</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 28</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 29</span> 
+<span class='line'> 30</span> </span><span class="COMM">/**
+<span class='line'> 31</span>  * &lt;a href = "#.getwd">Dir#getwd&lt;/a>のエイリアスです。
+<span class='line'> 32</span>  * @function
 <span class='line'> 33</span>  */</span><span class="WHIT">
-<span class='line'> 34</span> </span><span class="NAME">Dir.chdir</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">block</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 35</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">path</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 36</span> </span><span class="WHIT">    </span><span class="NAME">path</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Const.INITIAL_CURRENT_DIRECTORY</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 37</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">File.exist</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 38</span> </span><span class="WHIT">    </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Error</span><span class="PUNC">(</span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"Path Not Found: "</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 39</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'> 40</span> 
-<span class='line'> 41</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">block</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 42</span> </span><span class="WHIT">    </span><span class="COMM">// 現在のワーキングディレクトリを取得</span><span class="WHIT">
-<span class='line'> 43</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">cwd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Dir.getwd</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 44</span> 
-<span class='line'> 45</span> </span><span class="WHIT">    </span><span class="COMM">// 指定のパスにディレクトリ移動</span><span class="WHIT">
-<span class='line'> 46</span> </span><span class="WHIT">    </span><span class="NAME">Const.WSHELL.CurrentDirectory</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">path</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 47</span> 
-<span class='line'> 48</span> </span><span class="WHIT">    </span><span class="COMM">// ブロックを実行</span><span class="WHIT">
-<span class='line'> 49</span> </span><span class="WHIT">    </span><span class="NAME">block</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 50</span> 
-<span class='line'> 51</span> </span><span class="WHIT">    </span><span class="COMM">// ワーキングディレクトリを元に戻す</span><span class="WHIT">
-<span class='line'> 52</span> </span><span class="WHIT">    </span><span class="NAME">Const.WSHELL.CurrentDirectory</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">cwd</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 53</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 54</span> </span><span class="WHIT">    </span><span class="NAME">Const.WSHELL.CurrentDirectory</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">path</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 55</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 56</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 57</span> 
-<span class='line'> 58</span> </span><span class="COMM">/**
-<span class='line'> 59</span>  * pathで指定された新しいディレクトリを作ります。
-<span class='line'> 60</span>  * @param {String} path ディレクトリのパスを文字列で指定します。
-<span class='line'> 61</span>  * @return {Object} 作成したディレクトリのディレクトリオブジェクト
-<span class='line'> 62</span>  */</span><span class="WHIT">
-<span class='line'> 63</span> </span><span class="NAME">Dir.mkdir</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 64</span> </span><span class="WHIT">  </span><span class="NAME">Const.FSO.CreateFolder</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 65</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Dir</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 66</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 67</span> 
-<span class='line'> 68</span> </span><span class="COMM">/**
-<span class='line'> 69</span>  * pathで指定されたディレクトリの親ディレクトリのパスを文字列で取得します。
-<span class='line'> 70</span>  * @param {String} path ディレクトリのパスを文字列で指定します。
-<span class='line'> 71</span>  * @return {String} 親ディレクトリのパス
-<span class='line'> 72</span>  */</span><span class="WHIT">
-<span class='line'> 73</span> </span><span class="NAME">Dir.getParentDir</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 74</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Const.FSO.GetParentFolderName</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 75</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 76</span> 
-<span class='line'> 77</span> </span><span class="NAME">Dir.open</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">block</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 78</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">block</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 79</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">dir</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Dir</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 80</span> </span><span class="WHIT">    </span><span class="NAME">block</span><span class="PUNC">(</span><span class="NAME">dir</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 81</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 82</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Dir</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 83</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'> 84</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 85</span> 
-<span class='line'> 86</span> </span><span class="COMM">/**
-<span class='line'> 87</span>  * file_nameで与えられたディレクトリが存在するかどうかをチェックします。
-<span class='line'> 88</span>  * @param {String} file_name ディレクトリのパスを文字列で指定します。
-<span class='line'> 89</span>  * @return {Boolean} 存在する場合はtrue、存在しない場合はfalseを返します。
-<span class='line'> 90</span>  */</span><span class="WHIT">
-<span class='line'> 91</span> </span><span class="NAME">Dir.exist</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">file_name</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 92</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Const.FSO.FolderExists</span><span class="PUNC">(</span><span class="NAME">file_name</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 93</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 94</span> 
-<span class='line'> 95</span> </span><span class="COMM">/**
-<span class='line'> 96</span>  * ディレクトリpathに含まれるファイルエントリ名の配列を返します。
-<span class='line'> 97</span>  * @param {String} path ディレクトリのパスを文字列で指定します。
-<span class='line'> 98</span>  * @return {Boolean} ファイルエントリ名の配列
-<span class='line'> 99</span>  */</span><span class="WHIT">
-<span class='line'>100</span> </span><span class="NAME">Dir.entries</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>101</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">dir</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Dir</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>102</span> 
-<span class='line'>103</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">result</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>104</span> 
-<span class='line'>105</span> </span><span class="WHIT">  </span><span class="NAME">dir.each</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>106</span> </span><span class="WHIT">    </span><span class="NAME">result.push</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>107</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="NAME">Dir.pwd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Dir.getwd</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 35</span> 
+<span class='line'> 36</span> </span><span class="COMM">/**
+<span class='line'> 37</span>  * カレントディレクトリをpathに変更します。
+<span class='line'> 38</span>  * ブロックが指定された場合、カレントディレクトリの変更はブロックの実行中に限られます。
+<span class='line'> 39</span>  * @param {String} path ディレクトリのパスを文字列で指定します。
+<span class='line'> 40</span>  * @param {Function} block ブロック
+<span class='line'> 41</span>  * @example 使用例：
+<span class='line'> 42</span> Dir.chdir("src", function(path) {
+<span class='line'> 43</span>   print(File.size("date.js"));
+<span class='line'> 44</span> });
+<span class='line'> 45</span> 
+<span class='line'> 46</span> print(File.size("mado.js"));
+<span class='line'> 47</span>  */</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="NAME">Dir.chdir</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">block</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">path</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="WHIT">    </span><span class="NAME">path</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Const.INITIAL_CURRENT_DIRECTORY</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">File.exist</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">    </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Error</span><span class="PUNC">(</span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"Path Not Found: "</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 54</span> 
+<span class='line'> 55</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">block</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">    </span><span class="COMM">// 現在のワーキングディレクトリを取得</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">cwd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Dir.getwd</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 58</span> 
+<span class='line'> 59</span> </span><span class="WHIT">    </span><span class="COMM">// 指定のパスにディレクトリ移動</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">    </span><span class="NAME">Const.WSHELL.CurrentDirectory</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">path</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 61</span> 
+<span class='line'> 62</span> </span><span class="WHIT">    </span><span class="COMM">// ブロックを実行</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">    </span><span class="NAME">block</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 64</span> 
+<span class='line'> 65</span> </span><span class="WHIT">    </span><span class="COMM">// ワーキングディレクトリを元に戻す</span><span class="WHIT">
+<span class='line'> 66</span> </span><span class="WHIT">    </span><span class="NAME">Const.WSHELL.CurrentDirectory</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">cwd</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="WHIT">    </span><span class="NAME">Const.WSHELL.CurrentDirectory</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">path</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 69</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 70</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 71</span> 
+<span class='line'> 72</span> </span><span class="COMM">/**
+<span class='line'> 73</span>  * pathで指定された新しいディレクトリを作ります。
+<span class='line'> 74</span>  * @param {String} path ディレクトリのパスを文字列で指定します。
+<span class='line'> 75</span>  * @return {Object} 作成したディレクトリのディレクトリオブジェクト
+<span class='line'> 76</span>  */</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="NAME">Dir.mkdir</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 78</span> </span><span class="WHIT">  </span><span class="NAME">Const.FSO.CreateFolder</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 79</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Dir</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 80</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 81</span> 
+<span class='line'> 82</span> </span><span class="COMM">/**
+<span class='line'> 83</span>  * pathで指定されたディレクトリの親ディレクトリのパスを文字列で取得します。
+<span class='line'> 84</span>  * @param {String} path ディレクトリのパスを文字列で指定します。
+<span class='line'> 85</span>  * @return {String} 親ディレクトリのパス
+<span class='line'> 86</span>  */</span><span class="WHIT">
+<span class='line'> 87</span> </span><span class="NAME">Dir.getParentDir</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 88</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Const.FSO.GetParentFolderName</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 89</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 90</span> 
+<span class='line'> 91</span> </span><span class="NAME">Dir.open</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">block</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">block</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 93</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">dir</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Dir</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 94</span> </span><span class="WHIT">    </span><span class="NAME">block</span><span class="PUNC">(</span><span class="NAME">dir</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 95</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 96</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Dir</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 97</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 98</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 99</span> 
+<span class='line'>100</span> </span><span class="COMM">/**
+<span class='line'>101</span>  * file_nameで与えられたディレクトリが存在するかどうかをチェックします。
+<span class='line'>102</span>  * @param {String} file_name ディレクトリのパスを文字列で指定します。
+<span class='line'>103</span>  * @return {Boolean} 存在する場合はtrue、存在しない場合はfalseを返します。
+<span class='line'>104</span>  */</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="NAME">Dir.exist</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">file_name</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>106</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Const.FSO.FolderExists</span><span class="PUNC">(</span><span class="NAME">file_name</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>107</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>108</span> 
-<span class='line'>109</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">result</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>110</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>111</span> 
-<span class='line'>112</span> </span><span class="COMM">/**
-<span class='line'>113</span>  * ディレクトリpathに含まれる(サブディレクトリも含む)ファイルエントリ名の配列を返します。
-<span class='line'>114</span>  * patternを指定した場合、patternの正規表現にマッチするファイルのみ抽出します。
-<span class='line'>115</span>  * @param {String} path ディレクトリのパスを文字列で指定します。
-<span class='line'>116</span>  * @param {String} pattern 抽出するファイル名の正規表現パターン
-<span class='line'>117</span>  * @param {Function} block ブロック
-<span class='line'>118</span>  * @return {Boolean} ファイルエントリ名の配列
-<span class='line'>119</span>  */</span><span class="WHIT">
-<span class='line'>120</span> </span><span class="NAME">Dir.find</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">pattern</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">block</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>121</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">dir</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Dir</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>109</span> </span><span class="COMM">/**
+<span class='line'>110</span>  * ディレクトリpathに含まれるファイルエントリ名の配列を返します。
+<span class='line'>111</span>  * @param {String} path ディレクトリのパスを文字列で指定します。
+<span class='line'>112</span>  * @return {Boolean} ファイルエントリ名の配列
+<span class='line'>113</span>  */</span><span class="WHIT">
+<span class='line'>114</span> </span><span class="NAME">Dir.entries</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>115</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">dir</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Dir</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>116</span> 
+<span class='line'>117</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">result</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>118</span> 
+<span class='line'>119</span> </span><span class="WHIT">  </span><span class="NAME">dir.each</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>120</span> </span><span class="WHIT">    </span><span class="NAME">result.push</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>121</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>122</span> 
-<span class='line'>123</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">result</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>124</span> 
-<span class='line'>125</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">processFile</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>126</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">pattern</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">item.match</span><span class="PUNC">(</span><span class="NAME">pattern</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>127</span> </span><span class="WHIT">      </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">block</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>128</span> </span><span class="WHIT">        </span><span class="NAME">block</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>129</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>130</span> </span><span class="WHIT">        </span><span class="NAME">result.push</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>131</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>132</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>133</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>134</span> 
-<span class='line'>135</span> </span><span class="WHIT">  </span><span class="NAME">dir.each</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>136</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">Dir.exist</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>137</span> </span><span class="WHIT">      </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">subresult</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Dir.find</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">pattern</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">block</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>138</span> </span><span class="WHIT">      </span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">=</span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">&lt;</span><span class="NAME">subresult.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>139</span> </span><span class="WHIT">        </span><span class="NAME">processFile</span><span class="PUNC">(</span><span class="NAME">subresult</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>140</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>141</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>142</span> </span><span class="WHIT">      </span><span class="NAME">processFile</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>143</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>144</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>145</span> 
-<span class='line'>146</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">result</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>147</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>148</span> 
-<span class='line'>149</span> </span><span class="COMM">// Prototypes of Dir</span><span class="WHIT">
-<span class='line'>150</span> </span><span class="NAME">Dir.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>151</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>152</span>    * このオブジェクトが持つpathで指定されたディレクトリの親ディレクトリのパスを文字列で取得します。
-<span class='line'>153</span>    * @return {String} 親ディレクトリのパス
-<span class='line'>154</span>    */</span><span class="WHIT">
-<span class='line'>155</span> </span><span class="WHIT">  </span><span class="NAME">getParentDir</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>156</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Dir.getParentDir</span><span class="PUNC">(</span><span class="NAME">this.path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>157</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>158</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>159</span>    * このオブジェクトが持つpathに含まれるファイルエントリ名の配列を返します。
-<span class='line'>160</span>    * @return {Boolean} ファイルエントリ名の配列
-<span class='line'>161</span>    */</span><span class="WHIT">
-<span class='line'>162</span> </span><span class="WHIT">  </span><span class="NAME">each</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">block</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>163</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">dir</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Const.FSO.GetFolder</span><span class="PUNC">(</span><span class="NAME">this.path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>123</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">result</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>124</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>125</span> 
+<span class='line'>126</span> </span><span class="COMM">/**
+<span class='line'>127</span>  * ディレクトリpathに含まれる(サブディレクトリも含む)ファイルエントリ名の配列を返します。
+<span class='line'>128</span>  * patternを指定した場合、patternの正規表現にマッチするファイルのみ抽出します。
+<span class='line'>129</span>  * @param {String} path ディレクトリのパスを文字列で指定します。
+<span class='line'>130</span>  * @param {String} pattern 抽出するファイル名の正規表現パターン
+<span class='line'>131</span>  * @param {Function} block ブロック
+<span class='line'>132</span>  * @return {Boolean} ファイルエントリ名の配列
+<span class='line'>133</span>  * @example 使用例：
+<span class='line'>134</span> // docs以下のhtmlファイルのみ抽出
+<span class='line'>135</span> Dir.find("docs", ".*.html$", function(item) {
+<span class='line'>136</span>   print(item);
+<span class='line'>137</span> });
+<span class='line'>138</span>  */</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="NAME">Dir.find</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">pattern</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">block</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">dir</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Dir</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>141</span> 
+<span class='line'>142</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">result</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>143</span> 
+<span class='line'>144</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">processFile</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>145</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">pattern</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">item.match</span><span class="PUNC">(</span><span class="NAME">pattern</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>146</span> </span><span class="WHIT">      </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">block</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>147</span> </span><span class="WHIT">        </span><span class="NAME">block</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>148</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="WHIT">        </span><span class="NAME">result.push</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>150</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>151</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>152</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>153</span> 
+<span class='line'>154</span> </span><span class="WHIT">  </span><span class="NAME">dir.each</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>155</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">Dir.exist</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>156</span> </span><span class="WHIT">      </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">subresult</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Dir.find</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">pattern</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">block</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>157</span> </span><span class="WHIT">      </span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">=</span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">&lt;</span><span class="NAME">subresult.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>158</span> </span><span class="WHIT">        </span><span class="NAME">processFile</span><span class="PUNC">(</span><span class="NAME">subresult</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>159</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>160</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>161</span> </span><span class="WHIT">      </span><span class="NAME">processFile</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>162</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>163</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>164</span> 
-<span class='line'>165</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">enumDir</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Enumerator</span><span class="PUNC">(</span><span class="NAME">dir.SubFolders</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>166</span> </span><span class="WHIT">    </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">;</span><span class="PUNC">!</span><span class="NAME">enumDir.atEnd</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">enumDir.moveNext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>167</span> </span><span class="WHIT">       </span><span class="NAME">block</span><span class="PUNC">(</span><span class="NAME">enumDir.item</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">Path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>168</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>169</span> 
-<span class='line'>170</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">enumFile</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Enumerator</span><span class="PUNC">(</span><span class="NAME">dir.Files</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>171</span> </span><span class="WHIT">    </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">;</span><span class="PUNC">!</span><span class="NAME">enumFile.atEnd</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">enumFile.moveNext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>172</span> </span><span class="WHIT">       </span><span class="NAME">block</span><span class="PUNC">(</span><span class="NAME">enumFile.item</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">Path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>173</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>174</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>175</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>176</span> </span></pre></body></html>
+<span class='line'>165</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">result</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>167</span> 
+<span class='line'>168</span> </span><span class="COMM">// Prototypes of Dir</span><span class="WHIT">
+<span class='line'>169</span> </span><span class="NAME">Dir.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>170</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>171</span>    * このオブジェクトが持つpathで指定されたディレクトリの親ディレクトリのパスを文字列で取得します。
+<span class='line'>172</span>    * @return {String} 親ディレクトリのパス
+<span class='line'>173</span>    */</span><span class="WHIT">
+<span class='line'>174</span> </span><span class="WHIT">  </span><span class="NAME">getParentDir</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>175</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Dir.getParentDir</span><span class="PUNC">(</span><span class="NAME">this.path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>176</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>177</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>178</span>    * このオブジェクトが持つpathに含まれるファイルエントリ名の配列を返します。
+<span class='line'>179</span>    * @return {Boolean} ファイルエントリ名の配列
+<span class='line'>180</span>    */</span><span class="WHIT">
+<span class='line'>181</span> </span><span class="WHIT">  </span><span class="NAME">each</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">block</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>182</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">dir</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Const.FSO.GetFolder</span><span class="PUNC">(</span><span class="NAME">this.path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>183</span> 
+<span class='line'>184</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">enumDir</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Enumerator</span><span class="PUNC">(</span><span class="NAME">dir.SubFolders</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>185</span> </span><span class="WHIT">    </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">;</span><span class="PUNC">!</span><span class="NAME">enumDir.atEnd</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">enumDir.moveNext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>186</span> </span><span class="WHIT">       </span><span class="NAME">block</span><span class="PUNC">(</span><span class="NAME">enumDir.item</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">Path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>187</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>188</span> 
+<span class='line'>189</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">enumFile</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Enumerator</span><span class="PUNC">(</span><span class="NAME">dir.Files</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>190</span> </span><span class="WHIT">    </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">;</span><span class="PUNC">!</span><span class="NAME">enumFile.atEnd</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">enumFile.moveNext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>191</span> </span><span class="WHIT">       </span><span class="NAME">block</span><span class="PUNC">(</span><span class="NAME">enumFile.item</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">Path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>192</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>193</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>194</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>195</span> </span></pre></body></html>

@@ -1,6 +1,14 @@
 /** 
  * pathの存在チェックを行った上で、ディレクトリオブジェクトを作成します。
  * @class ディレクトリの操作を行うためのクラスです。
+<pre class = "code">
+使用例：
+// src以下のファイル一覧を表示
+var d = new Dir("src");
+d.each(function(item) {
+  print(item);
+});
+</pre>
  * @param  {String} path ディレクトリのパスを文字列で指定します。
  * @throws ディレクトリが存在しない場合にスローされます。
  */
@@ -30,6 +38,12 @@ Dir.pwd = Dir.getwd;
  * ブロックが指定された場合、カレントディレクトリの変更はブロックの実行中に限られます。
  * @param {String} path ディレクトリのパスを文字列で指定します。
  * @param {Function} block ブロック
+ * @example 使用例：
+Dir.chdir("src", function(path) {
+  print(File.size("date.js"));
+});
+
+print(File.size("mado.js"));
  */
 Dir.chdir = function(path, block) {
   if(!path) {
@@ -116,6 +130,11 @@ Dir.entries = function(path) {
  * @param {String} pattern 抽出するファイル名の正規表現パターン
  * @param {Function} block ブロック
  * @return {Boolean} ファイルエントリ名の配列
+ * @example 使用例：
+// docs以下のhtmlファイルのみ抽出
+Dir.find("docs", ".*.html$", function(item) {
+  print(item);
+});
  */
 Dir.find = function(path, pattern, block) {
   var dir = new Dir(path);

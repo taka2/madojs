@@ -214,7 +214,13 @@ MadoJS
 	
 	<li><a href="../symbols/Dir.html">Dir</a></li>
 	
+	<li><a href="../symbols/File.html">File</a></li>
+	
 	<li><a href="../symbols/HTTP.html">HTTP</a></li>
+	
+	<li><a href="../symbols/Process.html">Process</a></li>
+	
+	<li><a href="../symbols/String.html">String</a></li>
 	
 </ul>
 <hr />
@@ -234,6 +240,12 @@ MadoJS
 				
 			
 				HTTPの操作を行うためのクラスです。
+<pre class = "code">
+使用例：
+HTTP.start("www.yahoo.co.jp", 80, function(http) {
+  print(http.get("/index.html"));
+});
+</pre>
 				
 				
 					<br /><i></i> <a href="../symbols/src/src_http.js.html">http.js</a>で定義されています。
@@ -378,7 +390,7 @@ MadoJS
 						<dt class="heading">引数:</dt>
 						
 							<dt>
-								<span class="light fixedFont">{String}</span>  <b>host</b>
+								<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span>  <b>host</b>
 								
 							</dt>
 								<dd>HTTP操作の対象ホスト</dd>
@@ -440,7 +452,7 @@ MadoJS
 					<a name=".get"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{String}</span>
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
 					<span class="light">HTTP.</span><b>get</b>(address, path, port)
 					
 					</div>
@@ -452,18 +464,23 @@ MadoJS
 					
 					
 					
+					<pre class="code">使用例：
+print(HTTP.get("www.yahoo.co.jp", "/index.html", 80));</pre>
+					
+					
+					
 						
 							<dl class="detailList">
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{String}</span> <b>address</b>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>address</b>
 									
 								</dt>
 								<dd>HTTP操作の対象ホスト</dd>
 							
 								<dt>
-									<span class="light fixedFont">{String}</span> <b>path</b>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>path</b>
 									
 								</dt>
 								<dd>HTTP操作の対象パス</dd>
@@ -483,7 +500,7 @@ MadoJS
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd><span class="light fixedFont">{String}</span> レスポンステキスト</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> レスポンステキスト</dd>
 							
 							</dl>
 						
@@ -495,7 +512,7 @@ MadoJS
 					<a name="get"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{String}</span>
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
 					<b>get</b>(path, header, block)
 					
 					</div>
@@ -512,7 +529,7 @@ MadoJS
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{String}</span> <b>path</b>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>path</b>
 									
 								</dt>
 								<dd>HTTP操作の対象パス</dd>
@@ -548,7 +565,7 @@ MadoJS
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd><span class="light fixedFont">{String}</span> ブロックが指定されていない場合は、レスポンステキスト</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> ブロックが指定されていない場合は、レスポンステキスト</dd>
 							
 							</dl>
 						
@@ -572,18 +589,23 @@ MadoJS
 					
 					
 					
+					<pre class="code">使用例：
+HTTP.get_print("www.yahoo.co.jp", "/index.html", 80);</pre>
+					
+					
+					
 						
 							<dl class="detailList">
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{String}</span> <b>address</b>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>address</b>
 									
 								</dt>
 								<dd>HTTP操作の対象ホスト</dd>
 							
 								<dt>
-									<span class="light fixedFont">{String}</span> <b>path</b>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>path</b>
 									
 								</dt>
 								<dd>HTTP操作の対象パス</dd>
@@ -620,16 +642,12 @@ MadoJS
 					
 					
 					
-					<pre class="code">使用例：HTTP.start("www.yahoo.co.jp", 80, function(http) {  print(http.get("/index.html"));});</pre>
-					
-					
-					
 						
 							<dl class="detailList">
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{String}</span> <b>host</b>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>host</b>
 									
 								</dt>
 								<dd>HTTP操作の対象ホスト</dd>
@@ -676,7 +694,7 @@ MadoJS
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Thu Feb 24 2011 15:45:56 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Fri Feb 25 2011 18:36:25 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

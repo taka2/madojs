@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>MadoJS リファレンス - Array</title>
+		<title>MadoJS リファレンス - String</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -231,7 +231,7 @@ MadoJS
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Array 組み込みの 名前空間 
+				String 組み込みの 名前空間 
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -254,7 +254,7 @@ MadoJS
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Array.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class String.">
 					<caption>メソッドの概要</caption>
 					<thead>
 						<tr>
@@ -267,9 +267,9 @@ MadoJS
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Array.html#each">each</a></b>(block)
+								<div class="fixedFont"><b><a href="../symbols/String.html#trim">trim</a></b>()
 								</div>
-								<div class="description">各要素に対してブロックを評価します。</div>
+								<div class="description">文字列先頭と末尾のスペースをトリムした文字列を生成して返します。</div>
 							</td>
 						</tr>
 					
@@ -294,43 +294,40 @@ MadoJS
 					メソッドの詳細
 				</div>
 				
-					<a name="each"> </a>
+					<a name="trim"> </a>
 					<div class="fixedFont">
 					
-					
-					<b>each</b>(block)
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<b>trim</b>()
 					
 					</div>
 					<div class="description">
-						各要素に対してブロックを評価します。
+						文字列先頭と末尾のスペースをトリムした文字列を生成して返します。
 						
 							<br />
-							<a href="../symbols/src/src_array.js.html">array.js</a>で<i>定義されています</i>。
+							<a href="../symbols/src/src_string.js.html">string.js</a>で<i>定義されています</i>。
 						
 						
 					</div>
 					
 					
 					
-					<pre class="code">使用例：var x = [1, 2, 3].each(function(i) {  return i*2;});print(x); // 2,4,6</pre>
+					<pre class="code">使用例：
+print("@" + "   	abc			".trim() + "@"); // "@abc@"</pre>
 					
 					
 					
+						
+						
+						
+						
 						
 							<dl class="detailList">
-							<dt class="heading">引数:</dt>
+							<dt class="heading">戻り値:</dt>
 							
-								<dt>
-									<span class="light fixedFont">{Function}</span> <b>block</b>
-									
-								</dt>
-								<dd>ブロック</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> トリムした文字列</dd>
 							
 							</dl>
-						
-						
-						
-						
 						
 						
 						

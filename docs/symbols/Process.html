@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>MadoJS リファレンス - Array</title>
+		<title>MadoJS リファレンス - Process</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -231,7 +231,7 @@ MadoJS
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Array 組み込みの 名前空間 
+				Process クラス 
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -239,12 +239,40 @@ MadoJS
 				
 				
 			
+				プログラムの実行に関する機能を提供するクラス
+<pre class = "code">
+使用例：
+// ノートパッドを起動
+Process.exec("notepad", ["mado-debug.js"], Const.WINDOW_STYLE_NORMAL, false);
+</pre>
 				
 				
+					<br /><i></i> <a href="../symbols/src/src_process.js.html">process.js</a>で定義されています。
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Process.">
+				<caption>クラス 概要</caption>
+				<thead>
+					<tr>
+						<th scope="col">コンストラクタの属性</th>
+						<th scope="col">コンストラクタ名と説明</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/Process.html#constructor">Process</a></b>()
+							</div>
+							<div class="description">インスタンス化しません。</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 			
 
 <!-- ============================== properties summary ===================== -->
@@ -254,7 +282,7 @@ MadoJS
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Array.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Process.">
 					<caption>メソッドの概要</caption>
 					<thead>
 						<tr>
@@ -265,11 +293,11 @@ MadoJS
 					<tbody>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Array.html#each">each</a></b>(block)
+								<div class="fixedFont">Process.<b><a href="../symbols/Process.html#.exec">exec</a></b>(command, args, windowStyle, waitOnReturn)
 								</div>
-								<div class="description">各要素に対してブロックを評価します。</div>
+								<div class="description">指定したコマンドを実行します。</div>
 							</td>
 						</tr>
 					
@@ -284,6 +312,33 @@ MadoJS
 
 <!-- ============================== constructor details ==================== -->		
 			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					クラス 詳細
+				</div>
+				
+				<div class="fixedFont">
+						<b>Process</b>()
+				</div>
+				
+				<div class="description">
+					インスタンス化しません。
+					
+				</div>
+				
+				
+				
+				
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
 
 <!-- ============================== field details ========================== -->		
 			
@@ -294,25 +349,18 @@ MadoJS
 					メソッドの詳細
 				</div>
 				
-					<a name="each"> </a>
-					<div class="fixedFont">
+					<a name=".exec"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					
-					<b>each</b>(block)
+					<span class="light">Process.</span><b>exec</b>(command, args, windowStyle, waitOnReturn)
 					
 					</div>
 					<div class="description">
-						各要素に対してブロックを評価します。
-						
-							<br />
-							<a href="../symbols/src/src_array.js.html">array.js</a>で<i>定義されています</i>。
+						指定したコマンドを実行します。
 						
 						
 					</div>
-					
-					
-					
-					<pre class="code">使用例：var x = [1, 2, 3].each(function(i) {  return i*2;});print(x); // 2,4,6</pre>
 					
 					
 					
@@ -321,10 +369,28 @@ MadoJS
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Function}</span> <b>block</b>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>command</b>
 									
 								</dt>
-								<dd>ブロック</dd>
+								<dd>実行するコマンド</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/Array.html">Array</a>}</span> <b>args</b>
+									
+								</dt>
+								<dd>引数</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>windowStyle</b>
+									
+								</dt>
+								<dd><a href = "Const.html#.WINDOW_STYLE_MAX">ウインドウスタイル</a>参照</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>waitOnReturn</b>
+									
+								</dt>
+								<dd>trueの場合コマンドの実行が終わるまで待ちます。falseの場合は待ちません。</dd>
 							
 							</dl>
 						

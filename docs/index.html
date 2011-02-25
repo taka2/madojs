@@ -209,7 +209,13 @@ MadoJS
 	
 	<li><a href="symbols/Dir.html">Dir</a></li>
 	
+	<li><a href="symbols/File.html">File</a></li>
+	
 	<li><a href="symbols/HTTP.html">HTTP</a></li>
+	
+	<li><a href="symbols/Process.html">Process</a></li>
+	
+	<li><a href="symbols/String.html">String</a></li>
 	
 </ul>
 <hr />
@@ -234,6 +240,14 @@ MadoJS
 			<div>
 				<h2><a href="symbols/Clipboard.html">Clipboard</a></h2>
 				クリップボードへの格納、および、取得を行うクラス。
+<pre class = "code">
+使用例：
+// "日本語"という文字列をクリップボードへコピーして、ペーストします。
+Clipboard.open(function(clip) {
+  clip.set("日本語");
+  sendKeys("^v");
+});
+</pre>
 			</div>
 			<hr />
 			
@@ -252,12 +266,59 @@ MadoJS
 			<div>
 				<h2><a href="symbols/Dir.html">Dir</a></h2>
 				ディレクトリの操作を行うためのクラスです。
+<pre class = "code">
+使用例：
+// src以下のファイル一覧を表示
+var d = new Dir("src");
+d.each(function(item) {
+  print(item);
+});
+</pre>
+			</div>
+			<hr />
+			
+			<div>
+				<h2><a href="symbols/File.html">File</a></h2>
+				ファイルの操作と読み書きを行うためのクラスです。
+<pre class = "code">
+使用例：
+File.open("copy_of_mado.js", "w", function(outfile) {
+  File.open("mado.js", "r", function(infile) {
+    infile.each(function(line) {
+      outfile.puts(line);
+    });
+  });
+});
+</pre>
 			</div>
 			<hr />
 			
 			<div>
 				<h2><a href="symbols/HTTP.html">HTTP</a></h2>
 				HTTPの操作を行うためのクラスです。
+<pre class = "code">
+使用例：
+HTTP.start("www.yahoo.co.jp", 80, function(http) {
+  print(http.get("/index.html"));
+});
+</pre>
+			</div>
+			<hr />
+			
+			<div>
+				<h2><a href="symbols/Process.html">Process</a></h2>
+				プログラムの実行に関する機能を提供するクラス
+<pre class = "code">
+使用例：
+// ノートパッドを起動
+Process.exec("notepad", ["mado-debug.js"], Const.WINDOW_STYLE_NORMAL, false);
+</pre>
+			</div>
+			<hr />
+			
+			<div>
+				<h2><a href="symbols/String.html">String</a></h2>
+				
 			</div>
 			<hr />
 			
@@ -265,7 +326,7 @@ MadoJS
 		</div>
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Thu Feb 24 2011 15:45:56 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Fri Feb 25 2011 18:36:25 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

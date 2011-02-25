@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>MadoJS リファレンス - Dir</title>
+		<title>MadoJS リファレンス - File</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -231,7 +231,7 @@ MadoJS
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Dir クラス 
+				File クラス 
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -239,24 +239,26 @@ MadoJS
 				
 				
 			
-				ディレクトリの操作を行うためのクラスです。
+				ファイルの操作と読み書きを行うためのクラスです。
 <pre class = "code">
 使用例：
-// src以下のファイル一覧を表示
-var d = new Dir("src");
-d.each(function(item) {
-  print(item);
+File.open("copy_of_mado.js", "w", function(outfile) {
+  File.open("mado.js", "r", function(infile) {
+    infile.each(function(line) {
+      outfile.puts(line);
+    });
+  });
 });
 </pre>
 				
 				
-					<br /><i></i> <a href="../symbols/src/src_dir.js.html">dir.js</a>で定義されています。
+					<br /><i></i> <a href="../symbols/src/src_file.js.html">file.js</a>で定義されています。
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Dir.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class File.">
 				<caption>クラス 概要</caption>
 				<thead>
 					<tr>
@@ -269,9 +271,9 @@ d.each(function(item) {
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/Dir.html#constructor">Dir</a></b>(path)
+								<b><a href="../symbols/File.html#constructor">File</a></b>(path, mode)
 							</div>
-							<div class="description">pathの存在チェックを行った上で、ディレクトリオブジェクトを作成します。</div>
+							<div class="description">ファイルオブジェクトを作成します。</div>
 						</td>
 					</tr>
 				</tbody>
@@ -285,7 +287,7 @@ d.each(function(item) {
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Dir.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class File.">
 					<caption>メソッドの概要</caption>
 					<thead>
 						<tr>
@@ -298,90 +300,108 @@ d.each(function(item) {
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">Dir.<b><a href="../symbols/Dir.html#.chdir">chdir</a></b>(path, block)
+								<div class="fixedFont">File.<b><a href="../symbols/File.html#.basename">basename</a></b>(filename)
 								</div>
-								<div class="description">カレントディレクトリをpathに変更します。ブロックが指定された場合、カレントディレクトリの変更はブロックの実行中に限られます。</div>
+								<div class="description">指定したfilenameのパスを除いたファイル名を取得します。</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Dir.html#each">each</a></b>(block)
+								<div class="fixedFont"><b><a href="../symbols/File.html#close">close</a></b>()
 								</div>
-								<div class="description">このオブジェクトが持つpathに含まれるファイルエントリ名の配列を返します。</div>
+								<div class="description">ファイルをクローズします。</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">Dir.<b><a href="../symbols/Dir.html#.entries">entries</a></b>(path)
+								<div class="fixedFont">File.<b><a href="../symbols/File.html#.copy">copy</a></b>(from, to)
 								</div>
-								<div class="description">ディレクトリpathに含まれるファイルエントリ名の配列を返します。</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">Dir.<b><a href="../symbols/Dir.html#.exist">exist</a></b>(file_name)
-								</div>
-								<div class="description">file_nameで与えられたディレクトリが存在するかどうかをチェックします。</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">Dir.<b><a href="../symbols/Dir.html#.find">find</a></b>(path, pattern, block)
-								</div>
-								<div class="description">ディレクトリpathに含まれる(サブディレクトリも含む)ファイルエントリ名の配列を返します。patternを指定した場合、patternの正規表現にマッチするファイルのみ抽出します。</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">Dir.<b><a href="../symbols/Dir.html#.getParentDir">getParentDir</a></b>(path)
-								</div>
-								<div class="description">pathで指定されたディレクトリの親ディレクトリのパスを文字列で取得します。</div>
+								<div class="description">fromファイルをtoにコピーします。</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Dir.html#getParentDir">getParentDir</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/File.html#each">each</a></b>(block)
 								</div>
-								<div class="description">このオブジェクトが持つpathで指定されたディレクトリの親ディレクトリのパスを文字列で取得します。</div>
+								<div class="description">ファイルから一行ずつ読み取り、ブロックを呼び出します。</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">Dir.<b><a href="../symbols/Dir.html#.getwd">getwd</a></b>()
+								<div class="fixedFont">File.<b><a href="../symbols/File.html#.exist">exist</a></b>(path)
 								</div>
-								<div class="description">カレントディレクトリのフルパスを文字列で返します。</div>
+								<div class="description">ファイル、または、ディレクトリが存在するかどうか判定します。</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">Dir.<b><a href="../symbols/Dir.html#.mkdir">mkdir</a></b>(path)
+								<div class="fixedFont">File.<b><a href="../symbols/File.html#.extname">extname</a></b>(filename)
 								</div>
-								<div class="description">pathで指定された新しいディレクトリを作ります。</div>
+								<div class="description">指定したfilenameの拡張子を取得します。</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">Dir.<b><a href="../symbols/Dir.html#.pwd">pwd</a></b>()
+								<div class="fixedFont">File.<b><a href="../symbols/File.html#.open">open</a></b>(path, mode, block)
 								</div>
-								<div class="description"><a href = "#.getwd">Dir#getwd</a>のエイリアスです。</div>
+								<div class="description">指定したpathのファイルを指定したmodeで開き、ブロックを実行します。ブロックが指定されていない場合は、作成したファイルオブジェクトを返します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/File.html#puts">puts</a></b>(line)
+								</div>
+								<div class="description">ファイルへ一行書き込みます。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">File.<b><a href="../symbols/File.html#.realpath">realpath</a></b>(pathname, basedir)
+								</div>
+								<div class="description">指定したbasedirからの相対パスで、pathnameのフルパスを取得します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">File.<b><a href="../symbols/File.html#.rename">rename</a></b>(from, to)
+								</div>
+								<div class="description">fromファイルの名前をtoに変更します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">File.<b><a href="../symbols/File.html#.size">size</a></b>(path)
+								</div>
+								<div class="description">指定したpathのファイル、または、ディレクトリのサイズを取得します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">File.<b><a href="../symbols/File.html#.unlink">unlink</a></b>(path, force)
+								</div>
+								<div class="description">指定したpathのファイル、または、ディレクトリを削除します。</div>
 							</td>
 						</tr>
 					
@@ -402,11 +422,11 @@ d.each(function(item) {
 				</div>
 				
 				<div class="fixedFont">
-						<b>Dir</b>(path)
+						<b>File</b>(path, mode)
 				</div>
 				
 				<div class="description">
-					pathの存在チェックを行った上で、ディレクトリオブジェクトを作成します。
+					ファイルオブジェクトを作成します。
 					
 				</div>
 				
@@ -421,7 +441,13 @@ d.each(function(item) {
 								<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span>  <b>path</b>
 								
 							</dt>
-								<dd>ディレクトリのパスを文字列で指定します。</dd>
+								<dd>ファイルのパスを文字列で指定します。</dd>
+						
+							<dt>
+								<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span>  <b>mode</b>
+								
+							</dt>
+								<dd>ファイルを読み書きするためのモードを指定します。<ul>  <li>'r': 読み取り専用</li>  <li>'w': 書き込み専用</li>  <li>'a': 追加書き込み</li></ul></dd>
 						
 						</dl>
 					
@@ -434,7 +460,7 @@ d.each(function(item) {
 							<dt>
 								 <b></b>
 							</dt>
-								<dd>ディレクトリが存在しない場合にスローされます。</dd>
+								<dd>モードが'r'または'a'のときで、ファイルが存在しない場合にスローされます。</dd>
 						
 						</dl>
 					
@@ -454,27 +480,18 @@ d.each(function(item) {
 					メソッドの詳細
 				</div>
 				
-					<a name=".chdir"> </a>
+					<a name=".basename"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					
-					<span class="light">Dir.</span><b>chdir</b>(path, block)
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<span class="light">File.</span><b>basename</b>(filename)
 					
 					</div>
 					<div class="description">
-						カレントディレクトリをpathに変更します。ブロックが指定された場合、カレントディレクトリの変更はブロックの実行中に限られます。
+						指定したfilenameのパスを除いたファイル名を取得します。
 						
 						
 					</div>
-					
-					
-					
-					<pre class="code">使用例：
-Dir.chdir("src", function(path) {
-  print(File.size("date.js"));
-});
-
-print(File.size("mado.js"));</pre>
 					
 					
 					
@@ -483,21 +500,99 @@ print(File.size("mado.js"));</pre>
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>path</b>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>filename</b>
 									
 								</dt>
-								<dd>ディレクトリのパスを文字列で指定します。</dd>
-							
-								<dt>
-									<span class="light fixedFont">{Function}</span> <b>block</b>
-									
-								</dt>
-								<dd>ブロック</dd>
+								<dd>ファイルのパス</dd>
 							
 							</dl>
 						
 						
 						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> パスを除いたファイル名(/path/to/file.txt → file.txt)</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="close"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>close</b>()
+					
+					</div>
+					<div class="description">
+						ファイルをクローズします。
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".copy"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">File.</span><b>copy</b>(from, to)
+					
+					</div>
+					<div class="description">
+						fromファイルをtoにコピーします。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>from</b>
+									
+								</dt>
+								<dd>コピー元ファイル名</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>to</b>
+									
+								</dt>
+								<dd>コピー先ファイル名</dd>
+							
+							</dl>
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">例外:</dt>
+							
+								<dt>
+									 <b></b>
+								</dt>
+								<dd>ファイルが存在しない場合にスローされます。</dd>
+							
+							</dl>
 						
 						
 						
@@ -508,12 +603,12 @@ print(File.size("mado.js"));</pre>
 					<a name="each"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{Boolean}</span>
+					
 					<b>each</b>(block)
 					
 					</div>
 					<div class="description">
-						このオブジェクトが持つpathに含まれるファイルエントリ名の配列を返します。
+						ファイルから一行ずつ読み取り、ブロックを呼び出します。
 						
 						
 					</div>
@@ -523,155 +618,6 @@ print(File.size("mado.js"));</pre>
 						
 							<dl class="detailList">
 							<dt class="heading">引数:</dt>
-							
-								<dt>
-									<b>block</b>
-									
-								</dt>
-								<dd></dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">戻り値:</dt>
-							
-								<dd><span class="light fixedFont">{Boolean}</span> ファイルエントリ名の配列</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name=".entries"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{Boolean}</span>
-					<span class="light">Dir.</span><b>entries</b>(path)
-					
-					</div>
-					<div class="description">
-						ディレクトリpathに含まれるファイルエントリ名の配列を返します。
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">引数:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>path</b>
-									
-								</dt>
-								<dd>ディレクトリのパスを文字列で指定します。</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">戻り値:</dt>
-							
-								<dd><span class="light fixedFont">{Boolean}</span> ファイルエントリ名の配列</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name=".exist"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{Boolean}</span>
-					<span class="light">Dir.</span><b>exist</b>(file_name)
-					
-					</div>
-					<div class="description">
-						file_nameで与えられたディレクトリが存在するかどうかをチェックします。
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">引数:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>file_name</b>
-									
-								</dt>
-								<dd>ディレクトリのパスを文字列で指定します。</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">戻り値:</dt>
-							
-								<dd><span class="light fixedFont">{Boolean}</span> 存在する場合はtrue、存在しない場合はfalseを返します。</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name=".find"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{Boolean}</span>
-					<span class="light">Dir.</span><b>find</b>(path, pattern, block)
-					
-					</div>
-					<div class="description">
-						ディレクトリpathに含まれる(サブディレクトリも含む)ファイルエントリ名の配列を返します。patternを指定した場合、patternの正規表現にマッチするファイルのみ抽出します。
-						
-						
-					</div>
-					
-					
-					
-					<pre class="code">使用例：
-// docs以下のhtmlファイルのみ抽出
-Dir.find("docs", ".*.html$", function(item) {
-  print(item);
-});</pre>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">引数:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>path</b>
-									
-								</dt>
-								<dd>ディレクトリのパスを文字列で指定します。</dd>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>pattern</b>
-									
-								</dt>
-								<dd>抽出するファイル名の正規表現パターン</dd>
 							
 								<dt>
 									<span class="light fixedFont">{Function}</span> <b>block</b>
@@ -685,27 +631,20 @@ Dir.find("docs", ".*.html$", function(item) {
 						
 						
 						
-							<dl class="detailList">
-							<dt class="heading">戻り値:</dt>
-							
-								<dd><span class="light fixedFont">{Boolean}</span> ファイルエントリ名の配列</dd>
-							
-							</dl>
-						
 						
 						
 
 					<hr />
 				
-					<a name=".getParentDir"> </a>
+					<a name=".exist"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<span class="light">Dir.</span><b>getParentDir</b>(path)
+					<span class="light">{Boolean}</span>
+					<span class="light">File.</span><b>exist</b>(path)
 					
 					</div>
 					<div class="description">
-						pathで指定されたディレクトリの親ディレクトリのパスを文字列で取得します。
+						ファイル、または、ディレクトリが存在するかどうか判定します。
 						
 						
 					</div>
@@ -720,7 +659,7 @@ Dir.find("docs", ".*.html$", function(item) {
 									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>path</b>
 									
 								</dt>
-								<dd>ディレクトリのパスを文字列で指定します。</dd>
+								<dd>ファイル、または、ディレクトリのパス</dd>
 							
 							</dl>
 						
@@ -731,7 +670,7 @@ Dir.find("docs", ".*.html$", function(item) {
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> 親ディレクトリのパス</dd>
+								<dd><span class="light fixedFont">{Boolean}</span> ファイル、または、ディレクトリが存在する場合はtrue、そうでない場合はfalseを返します。</dd>
 							
 							</dl>
 						
@@ -740,21 +679,171 @@ Dir.find("docs", ".*.html$", function(item) {
 
 					<hr />
 				
-					<a name="getParentDir"> </a>
+					<a name=".extname"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<span class="light">File.</span><b>extname</b>(filename)
+					
+					</div>
+					<div class="description">
+						指定したfilenameの拡張子を取得します。
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">使用例：
+print(File.extname("c:\work")); // ""
+print(File.extname("c:\work\build_y2.xml")); // ".xml"</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>filename</b>
+									
+								</dt>
+								<dd>ファイルのパス</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> filenameの拡張子(ドット付き; .ext)</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".open"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">File.</span><b>open</b>(path, mode, block)
+					
+					</div>
+					<div class="description">
+						指定したpathのファイルを指定したmodeで開き、ブロックを実行します。ブロックが指定されていない場合は、作成したファイルオブジェクトを返します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>path</b>
+									
+								</dt>
+								<dd>ファイルのパスを文字列で指定します。</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>mode</b>
+									
+								</dt>
+								<dd>ファイルを読み書きするためのモードを指定します。</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>block</b>
+									
+								</dt>
+								<dd>ブロック<a href = "File.html#constructor">コンストラクタ</a>参照</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="puts"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<b>getParentDir</b>()
+					
+					<b>puts</b>(line)
 					
 					</div>
 					<div class="description">
-						このオブジェクトが持つpathで指定されたディレクトリの親ディレクトリのパスを文字列で取得します。
+						ファイルへ一行書き込みます。
 						
 						
 					</div>
 					
 					
 					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>line</b>
+									
+								</dt>
+								<dd>書きこむ文字列</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".realpath"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<span class="light">File.</span><b>realpath</b>(pathname, basedir)
+					
+					</div>
+					<div class="description">
+						指定したbasedirからの相対パスで、pathnameのフルパスを取得します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>pathname</b>
+									
+								</dt>
+								<dd>ファイル、または、ディレクトリのパス</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>basedir</b>
+									
+								</dt>
+								<dd>(オプション)起点となるディレクトリ(初期値 カレントディレクトリ)</dd>
+							
+							</dl>
 						
 						
 						
@@ -763,7 +852,7 @@ Dir.find("docs", ".*.html$", function(item) {
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> 親ディレクトリのパス</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> ファイル、または、ディレクトリのフルパス</dd>
 							
 							</dl>
 						
@@ -772,15 +861,15 @@ Dir.find("docs", ".*.html$", function(item) {
 
 					<hr />
 				
-					<a name=".getwd"> </a>
+					<a name=".rename"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<span class="light">Dir.</span><b>getwd</b>()
+					
+					<span class="light">File.</span><b>rename</b>(from, to)
 					
 					</div>
 					<div class="description">
-						カレントディレクトリのフルパスを文字列で返します。
+						fromファイルの名前をtoに変更します。
 						
 						
 					</div>
@@ -788,31 +877,51 @@ Dir.find("docs", ".*.html$", function(item) {
 					
 					
 						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>from</b>
+									
+								</dt>
+								<dd>変更前のファイル名</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>to</b>
+									
+								</dt>
+								<dd>変更後のファイル名</dd>
+							
+							</dl>
 						
 						
 						
 						
 							<dl class="detailList">
-							<dt class="heading">戻り値:</dt>
+							<dt class="heading">例外:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> カレントディレクトリのフルパス</dd>
+								<dt>
+									 <b></b>
+								</dt>
+								<dd>ファイルが存在しない場合にスローされます。</dd>
 							
 							</dl>
+						
 						
 						
 						
 
 					<hr />
 				
-					<a name=".mkdir"> </a>
+					<a name=".size"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{Object}</span>
-					<span class="light">Dir.</span><b>mkdir</b>(path)
+					<span class="light">{Number}</span>
+					<span class="light">File.</span><b>size</b>(path)
 					
 					</div>
 					<div class="description">
-						pathで指定された新しいディレクトリを作ります。
+						指定したpathのファイル、または、ディレクトリのサイズを取得します。
 						
 						
 					</div>
@@ -827,18 +936,28 @@ Dir.find("docs", ".*.html$", function(item) {
 									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>path</b>
 									
 								</dt>
-								<dd>ディレクトリのパスを文字列で指定します。</dd>
+								<dd>ファイル、または、ディレクトリのパス</dd>
 							
 							</dl>
 						
 						
 						
 						
+							<dl class="detailList">
+							<dt class="heading">例外:</dt>
+							
+								<dt>
+									 <b></b>
+								</dt>
+								<dd>ファイルが存在しない場合にスローされます。</dd>
+							
+							</dl>
+						
 						
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd><span class="light fixedFont">{Object}</span> 作成したディレクトリのディレクトリオブジェクト</dd>
+								<dd><span class="light fixedFont">{Number}</span> ファイル、または、ディレクトリのサイズ(Byte単位)</dd>
 							
 							</dl>
 						
@@ -847,15 +966,15 @@ Dir.find("docs", ".*.html$", function(item) {
 
 					<hr />
 				
-					<a name=".pwd"> </a>
+					<a name=".unlink"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
 					
-					<span class="light">Dir.</span><b>pwd</b>()
+					<span class="light">File.</span><b>unlink</b>(path, force)
 					
 					</div>
 					<div class="description">
-						<a href = "#.getwd">Dir#getwd</a>のエイリアスです。
+						指定したpathのファイル、または、ディレクトリを削除します。
 						
 						
 					</div>
@@ -863,8 +982,35 @@ Dir.find("docs", ".*.html$", function(item) {
 					
 					
 						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>path</b>
+									
+								</dt>
+								<dd>ファイル、または、ディレクトリのパス</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>force</b>
+									
+								</dt>
+								<dd>読み取り専用も削除するかどうか</dd>
+							
+							</dl>
 						
 						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">例外:</dt>
+							
+								<dt>
+									 <b></b>
+								</dt>
+								<dd>ファイルが存在しない場合にスローされます。</dd>
+							
+							</dl>
 						
 						
 						

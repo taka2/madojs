@@ -214,7 +214,13 @@ MadoJS
 	
 	<li><a href="../symbols/Dir.html">Dir</a></li>
 	
+	<li><a href="../symbols/File.html">File</a></li>
+	
 	<li><a href="../symbols/HTTP.html">HTTP</a></li>
+	
+	<li><a href="../symbols/Process.html">Process</a></li>
+	
+	<li><a href="../symbols/String.html">String</a></li>
 	
 </ul>
 <hr />
@@ -234,6 +240,14 @@ MadoJS
 				
 			
 				クリップボードへの格納、および、取得を行うクラス。
+<pre class = "code">
+使用例：
+// "日本語"という文字列をクリップボードへコピーして、ペーストします。
+Clipboard.open(function(clip) {
+  clip.set("日本語");
+  sendKeys("^v");
+});
+</pre>
 				
 				
 					<br /><i></i> <a href="../symbols/src/src_clipboard.js.html">clipboard.js</a>で定義されています。
@@ -393,7 +407,7 @@ MadoJS
 					<a name="get"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{String}</span>
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
 					<b>get</b>()
 					
 					</div>
@@ -413,7 +427,7 @@ MadoJS
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd><span class="light fixedFont">{String}</span> 取得した文字列</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> 取得した文字列</dd>
 							
 							</dl>
 						
@@ -485,7 +499,7 @@ MadoJS
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{String}</span> <b>text</b>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>text</b>
 									
 								</dt>
 								<dd>格納する文字列</dd>
@@ -513,7 +527,7 @@ MadoJS
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Thu Feb 24 2011 15:45:56 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Fri Feb 25 2011 18:36:25 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

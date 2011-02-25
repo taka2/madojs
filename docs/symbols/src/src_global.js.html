@@ -14,75 +14,104 @@
 <span class='line'>  7</span> </span><span class="WHIT">  </span><span class="NAME">WScript.Sleep</span><span class="PUNC">(</span><span class="NAME">msec</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>  8</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>  9</span> 
-<span class='line'> 10</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">sleepif</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">msec</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">fn</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">args</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 11</span> </span><span class="WHIT">  </span><span class="KEYW">while</span><span class="PUNC">(</span><span class="KEYW">true</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 12</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">fn</span><span class="PUNC">(</span><span class="NAME">args</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 13</span> </span><span class="WHIT">      </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 14</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'> 15</span> </span><span class="WHIT">    </span><span class="NAME">sleep</span><span class="PUNC">(</span><span class="NAME">msec</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 16</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'> 17</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 18</span> 
-<span class='line'> 19</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">print</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">msg</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 20</span> </span><span class="WHIT">  </span><span class="NAME">WScript.Echo</span><span class="PUNC">(</span><span class="NAME">msg</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 21</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 22</span> 
-<span class='line'> 23</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">exit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">status</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 24</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">status</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 25</span> </span><span class="WHIT">    </span><span class="NAME">status</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 26</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'> 27</span> 
-<span class='line'> 28</span> </span><span class="WHIT">  </span><span class="NAME">WScript.Quit</span><span class="PUNC">(</span><span class="NAME">status</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 29</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 30</span> 
-<span class='line'> 31</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">alias</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">hash</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 32</span> </span><span class="WHIT">  </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">prop</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">hash</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 33</span> </span><span class="WHIT">    </span><span class="KEYW">this</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">hash</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 34</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'> 35</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 36</span> 
-<span class='line'> 37</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">extend</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">destination</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">source</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 38</span> </span><span class="WHIT">  </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">property</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">source</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 39</span> </span><span class="WHIT">    </span><span class="NAME">destination</span><span class="PUNC">[</span><span class="NAME">property</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">source</span><span class="PUNC">[</span><span class="NAME">property</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 40</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'> 41</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">destination</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 42</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 43</span> 
-<span class='line'> 44</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">isFunction</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">fun</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 45</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">fun</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="STRN">"function"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 46</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 47</span> 
-<span class='line'> 48</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">getComputerName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 49</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Const.WSHELL.ExpandEnvironmentStrings</span><span class="PUNC">(</span><span class="STRN">"%COMPUTERNAME%"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 50</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 51</span> 
-<span class='line'> 52</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">isWScriptRunning</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 53</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="REGX">/wscript\.exe$/i</span><span class="PUNC">.</span><span class="NAME">test</span><span class="PUNC">(</span><span class="NAME">WScript.FullName</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 54</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 55</span> 
-<span class='line'> 56</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">sendKeys</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">key</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 57</span> </span><span class="WHIT">  </span><span class="NAME">Const.WSHELL.Sendkeys</span><span class="PUNC">(</span><span class="NAME">key</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 58</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 59</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 60</span> 
-<span class='line'> 61</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">getEnv</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 62</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Const.WSHELL.ExpandEnvironmentStrings</span><span class="PUNC">(</span><span class="STRN">"%"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">name</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"%"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 63</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 64</span> 
-<span class='line'> 65</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">osShutdown</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">timeout</span><span class="WHIT"> </span><span class="COMM">/* タイムアウトをxx秒で指定 */</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 66</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">timeout</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 67</span> </span><span class="WHIT">  </span><span class="NAME">Process.exec</span><span class="PUNC">(</span><span class="STRN">"shutdown"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="STRN">"-s"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"-t"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 68</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 69</span> 
-<span class='line'> 70</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">osReboot</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">timeout</span><span class="WHIT"> </span><span class="COMM">/* タイムアウトをxx秒で指定 */</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">option</span><span class="WHIT"> </span><span class="COMM">/* -f(実行中のプロセスを警告なしで閉じる) */</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 71</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">params</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="STRN">"-r"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"-t"</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 72</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">timeout</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 73</span> </span><span class="WHIT">  </span><span class="NAME">params.push</span><span class="PUNC">(</span><span class="NAME">timeout</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 74</span> 
-<span class='line'> 75</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">option</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 76</span> </span><span class="WHIT">    </span><span class="NAME">params.push</span><span class="PUNC">(</span><span class="NAME">option</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 77</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'> 78</span> 
-<span class='line'> 79</span> </span><span class="WHIT">  </span><span class="NAME">Process.exec</span><span class="PUNC">(</span><span class="STRN">"shutdown"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">params</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 80</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 81</span> </span></pre></body></html>
+<span class='line'> 10</span> </span><span class="COMM">/**
+<span class='line'> 11</span>  * 指定したfnがtrueを返すまで、msec(ミリ秒)間隔でfnを実行します。
+<span class='line'> 12</span>  * @param {Number} msec スリープするミリ秒
+<span class='line'> 13</span>  * @param {Function} fn 実行する関数
+<span class='line'> 14</span>  * @param {Array} args 関数に渡す引数
+<span class='line'> 15</span>  */</span><span class="WHIT">
+<span class='line'> 16</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">sleepif</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">msec</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">fn</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">args</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 17</span> </span><span class="WHIT">  </span><span class="KEYW">while</span><span class="PUNC">(</span><span class="KEYW">true</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 18</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">fn</span><span class="PUNC">(</span><span class="NAME">args</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 19</span> </span><span class="WHIT">      </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 20</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 21</span> </span><span class="WHIT">    </span><span class="NAME">sleep</span><span class="PUNC">(</span><span class="NAME">msec</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 22</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 24</span> 
+<span class='line'> 25</span> </span><span class="COMM">/**
+<span class='line'> 26</span>  * msgを表示します。
+<span class='line'> 27</span>  * @param {String} msg メッセージ
+<span class='line'> 28</span>  */</span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">print</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">msg</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 30</span> </span><span class="WHIT">  </span><span class="NAME">WScript.Echo</span><span class="PUNC">(</span><span class="NAME">msg</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 32</span> 
+<span class='line'> 33</span> </span><span class="COMM">/**
+<span class='line'> 34</span>  * プログラムを指定したステータスで終了します。
+<span class='line'> 35</span>  * @param {Number} status (オプション)終了ステータス(初期値 0)
+<span class='line'> 36</span>  */</span><span class="WHIT">
+<span class='line'> 37</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">exit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">status</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">exitStatus</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">status</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="WHIT">  </span><span class="NAME">WScript.Quit</span><span class="PUNC">(</span><span class="NAME">exitStatus</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 41</span> 
+<span class='line'> 42</span> </span><span class="COMM">/**
+<span class='line'> 43</span>  * fnが関数かどうか判定します。
+<span class='line'> 44</span>  * @param {Object} fn オブジェクト
+<span class='line'> 45</span>  * @return {Boolean} 関数の場合はtrue、そうでない場合はfalseを返す。
+<span class='line'> 46</span>  */</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">isFunction</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">fn</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">fn</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="STRN">"function"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 50</span> 
+<span class='line'> 51</span> </span><span class="COMM">/**
+<span class='line'> 52</span>  * ホスト名を取得します。
+<span class='line'> 53</span>  * @return {String} ホスト名
+<span class='line'> 54</span>  */</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">getComputerName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Const.WSHELL.ExpandEnvironmentStrings</span><span class="PUNC">(</span><span class="STRN">"%COMPUTERNAME%"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 58</span> 
+<span class='line'> 59</span> </span><span class="COMM">/**
+<span class='line'> 60</span>  * WScript.exeで実行しているかどうか判定します。
+<span class='line'> 61</span>  * @return {Boolean} WScript.exeで実行している場合はtrue、そうでない場合(CScript.exe)はfalseを返す。
+<span class='line'> 62</span>  */</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">isWScriptRunning</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="REGX">/wscript\.exe$/i</span><span class="PUNC">.</span><span class="NAME">test</span><span class="PUNC">(</span><span class="NAME">WScript.FullName</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 65</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 66</span> 
+<span class='line'> 67</span> </span><span class="COMM">/**
+<span class='line'> 68</span>  * 指定したkeyのキー入力を行います。
+<span class='line'> 69</span>  * @param {String} key 入力する文字列
+<span class='line'> 70</span>  */</span><span class="WHIT">
+<span class='line'> 71</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">sendKeys</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">key</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="WHIT">  </span><span class="NAME">Const.WSHELL.Sendkeys</span><span class="PUNC">(</span><span class="NAME">key</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 75</span> 
+<span class='line'> 76</span> </span><span class="COMM">/**
+<span class='line'> 77</span>  * 指定したnameの環境変数を取得します。
+<span class='line'> 78</span>  * @param {String} name 取得する環境変数名
+<span class='line'> 79</span>  * @return {String} 環境変数の値
+<span class='line'> 80</span>  */</span><span class="WHIT">
+<span class='line'> 81</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">getEnv</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 82</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Const.WSHELL.ExpandEnvironmentStrings</span><span class="PUNC">(</span><span class="STRN">"%"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">name</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"%"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 83</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 84</span> 
+<span class='line'> 85</span> </span><span class="COMM">/**
+<span class='line'> 86</span>  * OSをシャットダウンします。
+<span class='line'> 87</span>  * @param {Number} timeout タイムアウトを秒で指定
+<span class='line'> 88</span>  */</span><span class="WHIT">
+<span class='line'> 89</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">osShutdown</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">timeout</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">timeout</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="WHIT">  </span><span class="NAME">Process.exec</span><span class="PUNC">(</span><span class="STRN">"shutdown"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="STRN">"-s"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"-t"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 93</span> 
+<span class='line'> 94</span> </span><span class="COMM">/**
+<span class='line'> 95</span>  * OSを再起動します。
+<span class='line'> 96</span>  * @param {Number} timeout タイムアウトを秒で指定
+<span class='line'> 97</span>  * @param {String} option "-f"を指定すると、実行中のプロセスを警告なしで閉じます
+<span class='line'> 98</span>  */</span><span class="WHIT">
+<span class='line'> 99</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">osReboot</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">timeout</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">option</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>100</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">params</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="STRN">"-r"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"-t"</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>101</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">timeout</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>102</span> </span><span class="WHIT">  </span><span class="NAME">params.push</span><span class="PUNC">(</span><span class="NAME">timeout</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>103</span> 
+<span class='line'>104</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">option</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="WHIT">    </span><span class="NAME">params.push</span><span class="PUNC">(</span><span class="NAME">option</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>106</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>107</span> 
+<span class='line'>108</span> </span><span class="WHIT">  </span><span class="NAME">Process.exec</span><span class="PUNC">(</span><span class="STRN">"shutdown"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">params</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>109</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>110</span> </span></pre></body></html>

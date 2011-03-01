@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>MadoJS リファレンス - Clipboard</title>
+		<title>MadoJS リファレンス - KeySender</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -233,7 +233,7 @@ MadoJS
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Clipboard クラス 
+				KeySender クラス 
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -241,24 +241,31 @@ MadoJS
 				
 				
 			
-				クリップボードへの格納、および、取得を行うクラス。
+				連続で自動的にキー送信を行う
 <pre class = "code">
 使用例：
-// "日本語"という文字列をクリップボードへコピーして、ペーストします。
-Clipboard.open(function(clip) {
-  clip.set("日本語");
-  sendKeys("^v");
-});
+// ノートパッドを起動
+Process.exec("notepad", [], Const.WINDOW_STYLE_NORMAL, false);
+
+// 起動を待つ
+sleep(100);
+
+// "日本語"という文字列を書きこんで、abc.txtに保存。
+var ks = new KeySender("無題");
+    ks.sendJapaneseKeys("日本語")
+    ks.sendKeyWithControl("s")
+    ks.sendKeys("abc.txt")
+    ks.sendEnter();
 </pre>
 				
 				
-					<br /><i></i> <a href="../symbols/src/src_clipboard.js.html">clipboard.js</a>で定義されています。
+					<br /><i></i> <a href="../symbols/src/src_keysender.js.html">keysender.js</a>で定義されています。
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Clipboard.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class KeySender.">
 				<caption>クラス 概要</caption>
 				<thead>
 					<tr>
@@ -271,9 +278,9 @@ Clipboard.open(function(clip) {
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/Clipboard.html#constructor">Clipboard</a></b>()
+								<b><a href="../symbols/KeySender.html#constructor">KeySender</a></b>(targetWindow)
 							</div>
-							<div class="description">新しいクリップボードを作成する</div>
+							<div class="description">新しいキー送信クラスを作成する。</div>
 						</td>
 					</tr>
 				</tbody>
@@ -287,7 +294,7 @@ Clipboard.open(function(clip) {
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Clipboard.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class KeySender.">
 					<caption>メソッドの概要</caption>
 					<thead>
 						<tr>
@@ -300,36 +307,63 @@ Clipboard.open(function(clip) {
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Clipboard.html#close">close</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/KeySender.html#sendEnter">sendEnter</a></b>()
 								</div>
-								<div class="description">クリップボードをクローズします。</div>
+								<div class="description">エンターをキー送信します。</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Clipboard.html#get">get</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/KeySender.html#sendJapaneseKeys">sendJapaneseKeys</a></b>(text)
 								</div>
-								<div class="description">クリップボードの文字列を取得します。</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">Clipboard.<b><a href="../symbols/Clipboard.html#.open">open</a></b>(block)
-								</div>
-								<div class="description">新しいクリップボードを作成し、ブロックを実行します。ブロックが指定されていない場合は、作成したクリップボードを返します。</div>
+								<div class="description">指定した日本語textをキー送信します。</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Clipboard.html#set">set</a></b>(text)
+								<div class="fixedFont"><b><a href="../symbols/KeySender.html#sendKeys">sendKeys</a></b>(text)
 								</div>
-								<div class="description">クリップボードへ文字列を格納します。</div>
+								<div class="description">指定したtextをキー送信します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/KeySender.html#sendKeyWithAlt">sendKeyWithAlt</a></b>(ch)
+								</div>
+								<div class="description">Altを押しながら指定したchをキー送信します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/KeySender.html#sendKeyWithControl">sendKeyWithControl</a></b>(ch)
+								</div>
+								<div class="description">Controlを押しながら指定したchをキー送信します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/KeySender.html#sendKeyWithShift">sendKeyWithShift</a></b>(ch)
+								</div>
+								<div class="description">Shiftを押しながら指定したchをキー送信します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/KeySender.html#sendTab">sendTab</a></b>()
+								</div>
+								<div class="description">タブ文字をキー送信します。</div>
 							</td>
 						</tr>
 					
@@ -350,17 +384,28 @@ Clipboard.open(function(clip) {
 				</div>
 				
 				<div class="fixedFont">
-						<b>Clipboard</b>()
+						<b>KeySender</b>(targetWindow)
 				</div>
 				
 				<div class="description">
-					新しいクリップボードを作成する
+					新しいキー送信クラスを作成する。
 					
 				</div>
 				
 				
 				
 				
+					
+						<dl class="detailList">
+						<dt class="heading">引数:</dt>
+						
+							<dt>
+								 <b>targetWindow</b>
+								
+							</dt>
+								<dd></dd>
+						
+						</dl>
 					
 					
 					
@@ -381,40 +426,15 @@ Clipboard.open(function(clip) {
 					メソッドの詳細
 				</div>
 				
-					<a name="close"> </a>
+					<a name="sendEnter"> </a>
 					<div class="fixedFont">
 					
 					
-					<b>close</b>()
+					<b>sendEnter</b>()
 					
 					</div>
 					<div class="description">
-						クリップボードをクローズします。
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="get"> </a>
-					<div class="fixedFont">
-					
-					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<b>get</b>()
-					
-					</div>
-					<div class="description">
-						クリップボードの文字列を取得します。
+						エンターをキー送信します。
 						
 						
 					</div>
@@ -429,7 +449,7 @@ Clipboard.open(function(clip) {
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> 取得した文字列</dd>
+								<dd>this</dd>
 							
 							</dl>
 						
@@ -438,58 +458,15 @@ Clipboard.open(function(clip) {
 
 					<hr />
 				
-					<a name=".open"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{Object}</span>
-					<span class="light">Clipboard.</span><b>open</b>(block)
-					
-					</div>
-					<div class="description">
-						新しいクリップボードを作成し、ブロックを実行します。ブロックが指定されていない場合は、作成したクリップボードを返します。
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">引数:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{Function}</span> <b>block</b>
-									
-								</dt>
-								<dd>ブロック</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">戻り値:</dt>
-							
-								<dd><span class="light fixedFont">{Object}</span> ブロックが指定されていない場合は、作成したクリップボード</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="set"> </a>
+					<a name="sendJapaneseKeys"> </a>
 					<div class="fixedFont">
 					
 					
-					<b>set</b>(text)
+					<b>sendJapaneseKeys</b>(text)
 					
 					</div>
 					<div class="description">
-						クリップボードへ文字列を格納します。
+						指定した日本語textをキー送信します。
 						
 						
 					</div>
@@ -504,13 +481,224 @@ Clipboard.open(function(clip) {
 									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>text</b>
 									
 								</dt>
-								<dd>格納する文字列</dd>
+								<dd>送信する文字列</dd>
 							
 							</dl>
 						
 						
 						
 						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd>this</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="sendKeys"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>sendKeys</b>(text)
+					
+					</div>
+					<div class="description">
+						指定したtextをキー送信します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>text</b>
+									
+								</dt>
+								<dd>送信する文字列</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd>this</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="sendKeyWithAlt"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>sendKeyWithAlt</b>(ch)
+					
+					</div>
+					<div class="description">
+						Altを押しながら指定したchをキー送信します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>ch</b>
+									
+								</dt>
+								<dd>送信する文字</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd>this</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="sendKeyWithControl"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>sendKeyWithControl</b>(ch)
+					
+					</div>
+					<div class="description">
+						Controlを押しながら指定したchをキー送信します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>ch</b>
+									
+								</dt>
+								<dd>送信する文字</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd>this</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="sendKeyWithShift"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>sendKeyWithShift</b>(ch)
+					
+					</div>
+					<div class="description">
+						Shiftを押しながら指定したchをキー送信します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>ch</b>
+									
+								</dt>
+								<dd>送信する文字</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd>this</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="sendTab"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>sendTab</b>()
+					
+					</div>
+					<div class="description">
+						タブ文字をキー送信します。
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd>this</dd>
+							
+							</dl>
 						
 						
 						

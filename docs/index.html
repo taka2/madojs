@@ -213,6 +213,8 @@ MadoJS
 	
 	<li><a href="symbols/HTTP.html">HTTP</a></li>
 	
+	<li><a href="symbols/KeySender.html">KeySender</a></li>
+	
 	<li><a href="symbols/Process.html">Process</a></li>
 	
 	<li><a href="symbols/String.html">String</a></li>
@@ -306,6 +308,27 @@ HTTP.start("www.yahoo.co.jp", 80, function(http) {
 			<hr />
 			
 			<div>
+				<h2><a href="symbols/KeySender.html">KeySender</a></h2>
+				連続で自動的にキー送信を行う
+<pre class = "code">
+使用例：
+// ノートパッドを起動
+Process.exec("notepad", [], Const.WINDOW_STYLE_NORMAL, false);
+
+// 起動を待つ
+sleep(100);
+
+// "日本語"という文字列を書きこんで、abc.txtに保存。
+var ks = new KeySender("無題");
+    ks.sendJapaneseKeys("日本語")
+    ks.sendKeyWithControl("s")
+    ks.sendKeys("abc.txt")
+    ks.sendEnter();
+</pre>
+			</div>
+			<hr />
+			
+			<div>
 				<h2><a href="symbols/Process.html">Process</a></h2>
 				プログラムの実行に関する機能を提供するクラス
 <pre class = "code">
@@ -326,7 +349,7 @@ Process.exec("notepad", ["mado-debug.js"], Const.WINDOW_STYLE_NORMAL, false);
 		</div>
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Fri Feb 25 2011 18:36:25 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Tue Mar 01 2011 11:12:11 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

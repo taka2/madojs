@@ -49,6 +49,12 @@ var sleep = function(msec) {
   WScript.Sleep(msec);
 };
 
+/**
+ * 指定したfnがtrueを返すまで、msec(ミリ秒)間隔でfnを実行します。
+ * @param {Number} msec スリープするミリ秒
+ * @param {Function} fn 実行する関数
+ * @param {Array} args 関数に渡す引数
+ */
 var sleepif = function(msec, fn, args) {
   while(true) {
     if(fn(args)) {
@@ -58,58 +64,81 @@ var sleepif = function(msec, fn, args) {
   }
 };
 
+/**
+ * msgを表示します。
+ * @param {String} msg メッセージ
+ */
 var print = function(msg) {
   WScript.Echo(msg);
 };
 
+/**
+ * プログラムを指定したステータスで終了します。
+ * @param {Number} status (オプション)終了ステータス(初期値 0)
+ */
 var exit = function(status) {
-  if(!status) {
-    status = 0;
-  }
-
-  WScript.Quit(status);
+  var exitStatus = status || 0;
+  WScript.Quit(exitStatus);
 };
 
-var alias = function (hash) {
-  for (var prop in hash) {
-    this[prop] = hash[prop];
-  }
+/**
+ * fnが関数かどうか判定します。
+ * @param {Object} fn オブジェクト
+ * @return {Boolean} 関数の場合はtrue、そうでない場合はfalseを返す。
+ */
+var isFunction = function (fn) {
+  return (typeof fn == "function");
 };
 
-var extend = function (destination, source) {
-  for (property in source) {
-    destination[property] = source[property];
-  }
-  return destination;
-};
-
-var isFunction = function (fun) {
-  return (typeof fun == "function");
-};
-
+/**
+ * ホスト名を取得します。
+ * @return {String} ホスト名
+ */
 var getComputerName = function () {
   return Const.WSHELL.ExpandEnvironmentStrings("%COMPUTERNAME%");
 };
 
+/**
+ * WScript.exeで実行しているかどうか判定します。
+ * @return {Boolean} WScript.exeで実行している場合はtrue、そうでない場合(CScript.exe)はfalseを返す。
+ */
 var isWScriptRunning = function() {
   return /wscript\.exe$/i.test(WScript.FullName);
 };
 
+/**
+ * 指定したkeyのキー入力を行います。
+ * @param {String} key 入力する文字列
+ */
 var sendKeys = function (key) {
   Const.WSHELL.Sendkeys(key);
   return this;
 };
 
+/**
+ * 指定したnameの環境変数を取得します。
+ * @param {String} name 取得する環境変数名
+ * @return {String} 環境変数の値
+ */
 var getEnv = function (name) {
   return Const.WSHELL.ExpandEnvironmentStrings("%" + name + "%");
 };
 
-var osShutdown = function (timeout /* タイムアウトをxx秒で指定 */) {
+/**
+ * OSをシャットダウンします。
+ * @param {Number} timeout タイムアウトを秒で指定
+ */
+var osShutdown = function (timeout) {
   if (timeout === null) timeout = 0;
   Process.exec("shutdown", ["-s", "-t", timeout], 0, false);
 };
 
-var osReboot = function (timeout /* タイムアウトをxx秒で指定 */, option /* -f(実行中のプロセスを警告なしで閉じる) */) {
+/**
+ * OSを再起動します。
+ * @param {Number} timeout タイムアウトを秒で指定
+ * @param {String} option "-f"を指定すると、実行中のプロセスを警告なしで閉じます
+ */
+var osReboot = function (timeout, option) {
   var params = ["-r", "-t"];
   if (timeout === null) timeout = 0;
   params.push(timeout);
@@ -123,6 +152,12 @@ var osReboot = function (timeout /* タイムアウトをxx秒で指定 */, opti
 /** 
  * 各要素に対してブロックを評価します。
  * @param {Function} block ブロック
+ * @example 使用例：
+ * var x = [1, 2, 3].each(function(i) {
+ *   return i*2;
+ * });
+ *
+ * print(x); // 2,4,6
  */
 Array.prototype.each = function(block) {
   var result = [];
@@ -136,6 +171,8 @@ Array.prototype.each = function(block) {
 /** 
  * 日付をYYYYMMDD形式で返します。
  * @return {String} YYYYMMDD形式の日付
+ * @example 使用例：
+print(new Date().getYYYYMMDD());
  */
 Date.prototype.getYYYYMMDD = function() {
   var yyyy = this.getFullYear();
@@ -149,6 +186,8 @@ Date.prototype.getYYYYMMDD = function() {
 /** 
  * 日付をYYYYMMDDHH24MISS形式で返します。
  * @return {String} YYYYMMDDHH24MISS形式の日付
+ * @example 使用例：
+print(new Date().getYYYYMMDDHH24MISS());
  */
 Date.prototype.getYYYYMMDDHH24MISS = function() {
   var yyyy = this.getFullYear();
@@ -168,6 +207,8 @@ Date.prototype.getYYYYMMDDHH24MISS = function() {
 /** 
  * 日付をYYYY/MM/DD HH:MI:SS形式で返します。
  * @return {String} YYYY/MM/DD HH:MM:SS形式の日付
+ * @example 使用例：
+print(new Date().getFormattedDate());
  */
 Date.prototype.getFormattedDate = function() {
   var yyyy = this.getFullYear();
@@ -183,12 +224,38 @@ Date.prototype.getFormattedDate = function() {
   if (ss < 10) ss = "0" + ss;
   return yyyy + "/" + mm + "/" + dd + " " + hh + ":" + mi + ":" + ss;
 };
-// Prototype of String
+/** 
+ * 文字列先頭と末尾のスペースをトリムした文字列を生成して返します。
+ * @return {String} トリムした文字列
+ * @example 使用例：
+print("@" + "   	abc			".trim() + "@"); // "@abc@"
+ */
 String.prototype.trim = function() {
   var text = this.valueOf();
   return (text || "").replace( /^\s+|\s+$/g, "" );
 };
-// Constructor of File
+/** 
+ * ファイルオブジェクトを作成します。
+ * @class ファイルの操作と読み書きを行うためのクラスです。
+<pre class = "code">
+使用例：
+File.open("copy_of_mado.js", "w", function(outfile) {
+  File.open("mado.js", "r", function(infile) {
+    infile.each(function(line) {
+      outfile.puts(line);
+    });
+  });
+});
+</pre>
+ * @param {String} path ファイルのパスを文字列で指定します。
+ * @param {String} mode ファイルを読み書きするためのモードを指定します。
+ * <ul>
+ *   <li>'r': 読み取り専用</li>
+ *   <li>'w': 書き込み専用</li>
+ *   <li>'a': 追加書き込み</li>
+ * </ul>
+ * @throws モードが'r'または'a'のときで、ファイルが存在しない場合にスローされます。
+ */
 var File = function(path, mode) {
   this.path = path;
   this.mode = mode;
@@ -206,7 +273,14 @@ var File = function(path, mode) {
   }
 };
 
-// Static methods of File
+/** 
+ * 指定したpathのファイルを指定したmodeで開き、ブロックを実行します。
+ * ブロックが指定されていない場合は、作成したファイルオブジェクトを返します。
+ * @param {String} path ファイルのパスを文字列で指定します。
+ * @param {String} mode ファイルを読み書きするためのモードを指定します。
+ * @param {Function} block ブロック
+ * <a href = "File.html#constructor">コンストラクタ</a>参照
+ */
 File.open = function(path, mode, block) {
   var file = new File(path, mode);
   if(block) {
@@ -220,6 +294,12 @@ File.open = function(path, mode, block) {
   }
 };
 
+/** 
+ * fromファイルの名前をtoに変更します。
+ * @param {String} from 変更前のファイル名
+ * @param {String} to 変更後のファイル名
+ * @throws ファイルが存在しない場合にスローされます。
+ */
 File.rename = function(from, to) {
   if(Const.FSO.FolderExists(from)) {
     Const.FSO.MoveFolder(from, to);
@@ -230,6 +310,12 @@ File.rename = function(from, to) {
   }
 };
 
+/** 
+ * fromファイルをtoにコピーします。
+ * @param {String} from コピー元ファイル名
+ * @param {String} to コピー先ファイル名
+ * @throws ファイルが存在しない場合にスローされます。
+ */
 File.copy = function(from, to) {
   if(Const.FSO.FolderExists(from)) {
     Const.FSO.CopyFolder(from, to);
@@ -240,6 +326,11 @@ File.copy = function(from, to) {
   }
 };
 
+/** 
+ * ファイル、または、ディレクトリが存在するかどうか判定します。
+ * @param {String} path ファイル、または、ディレクトリのパス
+ * @return {Boolean} ファイル、または、ディレクトリが存在する場合はtrue、そうでない場合はfalseを返します。
+ */
 File.exist = function(path) {
   if(Const.FSO.FolderExists(path)) {
     return true;
@@ -250,7 +341,12 @@ File.exist = function(path) {
   }
 };
 
-// force: �ǂݎ���p���폜���邩�ǂ���
+/** 
+ * 指定したpathのファイル、または、ディレクトリを削除します。
+ * @param {String} path ファイル、または、ディレクトリのパス
+ * @param {Boolean} force 読み取り専用も削除するかどうか
+ * @throws ファイルが存在しない場合にスローされます。
+ */
 File.unlink = function(path, force) {
   if(!force) {
     force = false;
@@ -264,6 +360,12 @@ File.unlink = function(path, force) {
   }
 };
 
+/** 
+ * 指定したpathのファイル、または、ディレクトリのサイズを取得します。
+ * @param {String} path ファイル、または、ディレクトリのパス
+ * @return {Number} ファイル、または、ディレクトリのサイズ(Byte単位)
+ * @throws ファイルが存在しない場合にスローされます。
+ */
 File.size = function(path) {
   if(Const.FSO.FolderExists(path)) {
     return Const.FSO.GetFolder(path).Size;
@@ -274,6 +376,12 @@ File.size = function(path) {
   }
 };
 
+/** 
+ * 指定したbasedirからの相対パスで、pathnameのフルパスを取得します。
+ * @param {String} pathname ファイル、または、ディレクトリのパス
+ * @param {String} basedir (オプション)起点となるディレクトリ(初期値 カレントディレクトリ)
+ * @return {String} ファイル、または、ディレクトリのフルパス
+ */
 File.realpath = function(pathname, basedir) {
   if(!basedir) {
     basedir = Dir.getwd();
@@ -286,6 +394,14 @@ File.realpath = function(pathname, basedir) {
   return realpath;
 };
 
+/** 
+ * 指定したfilenameの拡張子を取得します。
+ * @param {String} filename ファイルのパス
+ * @return {String} filenameの拡張子(ドット付き; .ext)
+ * @example 使用例：
+print(File.extname("c:\work")); // ""
+print(File.extname("c:\work\build_y2.xml")); // ".xml"
+ */
 File.extname = function(filename) {
   var extensionName = Const.FSO.GetExtensionName(filename);
   if(extensionName === "") {
@@ -295,6 +411,11 @@ File.extname = function(filename) {
   }
 };
 
+/** 
+ * 指定したfilenameのパスを除いたファイル名を取得します。
+ * @param {String} filename ファイルのパス
+ * @return {String} パスを除いたファイル名(/path/to/file.txt → file.txt)
+ */
 File.basename = function(filename) {
   var file = Const.FSO.GetFile(filename);
   return file.Name;
@@ -302,14 +423,25 @@ File.basename = function(filename) {
 
 // Prototypes of File
 File.prototype = {
+  /** 
+   * ファイルから一行ずつ読み取り、ブロックを呼び出します。
+   * @param {Function} block ブロック
+   */
   each: function(block) {
     while(!this.ts.AtEndOfStream) {
       block(this.ts.ReadLine());
     }
   },
+  /** 
+   * ファイルへ一行書き込みます。
+   * @param {String} line 書きこむ文字列
+   */
   puts: function(line) {
     this.ts.WriteLine(line);
   },
+  /** 
+   * ファイルをクローズします。
+   */
   close: function() {
     this.ts.Close();
   }
@@ -317,6 +449,14 @@ File.prototype = {
 /** 
  * pathの存在チェックを行った上で、ディレクトリオブジェクトを作成します。
  * @class ディレクトリの操作を行うためのクラスです。
+<pre class = "code">
+使用例：
+// src以下のファイル一覧を表示
+var d = new Dir("src");
+d.each(function(item) {
+  print(item);
+});
+</pre>
  * @param  {String} path ディレクトリのパスを文字列で指定します。
  * @throws ディレクトリが存在しない場合にスローされます。
  */
@@ -346,6 +486,12 @@ Dir.pwd = Dir.getwd;
  * ブロックが指定された場合、カレントディレクトリの変更はブロックの実行中に限られます。
  * @param {String} path ディレクトリのパスを文字列で指定します。
  * @param {Function} block ブロック
+ * @example 使用例：
+Dir.chdir("src", function(path) {
+  print(File.size("date.js"));
+});
+
+print(File.size("mado.js"));
  */
 Dir.chdir = function(path, block) {
   if(!path) {
@@ -432,6 +578,11 @@ Dir.entries = function(path) {
  * @param {String} pattern 抽出するファイル名の正規表現パターン
  * @param {Function} block ブロック
  * @return {Boolean} ファイルエントリ名の配列
+ * @example 使用例：
+// docs以下のhtmlファイルのみ抽出
+Dir.find("docs", ".*.html$", function(item) {
+  print(item);
+});
  */
 Dir.find = function(path, pattern, block) {
   var dir = new Dir(path);
@@ -492,6 +643,12 @@ Dir.prototype = {
 /** 
  * hostとportを指定してHTTPオブジェクトを作成します。
  * @class HTTPの操作を行うためのクラスです。
+<pre class = "code">
+使用例：
+HTTP.start("www.yahoo.co.jp", 80, function(http) {
+  print(http.get("/index.html"));
+});
+</pre>
  * @param {String} host HTTP操作の対象ホスト
  * @param {Number} port (オプション)HTTP操作の対象ポート(初期値 80)
  */
@@ -512,10 +669,6 @@ HTTP.DEFAULT_PORT_NUMBER = 80;
  * @param {Number} port (オプション)HTTP操作の対象ポート(初期値 80)
  * @param {Function} block (オプション)ブロック
  * @return {Object} ブロックが指定されていない場合は、作成したHTTPオブジェクト
- * @example 使用例：
- * HTTP.start("www.yahoo.co.jp", 80, function(http) {
- *   print(http.get("/index.html"));
- * });
  */
 HTTP.start = function(host, port, block) {
   var http = new HTTP(host, port);
@@ -532,6 +685,8 @@ HTTP.start = function(host, port, block) {
  * @param {String} path HTTP操作の対象パス
  * @param {Number} port (オプション)HTTP操作の対象ポート(初期値 80)
  * @return {String} レスポンステキスト
+ * @example 使用例：
+print(HTTP.get("www.yahoo.co.jp", "/index.html", 80));
  */
 HTTP.get = function(address, path, port) {
   var myPort = port || DEFAULT_PORT_NUMBER;
@@ -544,6 +699,8 @@ HTTP.get = function(address, path, port) {
  * @param {String} address HTTP操作の対象ホスト
  * @param {String} path HTTP操作の対象パス
  * @param {Number} port (オプション)HTTP操作の対象ポート(初期値 80)
+ * @example 使用例：
+HTTP.get_print("www.yahoo.co.jp", "/index.html", 80);
  */
 HTTP.get_print = function(address, path, port) {
   print(HTTP.get(address, path, port));
@@ -594,6 +751,14 @@ HTTP.prototype = {
 /** 
  * 新しいクリップボードを作成する
  * @class クリップボードへの格納、および、取得を行うクラス。
+<pre class = "code">
+使用例：
+// "日本語"という文字列をクリップボードへコピーして、ペーストします。
+Clipboard.open(function(clip) {
+  clip.set("日本語");
+  sendKeys("^v");
+});
+</pre>
  */
 var Clipboard = function() {
   this._ie = new ActiveXObject('InternetExplorer.Application');
@@ -663,10 +828,114 @@ Clipboard.prototype = {
     this._closed = true;
   }
 };
-// Constructor of Process
+/** 
+ * 新しいキー送信クラスを作成する。
+ * @class 連続で自動的にキー送信を行う
+<pre class = "code">
+使用例：
+// ノートパッドを起動
+Process.exec("notepad", [], Const.WINDOW_STYLE_NORMAL, false);
+
+// 起動を待つ
+sleep(100);
+
+// "日本語"という文字列を書きこんで、abc.txtに保存。
+var ks = new KeySender("無題");
+    ks.sendJapaneseKeys("日本語")
+    ks.sendKeyWithControl("s")
+    ks.sendKeys("abc.txt")
+    ks.sendEnter();
+</pre>
+ */
+var KeySender = function(targetWindow) {
+  Const.WSHELL.AppActivate(targetWindow);
+};
+
+// Prototypes of Clipboard
+KeySender.prototype = {
+  /**
+   * 指定したtextをキー送信します。
+   * @param {String} text 送信する文字列
+   * @return this
+   */
+  sendKeys: function(text) {
+    sendKeys(text);
+    return this;
+  },
+  /**
+   * 指定した日本語textをキー送信します。
+   * @param {String} text 送信する文字列
+   * @return this
+   */
+  sendJapaneseKeys: function(text) {
+    Clipboard.open(function(clip) {
+      clip.set(text);
+      sendKeys("^v");
+    });
+    return this;
+  },
+  /**
+   * タブ文字をキー送信します。
+   * @return this
+   */
+  sendTab: function() {
+    sendKeys("{TAB}");
+    return this;
+  },
+  /**
+   * エンターをキー送信します。
+   * @return this
+   */
+  sendEnter: function() {
+    sendKeys("{ENTER}");
+    return this;
+  },
+  /**
+   * Shiftを押しながら指定したchをキー送信します。
+   * @param {String} ch 送信する文字
+   * @return this
+   */
+  sendKeyWithShift: function(ch) {
+    sendKeys("+" + ch);
+    return this;
+  },
+  /**
+   * Controlを押しながら指定したchをキー送信します。
+   * @param {String} ch 送信する文字
+   * @return this
+   */
+  sendKeyWithControl: function(ch) {
+    sendKeys("^" + ch);
+    return this;
+  },
+  /**
+   * Altを押しながら指定したchをキー送信します。
+   * @param {String} ch 送信する文字
+   * @return this
+   */
+  sendKeyWithAlt: function(ch) {
+    sendKeys("%" + ch);
+    return this;
+  }
+};
+/**
+ * インスタンス化しません。
+ * @class プログラムの実行に関する機能を提供するクラス
+<pre class = "code">
+使用例：
+// ノートパッドを起動
+Process.exec("notepad", ["mado-debug.js"], Const.WINDOW_STYLE_NORMAL, false);
+</pre>
+ */
 var Process = {};
 
-// Static methods of File
+/**
+ * 指定したコマンドを実行します。
+ * @param {String} command 実行するコマンド
+ * @param {Array} args 引数
+ * @param {Number} windowStyle <a href = "Const.html#.WINDOW_STYLE_MAX">ウインドウスタイル</a>参照
+ * @param {Boolean} waitOnReturn trueの場合コマンドの実行が終わるまで待ちます。falseの場合は待ちません。
+ */
 Process.exec = function(command, args, windowStyle, waitOnReturn) {
   if(!args) {
     args = [];

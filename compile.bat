@@ -18,6 +18,7 @@ copy /B mado-debug.js+src\http.js mado-debug.js
 
 REM Other
 copy /B mado-debug.js+src\clipboard.js mado-debug.js
+copy /B mado-debug.js+src\keysender.js mado-debug.js
 copy /B mado-debug.js+src\process.js mado-debug.js
 
 REM jsƒtƒ@ƒCƒ‹‚ğˆ³k

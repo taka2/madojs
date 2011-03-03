@@ -20,6 +20,7 @@ REM Other
 copy /B mado-debug.js+src\clipboard.js mado-debug.js
 copy /B mado-debug.js+src\keysender.js mado-debug.js
 copy /B mado-debug.js+src\process.js mado-debug.js
+copy /B mado-debug.js+src\registry.js mado-debug.js
 
 REM jsƒtƒ@ƒCƒ‹‚ğˆ³k
 java -jar yuicompressor-2.4.2\build\yuicompressor-2.4.2.jar --type js -o mado.js mado-debug.js

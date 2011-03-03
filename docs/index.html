@@ -217,6 +217,8 @@ MadoJS
 	
 	<li><a href="symbols/Process.html">Process</a></li>
 	
+	<li><a href="symbols/Registry.html">Registry</a></li>
+	
 	<li><a href="symbols/String.html">String</a></li>
 	
 </ul>
@@ -340,6 +342,23 @@ Process.exec("notepad", ["mado-debug.js"], Const.WINDOW_STYLE_NORMAL, false);
 			<hr />
 			
 			<div>
+				<h2><a href="symbols/Registry.html">Registry</a></h2>
+				レジストリにアクセスする機能を提供するクラス
+<pre class = "code">
+使用例：
+// IP Messengerのユーザ名設定を取得
+print(Registry.regRead("HKCU\\Software\\HSTools\\IPMsg\\NickNameStr"));
+
+// "NickNameStra"に"hoge"を設定
+Registry.regWrite("HKCU\\Software\\HSTools\\IPMsg\\NickNameStra", "hoge", Registry.REG_TYPE_REG_SZ);
+
+// "NickNameStra"を削除
+Registry.regDelete("HKCU\\Software\\HSTools\\IPMsg\\NickNameStra");
+</pre>
+			</div>
+			<hr />
+			
+			<div>
 				<h2><a href="symbols/String.html">String</a></h2>
 				
 			</div>
@@ -349,7 +368,7 @@ Process.exec("notepad", ["mado-debug.js"], Const.WINDOW_STYLE_NORMAL, false);
 		</div>
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Tue Mar 01 2011 11:12:11 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Thu Mar 03 2011 14:40:38 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

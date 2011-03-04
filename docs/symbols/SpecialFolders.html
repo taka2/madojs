@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>MadoJS リファレンス - KeySender</title>
+		<title>MadoJS リファレンス - SpecialFolders</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -241,7 +241,7 @@ MadoJS
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				KeySender クラス 
+				SpecialFolders クラス 
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -249,31 +249,21 @@ MadoJS
 				
 				
 			
-				連続で自動的にキー送信を行う
+				特定のフォルダパスを取得する機能を提供するクラス
 <pre class = "code">
 使用例：
-// ノートパッドを起動
-Process.exec("notepad", [], Const.WINDOW_STYLE_NORMAL, false);
-
-// 起動を待つ
-sleep(100);
-
-// "日本語"という文字列を書きこんで、abc.txtに保存。
-var ks = new KeySender("無題");
-    ks.sendJapaneseKeys("日本語")
-    ks.sendKeyWithControl("s")
-    ks.sendKeys("abc.txt")
-    ks.sendEnter();
+// デスクトップのパスを取得
+print(SpecialFolders.getDesktop());
 </pre>
 				
 				
-					<br /><i></i> <a href="../symbols/src/src_keysender.js.html">keysender.js</a>で定義されています。
+					<br /><i></i> <a href="../symbols/src/src_specialfolders.js.html">specialfolders.js</a>で定義されています。
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class KeySender.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class SpecialFolders.">
 				<caption>クラス 概要</caption>
 				<thead>
 					<tr>
@@ -286,9 +276,9 @@ var ks = new KeySender("無題");
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/KeySender.html#constructor">KeySender</a></b>(targetWindow)
+								<b><a href="../symbols/SpecialFolders.html#constructor">SpecialFolders</a></b>()
 							</div>
-							<div class="description">新しいキー送信クラスを作成する。</div>
+							<div class="description">インスタンス化しません。</div>
 						</td>
 					</tr>
 				</tbody>
@@ -302,7 +292,7 @@ var ks = new KeySender("無題");
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class KeySender.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class SpecialFolders.">
 					<caption>メソッドの概要</caption>
 					<thead>
 						<tr>
@@ -313,65 +303,56 @@ var ks = new KeySender("無題");
 					<tbody>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/KeySender.html#sendEnter">sendEnter</a></b>()
+								<div class="fixedFont">SpecialFolders.<b><a href="../symbols/SpecialFolders.html#.getAllUsersDesktop">getAllUsersDesktop</a></b>()
 								</div>
-								<div class="description">エンターをキー送信します。</div>
+								<div class="description">AllUsersのデスクトップパスを取得します。</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/KeySender.html#sendJapaneseKeys">sendJapaneseKeys</a></b>(text)
+								<div class="fixedFont">SpecialFolders.<b><a href="../symbols/SpecialFolders.html#.getAllUsersPrograms">getAllUsersPrograms</a></b>()
 								</div>
-								<div class="description">指定した日本語textをキー送信します。</div>
+								<div class="description">AllUsersのプログラムパスを取得します。</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/KeySender.html#sendKeys">sendKeys</a></b>(text)
+								<div class="fixedFont">SpecialFolders.<b><a href="../symbols/SpecialFolders.html#.getAllUsersStartMenu">getAllUsersStartMenu</a></b>()
 								</div>
-								<div class="description">指定したtextをキー送信します。</div>
+								<div class="description">AllUsersのスタートメニューパスを取得します。</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/KeySender.html#sendKeyWithAlt">sendKeyWithAlt</a></b>(ch)
+								<div class="fixedFont">SpecialFolders.<b><a href="../symbols/SpecialFolders.html#.getAllUsersStartup">getAllUsersStartup</a></b>()
 								</div>
-								<div class="description">Altを押しながら指定したchをキー送信します。</div>
+								<div class="description">AllUsersのスタートアップパスを取得します。</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/KeySender.html#sendKeyWithControl">sendKeyWithControl</a></b>(ch)
+								<div class="fixedFont">SpecialFolders.<b><a href="../symbols/SpecialFolders.html#.getDesktop">getDesktop</a></b>()
 								</div>
-								<div class="description">Controlを押しながら指定したchをキー送信します。</div>
+								<div class="description">デスクトップパスを取得します。</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/KeySender.html#sendKeyWithShift">sendKeyWithShift</a></b>(ch)
+								<div class="fixedFont">SpecialFolders.<b><a href="../symbols/SpecialFolders.html#.getFavorites">getFavorites</a></b>()
 								</div>
-								<div class="description">Shiftを押しながら指定したchをキー送信します。</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/KeySender.html#sendTab">sendTab</a></b>()
-								</div>
-								<div class="description">タブ文字をキー送信します。</div>
+								<div class="description">お気に入りパスを取得します。</div>
 							</td>
 						</tr>
 					
@@ -392,28 +373,17 @@ var ks = new KeySender("無題");
 				</div>
 				
 				<div class="fixedFont">
-						<b>KeySender</b>(targetWindow)
+						<b>SpecialFolders</b>()
 				</div>
 				
 				<div class="description">
-					新しいキー送信クラスを作成する。
+					インスタンス化しません。
 					
 				</div>
 				
 				
 				
 				
-					
-						<dl class="detailList">
-						<dt class="heading">引数:</dt>
-						
-							<dt>
-								 <b>targetWindow</b>
-								
-							</dt>
-								<dd></dd>
-						
-						</dl>
 					
 					
 					
@@ -434,15 +404,15 @@ var ks = new KeySender("無題");
 					メソッドの詳細
 				</div>
 				
-					<a name="sendEnter"> </a>
-					<div class="fixedFont">
+					<a name=".getAllUsersDesktop"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
-					
-					<b>sendEnter</b>()
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<span class="light">SpecialFolders.</span><b>getAllUsersDesktop</b>()
 					
 					</div>
 					<div class="description">
-						エンターをキー送信します。
+						AllUsersのデスクトップパスを取得します。
 						
 						
 					</div>
@@ -457,7 +427,7 @@ var ks = new KeySender("無題");
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd>this</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> AllUsersのデスクトップパス</dd>
 							
 							</dl>
 						
@@ -466,32 +436,21 @@ var ks = new KeySender("無題");
 
 					<hr />
 				
-					<a name="sendJapaneseKeys"> </a>
-					<div class="fixedFont">
+					<a name=".getAllUsersPrograms"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
-					
-					<b>sendJapaneseKeys</b>(text)
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<span class="light">SpecialFolders.</span><b>getAllUsersPrograms</b>()
 					
 					</div>
 					<div class="description">
-						指定した日本語textをキー送信します。
+						AllUsersのプログラムパスを取得します。
 						
 						
 					</div>
 					
 					
 					
-						
-							<dl class="detailList">
-							<dt class="heading">引数:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>text</b>
-									
-								</dt>
-								<dd>送信する文字列</dd>
-							
-							</dl>
 						
 						
 						
@@ -500,7 +459,7 @@ var ks = new KeySender("無題");
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd>this</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> AllUsersのプログラムパス</dd>
 							
 							</dl>
 						
@@ -509,32 +468,21 @@ var ks = new KeySender("無題");
 
 					<hr />
 				
-					<a name="sendKeys"> </a>
-					<div class="fixedFont">
+					<a name=".getAllUsersStartMenu"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
-					
-					<b>sendKeys</b>(text)
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<span class="light">SpecialFolders.</span><b>getAllUsersStartMenu</b>()
 					
 					</div>
 					<div class="description">
-						指定したtextをキー送信します。
+						AllUsersのスタートメニューパスを取得します。
 						
 						
 					</div>
 					
 					
 					
-						
-							<dl class="detailList">
-							<dt class="heading">引数:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>text</b>
-									
-								</dt>
-								<dd>送信する文字列</dd>
-							
-							</dl>
 						
 						
 						
@@ -543,7 +491,7 @@ var ks = new KeySender("無題");
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd>this</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> AllUsersのスタートメニューパス</dd>
 							
 							</dl>
 						
@@ -552,32 +500,21 @@ var ks = new KeySender("無題");
 
 					<hr />
 				
-					<a name="sendKeyWithAlt"> </a>
-					<div class="fixedFont">
+					<a name=".getAllUsersStartup"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
-					
-					<b>sendKeyWithAlt</b>(ch)
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<span class="light">SpecialFolders.</span><b>getAllUsersStartup</b>()
 					
 					</div>
 					<div class="description">
-						Altを押しながら指定したchをキー送信します。
+						AllUsersのスタートアップパスを取得します。
 						
 						
 					</div>
 					
 					
 					
-						
-							<dl class="detailList">
-							<dt class="heading">引数:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>ch</b>
-									
-								</dt>
-								<dd>送信する文字</dd>
-							
-							</dl>
 						
 						
 						
@@ -586,7 +523,7 @@ var ks = new KeySender("無題");
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd>this</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> AllUsersのスタートアップパス</dd>
 							
 							</dl>
 						
@@ -595,32 +532,21 @@ var ks = new KeySender("無題");
 
 					<hr />
 				
-					<a name="sendKeyWithControl"> </a>
-					<div class="fixedFont">
+					<a name=".getDesktop"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
-					
-					<b>sendKeyWithControl</b>(ch)
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<span class="light">SpecialFolders.</span><b>getDesktop</b>()
 					
 					</div>
 					<div class="description">
-						Controlを押しながら指定したchをキー送信します。
+						デスクトップパスを取得します。
 						
 						
 					</div>
 					
 					
 					
-						
-							<dl class="detailList">
-							<dt class="heading">引数:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>ch</b>
-									
-								</dt>
-								<dd>送信する文字</dd>
-							
-							</dl>
 						
 						
 						
@@ -629,7 +555,7 @@ var ks = new KeySender("無題");
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd>this</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> デスクトップパス</dd>
 							
 							</dl>
 						
@@ -638,58 +564,15 @@ var ks = new KeySender("無題");
 
 					<hr />
 				
-					<a name="sendKeyWithShift"> </a>
-					<div class="fixedFont">
+					<a name=".getFavorites"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
-					
-					<b>sendKeyWithShift</b>(ch)
-					
-					</div>
-					<div class="description">
-						Shiftを押しながら指定したchをキー送信します。
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">引数:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>ch</b>
-									
-								</dt>
-								<dd>送信する文字</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">戻り値:</dt>
-							
-								<dd>this</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="sendTab"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>sendTab</b>()
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<span class="light">SpecialFolders.</span><b>getFavorites</b>()
 					
 					</div>
 					<div class="description">
-						タブ文字をキー送信します。
+						お気に入りパスを取得します。
 						
 						
 					</div>
@@ -704,7 +587,7 @@ var ks = new KeySender("無題");
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd>this</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> お気に入りパス</dd>
 							
 							</dl>
 						

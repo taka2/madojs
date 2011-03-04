@@ -209,6 +209,10 @@ MadoJS
 	
 	<li><a href="symbols/Dir.html">Dir</a></li>
 	
+	<li><a href="symbols/Excel.html">Excel</a></li>
+	
+	<li><a href="symbols/ExcelSheet.html">ExcelSheet</a></li>
+	
 	<li><a href="symbols/File.html">File</a></li>
 	
 	<li><a href="symbols/HTTP.html">HTTP</a></li>
@@ -218,6 +222,8 @@ MadoJS
 	<li><a href="symbols/Process.html">Process</a></li>
 	
 	<li><a href="symbols/Registry.html">Registry</a></li>
+	
+	<li><a href="symbols/SpecialFolders.html">SpecialFolders</a></li>
 	
 	<li><a href="symbols/String.html">String</a></li>
 	
@@ -278,6 +284,27 @@ d.each(function(item) {
   print(item);
 });
 </pre>
+			</div>
+			<hr />
+			
+			<div>
+				<h2><a href="symbols/Excel.html">Excel</a></h2>
+				Excelファイルの操作と読み書きを行うためのクラスです。<br/>Excelがインストールされている必要があります。
+<pre class = "code">
+使用例：
+// abc.xlsを開いて、Sheet1の、1行1列目の値を'hoge'に書き換えつつ、上書き保存する。
+Excel.open("abc.xls", function(excel) {
+  var sheet = excel.getSheetByName("Sheet1");
+  sheet.setValue(1, 1, 'hoge');
+  excel.save();
+});
+</pre>
+			</div>
+			<hr />
+			
+			<div>
+				<h2><a href="symbols/ExcelSheet.html">ExcelSheet</a></h2>
+				Excelシートの操作と読み書きを行うためのクラスです。<br/>Excelがインストールされている必要があります。
 			</div>
 			<hr />
 			
@@ -359,6 +386,17 @@ Registry.regDelete("HKCU\\Software\\HSTools\\IPMsg\\NickNameStra");
 			<hr />
 			
 			<div>
+				<h2><a href="symbols/SpecialFolders.html">SpecialFolders</a></h2>
+				特定のフォルダパスを取得する機能を提供するクラス
+<pre class = "code">
+使用例：
+// デスクトップのパスを取得
+print(SpecialFolders.getDesktop());
+</pre>
+			</div>
+			<hr />
+			
+			<div>
 				<h2><a href="symbols/String.html">String</a></h2>
 				
 			</div>
@@ -368,7 +406,7 @@ Registry.regDelete("HKCU\\Software\\HSTools\\IPMsg\\NickNameStra");
 		</div>
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Thu Mar 03 2011 14:40:38 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Fri Mar 04 2011 14:04:37 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

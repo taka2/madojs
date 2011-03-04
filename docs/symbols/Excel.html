@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>MadoJS リファレンス - KeySender</title>
+		<title>MadoJS リファレンス - Excel</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -241,7 +241,7 @@ MadoJS
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				KeySender クラス 
+				Excel クラス 
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -249,31 +249,25 @@ MadoJS
 				
 				
 			
-				連続で自動的にキー送信を行う
+				Excelファイルの操作と読み書きを行うためのクラスです。<br/>Excelがインストールされている必要があります。
 <pre class = "code">
 使用例：
-// ノートパッドを起動
-Process.exec("notepad", [], Const.WINDOW_STYLE_NORMAL, false);
-
-// 起動を待つ
-sleep(100);
-
-// "日本語"という文字列を書きこんで、abc.txtに保存。
-var ks = new KeySender("無題");
-    ks.sendJapaneseKeys("日本語")
-    ks.sendKeyWithControl("s")
-    ks.sendKeys("abc.txt")
-    ks.sendEnter();
+// abc.xlsを開いて、Sheet1の、1行1列目の値を'hoge'に書き換えつつ、上書き保存する。
+Excel.open("abc.xls", function(excel) {
+  var sheet = excel.getSheetByName("Sheet1");
+  sheet.setValue(1, 1, 'hoge');
+  excel.save();
+});
 </pre>
 				
 				
-					<br /><i></i> <a href="../symbols/src/src_keysender.js.html">keysender.js</a>で定義されています。
+					<br /><i></i> <a href="../symbols/src/src_excel.js.html">excel.js</a>で定義されています。
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class KeySender.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Excel.">
 				<caption>クラス 概要</caption>
 				<thead>
 					<tr>
@@ -286,9 +280,9 @@ var ks = new KeySender("無題");
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/KeySender.html#constructor">KeySender</a></b>(targetWindow)
+								<b><a href="../symbols/Excel.html#constructor">Excel</a></b>(path)
 							</div>
-							<div class="description">新しいキー送信クラスを作成する。</div>
+							<div class="description">Excelオブジェクトを作成します。</div>
 						</td>
 					</tr>
 				</tbody>
@@ -302,7 +296,7 @@ var ks = new KeySender("無題");
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class KeySender.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Excel.">
 					<caption>メソッドの概要</caption>
 					<thead>
 						<tr>
@@ -315,63 +309,54 @@ var ks = new KeySender("無題");
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/KeySender.html#sendEnter">sendEnter</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/Excel.html#each">each</a></b>(block)
 								</div>
-								<div class="description">エンターをキー送信します。</div>
+								<div class="description">ワークブックに含まれる、ワークシートを処理します。</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/KeySender.html#sendJapaneseKeys">sendJapaneseKeys</a></b>(text)
+								<div class="fixedFont"><b><a href="../symbols/Excel.html#getSheetByName">getSheetByName</a></b>(sheetName)
 								</div>
-								<div class="description">指定した日本語textをキー送信します。</div>
+								<div class="description">指定したsheetNameのワークシートを取得します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">Excel.<b><a href="../symbols/Excel.html#.open">open</a></b>(path, block)
+								</div>
+								<div class="description">Excelファイルを開き、ブロックを実行します。ブロックが指定されていない場合は、Excelオブジェクトを返します。</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/KeySender.html#sendKeys">sendKeys</a></b>(text)
+								<div class="fixedFont"><b><a href="../symbols/Excel.html#quit">quit</a></b>()
 								</div>
-								<div class="description">指定したtextをキー送信します。</div>
+								<div class="description">Excelを終了します。</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/KeySender.html#sendKeyWithAlt">sendKeyWithAlt</a></b>(ch)
+								<div class="fixedFont"><b><a href="../symbols/Excel.html#save">save</a></b>()
 								</div>
-								<div class="description">Altを押しながら指定したchをキー送信します。</div>
+								<div class="description">Excelファイルを保存します。</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/KeySender.html#sendKeyWithControl">sendKeyWithControl</a></b>(ch)
+								<div class="fixedFont"><b><a href="../symbols/Excel.html#saveAs">saveAs</a></b>(fileName)
 								</div>
-								<div class="description">Controlを押しながら指定したchをキー送信します。</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/KeySender.html#sendKeyWithShift">sendKeyWithShift</a></b>(ch)
-								</div>
-								<div class="description">Shiftを押しながら指定したchをキー送信します。</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/KeySender.html#sendTab">sendTab</a></b>()
-								</div>
-								<div class="description">タブ文字をキー送信します。</div>
+								<div class="description">Excelファイルをファイル名を指定して保存します。</div>
 							</td>
 						</tr>
 					
@@ -392,11 +377,11 @@ var ks = new KeySender("無題");
 				</div>
 				
 				<div class="fixedFont">
-						<b>KeySender</b>(targetWindow)
+						<b>Excel</b>(path)
 				</div>
 				
 				<div class="description">
-					新しいキー送信クラスを作成する。
+					Excelオブジェクトを作成します。
 					
 				</div>
 				
@@ -408,15 +393,25 @@ var ks = new KeySender("無題");
 						<dt class="heading">引数:</dt>
 						
 							<dt>
-								 <b>targetWindow</b>
+								<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span>  <b>path</b>
 								
 							</dt>
-								<dd></dd>
+								<dd>Excelファイルのパスを文字列で指定します。</dd>
 						
 						</dl>
 					
 					
 					
+					
+						<dl class="detailList">
+						<dt class="heading">例外:</dt>
+						
+							<dt>
+								 <b></b>
+							</dt>
+								<dd>ファイルが存在しない場合にスローされます。</dd>
+						
+						</dl>
 					
 					
 					
@@ -434,47 +429,15 @@ var ks = new KeySender("無題");
 					メソッドの詳細
 				</div>
 				
-					<a name="sendEnter"> </a>
+					<a name="each"> </a>
 					<div class="fixedFont">
 					
 					
-					<b>sendEnter</b>()
+					<b>each</b>(block)
 					
 					</div>
 					<div class="description">
-						エンターをキー送信します。
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">戻り値:</dt>
-							
-								<dd>this</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="sendJapaneseKeys"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>sendJapaneseKeys</b>(text)
-					
-					</div>
-					<div class="description">
-						指定した日本語textをキー送信します。
+						ワークブックに含まれる、ワークシートを処理します。
 						
 						
 					</div>
@@ -486,38 +449,31 @@ var ks = new KeySender("無題");
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>text</b>
+									<span class="light fixedFont">{Function}</span> <b>block</b>
 									
 								</dt>
-								<dd>送信する文字列</dd>
+								<dd>ブロック</dd>
 							
 							</dl>
 						
 						
 						
 						
-						
-							<dl class="detailList">
-							<dt class="heading">戻り値:</dt>
-							
-								<dd>this</dd>
-							
-							</dl>
 						
 						
 						
 
 					<hr />
 				
-					<a name="sendKeys"> </a>
+					<a name="getSheetByName"> </a>
 					<div class="fixedFont">
 					
-					
-					<b>sendKeys</b>(text)
+					<span class="light">{Object}</span>
+					<b>getSheetByName</b>(sheetName)
 					
 					</div>
 					<div class="description">
-						指定したtextをキー送信します。
+						指定したsheetNameのワークシートを取得します。
 						
 						
 					</div>
@@ -529,10 +485,10 @@ var ks = new KeySender("無題");
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>text</b>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>sheetName</b>
 									
 								</dt>
-								<dd>送信する文字列</dd>
+								<dd>取得するワークシート名</dd>
 							
 							</dl>
 						
@@ -543,7 +499,7 @@ var ks = new KeySender("無題");
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd>this</dd>
+								<dd><span class="light fixedFont">{Object}</span> ワークシートオブジェクト</dd>
 							
 							</dl>
 						
@@ -552,15 +508,15 @@ var ks = new KeySender("無題");
 
 					<hr />
 				
-					<a name="sendKeyWithAlt"> </a>
-					<div class="fixedFont">
+					<a name=".open"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
-					
-					<b>sendKeyWithAlt</b>(ch)
+					<span class="light">{Object}</span>
+					<span class="light">Excel.</span><b>open</b>(path, block)
 					
 					</div>
 					<div class="description">
-						Altを押しながら指定したchをキー送信します。
+						Excelファイルを開き、ブロックを実行します。ブロックが指定されていない場合は、Excelオブジェクトを返します。
 						
 						
 					</div>
@@ -572,10 +528,16 @@ var ks = new KeySender("無題");
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>ch</b>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>path</b>
 									
 								</dt>
-								<dd>送信する文字</dd>
+								<dd>Excelファイルのパスを文字列で指定します。</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>block</b>
+									
+								</dt>
+								<dd>ブロック</dd>
 							
 							</dl>
 						
@@ -586,7 +548,7 @@ var ks = new KeySender("無題");
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd>this</dd>
+								<dd><span class="light fixedFont">{Object}</span> ブロックが指定されていない場合は、作成したクリップボード</dd>
 							
 							</dl>
 						
@@ -595,15 +557,65 @@ var ks = new KeySender("無題");
 
 					<hr />
 				
-					<a name="sendKeyWithControl"> </a>
+					<a name="quit"> </a>
 					<div class="fixedFont">
 					
 					
-					<b>sendKeyWithControl</b>(ch)
+					<b>quit</b>()
 					
 					</div>
 					<div class="description">
-						Controlを押しながら指定したchをキー送信します。
+						Excelを終了します。
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="save"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>save</b>()
+					
+					</div>
+					<div class="description">
+						Excelファイルを保存します。
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="saveAs"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>saveAs</b>(fileName)
+					
+					</div>
+					<div class="description">
+						Excelファイルをファイル名を指定して保存します。
 						
 						
 					</div>
@@ -615,98 +627,16 @@ var ks = new KeySender("無題");
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>ch</b>
+									<b>fileName</b>
 									
 								</dt>
-								<dd>送信する文字</dd>
+								<dd></dd>
 							
 							</dl>
 						
 						
 						
 						
-						
-							<dl class="detailList">
-							<dt class="heading">戻り値:</dt>
-							
-								<dd>this</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="sendKeyWithShift"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>sendKeyWithShift</b>(ch)
-					
-					</div>
-					<div class="description">
-						Shiftを押しながら指定したchをキー送信します。
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">引数:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>ch</b>
-									
-								</dt>
-								<dd>送信する文字</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">戻り値:</dt>
-							
-								<dd>this</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="sendTab"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>sendTab</b>()
-					
-					</div>
-					<div class="description">
-						タブ文字をキー送信します。
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">戻り値:</dt>
-							
-								<dd>this</dd>
-							
-							</dl>
 						
 						
 						

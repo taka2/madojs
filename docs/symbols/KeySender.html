@@ -204,6 +204,8 @@ MadoJS
 	
 	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
 	
+	<li><a href="../symbols/AdoOracleConnection.html">AdoOracleConnection</a></li>
+	
 	<li><a href="../symbols/Array.html">Array</a></li>
 	
 	<li><a href="../symbols/Clipboard.html">Clipboard</a></li>
@@ -259,11 +261,11 @@ Process.exec("notepad", [], Const.WINDOW_STYLE_NORMAL, false);
 sleep(100);
 
 // "日本語"という文字列を書きこんで、abc.txtに保存。
-var ks = new KeySender("無題");
-    ks.sendJapaneseKeys("日本語")
-    ks.sendKeyWithControl("s")
-    ks.sendKeys("abc.txt")
-    ks.sendEnter();
+var ks = new KeySender("無題")
+    .sendJapaneseKeys("日本語")
+    .sendKeyWithControl("s")
+    .sendKeys("abc.txt")
+    .sendEnter();
 </pre>
 				
 				
@@ -725,7 +727,7 @@ var ks = new KeySender("無題");
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Fri Mar 04 2011 14:04:36 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Mon Mar 07 2011 11:18:34 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

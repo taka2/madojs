@@ -17,11 +17,11 @@
 <span class='line'> 10</span> sleep(100);
 <span class='line'> 11</span> 
 <span class='line'> 12</span> // "日本語"という文字列を書きこんで、abc.txtに保存。
-<span class='line'> 13</span> var ks = new KeySender("無題");
-<span class='line'> 14</span>     ks.sendJapaneseKeys("日本語")
-<span class='line'> 15</span>     ks.sendKeyWithControl("s")
-<span class='line'> 16</span>     ks.sendKeys("abc.txt")
-<span class='line'> 17</span>     ks.sendEnter();
+<span class='line'> 13</span> var ks = new KeySender("無題")
+<span class='line'> 14</span>     .sendJapaneseKeys("日本語")
+<span class='line'> 15</span>     .sendKeyWithControl("s")
+<span class='line'> 16</span>     .sendKeys("abc.txt")
+<span class='line'> 17</span>     .sendEnter();
 <span class='line'> 18</span> &lt;/pre>
 <span class='line'> 19</span>  */</span><span class="WHIT">
 <span class='line'> 20</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">KeySender</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">targetWindow</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">

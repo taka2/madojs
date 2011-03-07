@@ -204,6 +204,8 @@ MadoJS
 	
 	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
 	
+	<li><a href="../symbols/AdoOracleConnection.html">AdoOracleConnection</a></li>
+	
 	<li><a href="../symbols/Array.html">Array</a></li>
 	
 	<li><a href="../symbols/Clipboard.html">Clipboard</a></li>
@@ -334,11 +336,29 @@ Excel.open("abc.xls", function(excel) {
 						</tr>
 					
 						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">Excel.<b><a href="../symbols/Excel.html#.openReadonly">openReadonly</a></b>(path, block)
+								</div>
+								<div class="description">Excelファイルを読み取り専用(最後に変更を破棄)で開き、ブロックを実行します。ブロックが指定されていない場合は、Excelオブジェクトを返します。</div>
+							</td>
+						</tr>
+					
+						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/Excel.html#quit">quit</a></b>()
 								</div>
-								<div class="description">Excelを終了します。</div>
+								<div class="description">Excelを終了します。<br/>未保存の変更がある場合は、ダイアログが表示されます。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Excel.html#quitDiscardChanges">quitDiscardChanges</a></b>()
+								</div>
+								<div class="description">Excelファイルを保存せずに閉じます</div>
 							</td>
 						</tr>
 					
@@ -557,6 +577,55 @@ Excel.open("abc.xls", function(excel) {
 
 					<hr />
 				
+					<a name=".openReadonly"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Object}</span>
+					<span class="light">Excel.</span><b>openReadonly</b>(path, block)
+					
+					</div>
+					<div class="description">
+						Excelファイルを読み取り専用(最後に変更を破棄)で開き、ブロックを実行します。ブロックが指定されていない場合は、Excelオブジェクトを返します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>path</b>
+									
+								</dt>
+								<dd>Excelファイルのパスを文字列で指定します。</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>block</b>
+									
+								</dt>
+								<dd>ブロック</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{Object}</span> ブロックが指定されていない場合は、作成したクリップボード</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
 					<a name="quit"> </a>
 					<div class="fixedFont">
 					
@@ -565,7 +634,32 @@ Excel.open("abc.xls", function(excel) {
 					
 					</div>
 					<div class="description">
-						Excelを終了します。
+						Excelを終了します。<br/>未保存の変更がある場合は、ダイアログが表示されます。
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="quitDiscardChanges"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>quitDiscardChanges</b>()
+					
+					</div>
+					<div class="description">
+						Excelファイルを保存せずに閉じます
 						
 						
 					</div>
@@ -655,7 +749,7 @@ Excel.open("abc.xls", function(excel) {
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Fri Mar 04 2011 14:04:36 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Mon Mar 07 2011 11:18:34 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

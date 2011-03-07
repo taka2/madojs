@@ -898,11 +898,11 @@ Process.exec("notepad", [], Const.WINDOW_STYLE_NORMAL, false);
 sleep(100);
 
 // "日本語"という文字列を書きこんで、abc.txtに保存。
-var ks = new KeySender("無題");
-    ks.sendJapaneseKeys("日本語")
-    ks.sendKeyWithControl("s")
-    ks.sendKeys("abc.txt")
-    ks.sendEnter();
+var ks = new KeySender("無題")
+    .sendJapaneseKeys("日本語")
+    .sendKeyWithControl("s")
+    .sendKeys("abc.txt")
+    .sendEnter();
 </pre>
  */
 var KeySender = function(targetWindow) {
@@ -1120,6 +1120,28 @@ Excel.open = function(path, block) {
   }
 };
 
+/** 
+ * Excelファイルを読み取り専用(最後に変更を破棄)で開き、ブロックを実行します。
+ * ブロックが指定されていない場合は、Excelオブジェクトを返します。
+ * @param {String} path Excelファイルのパスを文字列で指定します。
+ * @param {Function} block ブロック
+ * @return {Object} ブロックが指定されていない場合は、作成したクリップボード
+ */
+Excel.openReadonly = function(path, block) {
+  if(!isFunction(block)) {
+    return new Excel(path);
+  }
+
+  try {
+    var excel = new Excel(path);
+    block(excel);
+  } finally {
+    if (excel != null) {
+      excel.quitDiscardChanges();
+    }
+  }
+};
+
 // Prototypes of Excel
 Excel.prototype = {
   /**
@@ -1159,8 +1181,16 @@ Excel.prototype = {
   saveAs: function(fileName) {
     this.workbookObj.SaveAs(fileName);
   },
+  /**
+   * Excelファイルを保存せずに閉じます
+   */
+  quitDiscardChanges: function() {
+    this.workbookObj.Close(false);
+    this.excelObj.Quit();
+  },
   /** 
-   * Excelを終了します。
+   * Excelを終了します。<br/>
+   * 未保存の変更がある場合は、ダイアログが表示されます。
    */
   quit: function() {
     this.workbookObj.Close();
@@ -1204,5 +1234,96 @@ ExcelSheet.prototype = {
    */
   getValue: function(x, y) {
     return this.sheetObj.Cells(x, y).Value;
+  }
+};
+/** 
+ * 新しいADOのOracleコネクションを作成する
+ * @class ADOを使ったOracleデータベースへの接続を行うクラス
+<pre class = "code">
+使用例：
+AdoOracleConnection.open("ORCL", "scott", "tiger", function(oracon) {
+  var result = oracon.executeQuery("SELECT * FROM DUAL");
+
+  result.each(function(row) {
+    print(row["DUMMY"]); // 'X'
+  });
+});
+
+</pre>
+ * @param {String} dsName データソース名
+ * @param {String} userName ユーザ名
+ * @param {String} password パスワード
+ */
+AdoOracleConnection = function(dsName, userName, password) {
+  this.con = new ActiveXObject("ADODB.Connection");
+
+  // Open Connection
+  this.con.Open("Provider=MSDAORA;Data Source=" + dsName + ";", userName, password);
+};
+
+/** 
+ * 新しいADOのOracleコネクションを作成し、ブロックを実行します。
+ * ブロックが指定されていない場合は、作成したADOのOracleコネクションを返します。
+ * @param {String} dsName データソース名
+ * @param {String} userName ユーザ名
+ * @param {String} password パスワード
+ * @param {Function} block ブロック
+ * @return {Object} ブロックが指定されていない場合は、作成したADOのOracleコネクション
+ */
+AdoOracleConnection.open = function(dsName, userName, password, block) {
+  if (!isFunction(block)) {
+    return new AdoOracleConnection(dsName, userName, password);
+  }
+
+  try {
+    var oracon = new AdoOracleConnection(dsName, userName, password);
+    block(oracon);
+  } finally {
+    if (oracon != null) {
+      oracon.close();
+    }
+  }
+};
+
+// Prototypes of AdoOracleConnection
+AdoOracleConnection.prototype = {
+  /**
+   * 指定されたsqlを実行し、ハッシュ{fieldName: value}の配列として値を返す。
+   * @param {String} sql 実行するSQL
+   * @return {Array} ハッシュ{fieldName: value}の配列
+   */
+  executeQuery: function(sql) {
+    try {
+      // SQLの実行
+      var rs = this.con.Execute(sql);
+
+      // フィールドリストの取得
+      var fe = new Enumerator(rs.Fields);
+
+      // データの取得
+      var result = [];
+
+      while(!rs.EOF) {
+        var record = {};
+        for(fe.moveFirst(); !fe.atEnd(); fe.moveNext()) {
+          var field = fe.item();
+          record[field.Name] = field.Value;
+        }
+        result.push(record);
+
+        rs.MoveNext();
+      }
+
+      return result;
+    } catch(e) {
+      throw e;
+    } finally {
+      if(rs) {
+        rs.Close();
+      }
+    }
+  },
+  close: function() {
+    this.con.Close();
   }
 };

@@ -107,3 +107,20 @@ var osReboot = function (timeout, option) {
 
   Process.exec("shutdown", params, 0, false);
 };
+
+/**
+ * ショートカットを作成します。
+ * @param {String} pathTo 作成するショートカットの場所
+ * @param {String} pathFrom ショートカットの対象となるファイル、または、URL
+ * @example 使用例：
+// SendToにノートパッドのショートカットを作成
+createShortcut(SpecialFolders.getSendTo() + "\\notepad.lnk", "notepad.exe");
+
+// デスクトップにYahooのURLショートカットを作成
+createShortcut(SpecialFolders.getDesktop() + "\\yahoo.url", "http://www.yahoo.co.jp/");
+ */
+var createShortcut = function(pathTo, pathFrom) {
+  var shortcut = Const.WSHELL.CreateShortcut(pathTo);
+  shortcut.TargetPath = pathFrom;
+  shortcut.Save();
+};

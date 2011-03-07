@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>MadoJS リファレンス - Clipboard</title>
+		<title>MadoJS リファレンス - LogEvent</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -245,7 +245,7 @@ MadoJS
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Clipboard クラス 
+				LogEvent クラス 
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -253,24 +253,25 @@ MadoJS
 				
 				
 			
-				クリップボードへの格納、および、取得を行うクラス。
+				イベントエントリをログファイルに追加する機能を提供するクラス
 <pre class = "code">
 使用例：
-// "日本語"という文字列をクリップボードへコピーして、ペーストします。
-Clipboard.open(function(clip) {
-  clip.set("日本語");
-  sendKeys("^v");
-});
+LogEvent.success("hoge1");
+LogEvent.error("hoge2");
+LogEvent.warning("hoge3");
+LogEvent.information("hoge4");
+LogEvent.auditSuccess("hoge5");
+LogEvent.auditFailure("hoge6");
 </pre>
 				
 				
-					<br /><i></i> <a href="../symbols/src/src_clipboard.js.html">clipboard.js</a>で定義されています。
+					<br /><i></i> <a href="../symbols/src/src_logevent.js.html">logevent.js</a>で定義されています。
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Clipboard.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class LogEvent.">
 				<caption>クラス 概要</caption>
 				<thead>
 					<tr>
@@ -283,9 +284,9 @@ Clipboard.open(function(clip) {
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/Clipboard.html#constructor">Clipboard</a></b>()
+								<b><a href="../symbols/LogEvent.html#constructor">LogEvent</a></b>()
 							</div>
-							<div class="description">新しいクリップボードを作成する</div>
+							<div class="description">インスタンス化しません。</div>
 						</td>
 					</tr>
 				</tbody>
@@ -299,7 +300,7 @@ Clipboard.open(function(clip) {
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Clipboard.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class LogEvent.">
 					<caption>メソッドの概要</caption>
 					<thead>
 						<tr>
@@ -310,38 +311,56 @@ Clipboard.open(function(clip) {
 					<tbody>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Clipboard.html#close">close</a></b>()
+								<div class="fixedFont">LogEvent.<b><a href="../symbols/LogEvent.html#.auditFailure">auditFailure</a></b>(strMessage)
 								</div>
-								<div class="description">クリップボードをクローズします。</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Clipboard.html#get">get</a></b>()
-								</div>
-								<div class="description">クリップボードの文字列を取得します。</div>
+								<div class="description">イベントエントリをログファイルにAUDIT_FAILUREで追加します。</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">Clipboard.<b><a href="../symbols/Clipboard.html#.open">open</a></b>(block)
+								<div class="fixedFont">LogEvent.<b><a href="../symbols/LogEvent.html#.auditSuccess">auditSuccess</a></b>(strMessage)
 								</div>
-								<div class="description">新しいクリップボードを作成し、ブロックを実行します。ブロックが指定されていない場合は、作成したクリップボードを返します。</div>
+								<div class="description">イベントエントリをログファイルにAUDIT_SUCCESSで追加します。</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Clipboard.html#set">set</a></b>(text)
+								<div class="fixedFont">LogEvent.<b><a href="../symbols/LogEvent.html#.error">error</a></b>(strMessage)
 								</div>
-								<div class="description">クリップボードへ文字列を格納します。</div>
+								<div class="description">イベントエントリをログファイルにERRORで追加します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">LogEvent.<b><a href="../symbols/LogEvent.html#.information">information</a></b>(strMessage)
+								</div>
+								<div class="description">イベントエントリをログファイルにINFORMATIONで追加します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">LogEvent.<b><a href="../symbols/LogEvent.html#.success">success</a></b>(strMessage)
+								</div>
+								<div class="description">イベントエントリをログファイルにSUCCESSで追加します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">LogEvent.<b><a href="../symbols/LogEvent.html#.warning">warning</a></b>(strMessage)
+								</div>
+								<div class="description">イベントエントリをログファイルにWARNINGで追加します。</div>
 							</td>
 						</tr>
 					
@@ -362,11 +381,11 @@ Clipboard.open(function(clip) {
 				</div>
 				
 				<div class="fixedFont">
-						<b>Clipboard</b>()
+						<b>LogEvent</b>()
 				</div>
 				
 				<div class="description">
-					新しいクリップボードを作成する
+					インスタンス化しません。
 					
 				</div>
 				
@@ -393,72 +412,15 @@ Clipboard.open(function(clip) {
 					メソッドの詳細
 				</div>
 				
-					<a name="close"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>close</b>()
-					
-					</div>
-					<div class="description">
-						クリップボードをクローズします。
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="get"> </a>
-					<div class="fixedFont">
-					
-					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<b>get</b>()
-					
-					</div>
-					<div class="description">
-						クリップボードの文字列を取得します。
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">戻り値:</dt>
-							
-								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> 取得した文字列</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name=".open"> </a>
+					<a name=".auditFailure"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{Object}</span>
-					<span class="light">Clipboard.</span><b>open</b>(block)
+					
+					<span class="light">LogEvent.</span><b>auditFailure</b>(strMessage)
 					
 					</div>
 					<div class="description">
-						新しいクリップボードを作成し、ブロックを実行します。ブロックが指定されていない場合は、作成したクリップボードを返します。
+						イベントエントリをログファイルにAUDIT_FAILUREで追加します。
 						
 						
 					</div>
@@ -470,38 +432,31 @@ Clipboard.open(function(clip) {
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Function}</span> <b>block</b>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>strMessage</b>
 									
 								</dt>
-								<dd>ブロック</dd>
+								<dd>ログエントリのテキストです。</dd>
 							
 							</dl>
 						
 						
 						
 						
-						
-							<dl class="detailList">
-							<dt class="heading">戻り値:</dt>
-							
-								<dd><span class="light fixedFont">{Object}</span> ブロックが指定されていない場合は、作成したクリップボード</dd>
-							
-							</dl>
 						
 						
 						
 
 					<hr />
 				
-					<a name="set"> </a>
-					<div class="fixedFont">
+					<a name=".auditSuccess"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					
-					<b>set</b>(text)
+					<span class="light">LogEvent.</span><b>auditSuccess</b>(strMessage)
 					
 					</div>
 					<div class="description">
-						クリップボードへ文字列を格納します。
+						イベントエントリをログファイルにAUDIT_SUCCESSで追加します。
 						
 						
 					</div>
@@ -513,10 +468,154 @@ Clipboard.open(function(clip) {
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>text</b>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>strMessage</b>
 									
 								</dt>
-								<dd>格納する文字列</dd>
+								<dd>ログエントリのテキストです。</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".error"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">LogEvent.</span><b>error</b>(strMessage)
+					
+					</div>
+					<div class="description">
+						イベントエントリをログファイルにERRORで追加します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>strMessage</b>
+									
+								</dt>
+								<dd>ログエントリのテキストです。</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".information"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">LogEvent.</span><b>information</b>(strMessage)
+					
+					</div>
+					<div class="description">
+						イベントエントリをログファイルにINFORMATIONで追加します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>strMessage</b>
+									
+								</dt>
+								<dd>ログエントリのテキストです。</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".success"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">LogEvent.</span><b>success</b>(strMessage)
+					
+					</div>
+					<div class="description">
+						イベントエントリをログファイルにSUCCESSで追加します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>strMessage</b>
+									
+								</dt>
+								<dd>ログエントリのテキストです。</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".warning"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">LogEvent.</span><b>warning</b>(strMessage)
+					
+					</div>
+					<div class="description">
+						イベントエントリをログファイルにWARNINGで追加します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>strMessage</b>
+									
+								</dt>
+								<dd>ログエントリのテキストです。</dd>
 							
 							</dl>
 						
@@ -541,7 +640,7 @@ Clipboard.open(function(clip) {
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Mon Mar 07 2011 17:21:59 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Mon Mar 07 2011 17:22:00 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

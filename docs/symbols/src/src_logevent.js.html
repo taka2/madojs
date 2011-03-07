@@ -1,0 +1,70 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * インスタンス化しません。
+<span class='line'>  3</span>  * @class イベントエントリをログファイルに追加する機能を提供するクラス
+<span class='line'>  4</span> &lt;pre class = "code">
+<span class='line'>  5</span> 使用例：
+<span class='line'>  6</span> LogEvent.success("hoge1");
+<span class='line'>  7</span> LogEvent.error("hoge2");
+<span class='line'>  8</span> LogEvent.warning("hoge3");
+<span class='line'>  9</span> LogEvent.information("hoge4");
+<span class='line'> 10</span> LogEvent.auditSuccess("hoge5");
+<span class='line'> 11</span> LogEvent.auditFailure("hoge6");
+<span class='line'> 12</span> &lt;/pre>
+<span class='line'> 13</span>  */</span><span class="WHIT">
+<span class='line'> 14</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">LogEvent</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 15</span> 
+<span class='line'> 16</span> </span><span class="COMM">/**
+<span class='line'> 17</span>  * イベントエントリをログファイルにSUCCESSで追加します。
+<span class='line'> 18</span>  * @param {String} strMessage ログエントリのテキストです。 
+<span class='line'> 19</span>  */</span><span class="WHIT">
+<span class='line'> 20</span> </span><span class="NAME">LogEvent.success</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">strMessage</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 21</span> </span><span class="WHIT">  </span><span class="NAME">Const.WSHELL.LogEvent</span><span class="PUNC">(</span><span class="NAME">Const.LOG_EVENT_TYPE_SUCCESS</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">strMessage</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 22</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 23</span> 
+<span class='line'> 24</span> </span><span class="COMM">/**
+<span class='line'> 25</span>  * イベントエントリをログファイルにERRORで追加します。
+<span class='line'> 26</span>  * @param {String} strMessage ログエントリのテキストです。 
+<span class='line'> 27</span>  */</span><span class="WHIT">
+<span class='line'> 28</span> </span><span class="NAME">LogEvent.error</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">strMessage</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="WHIT">  </span><span class="NAME">Const.WSHELL.LogEvent</span><span class="PUNC">(</span><span class="NAME">Const.LOG_EVENT_TYPE_ERROR</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">strMessage</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 30</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 31</span> 
+<span class='line'> 32</span> </span><span class="COMM">/**
+<span class='line'> 33</span>  * イベントエントリをログファイルにWARNINGで追加します。
+<span class='line'> 34</span>  * @param {String} strMessage ログエントリのテキストです。 
+<span class='line'> 35</span>  */</span><span class="WHIT">
+<span class='line'> 36</span> </span><span class="NAME">LogEvent.warning</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">strMessage</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 37</span> </span><span class="WHIT">  </span><span class="NAME">Const.WSHELL.LogEvent</span><span class="PUNC">(</span><span class="NAME">Const.LOG_EVENT_TYPE_WARNING</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">strMessage</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 39</span> 
+<span class='line'> 40</span> </span><span class="COMM">/**
+<span class='line'> 41</span>  * イベントエントリをログファイルにINFORMATIONで追加します。
+<span class='line'> 42</span>  * @param {String} strMessage ログエントリのテキストです。 
+<span class='line'> 43</span>  */</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="NAME">LogEvent.information</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">strMessage</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="WHIT">  </span><span class="NAME">Const.WSHELL.LogEvent</span><span class="PUNC">(</span><span class="NAME">Const.LOG_EVENT_TYPE_INFORMATION</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">strMessage</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 47</span> 
+<span class='line'> 48</span> </span><span class="COMM">/**
+<span class='line'> 49</span>  * イベントエントリをログファイルにAUDIT_SUCCESSで追加します。
+<span class='line'> 50</span>  * @param {String} strMessage ログエントリのテキストです。 
+<span class='line'> 51</span>  */</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="NAME">LogEvent.auditSuccess</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">strMessage</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">  </span><span class="NAME">Const.WSHELL.LogEvent</span><span class="PUNC">(</span><span class="NAME">Const.LOG_EVENT_TYPE_AUDIT_SUCCESS</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">strMessage</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 55</span> 
+<span class='line'> 56</span> </span><span class="COMM">/**
+<span class='line'> 57</span>  * イベントエントリをログファイルにAUDIT_FAILUREで追加します。
+<span class='line'> 58</span>  * @param {String} strMessage ログエントリのテキストです。 
+<span class='line'> 59</span>  */</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="NAME">LogEvent.auditFailure</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">strMessage</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="WHIT">  </span><span class="NAME">Const.WSHELL.LogEvent</span><span class="PUNC">(</span><span class="NAME">Const.LOG_EVENT_TYPE_AUDIT_FAILURE</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">strMessage</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 63</span> </span></pre></body></html>

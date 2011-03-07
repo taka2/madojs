@@ -226,6 +226,8 @@ MadoJS
 	
 	<li><a href="../symbols/KeySender.html">KeySender</a></li>
 	
+	<li><a href="../symbols/LogEvent.html">LogEvent</a></li>
+	
 	<li><a href="../symbols/Process.html">Process</a></li>
 	
 	<li><a href="../symbols/Registry.html">Registry</a></li>
@@ -275,6 +277,15 @@ MadoJS
 						</tr>
 					</thead>
 					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/_global_.html#createShortcut">createShortcut</a></b>(pathTo, pathFrom)
+								</div>
+								<div class="description">ショートカットを作成します。</div>
+							</td>
+						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
@@ -395,6 +406,60 @@ MadoJS
 				<div class="sectionTitle">
 					メソッドの詳細
 				</div>
+				
+					<a name="createShortcut"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>createShortcut</b>(pathTo, pathFrom)
+					
+					</div>
+					<div class="description">
+						ショートカットを作成します。
+						
+							<br />
+							<a href="../symbols/src/src_global.js.html">global.js</a>で<i>定義されています</i>。
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">使用例：
+// SendToにノートパッドのショートカットを作成
+createShortcut(SpecialFolders.getSendTo() + "\\notepad.lnk", "notepad.exe");
+
+// デスクトップにYahooのURLショートカットを作成
+createShortcut(SpecialFolders.getDesktop() + "\\yahoo.url", "http://www.yahoo.co.jp/");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>pathTo</b>
+									
+								</dt>
+								<dd>作成するショートカットの場所</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>pathFrom</b>
+									
+								</dt>
+								<dd>ショートカットの対象となるファイル、または、URL</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
 				
 					<a name="exit"> </a>
 					<div class="fixedFont">
@@ -861,7 +926,7 @@ MadoJS
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Mon Mar 07 2011 11:18:34 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Mon Mar 07 2011 17:21:59 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

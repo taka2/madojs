@@ -221,6 +221,8 @@ MadoJS
 	
 	<li><a href="symbols/KeySender.html">KeySender</a></li>
 	
+	<li><a href="symbols/LogEvent.html">LogEvent</a></li>
+	
 	<li><a href="symbols/Process.html">Process</a></li>
 	
 	<li><a href="symbols/Registry.html">Registry</a></li>
@@ -377,6 +379,21 @@ var ks = new KeySender("無題")
 			<hr />
 			
 			<div>
+				<h2><a href="symbols/LogEvent.html">LogEvent</a></h2>
+				イベントエントリをログファイルに追加する機能を提供するクラス
+<pre class = "code">
+使用例：
+LogEvent.success("hoge1");
+LogEvent.error("hoge2");
+LogEvent.warning("hoge3");
+LogEvent.information("hoge4");
+LogEvent.auditSuccess("hoge5");
+LogEvent.auditFailure("hoge6");
+</pre>
+			</div>
+			<hr />
+			
+			<div>
 				<h2><a href="symbols/Process.html">Process</a></h2>
 				プログラムの実行に関する機能を提供するクラス
 <pre class = "code">
@@ -425,7 +442,7 @@ print(SpecialFolders.getDesktop());
 		</div>
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Mon Mar 07 2011 11:18:35 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Mon Mar 07 2011 17:22:01 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

@@ -40,6 +40,36 @@ Const.IOMODE_FORWRITING = 2;   // 書き込み専用
  * IO Modeの定数：追加書き込み(8)
  */
 Const.IOMODE_FORAPPENDING = 8; // 追加書き込み
+
+/**
+ * LogEventタイプ：SUCCESS(0)
+ */
+Const.LOG_EVENT_TYPE_SUCCESS = 0;
+
+/**
+ * LogEventタイプ：ERROR(1)
+ */
+Const.LOG_EVENT_TYPE_ERROR = 1;
+
+/**
+ * LogEventタイプ：WARNING(2)
+ */
+Const.LOG_EVENT_TYPE_WARNING = 2;
+
+/**
+ * LogEventタイプ：INFORMATION(4)
+ */
+Const.LOG_EVENT_TYPE_INFORMATION = 4;
+
+/**
+ * LogEventタイプ：AUDIT_SUCCESS(8)
+ */
+Const.LOG_EVENT_TYPE_AUDIT_SUCCESS = 8;
+
+/**
+ * LogEventタイプ：AUDIT_FAILURE(16)
+ */
+Const.LOG_EVENT_TYPE_AUDIT_FAILURE = 16;
 // Global Functions
 /**
  * 指定したmsec(ミリ秒)スリープします。
@@ -149,6 +179,23 @@ var osReboot = function (timeout, option) {
 
   Process.exec("shutdown", params, 0, false);
 };
+
+/**
+ * ショートカットを作成します。
+ * @param {String} pathTo 作成するショートカットの場所
+ * @param {String} pathFrom ショートカットの対象となるファイル、または、URL
+ * @example 使用例：
+// SendToにノートパッドのショートカットを作成
+createShortcut(SpecialFolders.getSendTo() + "\\notepad.lnk", "notepad.exe");
+
+// デスクトップにYahooのURLショートカットを作成
+createShortcut(SpecialFolders.getDesktop() + "\\yahoo.url", "http://www.yahoo.co.jp/");
+ */
+var createShortcut = function(pathTo, pathFrom) {
+  var shortcut = Const.WSHELL.CreateShortcut(pathTo);
+  shortcut.TargetPath = pathFrom;
+  shortcut.Save();
+};
 /**
  * インスタンス化しません。
  * @class 特定のフォルダパスを取得する機能を提供するクラス
@@ -206,6 +253,86 @@ SpecialFolders.getDesktop = function () {
  */
 SpecialFolders.getFavorites = function () {
   return Const.WSHELL.SpecialFolders("Favorites");
+};
+
+/**
+ * フォントパスを取得します。
+ * @return {String} フォントパス
+ */
+SpecialFolders.getFonts = function () {
+  return Const.WSHELL.SpecialFolders("Fonts");
+};
+
+/**
+ * マイドキュメントパスを取得します。
+ * @return {String} マイドキュメントパス
+ */
+SpecialFolders.getMyDocuments = function () {
+  return Const.WSHELL.SpecialFolders("MyDocuments");
+};
+
+/**
+ * ネットフードパスを取得します。
+ * @return {String} ネットフードパス
+ */
+SpecialFolders.getNetHood = function () {
+  return Const.WSHELL.SpecialFolders("NetHood");
+};
+
+/**
+ * プリントフードパスを取得します。
+ * @return {String} プリントフードパス
+ */
+SpecialFolders.getPrintHood = function () {
+  return Const.WSHELL.SpecialFolders("PrintHood");
+};
+
+/**
+ * プログラムパスを取得します。
+ * @return {String} プログラムパス
+ */
+SpecialFolders.getPrograms = function () {
+  return Const.WSHELL.SpecialFolders("Programs");
+};
+
+/**
+ * 最近使ったファイルパスを取得します。
+ * @return {String} 最近使ったファイルパス
+ */
+SpecialFolders.getRecent = function () {
+  return Const.WSHELL.SpecialFolders("Recent");
+};
+
+/**
+ * 送るパスを取得します。
+ * @return {String} 送るパス
+ */
+SpecialFolders.getSendTo = function () {
+  return Const.WSHELL.SpecialFolders("SendTo");
+};
+
+/**
+ * スタートメニューパスを取得します。
+ * @return {String} スタートメニューパス
+ */
+SpecialFolders.getStartMenu = function () {
+  return Const.WSHELL.SpecialFolders("StartMenu");
+};
+
+/**
+ * スタートアップパスを取得します。
+ * @return {String} スタートアップパス
+ */
+SpecialFolders.getStartup = function () {
+  return Const.WSHELL.SpecialFolders("Startup");
+};
+
+/**
+ * テンプレートパスを取得します。
+ * @return {String} テンプレートパス
+ */
+SpecialFolders.getTemplates = function () {
+  return Const.WSHELL.SpecialFolders("Templates");
 };
 /** 
  * 各要素に対してブロックを評価します。
@@ -1326,4 +1453,66 @@ AdoOracleConnection.prototype = {
   close: function() {
     this.con.Close();
   }
+};
+/**
+ * インスタンス化しません。
+ * @class イベントエントリをログファイルに追加する機能を提供するクラス
+<pre class = "code">
+使用例：
+LogEvent.success("hoge1");
+LogEvent.error("hoge2");
+LogEvent.warning("hoge3");
+LogEvent.information("hoge4");
+LogEvent.auditSuccess("hoge5");
+LogEvent.auditFailure("hoge6");
+</pre>
+ */
+var LogEvent = {};
+
+/**
+ * イベントエントリをログファイルにSUCCESSで追加します。
+ * @param {String} strMessage ログエントリのテキストです。 
+ */
+LogEvent.success = function(strMessage) {
+  Const.WSHELL.LogEvent(Const.LOG_EVENT_TYPE_SUCCESS, strMessage);
+};
+
+/**
+ * イベントエントリをログファイルにERRORで追加します。
+ * @param {String} strMessage ログエントリのテキストです。 
+ */
+LogEvent.error = function(strMessage) {
+  Const.WSHELL.LogEvent(Const.LOG_EVENT_TYPE_ERROR, strMessage);
+};
+
+/**
+ * イベントエントリをログファイルにWARNINGで追加します。
+ * @param {String} strMessage ログエントリのテキストです。 
+ */
+LogEvent.warning = function(strMessage) {
+  Const.WSHELL.LogEvent(Const.LOG_EVENT_TYPE_WARNING, strMessage);
+};
+
+/**
+ * イベントエントリをログファイルにINFORMATIONで追加します。
+ * @param {String} strMessage ログエントリのテキストです。 
+ */
+LogEvent.information = function(strMessage) {
+  Const.WSHELL.LogEvent(Const.LOG_EVENT_TYPE_INFORMATION, strMessage);
+};
+
+/**
+ * イベントエントリをログファイルにAUDIT_SUCCESSで追加します。
+ * @param {String} strMessage ログエントリのテキストです。 
+ */
+LogEvent.auditSuccess = function(strMessage) {
+  Const.WSHELL.LogEvent(Const.LOG_EVENT_TYPE_AUDIT_SUCCESS, strMessage);
+};
+
+/**
+ * イベントエントリをログファイルにAUDIT_FAILUREで追加します。
+ * @param {String} strMessage ログエントリのテキストです。 
+ */
+LogEvent.auditFailure = function(strMessage) {
+  Const.WSHELL.LogEvent(Const.LOG_EVENT_TYPE_AUDIT_FAILURE, strMessage);
 };

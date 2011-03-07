@@ -14,67 +14,68 @@
 <span class='line'>  7</span> </span><span class="COMM">// Static members of Global</span><span class="WHIT">
 <span class='line'>  8</span> </span><span class="NAME">Const.FSO</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">ActiveXObject</span><span class="PUNC">(</span><span class="STRN">"Scripting.FileSystemObject"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>  9</span> </span><span class="NAME">Const.WSHELL</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">WScript.CreateObject</span><span class="PUNC">(</span><span class="STRN">"WScript.Shell"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 10</span> 
-<span class='line'> 11</span> </span><span class="COMM">// Static Variables</span><span class="WHIT">
-<span class='line'> 12</span> </span><span class="NAME">Const.INITIAL_CURRENT_DIRECTORY</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Const.WSHELL.CurrentDirectory</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 13</span> 
-<span class='line'> 14</span> </span><span class="COMM">/**
-<span class='line'> 15</span>  * Window Styleの定数：通常(1)
-<span class='line'> 16</span>  */</span><span class="WHIT">
-<span class='line'> 17</span> </span><span class="NAME">Const.WINDOW_STYLE_NORMAL</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// 通常</span><span class="WHIT">
-<span class='line'> 18</span> 
-<span class='line'> 19</span> </span><span class="COMM">/**
-<span class='line'> 20</span>  * Window Styleの定数：最小化(2)
-<span class='line'> 21</span>  */</span><span class="WHIT">
-<span class='line'> 22</span> </span><span class="NAME">Const.WINDOW_STYLE_MIN</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">;</span><span class="WHIT">    </span><span class="COMM">// 最小化</span><span class="WHIT">
-<span class='line'> 23</span> 
-<span class='line'> 24</span> </span><span class="COMM">/**
-<span class='line'> 25</span>  * Window Styleの定数：最大化(3)
-<span class='line'> 26</span>  */</span><span class="WHIT">
-<span class='line'> 27</span> </span><span class="NAME">Const.WINDOW_STYLE_MAX</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">3</span><span class="PUNC">;</span><span class="WHIT">    </span><span class="COMM">// 最大化</span><span class="WHIT">
-<span class='line'> 28</span> 
-<span class='line'> 29</span> </span><span class="COMM">/**
-<span class='line'> 30</span>  * IO Modeの定数：読み取り専用(1)
-<span class='line'> 31</span>  */</span><span class="WHIT">
-<span class='line'> 32</span> </span><span class="NAME">Const.IOMODE_FORREADING</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">   </span><span class="COMM">// 読み取り専用</span><span class="WHIT">
-<span class='line'> 33</span> 
-<span class='line'> 34</span> </span><span class="COMM">/**
-<span class='line'> 35</span>  * IO Modeの定数：書き込み専用(2)
-<span class='line'> 36</span>  */</span><span class="WHIT">
-<span class='line'> 37</span> </span><span class="NAME">Const.IOMODE_FORWRITING</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">;</span><span class="WHIT">   </span><span class="COMM">// 書き込み専用</span><span class="WHIT">
-<span class='line'> 38</span> 
-<span class='line'> 39</span> </span><span class="COMM">/**
-<span class='line'> 40</span>  * IO Modeの定数：追加書き込み(8)
-<span class='line'> 41</span>  */</span><span class="WHIT">
-<span class='line'> 42</span> </span><span class="NAME">Const.IOMODE_FORAPPENDING</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">8</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// 追加書き込み</span><span class="WHIT">
-<span class='line'> 43</span> 
-<span class='line'> 44</span> </span><span class="COMM">/**
-<span class='line'> 45</span>  * LogEventタイプ：SUCCESS(0)
-<span class='line'> 46</span>  */</span><span class="WHIT">
-<span class='line'> 47</span> </span><span class="NAME">Const.LOG_EVENT_TYPE_SUCCESS</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 48</span> 
-<span class='line'> 49</span> </span><span class="COMM">/**
-<span class='line'> 50</span>  * LogEventタイプ：ERROR(1)
-<span class='line'> 51</span>  */</span><span class="WHIT">
-<span class='line'> 52</span> </span><span class="NAME">Const.LOG_EVENT_TYPE_ERROR</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 53</span> 
-<span class='line'> 54</span> </span><span class="COMM">/**
-<span class='line'> 55</span>  * LogEventタイプ：WARNING(2)
-<span class='line'> 56</span>  */</span><span class="WHIT">
-<span class='line'> 57</span> </span><span class="NAME">Const.LOG_EVENT_TYPE_WARNING</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 58</span> 
-<span class='line'> 59</span> </span><span class="COMM">/**
-<span class='line'> 60</span>  * LogEventタイプ：INFORMATION(4)
-<span class='line'> 61</span>  */</span><span class="WHIT">
-<span class='line'> 62</span> </span><span class="NAME">Const.LOG_EVENT_TYPE_INFORMATION</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">4</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 63</span> 
-<span class='line'> 64</span> </span><span class="COMM">/**
-<span class='line'> 65</span>  * LogEventタイプ：AUDIT_SUCCESS(8)
-<span class='line'> 66</span>  */</span><span class="WHIT">
-<span class='line'> 67</span> </span><span class="NAME">Const.LOG_EVENT_TYPE_AUDIT_SUCCESS</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">8</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 68</span> 
-<span class='line'> 69</span> </span><span class="COMM">/**
-<span class='line'> 70</span>  * LogEventタイプ：AUDIT_FAILURE(16)
-<span class='line'> 71</span>  */</span><span class="WHIT">
-<span class='line'> 72</span> </span><span class="NAME">Const.LOG_EVENT_TYPE_AUDIT_FAILURE</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">16</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 73</span> </span></pre></body></html>
+<span class='line'> 10</span> </span><span class="NAME">Const.SHELLAPP</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">WScript.CreateObject</span><span class="PUNC">(</span><span class="STRN">"Shell.Application"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 11</span> 
+<span class='line'> 12</span> </span><span class="COMM">// Static Variables</span><span class="WHIT">
+<span class='line'> 13</span> </span><span class="NAME">Const.INITIAL_CURRENT_DIRECTORY</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Const.WSHELL.CurrentDirectory</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 14</span> 
+<span class='line'> 15</span> </span><span class="COMM">/**
+<span class='line'> 16</span>  * Window Styleの定数：通常(1)
+<span class='line'> 17</span>  */</span><span class="WHIT">
+<span class='line'> 18</span> </span><span class="NAME">Const.WINDOW_STYLE_NORMAL</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// 通常</span><span class="WHIT">
+<span class='line'> 19</span> 
+<span class='line'> 20</span> </span><span class="COMM">/**
+<span class='line'> 21</span>  * Window Styleの定数：最小化(2)
+<span class='line'> 22</span>  */</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="NAME">Const.WINDOW_STYLE_MIN</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">;</span><span class="WHIT">    </span><span class="COMM">// 最小化</span><span class="WHIT">
+<span class='line'> 24</span> 
+<span class='line'> 25</span> </span><span class="COMM">/**
+<span class='line'> 26</span>  * Window Styleの定数：最大化(3)
+<span class='line'> 27</span>  */</span><span class="WHIT">
+<span class='line'> 28</span> </span><span class="NAME">Const.WINDOW_STYLE_MAX</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">3</span><span class="PUNC">;</span><span class="WHIT">    </span><span class="COMM">// 最大化</span><span class="WHIT">
+<span class='line'> 29</span> 
+<span class='line'> 30</span> </span><span class="COMM">/**
+<span class='line'> 31</span>  * IO Modeの定数：読み取り専用(1)
+<span class='line'> 32</span>  */</span><span class="WHIT">
+<span class='line'> 33</span> </span><span class="NAME">Const.IOMODE_FORREADING</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">   </span><span class="COMM">// 読み取り専用</span><span class="WHIT">
+<span class='line'> 34</span> 
+<span class='line'> 35</span> </span><span class="COMM">/**
+<span class='line'> 36</span>  * IO Modeの定数：書き込み専用(2)
+<span class='line'> 37</span>  */</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="NAME">Const.IOMODE_FORWRITING</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">;</span><span class="WHIT">   </span><span class="COMM">// 書き込み専用</span><span class="WHIT">
+<span class='line'> 39</span> 
+<span class='line'> 40</span> </span><span class="COMM">/**
+<span class='line'> 41</span>  * IO Modeの定数：追加書き込み(8)
+<span class='line'> 42</span>  */</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="NAME">Const.IOMODE_FORAPPENDING</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">8</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// 追加書き込み</span><span class="WHIT">
+<span class='line'> 44</span> 
+<span class='line'> 45</span> </span><span class="COMM">/**
+<span class='line'> 46</span>  * LogEventタイプ：SUCCESS(0)
+<span class='line'> 47</span>  */</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="NAME">Const.LOG_EVENT_TYPE_SUCCESS</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 49</span> 
+<span class='line'> 50</span> </span><span class="COMM">/**
+<span class='line'> 51</span>  * LogEventタイプ：ERROR(1)
+<span class='line'> 52</span>  */</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="NAME">Const.LOG_EVENT_TYPE_ERROR</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 54</span> 
+<span class='line'> 55</span> </span><span class="COMM">/**
+<span class='line'> 56</span>  * LogEventタイプ：WARNING(2)
+<span class='line'> 57</span>  */</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="NAME">Const.LOG_EVENT_TYPE_WARNING</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 59</span> 
+<span class='line'> 60</span> </span><span class="COMM">/**
+<span class='line'> 61</span>  * LogEventタイプ：INFORMATION(4)
+<span class='line'> 62</span>  */</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="NAME">Const.LOG_EVENT_TYPE_INFORMATION</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">4</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 64</span> 
+<span class='line'> 65</span> </span><span class="COMM">/**
+<span class='line'> 66</span>  * LogEventタイプ：AUDIT_SUCCESS(8)
+<span class='line'> 67</span>  */</span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="NAME">Const.LOG_EVENT_TYPE_AUDIT_SUCCESS</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">8</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 69</span> 
+<span class='line'> 70</span> </span><span class="COMM">/**
+<span class='line'> 71</span>  * LogEventタイプ：AUDIT_FAILURE(16)
+<span class='line'> 72</span>  */</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="NAME">Const.LOG_EVENT_TYPE_AUDIT_FAILURE</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">16</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 74</span> </span></pre></body></html>

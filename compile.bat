@@ -27,6 +27,7 @@ copy /B mado-debug.js+src\registry.js mado-debug.js
 copy /B mado-debug.js+src\excel.js mado-debug.js
 copy /B mado-debug.js+src\adooracleconnection.js mado-debug.js
 copy /B mado-debug.js+src\logevent.js mado-debug.js
+copy /B mado-debug.js+src\shell.js mado-debug.js
 
 REM jsƒtƒ@ƒCƒ‹‚ğˆ³k
 java -jar yuicompressor-2.4.2\build\yuicompressor-2.4.2.jar --type js -o mado.js mado-debug.js

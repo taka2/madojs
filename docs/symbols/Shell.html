@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>MadoJS リファレンス - Date</title>
+		<title>MadoJS リファレンス - Shell</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -247,7 +247,7 @@ MadoJS
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Date 組み込みの 名前空間 
+				Shell クラス 
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -255,12 +255,40 @@ MadoJS
 				
 				
 			
+				シェル(explorer)へのアクセスを提供するクラス
+<pre class = "code">
+使用例：
+// Windowsフォルダをエクスプローラで開く
+Shell.open("C:\\windows");
+</pre>
 				
 				
+					<br /><i></i> <a href="../symbols/src/src_shell.js.html">shell.js</a>で定義されています。
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Shell.">
+				<caption>クラス 概要</caption>
+				<thead>
+					<tr>
+						<th scope="col">コンストラクタの属性</th>
+						<th scope="col">コンストラクタ名と説明</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/Shell.html#constructor">Shell</a></b>()
+							</div>
+							<div class="description">インスタンス化しません。</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 			
 
 <!-- ============================== properties summary ===================== -->
@@ -270,7 +298,7 @@ MadoJS
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Date.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Shell.">
 					<caption>メソッドの概要</caption>
 					<thead>
 						<tr>
@@ -281,29 +309,29 @@ MadoJS
 					<tbody>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Date.html#getFormattedDate">getFormattedDate</a></b>()
+								<div class="fixedFont">Shell.<b><a href="../symbols/Shell.html#.open">open</a></b>(path)
 								</div>
-								<div class="description">日付をYYYY/MM/DD HH:MI:SS形式で返します。</div>
+								<div class="description">指定したpathをexplorerで開きます。</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Date.html#getYYYYMMDD">getYYYYMMDD</a></b>()
+								<div class="fixedFont">Shell.<b><a href="../symbols/Shell.html#.serviceStart">serviceStart</a></b>(serviceName, isPersistent)
 								</div>
-								<div class="description">日付をYYYYMMDD形式で返します。</div>
+								<div class="description">指定したserviceNameのサービスを開始します。</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Date.html#getYYYYMMDDHH24MISS">getYYYYMMDDHH24MISS</a></b>()
+								<div class="fixedFont">Shell.<b><a href="../symbols/Shell.html#.serviceStop">serviceStop</a></b>(serviceName, isPersistent)
 								</div>
-								<div class="description">日付をYYYYMMDDHH24MISS形式で返します。</div>
+								<div class="description">指定したserviceNameのサービスを停止します。</div>
 							</td>
 						</tr>
 					
@@ -318,6 +346,33 @@ MadoJS
 
 <!-- ============================== constructor details ==================== -->		
 			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					クラス 詳細
+				</div>
+				
+				<div class="fixedFont">
+						<b>Shell</b>()
+				</div>
+				
+				<div class="description">
+					インスタンス化しません。
+					
+				</div>
+				
+				
+				
+				
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
 
 <!-- ============================== field details ========================== -->		
 			
@@ -328,29 +383,74 @@ MadoJS
 					メソッドの詳細
 				</div>
 				
-					<a name="getFormattedDate"> </a>
-					<div class="fixedFont">
+					<a name=".open"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<b>getFormattedDate</b>()
+					
+					<span class="light">Shell.</span><b>open</b>(path)
 					
 					</div>
 					<div class="description">
-						日付をYYYY/MM/DD HH:MI:SS形式で返します。
-						
-							<br />
-							<a href="../symbols/src/src_date.js.html">date.js</a>で<i>定義されています</i>。
+						指定したpathをexplorerで開きます。
 						
 						
 					</div>
 					
 					
 					
-					<pre class="code">使用例：
-print(new Date().getFormattedDate());</pre>
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>path</b>
+									
+								</dt>
+								<dd>explorerで開くパス</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".serviceStart"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Boolean}</span>
+					<span class="light">Shell.</span><b>serviceStart</b>(serviceName, isPersistent)
+					
+					</div>
+					<div class="description">
+						指定したserviceNameのサービスを開始します。
+						
+						
+					</div>
 					
 					
 					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>serviceName</b>
+									
+								</dt>
+								<dd>開始するサービス名</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>isPersistent</b>
+									
+								</dt>
+								<dd>(オプション)スタートアップの種類を自動に変更します(初期値 false)</dd>
+							
+							</dl>
 						
 						
 						
@@ -359,7 +459,7 @@ print(new Date().getFormattedDate());</pre>
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> YYYY/MM/DD HH:MM:SS形式の日付</dd>
+								<dd><span class="light fixedFont">{Boolean}</span> 成功した場合はtrue、失敗した場合はfalseを返します。</dd>
 							
 							</dl>
 						
@@ -368,78 +468,47 @@ print(new Date().getFormattedDate());</pre>
 
 					<hr />
 				
-					<a name="getYYYYMMDD"> </a>
-					<div class="fixedFont">
+					<a name=".serviceStop"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<b>getYYYYMMDD</b>()
+					<span class="light">{Boolean}</span>
+					<span class="light">Shell.</span><b>serviceStop</b>(serviceName, isPersistent)
 					
 					</div>
 					<div class="description">
-						日付をYYYYMMDD形式で返します。
-						
-							<br />
-							<a href="../symbols/src/src_date.js.html">date.js</a>で<i>定義されています</i>。
+						指定したserviceNameのサービスを停止します。
 						
 						
 					</div>
 					
 					
 					
-					<pre class="code">使用例：
-print(new Date().getYYYYMMDD());</pre>
-					
-					
-					
-						
-						
-						
-						
 						
 							<dl class="detailList">
-							<dt class="heading">戻り値:</dt>
+							<dt class="heading">引数:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> YYYYMMDD形式の日付</dd>
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>serviceName</b>
+									
+								</dt>
+								<dd>停止するサービス名</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>isPersistent</b>
+									
+								</dt>
+								<dd>(オプション)スタートアップの種類を手動に変更します(初期値 false)</dd>
 							
 							</dl>
 						
 						
 						
-
-					<hr />
-				
-					<a name="getYYYYMMDDHH24MISS"> </a>
-					<div class="fixedFont">
-					
-					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<b>getYYYYMMDDHH24MISS</b>()
-					
-					</div>
-					<div class="description">
-						日付をYYYYMMDDHH24MISS形式で返します。
-						
-							<br />
-							<a href="../symbols/src/src_date.js.html">date.js</a>で<i>定義されています</i>。
-						
-						
-					</div>
-					
-					
-					
-					<pre class="code">使用例：
-print(new Date().getYYYYMMDDHH24MISS());</pre>
-					
-					
-					
-						
-						
-						
 						
 						
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> YYYYMMDDHH24MISS形式の日付</dd>
+								<dd><span class="light fixedFont">{Boolean}</span> 成功した場合はtrue、失敗した場合はfalseを返します。</dd>
 							
 							</dl>
 						
@@ -460,7 +529,7 @@ print(new Date().getYYYYMMDDHH24MISS());</pre>
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Mon Mar 07 2011 18:30:46 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Mon Mar 07 2011 18:30:47 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

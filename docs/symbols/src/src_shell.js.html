@@ -1,0 +1,48 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * インスタンス化しません。
+<span class='line'>  3</span>  * @class シェル(explorer)へのアクセスを提供するクラス
+<span class='line'>  4</span> &lt;pre class = "code">
+<span class='line'>  5</span> 使用例：
+<span class='line'>  6</span> // Windowsフォルダをエクスプローラで開く
+<span class='line'>  7</span> Shell.open("C:\\windows");
+<span class='line'>  8</span> &lt;/pre>
+<span class='line'>  9</span>  */</span><span class="WHIT">
+<span class='line'> 10</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Shell</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 11</span> 
+<span class='line'> 12</span> </span><span class="COMM">/**
+<span class='line'> 13</span>  * 指定したpathをexplorerで開きます。
+<span class='line'> 14</span>  * @param {String} path explorerで開くパス
+<span class='line'> 15</span>  */</span><span class="WHIT">
+<span class='line'> 16</span> </span><span class="NAME">Shell.open</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 17</span> </span><span class="WHIT">  </span><span class="NAME">Const.SHELLAPP.Open</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 18</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 19</span> 
+<span class='line'> 20</span> </span><span class="COMM">/**
+<span class='line'> 21</span>  * 指定したserviceNameのサービスを開始します。
+<span class='line'> 22</span>  * @param {String} serviceName 開始するサービス名
+<span class='line'> 23</span>  * @param {Boolean} isPersistent (オプション)スタートアップの種類を自動に変更します(初期値 false)
+<span class='line'> 24</span>  * @return {Boolean} 成功した場合はtrue、失敗した場合はfalseを返します。
+<span class='line'> 25</span>  */</span><span class="WHIT">
+<span class='line'> 26</span> </span><span class="NAME">Shell.serviceStart</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">serviceName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">isPersistent</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 27</span> </span><span class="WHIT">  </span><span class="NAME">myIsPersistent</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">isPersistent</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 28</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Const.SHELLAPP.ServiceStart</span><span class="PUNC">(</span><span class="NAME">serviceName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">myIsPersistent</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 30</span> 
+<span class='line'> 31</span> </span><span class="COMM">/**
+<span class='line'> 32</span>  * 指定したserviceNameのサービスを停止します。
+<span class='line'> 33</span>  * @param {String} serviceName 停止するサービス名
+<span class='line'> 34</span>  * @param {Boolean} isPersistent (オプション)スタートアップの種類を手動に変更します(初期値 false)
+<span class='line'> 35</span>  * @return {Boolean} 成功した場合はtrue、失敗した場合はfalseを返します。
+<span class='line'> 36</span>  */</span><span class="WHIT">
+<span class='line'> 37</span> </span><span class="NAME">Shell.serviceStop</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">serviceName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">isPersistent</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="WHIT">  </span><span class="NAME">myIsPersistent</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">isPersistent</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Const.SHELLAPP.ServiceStop</span><span class="PUNC">(</span><span class="NAME">serviceName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">myIsPersistent</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 41</span> </span></pre></body></html>

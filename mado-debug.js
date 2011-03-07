@@ -7,6 +7,7 @@ var Const = {};
 // Static members of Global
 Const.FSO = new ActiveXObject("Scripting.FileSystemObject");
 Const.WSHELL = WScript.CreateObject("WScript.Shell");
+Const.SHELLAPP = WScript.CreateObject("Shell.Application");
 
 // Static Variables
 Const.INITIAL_CURRENT_DIRECTORY = Const.WSHELL.CurrentDirectory;
@@ -1060,22 +1061,6 @@ KeySender.prototype = {
     return this;
   },
   /**
-   * タブ文字をキー送信します。
-   * @return this
-   */
-  sendTab: function() {
-    sendKeys("{TAB}");
-    return this;
-  },
-  /**
-   * エンターをキー送信します。
-   * @return this
-   */
-  sendEnter: function() {
-    sendKeys("{ENTER}");
-    return this;
-  },
-  /**
    * Shiftを押しながら指定したchをキー送信します。
    * @param {String} ch 送信する文字
    * @return this
@@ -1100,6 +1085,294 @@ KeySender.prototype = {
    */
   sendKeyWithAlt: function(ch) {
     sendKeys("%" + ch);
+    return this;
+  },
+  /**
+   * Back Spaceをキー送信します。
+   * @return this
+   */
+  sendBackspace: function(ch) {
+    sendKeys("{BACKSPACE}");
+    return this;
+  },
+  /**
+   * Breakをキー送信します。
+   * @return this
+   */
+  sendBreak: function(ch) {
+    sendKeys("{BREAK}");
+    return this;
+  },
+  /**
+   * Caps Lockをキー送信します。
+   * @return this
+   */
+  sendCapsLock: function(ch) {
+    sendKeys("{CAPSLOCK}");
+    return this;
+  },
+  /**
+   * Deleteをキー送信します。
+   * @return this
+   */
+  sendDelete: function(ch) {
+    sendKeys("{DELETE}");
+    return this;
+  },
+  /**
+   * ↓をキー送信します。
+   * @return this
+   */
+  sendDownArrow: function(ch) {
+    sendKeys("{DOWN}");
+    return this;
+  },
+  /**
+   * Endをキー送信します。
+   * @return this
+   */
+  sendEnd: function(ch) {
+    sendKeys("{END}");
+    return this;
+  },
+  /**
+   * Enterをキー送信します。
+   * @return this
+   */
+  sendEnter: function() {
+    sendKeys("{ENTER}");
+    return this;
+  },
+  /**
+   * Escをキー送信します。
+   * @return this
+   */
+  sendEsc: function(ch) {
+    sendKeys("{ESC}");
+    return this;
+  },
+  /**
+   * Helpをキー送信します。
+   * @return this
+   */
+  sendHelp: function(ch) {
+    sendKeys("{HELP}");
+    return this;
+  },
+  /**
+   * Homeをキー送信します。
+   * @return this
+   */
+  sendHome: function(ch) {
+    sendKeys("{HOME}");
+    return this;
+  },
+  /**
+   * Insertをキー送信します。
+   * @return this
+   */
+  sendInsert: function(ch) {
+    sendKeys("{INSERT}");
+    return this;
+  },
+  /**
+   * ←をキー送信します。
+   * @return this
+   */
+  sendLeftArrow: function(ch) {
+    sendKeys("{LEFT}");
+    return this;
+  },
+  /**
+   * NumLockをキー送信します。
+   * @return this
+   */
+  sendNumLock: function(ch) {
+    sendKeys("{NUMLOCK}");
+    return this;
+  },
+  /**
+   * Page Downをキー送信します。
+   * @return this
+   */
+  sendPageDown: function(ch) {
+    sendKeys("{PGDN}");
+    return this;
+  },
+  /**
+   * Page Upをキー送信します。
+   * @return this
+   */
+  sendPageUp: function(ch) {
+    sendKeys("{PGUP}");
+    return this;
+  },
+  /**
+   * Print Screenをキー送信します。
+   * @return this
+   */
+  sendPrintScreen: function(ch) {
+    sendKeys("{PRTSC}");
+    return this;
+  },
+  /**
+   * →をキー送信します。
+   * @return this
+   */
+  sendRightArrow: function(ch) {
+    sendKeys("{RIGHT}");
+    return this;
+  },
+  /**
+   * Scroll Lockをキー送信します。
+   * @return this
+   */
+  sendScrollLock: function(ch) {
+    sendKeys("{SCROLLLOCK}");
+    return this;
+  },
+  /**
+   * Tabをキー送信します。
+   * @return this
+   */
+  sendTab: function() {
+    sendKeys("{TAB}");
+    return this;
+  },
+  /**
+   * ↑をキー送信します。
+   * @return this
+   */
+  sendUpArrow: function() {
+    sendKeys("{UP}");
+    return this;
+  },
+  /**
+   * F1をキー送信します。
+   * @return this
+   */
+  sendF1: function() {
+    sendKeys("{F1}");
+    return this;
+  },
+  /**
+   * F2をキー送信します。
+   * @return this
+   */
+  sendF2: function() {
+    sendKeys("{F2}");
+    return this;
+  },
+  /**
+   * F3をキー送信します。
+   * @return this
+   */
+  sendF3: function() {
+    sendKeys("{F3}");
+    return this;
+  },
+  /**
+   * F4をキー送信します。
+   * @return this
+   */
+  sendF4: function() {
+    sendKeys("{F4}");
+    return this;
+  },
+  /**
+   * F5をキー送信します。
+   * @return this
+   */
+  sendF5: function() {
+    sendKeys("{F5}");
+    return this;
+  },
+  /**
+   * F6をキー送信します。
+   * @return this
+   */
+  sendF6: function() {
+    sendKeys("{F6}");
+    return this;
+  },
+  /**
+   * F7をキー送信します。
+   * @return this
+   */
+  sendF7: function() {
+    sendKeys("{F7}");
+    return this;
+  },
+  /**
+   * F8をキー送信します。
+   * @return this
+   */
+  sendF8: function() {
+    sendKeys("{F8}");
+    return this;
+  },
+  /**
+   * F9をキー送信します。
+   * @return this
+   */
+  sendF9: function() {
+    sendKeys("{F9}");
+    return this;
+  },
+  /**
+   * F10をキー送信します。
+   * @return this
+   */
+  sendF10: function() {
+    sendKeys("{F10}");
+    return this;
+  },
+  /**
+   * F11をキー送信します。
+   * @return this
+   */
+  sendF11: function() {
+    sendKeys("{F11}");
+    return this;
+  },
+  /**
+   * F12をキー送信します。
+   * @return this
+   */
+  sendF12: function() {
+    sendKeys("{F12}");
+    return this;
+  },
+  /**
+   * F13をキー送信します。
+   * @return this
+   */
+  sendF13: function() {
+    sendKeys("{F13}");
+    return this;
+  },
+  /**
+   * F14をキー送信します。
+   * @return this
+   */
+  sendF14: function() {
+    sendKeys("{F14}");
+    return this;
+  },
+  /**
+   * F15をキー送信します。
+   * @return this
+   */
+  sendF15: function() {
+    sendKeys("{F15}");
+    return this;
+  },
+  /**
+   * F16をキー送信します。
+   * @return this
+   */
+  sendF16: function() {
+    sendKeys("{F16}");
     return this;
   }
 };
@@ -1515,4 +1788,44 @@ LogEvent.auditSuccess = function(strMessage) {
  */
 LogEvent.auditFailure = function(strMessage) {
   Const.WSHELL.LogEvent(Const.LOG_EVENT_TYPE_AUDIT_FAILURE, strMessage);
+};
+/**
+ * インスタンス化しません。
+ * @class シェル(explorer)へのアクセスを提供するクラス
+<pre class = "code">
+使用例：
+// Windowsフォルダをエクスプローラで開く
+Shell.open("C:\\windows");
+</pre>
+ */
+var Shell = {};
+
+/**
+ * 指定したpathをexplorerで開きます。
+ * @param {String} path explorerで開くパス
+ */
+Shell.open = function (path) {
+  Const.SHELLAPP.Open(path);
+};
+
+/**
+ * 指定したserviceNameのサービスを開始します。
+ * @param {String} serviceName 開始するサービス名
+ * @param {Boolean} isPersistent (オプション)スタートアップの種類を自動に変更します(初期値 false)
+ * @return {Boolean} 成功した場合はtrue、失敗した場合はfalseを返します。
+ */
+Shell.serviceStart = function(serviceName, isPersistent) {
+  myIsPersistent = isPersistent || false;
+  return Const.SHELLAPP.ServiceStart(serviceName, myIsPersistent);
+};
+
+/**
+ * 指定したserviceNameのサービスを停止します。
+ * @param {String} serviceName 停止するサービス名
+ * @param {Boolean} isPersistent (オプション)スタートアップの種類を手動に変更します(初期値 false)
+ * @return {Boolean} 成功した場合はtrue、失敗した場合はfalseを返します。
+ */
+Shell.serviceStop = function(serviceName, isPersistent) {
+  myIsPersistent = isPersistent || false;
+  return Const.SHELLAPP.ServiceStop(serviceName, myIsPersistent);
 };

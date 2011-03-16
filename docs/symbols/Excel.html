@@ -315,9 +315,27 @@ Excel.open("abc.xls", function(excel) {
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Excel.html#addSheet">addSheet</a></b>(sheetName, index)
+								</div>
+								<div class="description">指定したindexのワークシートの後にシートを1枚追加します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/Excel.html#each">each</a></b>(block)
 								</div>
 								<div class="description">ワークブックに含まれる、ワークシートを処理します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Excel.html#getSheetByIndex">getSheetByIndex</a></b>(index)
+								</div>
+								<div class="description">指定したindexのワークシートを取得します。</div>
 							</td>
 						</tr>
 					
@@ -453,6 +471,55 @@ Excel.open("abc.xls", function(excel) {
 					メソッドの詳細
 				</div>
 				
+					<a name="addSheet"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/ExcelSheet.html">ExcelSheet</a>}</span>
+					<b>addSheet</b>(sheetName, index)
+					
+					</div>
+					<div class="description">
+						指定したindexのワークシートの後にシートを1枚追加します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>sheetName</b>
+									
+								</dt>
+								<dd>追加するシートのシート名</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>index</b>
+									
+								</dt>
+								<dd>追加するシートの位置</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/ExcelSheet.html">ExcelSheet</a>}</span> ワークシートオブジェクト</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
 					<a name="each"> </a>
 					<div class="fixedFont">
 					
@@ -483,6 +550,49 @@ Excel.open("abc.xls", function(excel) {
 						
 						
 						
+						
+						
+						
+
+					<hr />
+				
+					<a name="getSheetByIndex"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/ExcelSheet.html">ExcelSheet</a>}</span>
+					<b>getSheetByIndex</b>(index)
+					
+					</div>
+					<div class="description">
+						指定したindexのワークシートを取得します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>index</b>
+									
+								</dt>
+								<dd>取得するワークシートのインデックス番号</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/ExcelSheet.html">ExcelSheet</a>}</span> ワークシートオブジェクト</dd>
+							
+							</dl>
 						
 						
 						
@@ -753,7 +863,7 @@ Excel.open("abc.xls", function(excel) {
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Mon Mar 07 2011 18:30:46 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Wed Mar 16 2011 15:24:47 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

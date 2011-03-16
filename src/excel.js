@@ -96,6 +96,36 @@ Excel.prototype = {
 
     return result;
   },
+  /**
+   * 指定したindexのワークシートを取得します。
+   * @param {Number} index 取得するワークシートのインデックス番号
+   * @return {ExcelSheet} ワークシートオブジェクト
+   */
+  getSheetByIndex: function(index) {
+    var result;
+    var i=0;
+    this.each(function(sheet) {
+      if(i === index) {
+        result = sheet;
+      }
+      i++;
+    });
+
+    return result;
+  },
+  /**
+   * 指定したindexのワークシートの後にシートを1枚追加します。
+   * @param {String} sheetName 追加するシートのシート名
+   * @param {Number} index 追加するシートの位置
+   * @return {ExcelSheet} ワークシートオブジェクト
+   */
+  addSheet: function(sheetName, index) {
+    var targetSheet = this.getSheetByIndex(index).getRawObject();
+    var addedSheet = this.workbookObj.Sheets.Add(null, targetSheet, 1, null);
+    addedSheet.Name = sheetName;
+
+    return new ExcelSheet(addedSheet);
+  },
   /** 
    * Excelファイルを保存します。
    */
@@ -161,5 +191,12 @@ ExcelSheet.prototype = {
    */
   getValue: function(x, y) {
     return this.sheetObj.Cells(x, y).Value;
+  },
+  /**
+   * ラップしている生のWorksheetオブジェクトを返します。<br/>
+   * 通常使いません。
+   */
+  getRawObject: function() {
+    return this.sheetObj;
   }
 };

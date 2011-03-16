@@ -185,6 +185,22 @@ File.basename = function(filename) {
   return file.Name;
 };
 
+/** 
+ * 一時ファイルを作成します。(ファイル名:MyDocuments/YYYYMMDDHH24MISSt)
+ * @param {Function} block ブロック
+ */
+File.createTemporaryFile = function(block) {
+  var tempFilePath = SpecialFolders.getMyDocuments() + "\\" + new Date().getYYYYMMDDHH24MISS();
+  File.open(tempFilePath, "w", function(file) {
+    block(file);
+  });
+
+  // ファイルが存在していれば削除する。
+  if(File.exist(tempFilePath)) {
+    File.unlink(tempFilePath);
+  }
+};
+
 // Prototypes of File
 File.prototype = {
   /** 
@@ -208,5 +224,12 @@ File.prototype = {
    */
   close: function() {
     this.ts.Close();
+  },
+  /**
+   * このファイルのパスを取得します。
+   * @return {String} このファイルのパス
+   */
+  getPath: function() {
+    return this.path;
   }
 };

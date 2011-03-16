@@ -12,6 +12,7 @@ JScript/Windows Scripting Hostにruby風の味付けをほどこし、
   * フォルダ操作、フォルダ内の再帰的なファイル検索
   * プログラムの実行
   * HTTP GET
+  * FTP GET/PUT
   * クリップボード
   * サービスの開始と終了
   * レジストリへのアクセス

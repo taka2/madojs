@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>MadoJS リファレンス - LogEvent</title>
+		<title>MadoJS リファレンス - FTP</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -249,7 +249,7 @@ MadoJS
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				LogEvent クラス 
+				FTP クラス 
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -257,25 +257,20 @@ MadoJS
 				
 				
 			
-				イベントエントリをログファイルに追加する機能を提供するクラス
+				FTP通信に関する機能を提供するクラス
 <pre class = "code">
 使用例：
-LogEvent.success("hoge1");
-LogEvent.error("hoge2");
-LogEvent.warning("hoge3");
-LogEvent.information("hoge4");
-LogEvent.auditSuccess("hoge5");
-LogEvent.auditFailure("hoge6");
+FTP.get("ftp.example.com", "user", "password", "/path/to/file", "test.log");
 </pre>
 				
 				
-					<br /><i></i> <a href="../symbols/src/src_logevent.js.html">logevent.js</a>で定義されています。
+					<br /><i></i> <a href="../symbols/src/src_ftp.js.html">ftp.js</a>で定義されています。
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class LogEvent.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class FTP.">
 				<caption>クラス 概要</caption>
 				<thead>
 					<tr>
@@ -288,7 +283,7 @@ LogEvent.auditFailure("hoge6");
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/LogEvent.html#constructor">LogEvent</a></b>()
+								<b><a href="../symbols/FTP.html#constructor">FTP</a></b>()
 							</div>
 							<div class="description">インスタンス化しません。</div>
 						</td>
@@ -299,12 +294,50 @@ LogEvent.auditFailure("hoge6");
 
 <!-- ============================== properties summary ===================== -->
 			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class FTP.">
+					<caption>フィールドの概要</caption>
+					<thead>
+						<tr>
+							<th scope="col">フィールド</th>
+							<th scope="col">フィールド名と説明</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								FTP.<b><a href="../symbols/FTP.html#.MODE_ASCII">MODE_ASCII</a></b>
+								</div>
+								<div class="description">FTP転送モードの定数：ASCIIモード(1)</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								FTP.<b><a href="../symbols/FTP.html#.MODE_BINARY">MODE_BINARY</a></b>
+								</div>
+								<div class="description">FTP転送モードの定数：BINARYモード(2)</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
 
 <!-- ============================== methods summary ======================== -->
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class LogEvent.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class FTP.">
 					<caption>メソッドの概要</caption>
 					<thead>
 						<tr>
@@ -317,54 +350,18 @@ LogEvent.auditFailure("hoge6");
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">LogEvent.<b><a href="../symbols/LogEvent.html#.auditFailure">auditFailure</a></b>(strMessage)
+								<div class="fixedFont">FTP.<b><a href="../symbols/FTP.html#.get">get</a></b>(host, userId, password, mode, path, fileName)
 								</div>
-								<div class="description">イベントエントリをログファイルにAUDIT_FAILUREで追加します。</div>
+								<div class="description">指定したパラメータのファイルをFTPで取得します。</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">LogEvent.<b><a href="../symbols/LogEvent.html#.auditSuccess">auditSuccess</a></b>(strMessage)
+								<div class="fixedFont">FTP.<b><a href="../symbols/FTP.html#.put">put</a></b>(host, userId, password, mode, path, fileName)
 								</div>
-								<div class="description">イベントエントリをログファイルにAUDIT_SUCCESSで追加します。</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">LogEvent.<b><a href="../symbols/LogEvent.html#.error">error</a></b>(strMessage)
-								</div>
-								<div class="description">イベントエントリをログファイルにERRORで追加します。</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">LogEvent.<b><a href="../symbols/LogEvent.html#.information">information</a></b>(strMessage)
-								</div>
-								<div class="description">イベントエントリをログファイルにINFORMATIONで追加します。</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">LogEvent.<b><a href="../symbols/LogEvent.html#.success">success</a></b>(strMessage)
-								</div>
-								<div class="description">イベントエントリをログファイルにSUCCESSで追加します。</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">LogEvent.<b><a href="../symbols/LogEvent.html#.warning">warning</a></b>(strMessage)
-								</div>
-								<div class="description">イベントエントリをログファイルにWARNINGで追加します。</div>
+								<div class="description">指定したパラメータのファイルをFTPでPUTします。</div>
 							</td>
 						</tr>
 					
@@ -385,7 +382,7 @@ LogEvent.auditFailure("hoge6");
 				</div>
 				
 				<div class="fixedFont">
-						<b>LogEvent</b>()
+						<b>FTP</b>()
 				</div>
 				
 				<div class="description">
@@ -409,6 +406,55 @@ LogEvent.auditFailure("hoge6");
 
 <!-- ============================== field details ========================== -->		
 			
+				<div class="sectionTitle">
+					フィールドの詳細
+				</div>
+				
+					<a name=".MODE_ASCII"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">FTP.</span><b>MODE_ASCII</b>
+					
+					</div>
+					<div class="description">
+						FTP転送モードの定数：ASCIIモード(1)
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".MODE_BINARY"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">FTP.</span><b>MODE_BINARY</b>
+					
+					</div>
+					<div class="description">
+						FTP転送モードの定数：BINARYモード(2)
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					
+				
+			
 
 <!-- ============================== method details ========================= -->		
 			
@@ -416,15 +462,15 @@ LogEvent.auditFailure("hoge6");
 					メソッドの詳細
 				</div>
 				
-					<a name=".auditFailure"> </a>
+					<a name=".get"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
 					
-					<span class="light">LogEvent.</span><b>auditFailure</b>(strMessage)
+					<span class="light">FTP.</span><b>get</b>(host, userId, password, mode, path, fileName)
 					
 					</div>
 					<div class="description">
-						イベントエントリをログファイルにAUDIT_FAILUREで追加します。
+						指定したパラメータのファイルをFTPで取得します。
 						
 						
 					</div>
@@ -436,10 +482,40 @@ LogEvent.auditFailure("hoge6");
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>strMessage</b>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>host</b>
 									
 								</dt>
-								<dd>ログエントリのテキストです。</dd>
+								<dd>FTPサーバ</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>userId</b>
+									
+								</dt>
+								<dd>FTPユーザID</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>password</b>
+									
+								</dt>
+								<dd>FTPパスワード</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>mode</b>
+									
+								</dt>
+								<dd>FTP転送モード</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>path</b>
+									
+								</dt>
+								<dd>GETするファイルのあるパス</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>fileName</b>
+									
+								</dt>
+								<dd>GETするファイル名</dd>
 							
 							</dl>
 						
@@ -452,15 +528,15 @@ LogEvent.auditFailure("hoge6");
 
 					<hr />
 				
-					<a name=".auditSuccess"> </a>
+					<a name=".put"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
 					
-					<span class="light">LogEvent.</span><b>auditSuccess</b>(strMessage)
+					<span class="light">FTP.</span><b>put</b>(host, userId, password, mode, path, fileName)
 					
 					</div>
 					<div class="description">
-						イベントエントリをログファイルにAUDIT_SUCCESSで追加します。
+						指定したパラメータのファイルをFTPでPUTします。
 						
 						
 					</div>
@@ -472,154 +548,40 @@ LogEvent.auditFailure("hoge6");
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>strMessage</b>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>host</b>
 									
 								</dt>
-								<dd>ログエントリのテキストです。</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name=".error"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					
-					<span class="light">LogEvent.</span><b>error</b>(strMessage)
-					
-					</div>
-					<div class="description">
-						イベントエントリをログファイルにERRORで追加します。
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">引数:</dt>
+								<dd>FTPサーバ</dd>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>strMessage</b>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>userId</b>
 									
 								</dt>
-								<dd>ログエントリのテキストです。</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name=".information"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					
-					<span class="light">LogEvent.</span><b>information</b>(strMessage)
-					
-					</div>
-					<div class="description">
-						イベントエントリをログファイルにINFORMATIONで追加します。
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">引数:</dt>
+								<dd>FTPユーザID</dd>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>strMessage</b>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>password</b>
 									
 								</dt>
-								<dd>ログエントリのテキストです。</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name=".success"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					
-					<span class="light">LogEvent.</span><b>success</b>(strMessage)
-					
-					</div>
-					<div class="description">
-						イベントエントリをログファイルにSUCCESSで追加します。
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">引数:</dt>
+								<dd>FTPパスワード</dd>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>strMessage</b>
+									<span class="light fixedFont">{Number}</span> <b>mode</b>
 									
 								</dt>
-								<dd>ログエントリのテキストです。</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name=".warning"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					
-					<span class="light">LogEvent.</span><b>warning</b>(strMessage)
-					
-					</div>
-					<div class="description">
-						イベントエントリをログファイルにWARNINGで追加します。
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">引数:</dt>
+								<dd>FTP転送モード</dd>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>strMessage</b>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>path</b>
 									
 								</dt>
-								<dd>ログエントリのテキストです。</dd>
+								<dd>PUTする先のパス</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>fileName</b>
+									
+								</dt>
+								<dd>PUTするファイル名</dd>
 							
 							</dl>
 						
@@ -644,7 +606,7 @@ LogEvent.auditFailure("hoge6");
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Wed Mar 16 2011 17:02:11 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Wed Mar 16 2011 17:02:10 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

@@ -18,6 +18,7 @@ copy /B mado-debug.js+src\dir.js mado-debug.js
 
 REM Network
 copy /B mado-debug.js+src\http.js mado-debug.js
+copy /B mado-debug.js+src\ftp.js mado-debug.js
 
 REM Other
 copy /B mado-debug.js+src\clipboard.js mado-debug.js

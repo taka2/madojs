@@ -67,9 +67,13 @@ var isWScriptRunning = function() {
 /**
  * 指定したkeyのキー入力を行います。
  * @param {String} key 入力する文字列
+ * @param {Number} num (オプション)送信する回数(初期値 1)
  */
-var sendKeys = function (key) {
-  Const.WSHELL.Sendkeys(key);
+var sendKeys = function (key, num) {
+  var myNum = num || 1;
+  for(var i=0; i<num; i++) {
+    Const.WSHELL.Sendkeys(key);
+  }
   return this;
 };
 

@@ -140,9 +140,13 @@ var isWScriptRunning = function() {
 /**
  * 指定したkeyのキー入力を行います。
  * @param {String} key 入力する文字列
+ * @param {Number} num (オプション)送信する回数(初期値 1)
  */
-var sendKeys = function (key) {
-  Const.WSHELL.Sendkeys(key);
+var sendKeys = function (key, num) {
+  var myNum = num || 1;
+  for(var i=0; i<num; i++) {
+    Const.WSHELL.Sendkeys(key);
+  }
   return this;
 };
 
@@ -1143,337 +1147,380 @@ KeySender.prototype = {
   /**
    * 指定したtextをキー送信します。
    * @param {String} text 送信する文字列
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendKeys: function(text) {
-    sendKeys(text);
+  sendKeys: function(text, num) {
+    sendKeys(text, num);
     return this;
   },
   /**
    * 指定した日本語textをキー送信します。
    * @param {String} text 送信する文字列
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendJapaneseKeys: function(text) {
+  sendJapaneseKeys: function(text, num) {
     Clipboard.open(function(clip) {
-      clip.set(text);
-      sendKeys("^v");
+      for(var i=0; i<num; i++) {
+        clip.set(text);
+        sendKeys("^v");
+      }
     });
     return this;
   },
   /**
    * Shiftを押しながら指定したchをキー送信します。
    * @param {String} ch 送信する文字
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendKeyWithShift: function(ch) {
-    sendKeys("+" + ch);
+  sendKeyWithShift: function(ch, num) {
+    sendKeys("+" + ch, num);
     return this;
   },
   /**
    * Controlを押しながら指定したchをキー送信します。
    * @param {String} ch 送信する文字
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendKeyWithControl: function(ch) {
-    sendKeys("^" + ch);
+  sendKeyWithControl: function(ch, num) {
+    sendKeys("^" + ch, num);
     return this;
   },
   /**
    * Altを押しながら指定したchをキー送信します。
    * @param {String} ch 送信する文字
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendKeyWithAlt: function(ch) {
-    sendKeys("%" + ch);
+  sendKeyWithAlt: function(ch, num) {
+    sendKeys("%" + ch, num);
     return this;
   },
   /**
    * Back Spaceをキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendBackspace: function(ch) {
-    sendKeys("{BACKSPACE}");
+  sendBackspace: function(ch, num) {
+    sendKeys("{BACKSPACE}", num);
     return this;
   },
   /**
    * Breakをキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendBreak: function(ch) {
-    sendKeys("{BREAK}");
+  sendBreak: function(ch, num) {
+    sendKeys("{BREAK}", num);
     return this;
   },
   /**
    * Caps Lockをキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendCapsLock: function(ch) {
-    sendKeys("{CAPSLOCK}");
+  sendCapsLock: function(ch, num) {
+    sendKeys("{CAPSLOCK}", num);
     return this;
   },
   /**
    * Deleteをキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendDelete: function(ch) {
-    sendKeys("{DELETE}");
+  sendDelete: function(ch, num) {
+    sendKeys("{DELETE}", num);
     return this;
   },
   /**
    * ↓をキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendDownArrow: function(ch) {
-    sendKeys("{DOWN}");
+  sendDownArrow: function(ch, num) {
+    sendKeys("{DOWN}", num);
     return this;
   },
   /**
    * Endをキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendEnd: function(ch) {
-    sendKeys("{END}");
+  sendEnd: function(ch, num) {
+    sendKeys("{END}", num);
     return this;
   },
   /**
    * Enterをキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendEnter: function() {
-    sendKeys("{ENTER}");
+  sendEnter: function(num) {
+    sendKeys("{ENTER}", num);
     return this;
   },
   /**
    * Escをキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendEsc: function(ch) {
-    sendKeys("{ESC}");
+  sendEsc: function(num) {
+    sendKeys("{ESC}", num);
     return this;
   },
   /**
    * Helpをキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendHelp: function(ch) {
-    sendKeys("{HELP}");
+  sendHelp: function(num) {
+    sendKeys("{HELP}", num);
     return this;
   },
   /**
    * Homeをキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendHome: function(ch) {
-    sendKeys("{HOME}");
+  sendHome: function(num) {
+    sendKeys("{HOME}", num);
     return this;
   },
   /**
    * Insertをキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendInsert: function(ch) {
-    sendKeys("{INSERT}");
+  sendInsert: function(num) {
+    sendKeys("{INSERT}", num);
     return this;
   },
   /**
    * ←をキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendLeftArrow: function(ch) {
-    sendKeys("{LEFT}");
+  sendLeftArrow: function(num) {
+    sendKeys("{LEFT}", num);
     return this;
   },
   /**
    * NumLockをキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendNumLock: function(ch) {
-    sendKeys("{NUMLOCK}");
+  sendNumLock: function(num) {
+    sendKeys("{NUMLOCK}", num);
     return this;
   },
   /**
    * Page Downをキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendPageDown: function(ch) {
-    sendKeys("{PGDN}");
+  sendPageDown: function(num) {
+    sendKeys("{PGDN}", num);
     return this;
   },
   /**
    * Page Upをキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendPageUp: function(ch) {
-    sendKeys("{PGUP}");
+  sendPageUp: function(num) {
+    sendKeys("{PGUP}", num);
     return this;
   },
   /**
    * Print Screenをキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendPrintScreen: function(ch) {
-    sendKeys("{PRTSC}");
+  sendPrintScreen: function(num) {
+    sendKeys("{PRTSC}", num);
     return this;
   },
   /**
    * →をキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendRightArrow: function(ch) {
-    sendKeys("{RIGHT}");
+  sendRightArrow: function(num) {
+    sendKeys("{RIGHT}", num);
     return this;
   },
   /**
    * Scroll Lockをキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendScrollLock: function(ch) {
-    sendKeys("{SCROLLLOCK}");
+  sendScrollLock: function(num) {
+    sendKeys("{SCROLLLOCK}", num);
     return this;
   },
   /**
    * Tabをキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendTab: function() {
-    sendKeys("{TAB}");
+  sendTab: function(num) {
+    sendKeys("{TAB}", num);
     return this;
   },
   /**
    * ↑をキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendUpArrow: function() {
-    sendKeys("{UP}");
+  sendUpArrow: function(num) {
+    sendKeys("{UP}", num);
     return this;
   },
   /**
    * F1をキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendF1: function() {
-    sendKeys("{F1}");
+  sendF1: function(num) {
+    sendKeys("{F1}", num);
     return this;
   },
   /**
    * F2をキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendF2: function() {
-    sendKeys("{F2}");
+  sendF2: function(num) {
+    sendKeys("{F2}", num);
     return this;
   },
   /**
    * F3をキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendF3: function() {
-    sendKeys("{F3}");
+  sendF3: function(num) {
+    sendKeys("{F3}", num);
     return this;
   },
   /**
    * F4をキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendF4: function() {
-    sendKeys("{F4}");
+  sendF4: function(num) {
+    sendKeys("{F4}", num);
     return this;
   },
   /**
    * F5をキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendF5: function() {
-    sendKeys("{F5}");
+  sendF5: function(num) {
+    sendKeys("{F5}", num);
     return this;
   },
   /**
    * F6をキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendF6: function() {
-    sendKeys("{F6}");
+  sendF6: function(num) {
+    sendKeys("{F6}", num);
     return this;
   },
   /**
    * F7をキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendF7: function() {
-    sendKeys("{F7}");
+  sendF7: function(num) {
+    sendKeys("{F7}", num);
     return this;
   },
   /**
    * F8をキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendF8: function() {
-    sendKeys("{F8}");
+  sendF8: function(num) {
+    sendKeys("{F8}", num);
     return this;
   },
   /**
    * F9をキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendF9: function() {
-    sendKeys("{F9}");
+  sendF9: function(num) {
+    sendKeys("{F9}", num);
     return this;
   },
   /**
    * F10をキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendF10: function() {
-    sendKeys("{F10}");
+  sendF10: function(num) {
+    sendKeys("{F10}", num);
     return this;
   },
   /**
    * F11をキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendF11: function() {
-    sendKeys("{F11}");
+  sendF11: function(num) {
+    sendKeys("{F11}", num);
     return this;
   },
   /**
    * F12をキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendF12: function() {
-    sendKeys("{F12}");
+  sendF12: function(num) {
+    sendKeys("{F12}", num);
     return this;
   },
   /**
    * F13をキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendF13: function() {
-    sendKeys("{F13}");
+  sendF13: function(num) {
+    sendKeys("{F13}", num);
     return this;
   },
   /**
    * F14をキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendF14: function() {
-    sendKeys("{F14}");
+  sendF14: function(num) {
+    sendKeys("{F14}", num);
     return this;
   },
   /**
    * F15をキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendF15: function() {
-    sendKeys("{F15}");
+  sendF15: function(num) {
+    sendKeys("{F15}", num);
     return this;
   },
   /**
    * F16をキー送信します。
+   * @param {Number} num (オプション)送信する回数(初期値 1)
    * @return this
    */
-  sendF16: function() {
-    sendKeys("{F16}");
+  sendF16: function(num) {
+    sendKeys("{F16}", num);
     return this;
   }
 };

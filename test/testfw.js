@@ -6,6 +6,8 @@ var TestUtil = function() {
   this.totalTestsCount = 0;
   this.totalOkCount = 0;
   this.totalNgCount = 0;
+  this.errors = [];
+  this.currentMethodName = "";
 };
 
 // テスト用メソッド
@@ -17,6 +19,7 @@ TestUtil.prototype.assertEquals = function(a, b) {
       this.totalOkCount++;
     } else {
       this.totalNgCount++;
+      this.errors.push(this.currentMethodName + ": expected: " + a + ", actual: " + b);
     }
   } catch (e) {
     this.totalNgCount++;
@@ -30,6 +33,7 @@ TestUtil.prototype.runTest = function() {
       var objTestMethod = Test[cls][testMethod];
       if(typeof(objTestMethod) === "function") {
         // 関数の場合のみコールする
+        this.currentMethodName = "Test." + cls + "." + testMethod;
         objTestMethod();
       }
     }
@@ -39,4 +43,13 @@ TestUtil.prototype.runTest = function() {
 // テスト結果の出力
 TestUtil.prototype.printTestResult = function() {
   print(this.totalOkCount + "/" + this.totalTestsCount + " is Ok.");
+
+  var errorMessage = "";
+  for(var i=0; i<this.errors.length; i++) {
+    errorMessage = errorMessage + this.errors[i] + "\n";
+  }
+
+  if(errorMessage !== "") {
+    print(errorMessage);
+  }
 };

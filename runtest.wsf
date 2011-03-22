@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<package>
+  <job>
+    <script language="JScript" src="mado.js"></script>
+    <script language="JScript" src="test/testfw.js"></script>
+    <script language="JScript" src="test/array.js"></script>
+    <script language="JScript" src="test/date.js"></script>
+    <script language="JScript" src="test/string.js"></script>
+    <script language="JScript">
+      var testUtil = new TestUtil();
+      testUtil.runTest();
+      testUtil.printTestResult();
+    </script>
+  </job>
+</package>

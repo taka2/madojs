@@ -26,6 +26,17 @@ TestUtil.prototype.assertEquals = function(a, b) {
   }
 };
 
+TestUtil.prototype.assertTrue = function(b) {
+  this.totalTestsCount++;
+
+  if(b) {
+    this.totalOkCount++;
+  } else {
+    this.totalNgCount++;
+    this.errors.push(this.currentMethodName + ": expected: true, actual: false");
+  }
+};
+
 // テストの実行
 TestUtil.prototype.runTest = function() {
   for(var cls in Test) {

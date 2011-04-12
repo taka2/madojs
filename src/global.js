@@ -1,3 +1,12 @@
+// Global Variables
+/**
+ * 引数で構成された配列
+ */
+var ARGV = [];
+for(var i=0; i<WScript.Arguments.length; i++) {
+  ARGV.push(WScript.Arguments(i));
+}
+
 // Global Functions
 /**
  * 指定したmsec(ミリ秒)スリープします。

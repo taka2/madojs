@@ -308,6 +308,42 @@ MadoJS
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#activate">activate</a></b>()
+								</div>
+								<div class="description">シートをアクティブ化します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#addComment">addComment</a></b>(x, y, comment, visible)
+								</div>
+								<div class="description">セルにコメントを追加します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#autoFit">autoFit</a></b>()
+								</div>
+								<div class="description">オートフィットを行います。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#drawBorder">drawBorder</a></b>()
+								</div>
+								<div class="description">カレントリージョンに対して罫線を引きます。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#getName">getName</a></b>()
 								</div>
 								<div class="description">ワークシート名を取得します。</div>
@@ -329,6 +365,24 @@ MadoJS
 								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#getValue">getValue</a></b>(x, y)
 								</div>
 								<div class="description">セルの値を取得します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#setFormat">setFormat</a></b>(x, y, format)
+								</div>
+								<div class="description">セルの書式を設定します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#setName">setName</a></b>(sheetName)
+								</div>
+								<div class="description">ワークシート名を設定します。</div>
 							</td>
 						</tr>
 					
@@ -399,6 +453,135 @@ MadoJS
 				<div class="sectionTitle">
 					メソッドの詳細
 				</div>
+				
+					<a name="activate"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>activate</b>()
+					
+					</div>
+					<div class="description">
+						シートをアクティブ化します。
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="addComment"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>addComment</b>(x, y, comment, visible)
+					
+					</div>
+					<div class="description">
+						セルにコメントを追加します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>x</b>
+									
+								</dt>
+								<dd>x座標</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>y</b>
+									
+								</dt>
+								<dd>y座標</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>comment</b>
+									
+								</dt>
+								<dd>コメント</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>visible</b>
+									
+								</dt>
+								<dd>コメントを表示するかどうか</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="autoFit"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>autoFit</b>()
+					
+					</div>
+					<div class="description">
+						オートフィットを行います。
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="drawBorder"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>drawBorder</b>()
+					
+					</div>
+					<div class="description">
+						カレントリージョンに対して罫線を引きます。
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
 				
 					<a name="getName"> </a>
 					<div class="fixedFont">
@@ -506,6 +689,90 @@ MadoJS
 
 					<hr />
 				
+					<a name="setFormat"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>setFormat</b>(x, y, format)
+					
+					</div>
+					<div class="description">
+						セルの書式を設定します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>x</b>
+									
+								</dt>
+								<dd>x座標</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>y</b>
+									
+								</dt>
+								<dd>y座標</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>format</b>
+									
+								</dt>
+								<dd>書式</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="setName"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>setName</b>(sheetName)
+					
+					</div>
+					<div class="description">
+						ワークシート名を設定します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>sheetName</b>
+									
+								</dt>
+								<dd>ワークシート名</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
 					<a name="setValue"> </a>
 					<div class="fixedFont">
 					
@@ -566,7 +833,7 @@ MadoJS
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Tue Apr 12 2011 14:22:10 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Tue Apr 12 2011 19:40:51 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

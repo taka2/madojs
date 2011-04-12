@@ -288,7 +288,7 @@ Excel.open("abc.xls", function(excel) {
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/Excel.html#constructor">Excel</a></b>(path)
+								<b><a href="../symbols/Excel.html#constructor">Excel</a></b>(path, bNew)
 							</div>
 							<div class="description">Excelオブジェクトを作成します。</div>
 						</td>
@@ -324,6 +324,15 @@ Excel.open("abc.xls", function(excel) {
 						</tr>
 					
 						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">Excel.<b><a href="../symbols/Excel.html#.create">create</a></b>(path, block)
+								</div>
+								<div class="description">Excelファイルを作成し、ブロックを実行します。ブロックが指定されていない場合は、Excelオブジェクトを返します。</div>
+							</td>
+						</tr>
+					
+						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/Excel.html#each">each</a></b>(block)
@@ -347,6 +356,15 @@ Excel.open("abc.xls", function(excel) {
 								<div class="fixedFont"><b><a href="../symbols/Excel.html#getSheetByName">getSheetByName</a></b>(sheetName)
 								</div>
 								<div class="description">指定したsheetNameのワークシートを取得します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Excel.html#getSheetCount">getSheetCount</a></b>()
+								</div>
+								<div class="description">ワークシート数を取得します。</div>
 							</td>
 						</tr>
 					
@@ -421,7 +439,7 @@ Excel.open("abc.xls", function(excel) {
 				</div>
 				
 				<div class="fixedFont">
-						<b>Excel</b>(path)
+						<b>Excel</b>(path, bNew)
 				</div>
 				
 				<div class="description">
@@ -442,6 +460,12 @@ Excel.open("abc.xls", function(excel) {
 							</dt>
 								<dd>Excelファイルのパスを文字列で指定します。</dd>
 						
+							<dt>
+								<span class="light fixedFont">{Boolean}</span>  <b>bNew</b>
+								
+							</dt>
+								<dd>(オプション)新しくファイルを作成するかどうか(初期値 false)</dd>
+						
 						</dl>
 					
 					
@@ -453,7 +477,7 @@ Excel.open("abc.xls", function(excel) {
 							<dt>
 								 <b></b>
 							</dt>
-								<dd>ファイルが存在しない場合にスローされます。</dd>
+								<dd>bNewがfalse、かつ、ファイルが存在しない場合にスローされます。</dd>
 						
 						</dl>
 					
@@ -514,6 +538,55 @@ Excel.open("abc.xls", function(excel) {
 							<dt class="heading">戻り値:</dt>
 							
 								<dd><span class="light fixedFont">{<a href="../symbols/ExcelSheet.html">ExcelSheet</a>}</span> ワークシートオブジェクト</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".create"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Object}</span>
+					<span class="light">Excel.</span><b>create</b>(path, block)
+					
+					</div>
+					<div class="description">
+						Excelファイルを作成し、ブロックを実行します。ブロックが指定されていない場合は、Excelオブジェクトを返します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>path</b>
+									
+								</dt>
+								<dd>Excelファイルのパスを文字列で指定します。</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>block</b>
+									
+								</dt>
+								<dd>ブロック</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{Object}</span> ブロックが指定されていない場合は、作成したクリップボード</dd>
 							
 							</dl>
 						
@@ -636,6 +709,38 @@ Excel.open("abc.xls", function(excel) {
 							<dt class="heading">戻り値:</dt>
 							
 								<dd><span class="light fixedFont">{Object}</span> ワークシートオブジェクト</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="getSheetCount"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Number}</span>
+					<b>getSheetCount</b>()
+					
+					</div>
+					<div class="description">
+						ワークシート数を取得します。
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{Number}</span> ワークシート数</dd>
 							
 							</dl>
 						
@@ -865,7 +970,7 @@ Excel.open("abc.xls", function(excel) {
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Tue Apr 12 2011 14:22:10 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Tue Apr 12 2011 19:40:51 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

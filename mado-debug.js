@@ -476,6 +476,20 @@ Array.prototype.each = function(block) {
 
   return result;
 };
+
+/**
+ * objが配列に含まれるかどうかチェックします。
+ * @param {Object} obj 配列に含まれるかどうかチェックするオブジェクト
+ * @return {Boolean} objが配列に含まれる場合true、そうでない場合falseを返す。
+ */
+Array.prototype.include = function(obj) {
+  for(var i=0; i<this.length; i++) {
+    if(this[i] === obj) {
+      return true;
+    }
+  }
+  return false;
+};
 /** 
  * 日付をYYYYMMDD形式で返します。
  * @return {String} YYYYMMDD形式の日付
@@ -1776,17 +1790,22 @@ Excel.open("abc.xls", function(excel) {
 });
 </pre>
  * @param {String} path Excelファイルのパスを文字列で指定します。
- * @throws ファイルが存在しない場合にスローされます。
+ * @param {Boolean} bNew (オプション)新しくファイルを作成するかどうか(初期値 false)
+ * @throws bNewがfalse、かつ、ファイルが存在しない場合にスローされます。
  */
-var Excel = function(path) {
+var Excel = function(path, bNew) {
   this.path = path;
 
-  if(!File.exist(path)) {
-    throw new Error(-1, "File Not Found: " + path);
-  }
-
   this.excelObj = new ActiveXObject("Excel.Application");
-  this.workbookObj = this.excelObj.Workbooks.Open(path);
+  if(bNew) {
+    this.workbookObj = this.excelObj.Workbooks.Add();
+  } else {
+    if(!File.exist(path)) {
+      throw new Error(-1, "File Not Found: " + path);
+    }
+
+    this.workbookObj = this.excelObj.Workbooks.Open(path);
+  }
 };
 
 /** 
@@ -1798,11 +1817,11 @@ var Excel = function(path) {
  */
 Excel.open = function(path, block) {
   if(!isFunction(block)) {
-    return new Excel(path);
+    return new Excel(path, false);
   }
 
   try {
-    var excel = new Excel(path);
+    var excel = new Excel(path, false);
     block(excel);
   } finally {
     if (excel != null) {
@@ -1820,15 +1839,37 @@ Excel.open = function(path, block) {
  */
 Excel.openReadonly = function(path, block) {
   if(!isFunction(block)) {
-    return new Excel(path);
+    return new Excel(path, false);
   }
 
   try {
-    var excel = new Excel(path);
+    var excel = new Excel(path, false);
     block(excel);
   } finally {
     if (excel != null) {
       excel.quitDiscardChanges();
+    }
+  }
+};
+
+/** 
+ * Excelファイルを作成し、ブロックを実行します。
+ * ブロックが指定されていない場合は、Excelオブジェクトを返します。
+ * @param {String} path Excelファイルのパスを文字列で指定します。
+ * @param {Function} block ブロック
+ * @return {Object} ブロックが指定されていない場合は、作成したクリップボード
+ */
+Excel.create = function(block) {
+  if(!isFunction(block)) {
+    return new Excel(path, true);
+  }
+
+  try {
+    var excel = new Excel("", true);
+    block(excel);
+  } finally {
+    if (excel != null) {
+      excel.quit();
     }
   }
 };
@@ -1890,6 +1931,13 @@ Excel.prototype = {
 
     return new ExcelSheet(addedSheet);
   },
+  /**
+   * ワークシート数を取得します。
+   * @return {Number} ワークシート数
+   */
+  getSheetCount: function() {
+    return this.workbookObj.Sheets.Count;
+  },
   /** 
    * Excelファイルを保存します。
    */
@@ -1939,6 +1987,13 @@ ExcelSheet.prototype = {
     return this.sheetObj.Name;
   },
   /**
+   * ワークシート名を設定します。
+   * @param {String} sheetName ワークシート名
+   */
+  setName: function(sheetName) {
+    return this.sheetObj.Name = sheetName;
+  },
+  /**
    * セルに値を設定します。
    * @param {Number} x x座標
    * @param {Number} y y座標
@@ -1962,6 +2017,53 @@ ExcelSheet.prototype = {
    */
   getRawObject: function() {
     return this.sheetObj;
+  },
+  /**
+   * オートフィットを行います。
+   */
+  autoFit: function() {
+    this.sheetObj.Columns("A:IV").AutoFit();
+  },
+  /**
+   * カレントリージョンに対して罫線を引きます。
+   */
+  drawBorder: function() {
+    var range = this.sheetObj.Cells(1, 1).CurrentRegion;
+    var toIndex = 12;
+    if(range.Rows.Count === 1) {
+      // 1行しかない場合は12は引かない
+      toIndex = 11;
+    }
+    for(var i=7; i<=toIndex; i++) {
+      range.Borders(i).LineStyle = 1;
+    }
+  },
+  /**
+   * セルの書式を設定します。
+   * @param {Number} x x座標
+   * @param {Number} y y座標
+   * @param {String} format 書式
+   */
+  setFormat: function(x, y, format) {
+    this.sheetObj.Cells(x, y).NumberFormatLocal = format;
+  },
+  /**
+   * セルにコメントを追加します。
+   * @param {Number} x x座標
+   * @param {Number} y y座標
+   * @param {String} comment コメント
+   * @param {Boolean} visible コメントを表示するかどうか
+   */
+  addComment: function(x, y, comment, visible) {
+    this.sheetObj.Cells(x, y).AddComment();
+    this.sheetObj.Cells(x, y).Comment.Visible = visible;
+    this.sheetObj.Cells(x, y).Comment.Text(comment);
+  },
+  /**
+   * シートをアクティブ化します。
+   */
+  activate: function() {
+    this.sheetObj.Activate();
   }
 };
 /** 

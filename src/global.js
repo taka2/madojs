@@ -128,3 +128,27 @@ var createShortcut = function(pathTo, pathFrom) {
   shortcut.TargetPath = pathFrom;
   shortcut.Save();
 };
+
+/**
+ * ポップアップメッセージを表示します。
+ * @param {String} strText 表示するメッセージ
+ * @param {Number} nSecondsToWait (オプション)ポップアップウインドウを閉じるまでの秒数(初期値 0)
+ * @param {String} strTitle (オプション)ポップアップウインドウのタイトル(初期値 "Windows Script Host")
+ * @param {Number} buttonType (オプション)ポップアップウインドウのボタンの種類(初期値 Const.BUTTON_TYPE_OK)
+ * @param {Number} iconType (オプション)ポップアップウインドウのアイコンの種類(初期値 Const.ICON_TYPE_INFO)
+ * @return {Number} 選択されたボタン値
+ * @example 使用例：
+if(popup("mado.jsを使いますか？"
+   , 0
+   , "title"
+   , Const.BUTTON_TYPE_YES_NO) === Const.BUTTON_VALUE_YES) {
+   print("はい！");
+}
+ */
+var popup = function(strText, nSecondsToWait, strTitle, buttonType, iconType) {
+  var myNSecondsToWait = nSecondsToWait || 0;
+  var myStrTitle = strTitle || "Windows Script Host";
+  var myButtonType = buttonType || Const.BUTTON_TYPE_OK_ONLY;
+  var myIconType = iconType || Const.ICON_TYPE_INFO;
+  return Const.WSHELL.popup(strText, myNSecondsToWait, myStrTitle, myButtonType + myIconType);
+};

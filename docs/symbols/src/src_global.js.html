@@ -135,4 +135,28 @@
 <span class='line'>128</span> </span><span class="WHIT">  </span><span class="NAME">shortcut.TargetPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pathFrom</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>129</span> </span><span class="WHIT">  </span><span class="NAME">shortcut.Save</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>130</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>131</span> </span></pre></body></html>
+<span class='line'>131</span> 
+<span class='line'>132</span> </span><span class="COMM">/**
+<span class='line'>133</span>  * ポップアップメッセージを表示します。
+<span class='line'>134</span>  * @param {String} strText 表示するメッセージ
+<span class='line'>135</span>  * @param {Number} nSecondsToWait (オプション)ポップアップウインドウを閉じるまでの秒数(初期値 0)
+<span class='line'>136</span>  * @param {String} strTitle (オプション)ポップアップウインドウのタイトル(初期値 "Windows Script Host")
+<span class='line'>137</span>  * @param {Number} buttonType (オプション)ポップアップウインドウのボタンの種類(初期値 Const.BUTTON_TYPE_OK)
+<span class='line'>138</span>  * @param {Number} iconType (オプション)ポップアップウインドウのアイコンの種類(初期値 Const.ICON_TYPE_INFO)
+<span class='line'>139</span>  * @return {Number} 選択されたボタン値
+<span class='line'>140</span>  * @example 使用例：
+<span class='line'>141</span> if(popup("mado.jsを使いますか？"
+<span class='line'>142</span>    , 0
+<span class='line'>143</span>    , "title"
+<span class='line'>144</span>    , Const.BUTTON_TYPE_YES_NO) === Const.BUTTON_VALUE_YES) {
+<span class='line'>145</span>    print("はい！");
+<span class='line'>146</span> }
+<span class='line'>147</span>  */</span><span class="WHIT">
+<span class='line'>148</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">popup</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">strText</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">nSecondsToWait</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">strTitle</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">buttonType</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">iconType</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">myNSecondsToWait</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">nSecondsToWait</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>150</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">myStrTitle</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">strTitle</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">"Windows Script Host"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>151</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">myButtonType</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">buttonType</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">Const.BUTTON_TYPE_OK_ONLY</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>152</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">myIconType</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">iconType</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">Const.ICON_TYPE_INFO</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>153</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Const.WSHELL.popup</span><span class="PUNC">(</span><span class="NAME">strText</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">myNSecondsToWait</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">myStrTitle</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">myButtonType</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">myIconType</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>154</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>155</span> </span></pre></body></html>

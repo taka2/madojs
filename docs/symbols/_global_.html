@@ -357,6 +357,15 @@ MadoJS
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/_global_.html#popup">popup</a></b>(strText, nSecondsToWait, strTitle, buttonType, iconType)
+								</div>
+								<div class="description">ポップアップメッセージを表示します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/_global_.html#print">print</a></b>(msg)
 								</div>
 								<div class="description">msgを表示します。</div>
@@ -750,6 +759,86 @@ createShortcut(SpecialFolders.getDesktop() + "\\yahoo.url", "http://www.yahoo.co
 
 					<hr />
 				
+					<a name="popup"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Number}</span>
+					<b>popup</b>(strText, nSecondsToWait, strTitle, buttonType, iconType)
+					
+					</div>
+					<div class="description">
+						ポップアップメッセージを表示します。
+						
+							<br />
+							<a href="../symbols/src/src_global.js.html">global.js</a>で<i>定義されています</i>。
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">使用例：
+if(popup("mado.jsを使いますか？"
+   , 0
+   , "title"
+   , Const.BUTTON_TYPE_YES_NO) === Const.BUTTON_VALUE_YES) {
+   print("はい！");
+}</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>strText</b>
+									
+								</dt>
+								<dd>表示するメッセージ</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>nSecondsToWait</b>
+									
+								</dt>
+								<dd>(オプション)ポップアップウインドウを閉じるまでの秒数(初期値 0)</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>strTitle</b>
+									
+								</dt>
+								<dd>(オプション)ポップアップウインドウのタイトル(初期値 "Windows Script Host")</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>buttonType</b>
+									
+								</dt>
+								<dd>(オプション)ポップアップウインドウのボタンの種類(初期値 Const.BUTTON_TYPE_OK)</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>iconType</b>
+									
+								</dt>
+								<dd>(オプション)ポップアップウインドウのアイコンの種類(初期値 Const.ICON_TYPE_INFO)</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{Number}</span> 選択されたボタン値</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
 					<a name="print"> </a>
 					<div class="fixedFont">
 					
@@ -936,7 +1025,7 @@ createShortcut(SpecialFolders.getDesktop() + "\\yahoo.url", "http://www.yahoo.co
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Fri Mar 18 2011 16:18:25 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Tue Apr 12 2011 10:42:29 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

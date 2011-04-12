@@ -71,6 +71,91 @@ Const.LOG_EVENT_TYPE_AUDIT_SUCCESS = 8;
  * LogEventタイプ：AUDIT_FAILURE(16)
  */
 Const.LOG_EVENT_TYPE_AUDIT_FAILURE = 16;
+
+/**
+ * ボタンタイプ：OK_ONLY(0)
+ */
+Const.BUTTON_TYPE_OK_ONLY = 0;
+
+/**
+ * ボタンタイプ：OK_CANCEL(1)
+ */
+Const.BUTTON_TYPE_OK_CANCEL = 1;
+
+/**
+ * ボタンタイプ：STOP_RETRY_IGNORE(2)
+ */
+Const.BUTTON_TYPE_STOP_RETRY_IGNORE = 2;
+
+/**
+ * ボタンタイプ：YES_NO_CANCEL(3)
+ */
+Const.BUTTON_TYPE_YES_NO_CANCEL = 3;
+
+/**
+ * ボタンタイプ：YES_NO(4)
+ */
+Const.BUTTON_TYPE_YES_NO = 4;
+
+/**
+ * ボタンタイプ：RETRY_CANCEL(5)
+ */
+Const.BUTTON_TYPE_RETRY_CANCEL = 5;
+
+/**
+ * アイコンタイプ：STOP(16)
+ */
+Const.ICON_TYPE_STOP = 16;
+
+/**
+ * アイコンタイプ：QUESTION(32)
+ */
+Const.ICON_TYPE_QUESTION = 32;
+
+/**
+ * アイコンタイプ：EXCLAMATION(48)
+ */
+Const.ICON_TYPE_EXCLAMATION = 48;
+
+/**
+ * アイコンタイプ：INFO(64)
+ */
+Const.ICON_TYPE_INFO = 64;
+
+/**
+ * ボタン値：OK(1)
+ */
+Const.BUTTON_VALUE_OK = 1;
+
+/**
+ * ボタン値：CANCEL(2)
+ */
+Const.BUTTON_VALUE_CANCEL = 2;
+
+/**
+ * ボタン値：STOP(3)
+ */
+Const.BUTTON_VALUE_STOP = 3;
+
+/**
+ * ボタン値：RETRY(4)
+ */
+Const.BUTTON_VALUE_RETRY = 4;
+
+/**
+ * ボタン値：IGNORE(5)
+ */
+Const.BUTTON_VALUE_IGNORE = 5;
+
+/**
+ * ボタン値：YES(6)
+ */
+Const.BUTTON_VALUE_YES = 6;
+
+/**
+ * ボタン値：NO(7)
+ */
+Const.BUTTON_VALUE_NO = 7;
 // Global Functions
 /**
  * 指定したmsec(ミリ秒)スリープします。
@@ -200,6 +285,30 @@ var createShortcut = function(pathTo, pathFrom) {
   var shortcut = Const.WSHELL.CreateShortcut(pathTo);
   shortcut.TargetPath = pathFrom;
   shortcut.Save();
+};
+
+/**
+ * ポップアップメッセージを表示します。
+ * @param {String} strText 表示するメッセージ
+ * @param {Number} nSecondsToWait (オプション)ポップアップウインドウを閉じるまでの秒数(初期値 0)
+ * @param {String} strTitle (オプション)ポップアップウインドウのタイトル(初期値 "Windows Script Host")
+ * @param {Number} buttonType (オプション)ポップアップウインドウのボタンの種類(初期値 Const.BUTTON_TYPE_OK)
+ * @param {Number} iconType (オプション)ポップアップウインドウのアイコンの種類(初期値 Const.ICON_TYPE_INFO)
+ * @return {Number} 選択されたボタン値
+ * @example 使用例：
+if(popup("mado.jsを使いますか？"
+   , 0
+   , "title"
+   , Const.BUTTON_TYPE_YES_NO) === Const.BUTTON_VALUE_YES) {
+   print("はい！");
+}
+ */
+var popup = function(strText, nSecondsToWait, strTitle, buttonType, iconType) {
+  var myNSecondsToWait = nSecondsToWait || 0;
+  var myStrTitle = strTitle || "Windows Script Host";
+  var myButtonType = buttonType || Const.BUTTON_TYPE_OK_ONLY;
+  var myIconType = iconType || Const.ICON_TYPE_INFO;
+  return Const.WSHELL.popup(strText, myNSecondsToWait, myStrTitle, myButtonType + myIconType);
 };
 /**
  * インスタンス化しません。

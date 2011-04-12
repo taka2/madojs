@@ -71,3 +71,88 @@ Const.LOG_EVENT_TYPE_AUDIT_SUCCESS = 8;
  * LogEventタイプ：AUDIT_FAILURE(16)
  */
 Const.LOG_EVENT_TYPE_AUDIT_FAILURE = 16;
+
+/**
+ * ボタンタイプ：OK_ONLY(0)
+ */
+Const.BUTTON_TYPE_OK_ONLY = 0;
+
+/**
+ * ボタンタイプ：OK_CANCEL(1)
+ */
+Const.BUTTON_TYPE_OK_CANCEL = 1;
+
+/**
+ * ボタンタイプ：STOP_RETRY_IGNORE(2)
+ */
+Const.BUTTON_TYPE_STOP_RETRY_IGNORE = 2;
+
+/**
+ * ボタンタイプ：YES_NO_CANCEL(3)
+ */
+Const.BUTTON_TYPE_YES_NO_CANCEL = 3;
+
+/**
+ * ボタンタイプ：YES_NO(4)
+ */
+Const.BUTTON_TYPE_YES_NO = 4;
+
+/**
+ * ボタンタイプ：RETRY_CANCEL(5)
+ */
+Const.BUTTON_TYPE_RETRY_CANCEL = 5;
+
+/**
+ * アイコンタイプ：STOP(16)
+ */
+Const.ICON_TYPE_STOP = 16;
+
+/**
+ * アイコンタイプ：QUESTION(32)
+ */
+Const.ICON_TYPE_QUESTION = 32;
+
+/**
+ * アイコンタイプ：EXCLAMATION(48)
+ */
+Const.ICON_TYPE_EXCLAMATION = 48;
+
+/**
+ * アイコンタイプ：INFO(64)
+ */
+Const.ICON_TYPE_INFO = 64;
+
+/**
+ * ボタン値：OK(1)
+ */
+Const.BUTTON_VALUE_OK = 1;
+
+/**
+ * ボタン値：CANCEL(2)
+ */
+Const.BUTTON_VALUE_CANCEL = 2;
+
+/**
+ * ボタン値：STOP(3)
+ */
+Const.BUTTON_VALUE_STOP = 3;
+
+/**
+ * ボタン値：RETRY(4)
+ */
+Const.BUTTON_VALUE_RETRY = 4;
+
+/**
+ * ボタン値：IGNORE(5)
+ */
+Const.BUTTON_VALUE_IGNORE = 5;
+
+/**
+ * ボタン値：YES(6)
+ */
+Const.BUTTON_VALUE_YES = 6;
+
+/**
+ * ボタン値：NO(7)
+ */
+Const.BUTTON_VALUE_NO = 7;

@@ -1921,11 +1921,13 @@ Excel.prototype = {
   /**
    * 指定したindexのワークシートの後にシートを1枚追加します。
    * @param {String} sheetName 追加するシートのシート名
-   * @param {Number} index 追加するシートの位置
+   * @param {Number} index (オプション)追加するシートの位置(初期値 最後尾)
    * @return {ExcelSheet} ワークシートオブジェクト
    */
   addSheet: function(sheetName, index) {
-    var targetSheet = this.getSheetByIndex(index).getRawObject();
+    var myIndex = index || this.getSheetCount() - 1;
+
+    var targetSheet = this.getSheetByIndex(myIndex).getRawObject();
     var addedSheet = this.workbookObj.Sheets.Add(null, targetSheet, 1, null);
     addedSheet.Name = sheetName;
 
@@ -2064,6 +2066,65 @@ ExcelSheet.prototype = {
    */
   activate: function() {
     this.sheetObj.Activate();
+  },
+  /**
+   * シートを削除します。
+   */
+  remove: function() {
+    this.sheetObj.Delete();
+  },
+  /**
+   * ズームを設定します。
+   * @param {Number} zoom 拡大率(整数)
+   */
+  setZoom: function(zoom) {
+    // シートをアクテイブ化する
+    this.activate();
+
+    // 拡大率を設定する
+    this.sheetObj.Application.ActiveWindow.Zoom = zoom;
+  },
+  /**
+   * センターヘッダを設定します。
+   * @param {String} header センターヘッダに設定する内容
+   */
+  setCenterHeader: function(header) {
+    this.sheetObj.PageSetup.CenterHeader = header;
+  },
+  /**
+   * レフトヘッダを設定します。
+   * @param {String} header レフトヘッダに設定する内容
+   */
+  setLeftHeader: function(header) {
+    this.sheetObj.PageSetup.LeftHeader = header;
+  },
+  /**
+   * ライトヘッダを設定します。
+   * @param {String} header ライトヘッダに設定する内容
+   */
+  setRightHeader: function(header) {
+    this.sheetObj.PageSetup.RightHeader = header;
+  },
+  /**
+   * センターフッタを設定します。
+   * @param {String} footer センターフッタに設定する内容
+   */
+  setCenterFooter: function(footer) {
+    this.sheetObj.PageSetup.CenterFooter = footer;
+  },
+  /**
+   * レフトフッタを設定します。
+   * @param {String} footer レフトフッタに設定する内容
+   */
+  setLeftFooter: function(footer) {
+    this.sheetObj.PageSetup.LeftFooter = footer;
+  },
+  /**
+   * ライトフッタを設定します。
+   * @param {String} footer ライトフッタに設定する内容
+   */
+  setRightFooter: function(footer) {
+    this.sheetObj.PageSetup.RightFooter = footer;
   }
 };
 /** 

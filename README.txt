@@ -7,6 +7,11 @@ JScript/Windows Scripting Hostにruby風の味付けをほどこし、
 <a href = "http://code.google.com/p/wshf/">wshf</a>を参考にしています。
 </p>
 
+=クイックスタート=
+  * http://code.google.com/p/madojs/downloads/list からアーカイブされた最新版をダウンロードします。
+  * ダウンロードしたzipファイルを解凍し、test.wsfをダブルクリックします。
+  * test.jsに記述されたプログラムによって、mado.jsがcopy_of_mado.jsにコピーされます。
+
 =機能一覧=
   * ファイルI/O
   * フォルダ操作、フォルダ内の再帰的なファイル検索

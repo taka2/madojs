@@ -206,6 +206,8 @@ MadoJS
 	
 	<li><a href="../symbols/AdoAccessConnection.html">AdoAccessConnection</a></li>
 	
+	<li><a href="../symbols/AdoCommand.html">AdoCommand</a></li>
+	
 	<li><a href="../symbols/AdoConnection.html">AdoConnection</a></li>
 	
 	<li><a href="../symbols/AdoOracleConnection.html">AdoOracleConnection</a></li>
@@ -261,7 +263,8 @@ MadoJS
 				
 				
 			
-				ADOを使ったデータベースへの接続を行うクラス
+				ADOを使ったデータベースへの接続を行うクラス。<br/>
+          通常はこのクラスを直接使用せず、サブクラスを使います。
 				
 				
 					<br /><i></i> <a href="../symbols/src/src_adoconnection.js.html">adoconnection.js</a>で定義されています。
@@ -321,9 +324,27 @@ MadoJS
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/AdoConnection.html#createCommand">createCommand</a></b>(sql)
+								</div>
+								<div class="description">指定されたsqlを実行するコマンドを作成します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/AdoConnection.html#executeQuery">executeQuery</a></b>(sql)
 								</div>
 								<div class="description">指定されたsqlを実行し、ハッシュ{fieldName: value}の配列として値を返す。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/AdoConnection.html#executeUpdate">executeUpdate</a></b>(sql)
+								</div>
+								<div class="description">指定されたsqlを実行する。</div>
 							</td>
 						</tr>
 					
@@ -441,6 +462,49 @@ MadoJS
 
 					<hr />
 				
+					<a name="createCommand"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Object}</span>
+					<b>createCommand</b>(sql)
+					
+					</div>
+					<div class="description">
+						指定されたsqlを実行するコマンドを作成します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>sql</b>
+									
+								</dt>
+								<dd>実行するSQL</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{Object}</span> コマンドオブジェクト</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
 					<a name="executeQuery"> </a>
 					<div class="fixedFont">
 					
@@ -478,6 +542,42 @@ MadoJS
 								<dd><span class="light fixedFont">{<a href="../symbols/Array.html">Array</a>}</span> ハッシュ{fieldName: value}の配列</dd>
 							
 							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="executeUpdate"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>executeUpdate</b>(sql)
+					
+					</div>
+					<div class="description">
+						指定されたsqlを実行する。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>sql</b>
+									
+								</dt>
+								<dd>実行するSQL</dd>
+							
+							</dl>
+						
+						
+						
+						
 						
 						
 						
@@ -589,7 +689,7 @@ MadoJS
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Thu Apr 14 2011 11:39:34 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Thu Apr 14 2011 15:41:56 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

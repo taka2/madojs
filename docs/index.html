@@ -201,6 +201,8 @@ MadoJS
 	
 	<li><a href="symbols/AdoAccessConnection.html">AdoAccessConnection</a></li>
 	
+	<li><a href="symbols/AdoCommand.html">AdoCommand</a></li>
+	
 	<li><a href="symbols/AdoConnection.html">AdoConnection</a></li>
 	
 	<li><a href="symbols/AdoOracleConnection.html">AdoOracleConnection</a></li>
@@ -271,8 +273,33 @@ AdoAccessConnection.open("c:\\path\\to\\test.mdb", "hoge", "fuga", function(con)
 			<hr />
 			
 			<div>
+				<h2><a href="symbols/AdoCommand.html">AdoCommand</a></h2>
+				ADOコマンドを表すクラス。クエリにパラメータが必要な場合は、このクラスを使います。
+<pre class = "code">
+使用例：
+AdoAccessConnection.open("c:\\path\\to\\test.mdb", "", "", function(con) {
+  var command = con.createCommand("UPDATE TEST SET COL2 = ? WHERE COL1 = ?");
+  command.setStringParameter("COL2", "えええ");
+  command.setStringParameter("COL1", "Z");
+  command.executeUpdate();
+});
+
+AdoAccessConnection.open("c:\\path\\to\\test.mdb", "", "", function(con) {
+  var command = con.createCommand("SELECT COL2 FROM TEST WHERE COL1 = ?");
+  command.setStringParameter("COL1", "Z");
+  var rs = command.executeQuery();
+
+  print(rs[0]["COL2"]);
+});
+
+</pre>
+			</div>
+			<hr />
+			
+			<div>
 				<h2><a href="symbols/AdoConnection.html">AdoConnection</a></h2>
-				ADOを使ったデータベースへの接続を行うクラス
+				ADOを使ったデータベースへの接続を行うクラス。<br/>
+          通常はこのクラスを直接使用せず、サブクラスを使います。
 			</div>
 			<hr />
 			
@@ -494,7 +521,7 @@ print(SpecialFolders.getDesktop());
 		</div>
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Thu Apr 14 2011 11:39:36 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Thu Apr 14 2011 15:41:58 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

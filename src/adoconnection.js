@@ -1,6 +1,7 @@
 /** 
  * 新しいADOのコネクションを作成する
- * @class ADOを使ったデータベースへの接続を行うクラス
+ * @class ADOを使ったデータベースへの接続を行うクラス。<br/>
+          通常はこのクラスを直接使用せず、サブクラスを使います。
  * @param {String} connectString 接続文字列
  * @param {String} userName ユーザ名
  * @param {String} password パスワード
@@ -56,25 +57,7 @@ AdoConnection.prototype = {
     try {
       // SQLの実行
       var rs = this.con.Execute(sql);
-
-      // フィールドリストの取得
-      var fe = new Enumerator(rs.Fields);
-
-      // データの取得
-      var result = [];
-
-      while(!rs.EOF) {
-        var record = {};
-        for(fe.moveFirst(); !fe.atEnd(); fe.moveNext()) {
-          var field = fe.item();
-          record[field.Name] = field.Value;
-        }
-        result.push(record);
-
-        rs.MoveNext();
-      }
-
-      return result;
+      return this.convertToArrayRs(rs);
     } catch(e) {
       throw e;
     } finally {
@@ -82,6 +65,44 @@ AdoConnection.prototype = {
         rs.Close();
       }
     }
+  },
+  /**
+   * 指定されたsqlを実行する。
+   * @param {String} sql 実行するSQL
+   */
+  executeUpdate: function(sql) {
+    // SQLの実行
+    this.con.Execute(sql);
+  },
+  // private
+  // Recordsetを配列にコンバートする。
+  convertToArrayRs: function(rs) {
+    // フィールドリストの取得
+    var fe = new Enumerator(rs.Fields);
+
+    // データの取得
+    var result = [];
+
+    while(!rs.EOF) {
+      var record = {};
+      for(fe.moveFirst(); !fe.atEnd(); fe.moveNext()) {
+        var field = fe.item();
+        record[field.Name] = field.Value;
+      }
+      result.push(record);
+
+      rs.MoveNext();
+    }
+
+    return result;
+  },
+  /**
+   * 指定されたsqlを実行するコマンドを作成します。
+   * @param {String} sql 実行するSQL
+   * @return {Object} コマンドオブジェクト
+   */
+  createCommand: function(sql) {
+    return new AdoCommand(this, sql);
   },
   /**
    * データベースの接続を閉じる。

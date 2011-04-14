@@ -26,6 +26,8 @@ copy /B mado-debug.js+src\keysender.js mado-debug.js
 copy /B mado-debug.js+src\process.js mado-debug.js
 copy /B mado-debug.js+src\registry.js mado-debug.js
 copy /B mado-debug.js+src\excel.js mado-debug.js
+copy /B mado-debug.js+src\adoconnection.js mado-debug.js
+copy /B mado-debug.js+src\adoaccessconnection.js mado-debug.js
 copy /B mado-debug.js+src\adooracleconnection.js mado-debug.js
 copy /B mado-debug.js+src\logevent.js mado-debug.js
 copy /B mado-debug.js+src\shell.js mado-debug.js

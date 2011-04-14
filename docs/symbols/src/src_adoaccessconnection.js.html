@@ -5,45 +5,45 @@
 	.STRN {color: #393;}
 	.REGX {color: #339;}
 	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
-	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/** 
 <span class='line'>  2</span>  * 新しいADOのコネクションを作成する
-<span class='line'>  3</span>  * @class ADOを使ったOracleデータベースへの接続を行うクラス
+<span class='line'>  3</span>  * @class ADOを使ったAccessデータベースへの接続を行うクラス
 <span class='line'>  4</span> &lt;pre class = "code">
 <span class='line'>  5</span> 使用例：
-<span class='line'>  6</span> AdoOracleConnection.open("ORCL", "scott", "tiger", function(oracon) {
-<span class='line'>  7</span>   var result = oracon.executeQuery("SELECT * FROM DUAL");
+<span class='line'>  6</span> AdoAccessConnection.open("c:\\path\\to\\test.mdb", "hoge", "fuga", function(con) {
+<span class='line'>  7</span>   var result = con.executeQuery("SELECT * FROM TEST");
 <span class='line'>  8</span> 
 <span class='line'>  9</span>   result.each(function(row) {
-<span class='line'> 10</span>     print(row["DUMMY"]); // 'X'
+<span class='line'> 10</span>     print(row["COL1"]); // 'X'
 <span class='line'> 11</span>   });
 <span class='line'> 12</span> });
 <span class='line'> 13</span> 
 <span class='line'> 14</span> &lt;/pre>
-<span class='line'> 15</span>  * @param {String} dsName データソース名
+<span class='line'> 15</span>  * @param {String} mdbFilePath mdbファイルのパス
 <span class='line'> 16</span>  * @param {String} userName ユーザ名
 <span class='line'> 17</span>  * @param {String} password パスワード
 <span class='line'> 18</span>  */</span><span class="WHIT">
-<span class='line'> 19</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">AdoOracleConnection</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">dsName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">userName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">password</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 20</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">connectString</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"Provider=MSDAORA;Data Source="</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">dsName</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">";"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 19</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">AdoAccessConnection</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">mdbFilePath</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">userName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">password</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 20</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">connectString</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"Provider=Microsoft.Jet.OLEDB.4.0;Data Source="</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">mdbFilePath</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 21</span> </span><span class="WHIT">  </span><span class="NAME">this.con</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">AdoConnection</span><span class="PUNC">(</span><span class="NAME">connectString</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">userName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">password</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">getRawConnection</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 22</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 23</span> 
-<span class='line'> 24</span> </span><span class="COMM">/**
+<span class='line'> 24</span> </span><span class="COMM">/** 
 <span class='line'> 25</span>  * 新しいADOのコネクションを作成し、ブロックを実行します。
 <span class='line'> 26</span>  * ブロックが指定されていない場合は、作成したADOのコネクションを返します。
-<span class='line'> 27</span>  * @param {String} dsName データソース名
+<span class='line'> 27</span>  * @param {String} mdbFilePath mdbファイルのパス
 <span class='line'> 28</span>  * @param {String} userName ユーザ名
 <span class='line'> 29</span>  * @param {String} password パスワード
 <span class='line'> 30</span>  * @param {Function} block ブロック
 <span class='line'> 31</span>  * @return {Object} ブロックが指定されていない場合は、作成したADOのコネクション
 <span class='line'> 32</span>  */</span><span class="WHIT">
-<span class='line'> 33</span> </span><span class="NAME">AdoOracleConnection.open</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">dsName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">userName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">password</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">block</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 33</span> </span><span class="NAME">AdoAccessConnection.open</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">mdbFilePath</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">userName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">password</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">block</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'> 34</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">isFunction</span><span class="PUNC">(</span><span class="NAME">block</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 35</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">AdoOracleConnection</span><span class="PUNC">(</span><span class="NAME">dsName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">userName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">password</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">AdoAccessConnection</span><span class="PUNC">(</span><span class="NAME">mdbFilePath</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">userName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">password</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 36</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'> 37</span> 
 <span class='line'> 38</span> </span><span class="WHIT">  </span><span class="KEYW">try</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 39</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">con</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">AdoOracleConnection</span><span class="PUNC">(</span><span class="NAME">dsName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">userName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">password</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">con</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">AdoAccessConnection</span><span class="PUNC">(</span><span class="NAME">mdbFilePath</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">userName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">password</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 40</span> </span><span class="WHIT">    </span><span class="NAME">block</span><span class="PUNC">(</span><span class="NAME">con</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 41</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">finally</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'> 42</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">con</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
@@ -52,6 +52,6 @@
 <span class='line'> 45</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'> 46</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 47</span> 
-<span class='line'> 48</span> </span><span class="COMM">// Prototypes of AdoOracleConnection</span><span class="WHIT">
-<span class='line'> 49</span> </span><span class="NAME">AdoOracleConnection.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">AdoConnection.prototype</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="COMM">// Prototypes of AdoAccessConnection</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="NAME">AdoAccessConnection.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">AdoConnection.prototype</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 50</span> </span></pre></body></html>

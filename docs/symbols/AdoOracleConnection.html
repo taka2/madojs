@@ -204,6 +204,10 @@ MadoJS
 	
 	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
 	
+	<li><a href="../symbols/AdoAccessConnection.html">AdoAccessConnection</a></li>
+	
+	<li><a href="../symbols/AdoConnection.html">AdoConnection</a></li>
+	
 	<li><a href="../symbols/AdoOracleConnection.html">AdoOracleConnection</a></li>
 	
 	<li><a href="../symbols/Array.html">Array</a></li>
@@ -292,7 +296,7 @@ AdoOracleConnection.open("ORCL", "scott", "tiger", function(oracon) {
 							<div class="fixedFont">
 								<b><a href="../symbols/AdoOracleConnection.html#constructor">AdoOracleConnection</a></b>(dsName, userName, password)
 							</div>
-							<div class="description">新しいADOのOracleコネクションを作成する</div>
+							<div class="description">新しいADOのコネクションを作成する</div>
 						</td>
 					</tr>
 				</tbody>
@@ -317,20 +321,11 @@ AdoOracleConnection.open("ORCL", "scott", "tiger", function(oracon) {
 					<tbody>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/AdoOracleConnection.html#executeQuery">executeQuery</a></b>(sql)
-								</div>
-								<div class="description">指定されたsqlを実行し、ハッシュ{fieldName: value}の配列として値を返す。</div>
-							</td>
-						</tr>
-					
-						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">AdoOracleConnection.<b><a href="../symbols/AdoOracleConnection.html#.open">open</a></b>(dsName, userName, password, block)
 								</div>
-								<div class="description">新しいADOのOracleコネクションを作成し、ブロックを実行します。ブロックが指定されていない場合は、作成したADOのOracleコネクションを返します。</div>
+								<div class="description">新しいADOのコネクションを作成し、ブロックを実行します。ブロックが指定されていない場合は、作成したADOのコネクションを返します。</div>
 							</td>
 						</tr>
 					
@@ -355,7 +350,7 @@ AdoOracleConnection.open("ORCL", "scott", "tiger", function(oracon) {
 				</div>
 				
 				<div class="description">
-					新しいADOのOracleコネクションを作成する
+					新しいADOのコネクションを作成する
 					
 				</div>
 				
@@ -405,49 +400,6 @@ AdoOracleConnection.open("ORCL", "scott", "tiger", function(oracon) {
 					メソッドの詳細
 				</div>
 				
-					<a name="executeQuery"> </a>
-					<div class="fixedFont">
-					
-					<span class="light">{<a href="../symbols/Array.html">Array</a>}</span>
-					<b>executeQuery</b>(sql)
-					
-					</div>
-					<div class="description">
-						指定されたsqlを実行し、ハッシュ{fieldName: value}の配列として値を返す。
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">引数:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>sql</b>
-									
-								</dt>
-								<dd>実行するSQL</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">戻り値:</dt>
-							
-								<dd><span class="light fixedFont">{<a href="../symbols/Array.html">Array</a>}</span> ハッシュ{fieldName: value}の配列</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
 					<a name=".open"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
@@ -456,7 +408,7 @@ AdoOracleConnection.open("ORCL", "scott", "tiger", function(oracon) {
 					
 					</div>
 					<div class="description">
-						新しいADOのOracleコネクションを作成し、ブロックを実行します。ブロックが指定されていない場合は、作成したADOのOracleコネクションを返します。
+						新しいADOのコネクションを作成し、ブロックを実行します。ブロックが指定されていない場合は、作成したADOのコネクションを返します。
 						
 						
 					</div>
@@ -500,7 +452,7 @@ AdoOracleConnection.open("ORCL", "scott", "tiger", function(oracon) {
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd><span class="light fixedFont">{Object}</span> ブロックが指定されていない場合は、作成したADOのOracleコネクション</dd>
+								<dd><span class="light fixedFont">{Object}</span> ブロックが指定されていない場合は、作成したADOのコネクション</dd>
 							
 							</dl>
 						
@@ -521,7 +473,7 @@ AdoOracleConnection.open("ORCL", "scott", "tiger", function(oracon) {
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Wed Apr 13 2011 17:18:14 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Thu Apr 14 2011 11:39:34 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

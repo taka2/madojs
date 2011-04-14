@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>MadoJS リファレンス - Clipboard</title>
+		<title>MadoJS リファレンス - AdoConnection</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -253,7 +253,7 @@ MadoJS
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Clipboard クラス 
+				AdoConnection クラス 
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -261,24 +261,16 @@ MadoJS
 				
 				
 			
-				クリップボードへの格納、および、取得を行うクラス。
-<pre class = "code">
-使用例：
-// "日本語"という文字列をクリップボードへコピーして、ペーストします。
-Clipboard.open(function(clip) {
-  clip.set("日本語");
-  sendKeys("^v");
-});
-</pre>
+				ADOを使ったデータベースへの接続を行うクラス
 				
 				
-					<br /><i></i> <a href="../symbols/src/src_clipboard.js.html">clipboard.js</a>で定義されています。
+					<br /><i></i> <a href="../symbols/src/src_adoconnection.js.html">adoconnection.js</a>で定義されています。
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Clipboard.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class AdoConnection.">
 				<caption>クラス 概要</caption>
 				<thead>
 					<tr>
@@ -291,9 +283,9 @@ Clipboard.open(function(clip) {
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/Clipboard.html#constructor">Clipboard</a></b>()
+								<b><a href="../symbols/AdoConnection.html#constructor">AdoConnection</a></b>(connectString, userName, password)
 							</div>
-							<div class="description">新しいクリップボードを作成する</div>
+							<div class="description">新しいADOのコネクションを作成する</div>
 						</td>
 					</tr>
 				</tbody>
@@ -307,7 +299,7 @@ Clipboard.open(function(clip) {
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Clipboard.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class AdoConnection.">
 					<caption>メソッドの概要</caption>
 					<thead>
 						<tr>
@@ -320,36 +312,36 @@ Clipboard.open(function(clip) {
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Clipboard.html#close">close</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/AdoConnection.html#close">close</a></b>()
 								</div>
-								<div class="description">クリップボードをクローズします。</div>
+								<div class="description">データベースの接続を閉じる。</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Clipboard.html#get">get</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/AdoConnection.html#executeQuery">executeQuery</a></b>(sql)
 								</div>
-								<div class="description">クリップボードの文字列を取得します。</div>
+								<div class="description">指定されたsqlを実行し、ハッシュ{fieldName: value}の配列として値を返す。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/AdoConnection.html#getConnectionString">getConnectionString</a></b>()
+								</div>
+								<div class="description">コネクションの接続文字列を取得する。</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">Clipboard.<b><a href="../symbols/Clipboard.html#.open">open</a></b>(block)
+								<div class="fixedFont">AdoConnection.<b><a href="../symbols/AdoConnection.html#.open">open</a></b>(connectString, userName, password, block)
 								</div>
-								<div class="description">新しいクリップボードを作成し、ブロックを実行します。ブロックが指定されていない場合は、作成したクリップボードを返します。</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Clipboard.html#set">set</a></b>(text)
-								</div>
-								<div class="description">クリップボードへ文字列を格納します。</div>
+								<div class="description">新しいADOのコネクションを作成し、ブロックを実行します。ブロックが指定されていない場合は、作成したADOのコネクションを返します。</div>
 							</td>
 						</tr>
 					
@@ -370,17 +362,40 @@ Clipboard.open(function(clip) {
 				</div>
 				
 				<div class="fixedFont">
-						<b>Clipboard</b>()
+						<b>AdoConnection</b>(connectString, userName, password)
 				</div>
 				
 				<div class="description">
-					新しいクリップボードを作成する
+					新しいADOのコネクションを作成する
 					
 				</div>
 				
 				
 				
 				
+					
+						<dl class="detailList">
+						<dt class="heading">引数:</dt>
+						
+							<dt>
+								<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span>  <b>connectString</b>
+								
+							</dt>
+								<dd>接続文字列</dd>
+						
+							<dt>
+								<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span>  <b>userName</b>
+								
+							</dt>
+								<dd>ユーザ名</dd>
+						
+							<dt>
+								<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span>  <b>password</b>
+								
+							</dt>
+								<dd>パスワード</dd>
+						
+						</dl>
 					
 					
 					
@@ -409,7 +424,7 @@ Clipboard.open(function(clip) {
 					
 					</div>
 					<div class="description">
-						クリップボードをクローズします。
+						データベースの接続を閉じる。
 						
 						
 					</div>
@@ -426,15 +441,58 @@ Clipboard.open(function(clip) {
 
 					<hr />
 				
-					<a name="get"> </a>
+					<a name="executeQuery"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<b>get</b>()
+					<span class="light">{<a href="../symbols/Array.html">Array</a>}</span>
+					<b>executeQuery</b>(sql)
 					
 					</div>
 					<div class="description">
-						クリップボードの文字列を取得します。
+						指定されたsqlを実行し、ハッシュ{fieldName: value}の配列として値を返す。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>sql</b>
+									
+								</dt>
+								<dd>実行するSQL</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Array.html">Array</a>}</span> ハッシュ{fieldName: value}の配列</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="getConnectionString"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<b>getConnectionString</b>()
+					
+					</div>
+					<div class="description">
+						コネクションの接続文字列を取得する。
 						
 						
 					</div>
@@ -449,7 +507,7 @@ Clipboard.open(function(clip) {
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> 取得した文字列</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> コネクションの接続文字列</dd>
 							
 							</dl>
 						
@@ -462,11 +520,11 @@ Clipboard.open(function(clip) {
 					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{Object}</span>
-					<span class="light">Clipboard.</span><b>open</b>(block)
+					<span class="light">AdoConnection.</span><b>open</b>(connectString, userName, password, block)
 					
 					</div>
 					<div class="description">
-						新しいクリップボードを作成し、ブロックを実行します。ブロックが指定されていない場合は、作成したクリップボードを返します。
+						新しいADOのコネクションを作成し、ブロックを実行します。ブロックが指定されていない場合は、作成したADOのコネクションを返します。
 						
 						
 					</div>
@@ -476,6 +534,24 @@ Clipboard.open(function(clip) {
 						
 							<dl class="detailList">
 							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>connectString</b>
+									
+								</dt>
+								<dd>接続文字列</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>userName</b>
+									
+								</dt>
+								<dd>ユーザ名</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>password</b>
+									
+								</dt>
+								<dd>パスワード</dd>
 							
 								<dt>
 									<span class="light fixedFont">{Function}</span> <b>block</b>
@@ -492,45 +568,9 @@ Clipboard.open(function(clip) {
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd><span class="light fixedFont">{Object}</span> ブロックが指定されていない場合は、作成したクリップボード</dd>
+								<dd><span class="light fixedFont">{Object}</span> ブロックが指定されていない場合は、作成したADOのコネクション</dd>
 							
 							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="set"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>set</b>(text)
-					
-					</div>
-					<div class="description">
-						クリップボードへ文字列を格納します。
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">引数:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>text</b>
-									
-								</dt>
-								<dd>格納する文字列</dd>
-							
-							</dl>
-						
-						
-						
-						
 						
 						
 						

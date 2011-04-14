@@ -2128,56 +2128,54 @@ ExcelSheet.prototype = {
   }
 };
 /** 
- * 新しいADOのOracleコネクションを作成する
- * @class ADOを使ったOracleデータベースへの接続を行うクラス
-<pre class = "code">
-使用例：
-AdoOracleConnection.open("ORCL", "scott", "tiger", function(oracon) {
-  var result = oracon.executeQuery("SELECT * FROM DUAL");
-
-  result.each(function(row) {
-    print(row["DUMMY"]); // 'X'
-  });
-});
-
-</pre>
- * @param {String} dsName データソース名
+ * 新しいADOのコネクションを作成する
+ * @class ADOを使ったデータベースへの接続を行うクラス
+ * @param {String} connectString 接続文字列
  * @param {String} userName ユーザ名
  * @param {String} password パスワード
  */
-AdoOracleConnection = function(dsName, userName, password) {
+var AdoConnection = function(connectString, userName, password) {
   this.con = new ActiveXObject("ADODB.Connection");
-
-  // Open Connection
-  this.con.Open("Provider=MSDAORA;Data Source=" + dsName + ";", userName, password);
+  this.con.Open(connectString, userName, password);
 };
 
 /** 
- * 新しいADOのOracleコネクションを作成し、ブロックを実行します。
- * ブロックが指定されていない場合は、作成したADOのOracleコネクションを返します。
- * @param {String} dsName データソース名
+ * 新しいADOのコネクションを作成し、ブロックを実行します。
+ * ブロックが指定されていない場合は、作成したADOのコネクションを返します。
+ * @param {String} connectString 接続文字列
  * @param {String} userName ユーザ名
  * @param {String} password パスワード
  * @param {Function} block ブロック
- * @return {Object} ブロックが指定されていない場合は、作成したADOのOracleコネクション
+ * @return {Object} ブロックが指定されていない場合は、作成したADOのコネクション
  */
-AdoOracleConnection.open = function(dsName, userName, password, block) {
+AdoConnection.open = function(connectString, userName, password, block) {
   if (!isFunction(block)) {
-    return new AdoOracleConnection(dsName, userName, password);
+    return new AdoConnection(connectString, userName, password);
   }
 
   try {
-    var oracon = new AdoOracleConnection(dsName, userName, password);
-    block(oracon);
+    var con = new AdoConnection(connectString, userName, password);
+    block(con);
   } finally {
-    if (oracon != null) {
-      oracon.close();
+    if (con != null) {
+      con.close();
     }
   }
 };
 
-// Prototypes of AdoOracleConnection
-AdoOracleConnection.prototype = {
+// Prototypes of AdoConnection
+AdoConnection.prototype = {
+  // private
+  getRawConnection: function() {
+    return this.con;
+  },
+  /**
+   * コネクションの接続文字列を取得する。
+   * @return {String} コネクションの接続文字列
+   */
+  getConnectionString: function() {
+    return this.con.ConnectionString;
+  },
   /**
    * 指定されたsqlを実行し、ハッシュ{fieldName: value}の配列として値を返す。
    * @param {String} sql 実行するSQL
@@ -2214,10 +2212,111 @@ AdoOracleConnection.prototype = {
       }
     }
   },
+  /**
+   * データベースの接続を閉じる。
+   */
   close: function() {
     this.con.Close();
   }
 };
+/** 
+ * 新しいADOのコネクションを作成する
+ * @class ADOを使ったAccessデータベースへの接続を行うクラス
+<pre class = "code">
+使用例：
+AdoAccessConnection.open("c:\\path\\to\\test.mdb", "hoge", "fuga", function(con) {
+  var result = con.executeQuery("SELECT * FROM TEST");
+
+  result.each(function(row) {
+    print(row["COL1"]); // 'X'
+  });
+});
+
+</pre>
+ * @param {String} mdbFilePath mdbファイルのパス
+ * @param {String} userName ユーザ名
+ * @param {String} password パスワード
+ */
+var AdoAccessConnection = function(mdbFilePath, userName, password) {
+  var connectString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + mdbFilePath;
+  this.con = new AdoConnection(connectString, userName, password).getRawConnection();
+};
+
+/** 
+ * 新しいADOのコネクションを作成し、ブロックを実行します。
+ * ブロックが指定されていない場合は、作成したADOのコネクションを返します。
+ * @param {String} mdbFilePath mdbファイルのパス
+ * @param {String} userName ユーザ名
+ * @param {String} password パスワード
+ * @param {Function} block ブロック
+ * @return {Object} ブロックが指定されていない場合は、作成したADOのコネクション
+ */
+AdoAccessConnection.open = function(mdbFilePath, userName, password, block) {
+  if (!isFunction(block)) {
+    return new AdoAccessConnection(mdbFilePath, userName, password);
+  }
+
+  try {
+    var con = new AdoAccessConnection(mdbFilePath, userName, password);
+    block(con);
+  } finally {
+    if (con != null) {
+      con.close();
+    }
+  }
+};
+
+// Prototypes of AdoAccessConnection
+AdoAccessConnection.prototype = AdoConnection.prototype;
+/**
+ * 新しいADOのコネクションを作成する
+ * @class ADOを使ったOracleデータベースへの接続を行うクラス
+<pre class = "code">
+使用例：
+AdoOracleConnection.open("ORCL", "scott", "tiger", function(oracon) {
+  var result = oracon.executeQuery("SELECT * FROM DUAL");
+
+  result.each(function(row) {
+    print(row["DUMMY"]); // 'X'
+  });
+});
+
+</pre>
+ * @param {String} dsName データソース名
+ * @param {String} userName ユーザ名
+ * @param {String} password パスワード
+ */
+var AdoOracleConnection = function(dsName, userName, password) {
+  var connectString = "Provider=MSDAORA;Data Source=" + dsName + ";";
+  this.con = new AdoConnection(connectString, userName, password).getRawConnection();
+};
+
+/**
+ * 新しいADOのコネクションを作成し、ブロックを実行します。
+ * ブロックが指定されていない場合は、作成したADOのコネクションを返します。
+ * @param {String} dsName データソース名
+ * @param {String} userName ユーザ名
+ * @param {String} password パスワード
+ * @param {Function} block ブロック
+ * @return {Object} ブロックが指定されていない場合は、作成したADOのコネクション
+ */
+AdoOracleConnection.open = function(dsName, userName, password, block) {
+  if (!isFunction(block)) {
+    return new AdoOracleConnection(dsName, userName, password);
+  }
+
+  try {
+    var con = new AdoOracleConnection(dsName, userName, password);
+    block(con);
+  } finally {
+    if (con != null) {
+      con.close();
+    }
+  }
+};
+
+// Prototypes of AdoOracleConnection
+AdoOracleConnection.prototype = AdoConnection.prototype;
 /**
  * インスタンス化しません。
  * @class イベントエントリをログファイルに追加する機能を提供するクラス

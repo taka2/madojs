@@ -76,6 +76,23 @@ HTTP.prototype = {
    * @throws 200OK以外のレスポンスが返された場合にスローされます。
    */
   get: function(path, header, block) {
+    return this.request("GET", path, header, "", block);
+  },
+  /** 
+   * 指定されたpath、headerでPOSTリクエストを行い、ブロックを実行します。
+   * ブロックが指定されていない場合は、レスポンステキストを返します。
+   * @param {String} path HTTP操作の対象パス
+   * @param {Object} header (オプション)HTTPヘッダ
+   * @param {Object} body (オプション)HTTPボディ
+   * @param {Function} block (オプション)ブロック
+   * @return {String} ブロックが指定されていない場合は、レスポンステキスト
+   * @throws 200OK以外のレスポンスが返された場合にスローされます。
+   */
+  post: function(path, header, body, block) {
+    return this.request("POST", path, header, body, block);
+  },
+  // private
+  request: function(method, path, header, body, block) {
     // パラメータの調整
     if(header === undefined) {
       header = [];
@@ -83,14 +100,14 @@ HTTP.prototype = {
 
     // リクエストの準備
     var xhr = new ActiveXObject("Microsoft.XMLHTTP");
-    xhr.open("GET", "http://" + this.host + ":" + this.port + path, false);
+    xhr.open(method, "http://" + this.host + ":" + this.port + path, false);
 
     for(var headerName in header) {
       xhr.setRequestHeader(headerName, header[headerName]);
     }
 
     // リクエストの送信
-    xhr.send();
+    xhr.send(body);
 
     // レスポンスの処理
     if(xhr.readyState == 4) {

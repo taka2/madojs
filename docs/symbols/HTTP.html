@@ -373,6 +373,15 @@ HTTP.start("www.yahoo.co.jp", 80, function(http) {
 						</tr>
 					
 						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/HTTP.html#post">post</a></b>(path, header, body, block)
+								</div>
+								<div class="description">指定されたpath、headerでPOSTリクエストを行い、ブロックを実行します。ブロックが指定されていない場合は、レスポンステキストを返します。</div>
+							</td>
+						</tr>
+					
+						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">HTTP.<b><a href="../symbols/HTTP.html#.start">start</a></b>(host, port, block)
@@ -651,6 +660,77 @@ HTTP.get_print("www.yahoo.co.jp", "/index.html", 80);</pre>
 
 					<hr />
 				
+					<a name="post"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<b>post</b>(path, header, body, block)
+					
+					</div>
+					<div class="description">
+						指定されたpath、headerでPOSTリクエストを行い、ブロックを実行します。ブロックが指定されていない場合は、レスポンステキストを返します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>path</b>
+									
+								</dt>
+								<dd>HTTP操作の対象パス</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>header</b>
+									
+								</dt>
+								<dd>(オプション)HTTPヘッダ</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>body</b>
+									
+								</dt>
+								<dd>(オプション)HTTPボディ</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>block</b>
+									
+								</dt>
+								<dd>(オプション)ブロック</dd>
+							
+							</dl>
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">例外:</dt>
+							
+								<dt>
+									 <b></b>
+								</dt>
+								<dd>200OK以外のレスポンスが返された場合にスローされます。</dd>
+							
+							</dl>
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> ブロックが指定されていない場合は、レスポンステキスト</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
 					<a name=".start"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
@@ -718,7 +798,7 @@ HTTP.get_print("www.yahoo.co.jp", "/index.html", 80);</pre>
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Thu Apr 14 2011 15:41:56 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Tue Apr 19 2011 11:04:45 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

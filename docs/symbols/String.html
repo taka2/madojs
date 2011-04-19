@@ -300,9 +300,36 @@ MadoJS
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/String.html#isHankakuKana">isHankakuKana</a></b>()
+								</div>
+								<div class="description">chが半角カナかどうか判定する。<br/>二文字以上の文字列でも、先頭の文字のみ判定します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/String.html#isZenkaku">isZenkaku</a></b>()
+								</div>
+								<div class="description">chが全角かどうか判定する。<br/>二文字以上の文字列でも、先頭の文字のみ判定します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/String.html#startsWith">startsWith</a></b>(ch)
 								</div>
 								<div class="description">文字列がchで始まるかどうか</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/String.html#substringb">substringb</a></b>(start, end)
+								</div>
+								<div class="description">全角文字を2バイト、半角文字を1バイトとして、指定位置の文字列を返します。</div>
 							</td>
 						</tr>
 					
@@ -387,6 +414,76 @@ MadoJS
 
 					<hr />
 				
+					<a name="isHankakuKana"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Boolean}</span>
+					<b>isHankakuKana</b>()
+					
+					</div>
+					<div class="description">
+						chが半角カナかどうか判定する。<br/>二文字以上の文字列でも、先頭の文字のみ判定します。
+						
+							<br />
+							<a href="../symbols/src/src_string.js.html">string.js</a>で<i>定義されています</i>。
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{Boolean}</span> chが半角カナの場合true、そうでない場合falseを返す。</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="isZenkaku"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Boolean}</span>
+					<b>isZenkaku</b>()
+					
+					</div>
+					<div class="description">
+						chが全角かどうか判定する。<br/>二文字以上の文字列でも、先頭の文字のみ判定します。
+						
+							<br />
+							<a href="../symbols/src/src_string.js.html">string.js</a>で<i>定義されています</i>。
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{Boolean}</span> chが全角の場合true、そうでない場合falseを返す。</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
 					<a name="startsWith"> </a>
 					<div class="fixedFont">
 					
@@ -430,6 +527,58 @@ MadoJS
 							<dt class="heading">戻り値:</dt>
 							
 								<dd><span class="light fixedFont">{Boolean}</span> 文字列がchで始まる場合true、そうでない場合はfalseを返す。</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="substringb"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<b>substringb</b>(start, end)
+					
+					</div>
+					<div class="description">
+						全角文字を2バイト、半角文字を1バイトとして、指定位置の文字列を返します。
+						
+							<br />
+							<a href="../symbols/src/src_string.js.html">string.js</a>で<i>定義されています</i>。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>start</b>
+									
+								</dt>
+								<dd>開始位置</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>end</b>
+									
+								</dt>
+								<dd>終了位置</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> 指定位置の文字列</dd>
 							
 							</dl>
 						
@@ -490,7 +639,7 @@ print("@" + "   	abc			".trim() + "@"); // "@abc@"</pre>
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Thu Apr 14 2011 15:41:57 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Tue Apr 19 2011 11:04:46 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

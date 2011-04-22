@@ -80,7 +80,7 @@ var isWScriptRunning = function() {
  */
 var sendKeys = function (key, num) {
   var myNum = num || 1;
-  for(var i=0; i<num; i++) {
+  for(var i=0; i<myNum; i++) {
     Const.WSHELL.Sendkeys(key);
   }
   return this;

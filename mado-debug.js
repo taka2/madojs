@@ -238,7 +238,7 @@ var isWScriptRunning = function() {
  */
 var sendKeys = function (key, num) {
   var myNum = num || 1;
-  for(var i=0; i<num; i++) {
+  for(var i=0; i<myNum; i++) {
     Const.WSHELL.Sendkeys(key);
   }
   return this;
@@ -1270,86 +1270,6 @@ FTP.put = function(host, userId, password, mode, path, fileName) {
   });
 };
 /** 
- * 新しいクリップボードを作成する
- * @class クリップボードへの格納、および、取得を行うクラス。
-<pre class = "code">
-使用例：
-// "日本語"という文字列をクリップボードへコピーして、ペーストします。
-Clipboard.open(function(clip) {
-  clip.set("日本語");
-  sendKeys("^v");
-});
-</pre>
- */
-var Clipboard = function() {
-  this._ie = new ActiveXObject('InternetExplorer.Application');
-  this._ie.navigate("about:blank");
-  while(this._ie.Busy) {
-    sleep(10);
-  }
-  this._ie.Visible = false;
-  this._textarea = this._ie.document.createElement("textarea");
-  this._ie.document.body.appendChild(this._textarea);
-  this._textarea.focus();
-  this._closed = false;
-};
-
-/** 
- * 新しいクリップボードを作成し、ブロックを実行します。
- * ブロックが指定されていない場合は、作成したクリップボードを返します。
- * @param {Function} block ブロック
- * @return {Object} ブロックが指定されていない場合は、作成したクリップボード
- */
-Clipboard.open = function(block) {
-  if (!isFunction(block)) {
-    return new Clipboard();
-  }
-
-  try {
-    var clip = new Clipboard();
-    block(clip);
-  } finally {
-    if (clip != null) {
-      clip.close();
-    }
-  }
-};
-
-// Prototypes of Clipboard
-Clipboard.prototype = {
-  /**
-   * クリップボードへ文字列を格納します。
-   * @param {String} text 格納する文字列
-   */
-  set: function(text) {
-    if (this._closed) {
-      return;
-    }
-    this._textarea.innerText = text;
-    this._ie.execWB(17 /* select all */, 0);
-    this._ie.execWB(12 /* copy */, 0);
-  },
-  /**
-   * クリップボードの文字列を取得します。
-   * @return {String} 取得した文字列
-   */
-  get: function() {
-    if (this._closed) {
-      return;
-    }
-    this._textarea.innerText = "";
-    this._ie.execWB(13 /* paste */, 0);
-    return this._textarea.innerText;
-  },
-  /**
-   * クリップボードをクローズします。
-   */
-  close: function() {
-    this._ie.Quit();
-    this._closed = true;
-  }
-};
-/** 
  * 新しいキー送信クラスを作成する。
  * @class 連続で自動的にキー送信を行う
 <pre class = "code">
@@ -1370,9 +1290,15 @@ var ks = new KeySender("無題")
  */
 var KeySender = function(targetWindow) {
   Const.WSHELL.AppActivate(targetWindow);
+  sleep(KeySender.DURATION);
 };
 
-// Prototypes of Clipboard
+// Constants of KeySender
+// private
+// AppActivateしてからKeySendするまでの待ち時間
+KeySender.DURATION = 10;
+
+// Prototypes of KeySender
 KeySender.prototype = {
   /**
    * 指定したtextをキー送信します。
@@ -1934,7 +1860,7 @@ Excel.openReadonly = function(path, block) {
  */
 Excel.create = function(block) {
   if(!isFunction(block)) {
-    return new Excel(path, true);
+    return new Excel("", true);
   }
 
   try {
@@ -1946,6 +1872,19 @@ Excel.create = function(block) {
     }
   }
 };
+
+/**
+ * プログラムを動作させる端末でExcelが利用可能かどうか。
+ * @return {Boolean} Excelが利用可能な場合はtrue、それ以外の場合はfalseを返す。
+ */
+Excel.available = function() {
+  try {
+    var x = new ActiveXObject("Excel.Application");
+    return true;
+  } catch(e) {
+    return false;
+  }
+}
 
 // Prototypes of Excel
 Excel.prototype = {
@@ -2198,6 +2137,163 @@ ExcelSheet.prototype = {
    */
   setRightFooter: function(footer) {
     this.sheetObj.PageSetup.RightFooter = footer;
+  },
+  /**
+   * セル値をクリップボードへコピーします。
+   * @param {Number} x x座標
+   * @param {Number} y y座標
+   */
+  copy: function(x, y) {
+    this.sheetObj.Cells(x, y).Copy();
+  }
+};
+/** 
+ * 新しいクリップボードを作成する
+ * @class InternetExplorerを利用した、クリップボードへの格納、および、取得を行うクラス。
+ */
+var ClipboardIE = function() {
+  this._ie = new ActiveXObject('InternetExplorer.Application');
+  this._ie.navigate("about:blank");
+  while(this._ie.Busy) {
+    sleep(10);
+  }
+  this._ie.Visible = false;
+  this._textarea = this._ie.document.createElement("textarea");
+  this._ie.document.body.appendChild(this._textarea);
+  this._textarea.focus();
+  this._closed = false;
+};
+
+// Prototypes of ClipboardIE
+ClipboardIE.prototype = {
+  /**
+   * クリップボードへ文字列を格納します。
+   * @param {String} text 格納する文字列
+   */
+  set: function(text) {
+    if (this._closed) {
+      return;
+    }
+    this._textarea.innerText = text;
+    this._ie.execWB(17 /* select all */, 0);
+    this._ie.execWB(12 /* copy */, 0);
+  },
+  /**
+   * クリップボードの文字列を取得します。
+   * @return {String} 取得した文字列
+   */
+  get: function() {
+    if (this._closed) {
+      return;
+    }
+    this._textarea.innerText = "";
+    this._ie.execWB(13 /* paste */, 0);
+    return this._textarea.innerText;
+  },
+  /**
+   * クリップボードをクローズします。
+   */
+  close: function() {
+    this._ie.Quit();
+    this._closed = true;
+  }
+};
+/** 
+ * 新しいクリップボードを作成する
+ * @class Excelを利用した、クリップボードへの格納、および、取得を行うクラス。
+ */
+var ClipboardExcel = function() {
+  this.excel = Excel.create();
+  this.sheet = this.excel.getSheetByIndex(0);
+  this.sheet.setFormat(1, 1, "@");
+};
+
+// Prototypes of ClipboardExcel
+ClipboardExcel.prototype = {
+  /**
+   * クリップボードへ文字列を格納します。
+   * @param {String} text 格納する文字列
+   */
+  set: function(text) {
+    this.sheet.setValue(1, 1, text);
+    this.sheet.copy(1, 1);
+  },
+  /**
+   * クリップボードの文字列を取得します。
+   * @return {String} 取得した文字列
+   */
+  get: function() {
+    return this.sheet.getValue(1, 1);
+  },
+  /**
+   * クリップボードをクローズします。
+   */
+  close: function() {
+    this.excel.quitDiscardChanges();
+  }
+};
+/** 
+ * 新しいクリップボードを作成する
+ * @class クリップボードへの格納、および、取得を行うクラス。
+<pre class = "code">
+使用例：
+// "日本語"という文字列をクリップボードへコピーして、ペーストします。
+Clipboard.open(function(clip) {
+  clip.set("日本語");
+  sendKeys("^v");
+});
+</pre>
+ */
+var Clipboard = function() {
+  if(Excel.available()) {
+    this.clip = new ClipboardExcel();
+  } else {
+    this.clip = new ClipboardIE();
+  }
+};
+
+/** 
+ * 新しいクリップボードを作成し、ブロックを実行します。
+ * ブロックが指定されていない場合は、作成したクリップボードを返します。
+ * @param {Function} block ブロック
+ * @return {Object} ブロックが指定されていない場合は、作成したクリップボード
+ */
+Clipboard.open = function(block) {
+  if (!isFunction(block)) {
+    return new Clipboard();
+  }
+
+  try {
+    var clip = new Clipboard();
+    block(clip);
+  } finally {
+    if (clip != null) {
+      clip.close();
+    }
+  }
+};
+
+// Prototypes of Clipboard
+Clipboard.prototype = {
+  /**
+   * クリップボードへ文字列を格納します。
+   * @param {String} text 格納する文字列
+   */
+  set: function(text) {
+    this.clip.set(text);
+  },
+  /**
+   * クリップボードの文字列を取得します。
+   * @return {String} 取得した文字列
+   */
+  get: function() {
+    return this.clip.get();
+  },
+  /**
+   * クリップボードをクローズします。
+   */
+  close: function() {
+    this.clip.close();
   }
 };
 /** 

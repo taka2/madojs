@@ -11,16 +11,11 @@ Clipboard.open(function(clip) {
 </pre>
  */
 var Clipboard = function() {
-  this._ie = new ActiveXObject('InternetExplorer.Application');
-  this._ie.navigate("about:blank");
-  while(this._ie.Busy) {
-    sleep(10);
+  if(Excel.available()) {
+    this.clip = new ClipboardExcel();
+  } else {
+    this.clip = new ClipboardIE();
   }
-  this._ie.Visible = false;
-  this._textarea = this._ie.document.createElement("textarea");
-  this._ie.document.body.appendChild(this._textarea);
-  this._textarea.focus();
-  this._closed = false;
 };
 
 /** 
@@ -51,30 +46,19 @@ Clipboard.prototype = {
    * @param {String} text 格納する文字列
    */
   set: function(text) {
-    if (this._closed) {
-      return;
-    }
-    this._textarea.innerText = text;
-    this._ie.execWB(17 /* select all */, 0);
-    this._ie.execWB(12 /* copy */, 0);
+    this.clip.set(text);
   },
   /**
    * クリップボードの文字列を取得します。
    * @return {String} 取得した文字列
    */
   get: function() {
-    if (this._closed) {
-      return;
-    }
-    this._textarea.innerText = "";
-    this._ie.execWB(13 /* paste */, 0);
-    return this._textarea.innerText;
+    return this.clip.get();
   },
   /**
    * クリップボードをクローズします。
    */
   close: function() {
-    this._ie.Quit();
-    this._closed = true;
+    this.clip.close();
   }
 };

@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>MadoJS リファレンス - Registry</title>
+		<title>MadoJS リファレンス - ClipboardExcel</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -259,7 +259,7 @@ MadoJS
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Registry クラス 
+				ClipboardExcel クラス 
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -267,27 +267,16 @@ MadoJS
 				
 				
 			
-				レジストリにアクセスする機能を提供するクラス
-<pre class = "code">
-使用例：
-// IP Messengerのユーザ名設定を取得
-print(Registry.regRead("HKCU\\Software\\HSTools\\IPMsg\\NickNameStr"));
-
-// "NickNameStra"に"hoge"を設定
-Registry.regWrite("HKCU\\Software\\HSTools\\IPMsg\\NickNameStra", "hoge", Registry.REG_TYPE_REG_SZ);
-
-// "NickNameStra"を削除
-Registry.regDelete("HKCU\\Software\\HSTools\\IPMsg\\NickNameStra");
-</pre>
+				Excelを利用した、クリップボードへの格納、および、取得を行うクラス。
 				
 				
-					<br /><i></i> <a href="../symbols/src/src_registry.js.html">registry.js</a>で定義されています。
+					<br /><i></i> <a href="../symbols/src/src_clipboardexcel.js.html">clipboardexcel.js</a>で定義されています。
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Registry.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class ClipboardExcel.">
 				<caption>クラス 概要</caption>
 				<thead>
 					<tr>
@@ -300,9 +289,9 @@ Registry.regDelete("HKCU\\Software\\HSTools\\IPMsg\\NickNameStra");
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/Registry.html#constructor">Registry</a></b>()
+								<b><a href="../symbols/ClipboardExcel.html#constructor">ClipboardExcel</a></b>()
 							</div>
-							<div class="description">インスタンス化しません。</div>
+							<div class="description">新しいクリップボードを作成する</div>
 						</td>
 					</tr>
 				</tbody>
@@ -311,70 +300,12 @@ Registry.regDelete("HKCU\\Software\\HSTools\\IPMsg\\NickNameStra");
 
 <!-- ============================== properties summary ===================== -->
 			
-				
-				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class Registry.">
-					<caption>フィールドの概要</caption>
-					<thead>
-						<tr>
-							<th scope="col">フィールド</th>
-							<th scope="col">フィールド名と説明</th>
-						</tr>
-					</thead>
-					<tbody>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								Registry.<b><a href="../symbols/Registry.html#.REG_TYPE_REG_BINARY">REG_TYPE_REG_BINARY</a></b>
-								</div>
-								<div class="description">レジストリのデータ型：REG_BINARY</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								Registry.<b><a href="../symbols/Registry.html#.REG_TYPE_REG_DWORD">REG_TYPE_REG_DWORD</a></b>
-								</div>
-								<div class="description">レジストリのデータ型：REG_DWORD</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								Registry.<b><a href="../symbols/Registry.html#.REG_TYPE_REG_EXPAND_SZ">REG_TYPE_REG_EXPAND_SZ</a></b>
-								</div>
-								<div class="description">レジストリのデータ型：REG_EXPAND_SZ</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								Registry.<b><a href="../symbols/Registry.html#.REG_TYPE_REG_SZ">REG_TYPE_REG_SZ</a></b>
-								</div>
-								<div class="description">レジストリのデータ型：REG_SZ</div>
-							</td>
-						</tr>
-					
-					</tbody>
-				</table>
-				
-				
-				
-			
 
 <!-- ============================== methods summary ======================== -->
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Registry.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class ClipboardExcel.">
 					<caption>メソッドの概要</caption>
 					<thead>
 						<tr>
@@ -385,29 +316,29 @@ Registry.regDelete("HKCU\\Software\\HSTools\\IPMsg\\NickNameStra");
 					<tbody>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">Registry.<b><a href="../symbols/Registry.html#.regDelete">regDelete</a></b>(name)
+								<div class="fixedFont"><b><a href="../symbols/ClipboardExcel.html#close">close</a></b>()
 								</div>
-								<div class="description">レジストリから指定されたキーまたは値を削除します。</div>
+								<div class="description">クリップボードをクローズします。</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">Registry.<b><a href="../symbols/Registry.html#.regRead">regRead</a></b>(name)
+								<div class="fixedFont"><b><a href="../symbols/ClipboardExcel.html#get">get</a></b>()
 								</div>
-								<div class="description">レジストリ内のキー名または値名の値を返します。</div>
+								<div class="description">クリップボードの文字列を取得します。</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">Registry.<b><a href="../symbols/Registry.html#.regWrite">regWrite</a></b>(name, value, type)
+								<div class="fixedFont"><b><a href="../symbols/ClipboardExcel.html#set">set</a></b>(text)
 								</div>
-								<div class="description">新しいキーの作成、新しい値名の既存キーへの追加 (および値の設定)、既存の値名の値変更などを行います。</div>
+								<div class="description">クリップボードへ文字列を格納します。</div>
 							</td>
 						</tr>
 					
@@ -428,11 +359,11 @@ Registry.regDelete("HKCU\\Software\\HSTools\\IPMsg\\NickNameStra");
 				</div>
 				
 				<div class="fixedFont">
-						<b>Registry</b>()
+						<b>ClipboardExcel</b>()
 				</div>
 				
 				<div class="description">
-					インスタンス化しません。
+					新しいクリップボードを作成する
 					
 				</div>
 				
@@ -452,99 +383,6 @@ Registry.regDelete("HKCU\\Software\\HSTools\\IPMsg\\NickNameStra");
 
 <!-- ============================== field details ========================== -->		
 			
-				<div class="sectionTitle">
-					フィールドの詳細
-				</div>
-				
-					<a name=".REG_TYPE_REG_BINARY"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					
-					<span class="light">Registry.</span><b>REG_TYPE_REG_BINARY</b>
-					
-					</div>
-					<div class="description">
-						レジストリのデータ型：REG_BINARY
-						
-						
-					</div>
-					
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name=".REG_TYPE_REG_DWORD"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					
-					<span class="light">Registry.</span><b>REG_TYPE_REG_DWORD</b>
-					
-					</div>
-					<div class="description">
-						レジストリのデータ型：REG_DWORD
-						
-						
-					</div>
-					
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name=".REG_TYPE_REG_EXPAND_SZ"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					
-					<span class="light">Registry.</span><b>REG_TYPE_REG_EXPAND_SZ</b>
-					
-					</div>
-					<div class="description">
-						レジストリのデータ型：REG_EXPAND_SZ
-						
-						
-					</div>
-					
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name=".REG_TYPE_REG_SZ"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					
-					<span class="light">Registry.</span><b>REG_TYPE_REG_SZ</b>
-					
-					</div>
-					<div class="description">
-						レジストリのデータ型：REG_SZ
-						
-						
-					</div>
-					
-					
-
-						
-						
-						
-						
-
-					
-				
-			
 
 <!-- ============================== method details ========================= -->		
 			
@@ -552,32 +390,21 @@ Registry.regDelete("HKCU\\Software\\HSTools\\IPMsg\\NickNameStra");
 					メソッドの詳細
 				</div>
 				
-					<a name=".regDelete"> </a>
-					<div class="fixedFont">&lt;static&gt; 
+					<a name="close"> </a>
+					<div class="fixedFont">
 					
 					
-					<span class="light">Registry.</span><b>regDelete</b>(name)
+					<b>close</b>()
 					
 					</div>
 					<div class="description">
-						レジストリから指定されたキーまたは値を削除します。
+						クリップボードをクローズします。
 						
 						
 					</div>
 					
 					
 					
-						
-							<dl class="detailList">
-							<dt class="heading">引数:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>name</b>
-									
-								</dt>
-								<dd>レジストリ内で削除するキーまたは値の名前を示す文字列値です。</dd>
-							
-							</dl>
 						
 						
 						
@@ -588,32 +415,21 @@ Registry.regDelete("HKCU\\Software\\HSTools\\IPMsg\\NickNameStra");
 
 					<hr />
 				
-					<a name=".regRead"> </a>
-					<div class="fixedFont">&lt;static&gt; 
+					<a name="get"> </a>
+					<div class="fixedFont">
 					
-					<span class="light">{Object}</span>
-					<span class="light">Registry.</span><b>regRead</b>(name)
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<b>get</b>()
 					
 					</div>
 					<div class="description">
-						レジストリ内のキー名または値名の値を返します。
+						クリップボードの文字列を取得します。
 						
 						
 					</div>
 					
 					
 					
-						
-							<dl class="detailList">
-							<dt class="heading">引数:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>name</b>
-									
-								</dt>
-								<dd>読み取るキーまたは値の名前です。</dd>
-							
-							</dl>
 						
 						
 						
@@ -622,7 +438,7 @@ Registry.regDelete("HKCU\\Software\\HSTools\\IPMsg\\NickNameStra");
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd><span class="light fixedFont">{Object}</span> レジストリの値</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> 取得した文字列</dd>
 							
 							</dl>
 						
@@ -631,15 +447,15 @@ Registry.regDelete("HKCU\\Software\\HSTools\\IPMsg\\NickNameStra");
 
 					<hr />
 				
-					<a name=".regWrite"> </a>
-					<div class="fixedFont">&lt;static&gt; 
+					<a name="set"> </a>
+					<div class="fixedFont">
 					
 					
-					<span class="light">Registry.</span><b>regWrite</b>(name, value, type)
+					<b>set</b>(text)
 					
 					</div>
 					<div class="description">
-						新しいキーの作成、新しい値名の既存キーへの追加 (および値の設定)、既存の値名の値変更などを行います。
+						クリップボードへ文字列を格納します。
 						
 						
 					</div>
@@ -651,22 +467,10 @@ Registry.regDelete("HKCU\\Software\\HSTools\\IPMsg\\NickNameStra");
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>name</b>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>text</b>
 									
 								</dt>
-								<dd>作成、追加、変更するキー名、値名、または値を示す文字列値です。</dd>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>value</b>
-									
-								</dt>
-								<dd>作成するキーの名前、既存のキーに追加する値の名前、または既存の値名に設定する値です。</dd>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>type</b>
-									
-								</dt>
-								<dd>(オプション)レジストリに保存する値のデータ型を指定します。</dd>
+								<dd>格納する文字列</dd>
 							
 							</dl>
 						
@@ -691,7 +495,7 @@ Registry.regDelete("HKCU\\Software\\HSTools\\IPMsg\\NickNameStra");
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Fri Apr 22 2011 11:14:39 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Fri Apr 22 2011 11:14:38 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

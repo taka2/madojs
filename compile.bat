@@ -21,11 +21,13 @@ copy /B mado-debug.js+src\http.js mado-debug.js
 copy /B mado-debug.js+src\ftp.js mado-debug.js
 
 REM Other
-copy /B mado-debug.js+src\clipboard.js mado-debug.js
 copy /B mado-debug.js+src\keysender.js mado-debug.js
 copy /B mado-debug.js+src\process.js mado-debug.js
 copy /B mado-debug.js+src\registry.js mado-debug.js
 copy /B mado-debug.js+src\excel.js mado-debug.js
+copy /B mado-debug.js+src\clipboardie.js mado-debug.js
+copy /B mado-debug.js+src\clipboardexcel.js mado-debug.js
+copy /B mado-debug.js+src\clipboard.js mado-debug.js
 copy /B mado-debug.js+src\adoconnection.js mado-debug.js
 copy /B mado-debug.js+src\adocommand.js mado-debug.js
 copy /B mado-debug.js+src\adoaccessconnection.js mado-debug.js

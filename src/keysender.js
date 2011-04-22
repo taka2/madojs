@@ -19,9 +19,15 @@ var ks = new KeySender("無題")
  */
 var KeySender = function(targetWindow) {
   Const.WSHELL.AppActivate(targetWindow);
+  sleep(KeySender.DURATION);
 };
 
-// Prototypes of Clipboard
+// Constants of KeySender
+// private
+// AppActivateしてからKeySendするまでの待ち時間
+KeySender.DURATION = 10;
+
+// Prototypes of KeySender
 KeySender.prototype = {
   /**
    * 指定したtextをキー送信します。

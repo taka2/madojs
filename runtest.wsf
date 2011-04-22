@@ -4,6 +4,7 @@
     <script language="JScript" src="mado.js"></script>
     <script language="JScript" src="test/testfw.js"></script>
     <script language="JScript" src="test/array.js"></script>
+    <script language="JScript" src="test/clipboard.js"></script>
     <script language="JScript" src="test/date.js"></script>
     <script language="JScript" src="test/file.js"></script>
     <script language="JScript" src="test/http.js"></script>

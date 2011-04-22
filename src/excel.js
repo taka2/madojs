@@ -83,7 +83,7 @@ Excel.openReadonly = function(path, block) {
  */
 Excel.create = function(block) {
   if(!isFunction(block)) {
-    return new Excel(path, true);
+    return new Excel("", true);
   }
 
   try {
@@ -95,6 +95,19 @@ Excel.create = function(block) {
     }
   }
 };
+
+/**
+ * プログラムを動作させる端末でExcelが利用可能かどうか。
+ * @return {Boolean} Excelが利用可能な場合はtrue、それ以外の場合はfalseを返す。
+ */
+Excel.available = function() {
+  try {
+    var x = new ActiveXObject("Excel.Application");
+    return true;
+  } catch(e) {
+    return false;
+  }
+}
 
 // Prototypes of Excel
 Excel.prototype = {
@@ -347,5 +360,13 @@ ExcelSheet.prototype = {
    */
   setRightFooter: function(footer) {
     this.sheetObj.PageSetup.RightFooter = footer;
+  },
+  /**
+   * セル値をクリップボードへコピーします。
+   * @param {Number} x x座標
+   * @param {Number} y y座標
+   */
+  copy: function(x, y) {
+    this.sheetObj.Cells(x, y).Copy();
   }
 };

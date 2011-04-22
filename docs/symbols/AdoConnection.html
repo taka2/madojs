@@ -319,9 +319,27 @@ MadoJS
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/AdoConnection.html#beginTrans">beginTrans</a></b>()
+								</div>
+								<div class="description">トランザクションを開始します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/AdoConnection.html#close">close</a></b>()
 								</div>
 								<div class="description">データベースの接続を閉じる。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/AdoConnection.html#commitTrans">commitTrans</a></b>()
+								</div>
+								<div class="description">トランザクションをコミットします。</div>
 							</td>
 						</tr>
 					
@@ -367,6 +385,15 @@ MadoJS
 								<div class="fixedFont">AdoConnection.<b><a href="../symbols/AdoConnection.html#.open">open</a></b>(connectString, userName, password, block)
 								</div>
 								<div class="description">新しいADOのコネクションを作成し、ブロックを実行します。ブロックが指定されていない場合は、作成したADOのコネクションを返します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/AdoConnection.html#rollbackTrans">rollbackTrans</a></b>()
+								</div>
+								<div class="description">トランザクションをロールバックします。</div>
 							</td>
 						</tr>
 					
@@ -441,6 +468,38 @@ MadoJS
 					メソッドの詳細
 				</div>
 				
+					<a name="beginTrans"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Number}</span>
+					<b>beginTrans</b>()
+					
+					</div>
+					<div class="description">
+						トランザクションを開始します。
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{Number}</span> トランザクションネストレベル</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
 					<a name="close"> </a>
 					<div class="fixedFont">
 					
@@ -450,6 +509,31 @@ MadoJS
 					</div>
 					<div class="description">
 						データベースの接続を閉じる。
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="commitTrans"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>commitTrans</b>()
+					
+					</div>
+					<div class="description">
+						トランザクションをコミットします。
 						
 						
 					</div>
@@ -679,6 +763,31 @@ MadoJS
 						
 						
 
+					<hr />
+				
+					<a name="rollbackTrans"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>rollbackTrans</b>()
+					
+					</div>
+					<div class="description">
+						トランザクションをロールバックします。
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
 					
 				
 			
@@ -693,7 +802,7 @@ MadoJS
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Fri Apr 22 2011 11:14:38 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Fri Apr 22 2011 14:38:50 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

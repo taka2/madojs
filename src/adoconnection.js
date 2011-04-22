@@ -109,5 +109,24 @@ AdoConnection.prototype = {
    */
   close: function() {
     this.con.Close();
+  },
+  /**
+   * トランザクションを開始します。
+   * @return {Number} トランザクションネストレベル
+   */
+  beginTrans: function() {
+    return this.con.BeginTrans();
+  },
+  /**
+   * トランザクションをコミットします。
+   */
+  commitTrans: function() {
+    this.con.CommitTrans();
+  },
+  /**
+   * トランザクションをロールバックします。
+   */
+  rollbackTrans: function() {
+    this.con.RollbackTrans();
   }
 };

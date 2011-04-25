@@ -29,7 +29,7 @@ AdoConnection.open = function(connectString, userName, password, block) {
     var con = new AdoConnection(connectString, userName, password);
     block(con);
   } finally {
-    if (con != null) {
+    if(con) {
       con.close();
     }
   }

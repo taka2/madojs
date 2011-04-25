@@ -46,7 +46,7 @@ Excel.open = function(path, block) {
     var excel = new Excel(path, false);
     block(excel);
   } finally {
-    if (excel != null) {
+    if(excel) {
       excel.quit();
     }
   }
@@ -68,7 +68,7 @@ Excel.openReadonly = function(path, block) {
     var excel = new Excel(path, false);
     block(excel);
   } finally {
-    if (excel != null) {
+    if(excel) {
       excel.quitDiscardChanges();
     }
   }
@@ -90,7 +90,7 @@ Excel.create = function(block) {
     var excel = new Excel("", true);
     block(excel);
   } finally {
-    if (excel != null) {
+    if(excel) {
       excel.quit();
     }
   }

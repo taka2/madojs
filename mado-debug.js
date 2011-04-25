@@ -161,9 +161,12 @@ Const.BUTTON_VALUE_NO = 7;
  * 引数で構成された配列
  */
 var ARGV = [];
-for(var i=0; i<WScript.Arguments.length; i++) {
-  ARGV.push(WScript.Arguments(i));
-}
+(function() {
+  var argvLength = WScript.Arguments.length;
+  for(var i=0; i<argvLength; i++) {
+    ARGV.push(WScript.Arguments(i));
+  }
+}());
 
 // Global Functions
 /**
@@ -255,22 +258,22 @@ var getEnv = function (name) {
 
 /**
  * OSをシャットダウンします。
- * @param {Number} timeout タイムアウトを秒で指定
+ * @param {Number} timeout (オプション)タイムアウトを秒で指定(初期値 0)
  */
 var osShutdown = function (timeout) {
-  if (timeout === null) timeout = 0;
-  Process.exec("shutdown", ["-s", "-t", timeout], 0, false);
+  var myTimeout = timeout || 0;
+  Process.exec("shutdown", ["-s", "-t", myTimeout], 0, false);
 };
 
 /**
  * OSを再起動します。
- * @param {Number} timeout タイムアウトを秒で指定
+ * @param {Number} timeout (オプション)タイムアウトを秒で指定(初期値 0)
  * @param {String} option "-f"を指定すると、実行中のプロセスを警告なしで閉じます
  */
 var osReboot = function (timeout, option) {
   var params = ["-r", "-t"];
-  if (timeout === null) timeout = 0;
-  params.push(timeout);
+  var myTimeout = timeout || 0;
+  params.push(myTimeout);
 
   if (option !== null) {
     params.push(option);
@@ -470,7 +473,8 @@ SpecialFolders.getTemplates = function () {
 Array.prototype.each = function(block) {
   var result = [];
 
-  for(var i=0; i<this.length; i++) {
+  var thisLength = this.length;
+  for(var i=0; i<thisLength; i++) {
     result.push(block(this[i]));
   }
 
@@ -483,7 +487,8 @@ Array.prototype.each = function(block) {
  * @return {Boolean} objが配列に含まれる場合true、そうでない場合falseを返す。
  */
 Array.prototype.include = function(obj) {
-  for(var i=0; i<this.length; i++) {
+  var thisLength = this.length;
+  for(var i=0; i<thisLength; i++) {
     if(this[i] === obj) {
       return true;
     }
@@ -622,7 +627,8 @@ String.prototype.substringb = function(start, end) {
   var currentIndex = 0;
   var result = "";
 
-  for(var i=0; i<text.length; i++) {
+  var textLength = text.length;
+  for(var i=0; i<textLength; i++) {
     var ch = text.charAt(i);
     var chSize = 1;
     if(ch.isZenkaku()) {
@@ -1017,7 +1023,7 @@ Dir.find = function(path, pattern, block) {
 
   var processFile = function(item) {
     if(pattern === undefined || item.match(pattern)) {
-      if(block) {
+      if(isFunction(block)) {
         block(item);
       } else {
         result.push(item);
@@ -1028,7 +1034,8 @@ Dir.find = function(path, pattern, block) {
   dir.each(function(item) {
     if(Dir.exist(item)) {
       var subresult = Dir.find(item, pattern, block);
-      for(var i=0; i<subresult.length; i++) {
+      var subresultLength = subresult.length;
+      for(var i=0; i<subresultLength; i++) {
         processFile(subresult[i]);
       }
     } else {
@@ -1150,8 +1157,8 @@ HTTP.prototype = {
    * 指定されたpath、headerでPOSTリクエストを行い、ブロックを実行します。
    * ブロックが指定されていない場合は、レスポンステキストを返します。
    * @param {String} path HTTP操作の対象パス
-   * @param {Object} header (オプション)HTTPヘッダ
-   * @param {Object} body (オプション)HTTPボディ
+   * @param {Object} header (オプション)HTTPヘッダ(初期値 [])
+   * @param {Object} body (オプション)HTTPボディ(初期値 undefined)
    * @param {Function} block (オプション)ブロック
    * @return {String} ブロックが指定されていない場合は、レスポンステキスト
    * @throws 200OK以外のレスポンスが返された場合にスローされます。
@@ -1162,25 +1169,23 @@ HTTP.prototype = {
   // private
   request: function(method, path, header, body, block) {
     // パラメータの調整
-    if(header === undefined) {
-      header = [];
-    }
+    var myHeader = header || [];
 
     // リクエストの準備
     var xhr = new ActiveXObject("Microsoft.XMLHTTP");
     xhr.open(method, "http://" + this.host + ":" + this.port + path, false);
 
-    for(var headerName in header) {
-      xhr.setRequestHeader(headerName, header[headerName]);
+    for(var headerName in myHeader) {
+      xhr.setRequestHeader(headerName, myHeader[headerName]);
     }
 
     // リクエストの送信
     xhr.send(body);
 
     // レスポンスの処理
-    if(xhr.readyState == 4) {
-      if(xhr.status == 200) {
-        if(block) {
+    if(xhr.readyState === 4) {
+      if(xhr.status === 200) {
+        if(isFunction(block)) {
           block(xhr.responseText);
         } else {
           return xhr.responseText;
@@ -1694,22 +1699,17 @@ var Process = {};
 /**
  * 指定したコマンドを実行します。
  * @param {String} command 実行するコマンド
- * @param {Array} args 引数
- * @param {Number} windowStyle <a href = "Const.html#.WINDOW_STYLE_MAX">ウインドウスタイル</a>参照
- * @param {Boolean} waitOnReturn trueの場合コマンドの実行が終わるまで待ちます。falseの場合は待ちません。
+ * @param {Array} args (オプション)引数(初期値 [])
+ * @param {Number} windowStyle (オプション)<a href = "Const.html#.WINDOW_STYLE_MAX">ウインドウスタイル</a>参照(初期値 Const.WINDOW_STYLE_NORMAL)
+ * @param {Boolean} waitOnReturn (オプション)trueの場合コマンドの実行が終わるまで待ちます。falseの場合は待ちません。(初期値 false)
  */
 Process.exec = function(command, args, windowStyle, waitOnReturn) {
-  if(!args) {
-    args = [];
-  }
-  if(!windowStyle) {
-    windowStyle = Const.WINDOW_STYLE_NORMAL;
-  }
-  if(waitOnReturn === undefined) {
-    waitOnReturn = true;
-  }
-  var commandLine = command + " " + args.join(" ");
-  Const.WSHELL.Run(commandLine, windowStyle, waitOnReturn);
+  var myArgs = args || [];
+  var myWindowStyle = windowStyle || Const.WINDOW_STYLE_NORMAL;
+  var myWaitOnReturn = waitOnReturn || false;
+
+  var commandLine = command + " " + myArgs.join(" ");
+  Const.WSHELL.Run(commandLine, myWindowStyle, myWaitOnReturn);
 };
 /**
  * インスタンス化しません。
@@ -1823,7 +1823,7 @@ Excel.open = function(path, block) {
     var excel = new Excel(path, false);
     block(excel);
   } finally {
-    if (excel != null) {
+    if(excel) {
       excel.quit();
     }
   }
@@ -1845,7 +1845,7 @@ Excel.openReadonly = function(path, block) {
     var excel = new Excel(path, false);
     block(excel);
   } finally {
-    if (excel != null) {
+    if(excel) {
       excel.quitDiscardChanges();
     }
   }
@@ -1867,7 +1867,7 @@ Excel.create = function(block) {
     var excel = new Excel("", true);
     block(excel);
   } finally {
-    if (excel != null) {
+    if(excel) {
       excel.quit();
     }
   }
@@ -2267,7 +2267,7 @@ Clipboard.open = function(block) {
     var clip = new Clipboard();
     block(clip);
   } finally {
-    if (clip != null) {
+    if(clip) {
       clip.close();
     }
   }
@@ -2327,7 +2327,7 @@ AdoConnection.open = function(connectString, userName, password, block) {
     var con = new AdoConnection(connectString, userName, password);
     block(con);
   } finally {
-    if (con != null) {
+    if(con) {
       con.close();
     }
   }
@@ -2758,7 +2758,7 @@ AdoAccessConnection.open = function(mdbFilePath, userName, password, block) {
     var con = new AdoAccessConnection(mdbFilePath, userName, password);
     block(con);
   } finally {
-    if (con != null) {
+    if(con) {
       con.close();
     }
   }
@@ -2807,7 +2807,7 @@ AdoOracleConnection.open = function(dsName, userName, password, block) {
     var con = new AdoOracleConnection(dsName, userName, password);
     block(con);
   } finally {
-    if (con != null) {
+    if(con) {
       con.close();
     }
   }

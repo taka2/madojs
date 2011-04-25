@@ -143,7 +143,7 @@ Dir.find = function(path, pattern, block) {
 
   var processFile = function(item) {
     if(pattern === undefined || item.match(pattern)) {
-      if(block) {
+      if(isFunction(block)) {
         block(item);
       } else {
         result.push(item);
@@ -154,7 +154,8 @@ Dir.find = function(path, pattern, block) {
   dir.each(function(item) {
     if(Dir.exist(item)) {
       var subresult = Dir.find(item, pattern, block);
-      for(var i=0; i<subresult.length; i++) {
+      var subresultLength = subresult.length;
+      for(var i=0; i<subresultLength; i++) {
         processFile(subresult[i]);
       }
     } else {

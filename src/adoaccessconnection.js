@@ -39,7 +39,7 @@ AdoAccessConnection.open = function(mdbFilePath, userName, password, block) {
     var con = new AdoAccessConnection(mdbFilePath, userName, password);
     block(con);
   } finally {
-    if (con != null) {
+    if(con) {
       con.close();
     }
   }

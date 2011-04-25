@@ -3,9 +3,12 @@
  * 引数で構成された配列
  */
 var ARGV = [];
-for(var i=0; i<WScript.Arguments.length; i++) {
-  ARGV.push(WScript.Arguments(i));
-}
+(function() {
+  var argvLength = WScript.Arguments.length;
+  for(var i=0; i<argvLength; i++) {
+    ARGV.push(WScript.Arguments(i));
+  }
+}());
 
 // Global Functions
 /**
@@ -97,22 +100,22 @@ var getEnv = function (name) {
 
 /**
  * OSをシャットダウンします。
- * @param {Number} timeout タイムアウトを秒で指定
+ * @param {Number} timeout (オプション)タイムアウトを秒で指定(初期値 0)
  */
 var osShutdown = function (timeout) {
-  if (timeout === null) timeout = 0;
-  Process.exec("shutdown", ["-s", "-t", timeout], 0, false);
+  var myTimeout = timeout || 0;
+  Process.exec("shutdown", ["-s", "-t", myTimeout], 0, false);
 };
 
 /**
  * OSを再起動します。
- * @param {Number} timeout タイムアウトを秒で指定
+ * @param {Number} timeout (オプション)タイムアウトを秒で指定(初期値 0)
  * @param {String} option "-f"を指定すると、実行中のプロセスを警告なしで閉じます
  */
 var osReboot = function (timeout, option) {
   var params = ["-r", "-t"];
-  if (timeout === null) timeout = 0;
-  params.push(timeout);
+  var myTimeout = timeout || 0;
+  params.push(myTimeout);
 
   if (option !== null) {
     params.push(option);

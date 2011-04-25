@@ -33,7 +33,7 @@ Clipboard.open = function(block) {
     var clip = new Clipboard();
     block(clip);
   } finally {
-    if (clip != null) {
+    if(clip) {
       clip.close();
     }
   }

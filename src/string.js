@@ -74,7 +74,8 @@ String.prototype.substringb = function(start, end) {
   var currentIndex = 0;
   var result = "";
 
-  for(var i=0; i<text.length; i++) {
+  var textLength = text.length;
+  for(var i=0; i<textLength; i++) {
     var ch = text.charAt(i);
     var chSize = 1;
     if(ch.isZenkaku()) {

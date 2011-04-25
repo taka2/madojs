@@ -11,7 +11,8 @@
 Array.prototype.each = function(block) {
   var result = [];
 
-  for(var i=0; i<this.length; i++) {
+  var thisLength = this.length;
+  for(var i=0; i<thisLength; i++) {
     result.push(block(this[i]));
   }
 
@@ -24,7 +25,8 @@ Array.prototype.each = function(block) {
  * @return {Boolean} objが配列に含まれる場合true、そうでない場合falseを返す。
  */
 Array.prototype.include = function(obj) {
-  for(var i=0; i<this.length; i++) {
+  var thisLength = this.length;
+  for(var i=0; i<thisLength; i++) {
     if(this[i] === obj) {
       return true;
     }

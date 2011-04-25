@@ -8,7 +8,7 @@ Test.Clipboard.testHankaku = function() {
 };
 
 Test.Clipboard.testHankaku2 = function() {
-  new Clipboard.open(function(clip) {
+  Clipboard.open(function(clip) {
     clip.set("fghij");
     testUtil.assertEquals("fghij", clip.get());
   });
@@ -22,7 +22,7 @@ Test.Clipboard.testZenkaku = function() {
 };
 
 Test.Clipboard.testZenkaku2 = function() {
-  new Clipboard.open(function(clip) {
+  Clipboard.open(function(clip) {
     clip.set("‚©‚«‚­‚¯‚±");
     testUtil.assertEquals("‚©‚«‚­‚¯‚±", clip.get());
   });

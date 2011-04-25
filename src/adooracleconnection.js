@@ -39,7 +39,7 @@ AdoOracleConnection.open = function(dsName, userName, password, block) {
     var con = new AdoOracleConnection(dsName, userName, password);
     block(con);
   } finally {
-    if (con != null) {
+    if(con) {
       con.close();
     }
   }

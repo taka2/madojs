@@ -5,7 +5,10 @@
     <script language="JScript" src="test/testfw.js"></script>
     <script language="JScript" src="test/array.js"></script>
     <script language="JScript" src="test/clipboard.js"></script>
+    <script language="JScript" src="test/clipboardexcel.js"></script>
+    <script language="JScript" src="test/clipboardie.js"></script>
     <script language="JScript" src="test/date.js"></script>
+    <script language="JScript" src="test/dir.js"></script>
     <script language="JScript" src="test/file.js"></script>
     <script language="JScript" src="test/http.js"></script>
     <script language="JScript" src="test/specialfolders.js"></script>

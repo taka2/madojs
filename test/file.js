@@ -56,3 +56,10 @@ Test.File.testDirname = function() {
   // Original Test Case
   testUtil.assertEquals("/", File.dirname("////aaa"));
 }
+
+Test.File.testGetShortName = function() {
+  testUtil.assertEquals("MADO-D~1.JS", File.getShortName("mado-debug.js"));
+  File.open("mado-debug.js", "r", function(file) {
+    testUtil.assertEquals("MADO-D~1.JS", file.getShortName());
+  });
+}

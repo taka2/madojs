@@ -232,6 +232,21 @@ File.mtime = function(filename) {
 };
 
 /**
+ * 指定されたファイルが作成されたときの日付と時刻を返します。
+ * @param {String} filename ファイルのパス
+ * @return {Date} 指定されたファイルが作成されたときの日付と時刻
+ * @throws ファイルが存在しない場合にスローされます。
+ */
+File.ctime = function(filename) {
+  if(Const.FSO.FileExists(filename)) {
+    var file = Const.FSO.GetFile(filename);
+    return file.DateCreated;
+  } else {
+    throw new Error(-1, "File Not Found: " + path);
+  }
+};
+
+/**
  * filenameの一番後ろのスラッシュより前を文字列として返します。スラッシュを含まないファイル名に対しては"."(カレントディレクトリ)を返します。
  * @param {String} filename ファイルのパス
  * @return {String} 指定されたファイルのdirname
@@ -259,6 +274,21 @@ File.dirname = function(filename) {
         targetString = result;
       }
     }
+  }
+};
+
+/**
+ * 指定されたファイルの8.3形式のファイル名を返します。
+ * @param {String} filename ファイルのパス
+ * @return {String} 指定されたファイルの8.3形式のファイル名
+ * @throws ファイルが存在しない場合にスローされます。
+ */
+File.getShortName = function(filename) {
+  if(Const.FSO.FileExists(filename)) {
+    var file = Const.FSO.GetFile(filename);
+    return file.ShortName;
+  } else {
+    throw new Error(-1, "File Not Found: " + path);
   }
 };
 
@@ -306,5 +336,19 @@ File.prototype = {
    */
   mtime: function() {
     return File.mtime(this.getPath());
+  },
+  /**
+   * 指定されたファイルが作成されたときの日付と時刻を返します。
+   * @return {Date} 指定されたファイルが作成されたときの日付と時刻
+   */
+  ctime: function() {
+    return File.ctime(this.getPath());
+  },
+  /**
+   * 指定されたファイルの8.3形式のファイル名を返します。
+   * @return {Date} 指定されたファイルの8.3形式のファイル名
+   */
+  getShortName: function() {
+    return File.getShortName(this.getPath());
   }
 };

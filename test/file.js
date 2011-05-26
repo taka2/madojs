@@ -37,3 +37,22 @@ Test.File.testFile = function() {
   testUtil.assertEquals(false, File.exist("test2.txt"));
   testUtil.assertEquals(false, File.exist("test3.txt"));
 };
+
+Test.File.testDirname = function() {
+  // Test Case from http://pubs.opengroup.org/onlinepubs/009695399/functions/dirname.html
+  testUtil.assertEquals("/usr", File.dirname("/usr/lib"));
+  testUtil.assertEquals("/", File.dirname("/usr/"));
+  testUtil.assertEquals(".", File.dirname("usr"));
+  testUtil.assertEquals("/", File.dirname("/"));
+  testUtil.assertEquals(".", File.dirname("."));
+  testUtil.assertEquals(".", File.dirname(".."));
+
+  // Test Case from http://doc.ruby-lang.org/ja/1.9.2/class/File.html
+  testUtil.assertEquals("dir", File.dirname("dir/file.ext"));
+  testUtil.assertEquals(".", File.dirname("file.ext"));
+  testUtil.assertEquals("foo", File.dirname("foo/bar/"));
+  testUtil.assertEquals("foo", File.dirname("foo//bar"));
+
+  // Original Test Case
+  testUtil.assertEquals("/", File.dirname("////aaa"));
+}

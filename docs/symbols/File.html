@@ -328,6 +328,24 @@ File.open("copy_of_mado.js", "w", function(outfile) {
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont">File.<b><a href="../symbols/File.html#.atime">atime</a></b>(filename)
+								</div>
+								<div class="description">指定されたファイルが最後にアクセスされたときの日付と時刻を返します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/File.html#atime">atime</a></b>()
+								</div>
+								<div class="description">指定されたファイルが最後にアクセスされたときの日付と時刻を返します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont">File.<b><a href="../symbols/File.html#.basename">basename</a></b>(filename)
 								</div>
 								<div class="description">指定したfilenameのパスを除いたファイル名を取得します。</div>
@@ -358,6 +376,15 @@ File.open("copy_of_mado.js", "w", function(outfile) {
 								<div class="fixedFont">File.<b><a href="../symbols/File.html#.createTemporaryFile">createTemporaryFile</a></b>(block)
 								</div>
 								<div class="description">一時ファイルを作成します。(ファイル名:MyDocuments/YYYYMMDDHH24MISSt)</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">File.<b><a href="../symbols/File.html#.dirname">dirname</a></b>(filename)
+								</div>
+								<div class="description">filenameの一番後ろのスラッシュより前を文字列として返します。スラッシュを含まないファイル名に対しては".</div>
 							</td>
 						</tr>
 					
@@ -394,6 +421,24 @@ File.open("copy_of_mado.js", "w", function(outfile) {
 								<div class="fixedFont"><b><a href="../symbols/File.html#getPath">getPath</a></b>()
 								</div>
 								<div class="description">このファイルのパスを取得します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">File.<b><a href="../symbols/File.html#.mtime">mtime</a></b>(filename)
+								</div>
+								<div class="description">指定されたファイルが最後に更新されたときの日付と時刻を返します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/File.html#mtime">mtime</a></b>()
+								</div>
+								<div class="description">指定されたファイルが最後に更新されたときの日付と時刻を返します。</div>
 							</td>
 						</tr>
 					
@@ -525,6 +570,91 @@ File.open("copy_of_mado.js", "w", function(outfile) {
 				<div class="sectionTitle">
 					メソッドの詳細
 				</div>
+				
+					<a name=".atime"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Date.html">Date</a>}</span>
+					<span class="light">File.</span><b>atime</b>(filename)
+					
+					</div>
+					<div class="description">
+						指定されたファイルが最後にアクセスされたときの日付と時刻を返します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>filename</b>
+									
+								</dt>
+								<dd>ファイルのパス</dd>
+							
+							</dl>
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">例外:</dt>
+							
+								<dt>
+									 <b></b>
+								</dt>
+								<dd>ファイルが存在しない場合にスローされます。</dd>
+							
+							</dl>
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Date.html">Date</a>}</span> 指定されたファイルが最後にアクセスされたときの日付と時刻</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="atime"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/Date.html">Date</a>}</span>
+					<b>atime</b>()
+					
+					</div>
+					<div class="description">
+						指定されたファイルが最後にアクセスされたときの日付と時刻を返します。
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Date.html">Date</a>}</span> 指定されたファイルが最後にアクセスされたときの日付と時刻</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
 				
 					<a name=".basename"> </a>
 					<div class="fixedFont">&lt;static&gt; 
@@ -676,6 +806,49 @@ File.open("copy_of_mado.js", "w", function(outfile) {
 						
 						
 						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".dirname"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<span class="light">File.</span><b>dirname</b>(filename)
+					
+					</div>
+					<div class="description">
+						filenameの一番後ろのスラッシュより前を文字列として返します。スラッシュを含まないファイル名に対しては"."(カレントディレクトリ)を返します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>filename</b>
+									
+								</dt>
+								<dd>ファイルのパス</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> 指定されたファイルのdirname</dd>
+							
+							</dl>
 						
 						
 						
@@ -834,6 +1007,91 @@ print(File.extname("c:\work\build_y2.xml")); // ".xml"</pre>
 							<dt class="heading">戻り値:</dt>
 							
 								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> このファイルのパス</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".mtime"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Date.html">Date</a>}</span>
+					<span class="light">File.</span><b>mtime</b>(filename)
+					
+					</div>
+					<div class="description">
+						指定されたファイルが最後に更新されたときの日付と時刻を返します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>filename</b>
+									
+								</dt>
+								<dd>ファイルのパス</dd>
+							
+							</dl>
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">例外:</dt>
+							
+								<dt>
+									 <b></b>
+								</dt>
+								<dd>ファイルが存在しない場合にスローされます。</dd>
+							
+							</dl>
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Date.html">Date</a>}</span> 指定されたファイルが最後に更新されたときの日付と時刻</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="mtime"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/Date.html">Date</a>}</span>
+					<b>mtime</b>()
+					
+					</div>
+					<div class="description">
+						指定されたファイルが最後に更新されたときの日付と時刻を返します。
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Date.html">Date</a>}</span> 指定されたファイルが最後に更新されたときの日付と時刻</dd>
 							
 							</dl>
 						
@@ -1144,7 +1402,7 @@ print(File.extname("c:\work\build_y2.xml")); // ".xml"</pre>
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Mon Apr 25 2011 16:45:22 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Thu May 26 2011 11:50:33 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

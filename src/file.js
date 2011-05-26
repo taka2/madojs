@@ -201,6 +201,67 @@ File.createTemporaryFile = function(block) {
   }
 };
 
+/**
+ * 指定されたファイルが最後にアクセスされたときの日付と時刻を返します。
+ * @param {String} filename ファイルのパス
+ * @return {Date} 指定されたファイルが最後にアクセスされたときの日付と時刻
+ * @throws ファイルが存在しない場合にスローされます。
+ */
+File.atime = function(filename) {
+  if(Const.FSO.FileExists(filename)) {
+    var file = Const.FSO.GetFile(filename);
+    return file.DateLastAccessed;
+  } else {
+    throw new Error(-1, "File Not Found: " + path);
+  }
+};
+
+/**
+ * 指定されたファイルが最後に更新されたときの日付と時刻を返します。
+ * @param {String} filename ファイルのパス
+ * @return {Date} 指定されたファイルが最後に更新されたときの日付と時刻
+ * @throws ファイルが存在しない場合にスローされます。
+ */
+File.mtime = function(filename) {
+  if(Const.FSO.FileExists(filename)) {
+    var file = Const.FSO.GetFile(filename);
+    return file.DateLastModified;
+  } else {
+    throw new Error(-1, "File Not Found: " + path);
+  }
+};
+
+/**
+ * filenameの一番後ろのスラッシュより前を文字列として返します。スラッシュを含まないファイル名に対しては"."(カレントディレクトリ)を返します。
+ * @param {String} filename ファイルのパス
+ * @return {String} 指定されたファイルのdirname
+ */
+File.dirname = function(filename) {
+  if(filename === "/") {
+    return "/";
+  } else if(filename.indexOf("/") === -1) {
+    return ".";
+  } else {
+    var targetString = filename;
+    if(filename.endsWith("/")) {
+      targetString = targetString.substring(0, targetString.length - 1);
+    }
+
+    while(true) {
+      var slashIndex = targetString.lastIndexOf("/");
+      if(slashIndex === 0) {
+        return "/";
+      } else {
+        var result = targetString.substring(0, slashIndex);
+        if(result.charAt(result.length - 1) !== '/') {
+          return result;
+        }
+        targetString = result;
+      }
+    }
+  }
+};
+
 // Prototypes of File
 File.prototype = {
   /** 
@@ -231,5 +292,19 @@ File.prototype = {
    */
   getPath: function() {
     return this.path;
+  },
+  /**
+   * 指定されたファイルが最後にアクセスされたときの日付と時刻を返します。
+   * @return {Date} 指定されたファイルが最後にアクセスされたときの日付と時刻
+   */
+  atime: function() {
+    return File.atime(this.getPath());
+  },
+  /**
+   * 指定されたファイルが最後に更新されたときの日付と時刻を返します。
+   * @return {Date} 指定されたファイルが最後に更新されたときの日付と時刻
+   */
+  mtime: function() {
+    return File.mtime(this.getPath());
   }
 };

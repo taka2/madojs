@@ -15,6 +15,7 @@ JScript/Windows Scripting Hostにruby風の味付けをほどこし、
 =機能一覧=
   * ファイルI/O
   * フォルダ操作、フォルダ内の再帰的なファイル検索
+  * ドライブ情報の取得
   * プログラムの実行
   * HTTP GET/POST
   * FTP GET/PUT

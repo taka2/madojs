@@ -21,6 +21,7 @@ JScript/Windows Scripting Hostにruby風の味付けをほどこし、
   * FTP GET/PUT
   * クリップボード
   * サービスの開始と終了
+  * zipファイルの展開と圧縮
   * レジストリへのアクセス
   * イベントログの書き込み
   * 特殊フォルダパスの取得

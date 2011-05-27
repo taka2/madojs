@@ -956,6 +956,13 @@ File.prototype = {
     this.ts.WriteLine(line);
   },
   /** 
+   * ファイルへ書き込みます。
+   * @param {String} line 書きこむ文字列
+   */
+  write: function(line) {
+    this.ts.Write(line);
+  },
+  /** 
    * ファイルをクローズします。
    */
   close: function() {
@@ -3182,4 +3189,61 @@ Shell.serviceStart = function(serviceName, isPersistent) {
 Shell.serviceStop = function(serviceName, isPersistent) {
   myIsPersistent = isPersistent || false;
   return Const.SHELLAPP.ServiceStop(serviceName, myIsPersistent);
+};
+
+/**
+ * 指定したzipFileを、指定したフォルダに解凍します。
+ * @param {String} zipFile 解凍するzipファイル(フルパス)
+ * @param {String} unzipTo 解凍先フォルダ
+ * @throws zipFile、または、unzipToディレクトリが存在しない場合にスローされます。
+ */
+Shell.unzip = function(zipFile, unzipTo) {
+  if(!File.exist(zipFile)) {
+    throw new Error(-1, "File Not Found: " + zipFile);
+  }
+  if(!Dir.exist(unzipTo)) {
+    throw new Error(-1, "Path Not Found: " + unzipTo);
+  }
+
+  var zipFileObj = Const.SHELLAPP.Namespace(zipFile);
+  var zipFileItems = zipFileObj.Items();
+  var unzipToObj = Const.SHELLAPP.Namespace(unzipTo);
+
+  var i;
+  for(i=0; i<zipFileItems.Count; i++) {
+    unzipToObj.copyhere(zipFileItems.item(i));
+  }
+};
+
+/**
+ * 指定したフォルダを、zipFileに圧縮します。
+ * @param {String} zipFileTo 作成するzipファイル(フルパス)
+ * @param {String} targetFolder 圧縮対象フォルダ
+ * @throws targetFolderディレクトリが存在しない場合にスローされます。
+ */
+Shell.zip = function(zipFileTo, targetFolder) {
+  if(!Dir.exist(targetFolder)) {
+    throw new Error(-1, "Path Not Found: " + unzipTo);
+  }
+
+  File.open(zipFileTo, "w", function(file) {
+    file.write("PK\5\6\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0");
+  });
+
+  var zipFileTo = Const.SHELLAPP.Namespace(zipFileTo);
+  var targetDirectory = Const.SHELLAPP.Namespace(targetFolder);
+  var targetDirectoryItems = targetDirectory.Items();
+
+  var i;
+  for(i=0; i<targetDirectoryItems.Count; i++) {
+    var o = targetDirectoryItems.item(i);
+    zipFileTo.CopyHere(o);
+  }
+
+  while(true) {
+    sleep(100);
+    if(zipFileTo.Items().Count === targetDirectoryItems.Count) {
+      break;
+    }
+  }
 };

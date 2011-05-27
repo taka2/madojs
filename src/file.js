@@ -311,6 +311,13 @@ File.prototype = {
     this.ts.WriteLine(line);
   },
   /** 
+   * ファイルへ書き込みます。
+   * @param {String} line 書きこむ文字列
+   */
+  write: function(line) {
+    this.ts.Write(line);
+  },
+  /** 
    * ファイルをクローズします。
    */
   close: function() {

@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>MadoJS リファレンス - SpecialFolders</title>
+		<title>MadoJS リファレンス - Drive</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -261,7 +261,7 @@ MadoJS
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				SpecialFolders クラス 
+				Drive クラス 
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -269,21 +269,22 @@ MadoJS
 				
 				
 			
-				特定のフォルダパスを取得する機能を提供するクラス
+				ドライブの操作を行うためのクラスです。
 <pre class = "code">
 使用例：
-// デスクトップのパスを取得
-print(SpecialFolders.getDesktop());
+// Cドライブの空き容量を表示
+var d = new Drive("c:");
+print(d.getFreeSpace());
 </pre>
 				
 				
-					<br /><i></i> <a href="../symbols/src/src_specialfolders.js.html">specialfolders.js</a>で定義されています。
+					<br /><i></i> <a href="../symbols/src/src_drive.js.html">drive.js</a>で定義されています。
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class SpecialFolders.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Drive.">
 				<caption>クラス 概要</caption>
 				<thead>
 					<tr>
@@ -296,9 +297,9 @@ print(SpecialFolders.getDesktop());
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/SpecialFolders.html#constructor">SpecialFolders</a></b>()
+								<b><a href="../symbols/Drive.html#constructor">Drive</a></b>(path)
 							</div>
-							<div class="description">インスタンス化しません。</div>
+							<div class="description">ドライブの存在チェックを行った上で、ドライブオブジェクトを作成します。</div>
 						</td>
 					</tr>
 				</tbody>
@@ -307,12 +308,90 @@ print(SpecialFolders.getDesktop());
 
 <!-- ============================== properties summary ===================== -->
 			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class Drive.">
+					<caption>フィールドの概要</caption>
+					<thead>
+						<tr>
+							<th scope="col">フィールド</th>
+							<th scope="col">フィールド名と説明</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								Drive.<b><a href="../symbols/Drive.html#.DRIVE_TYPE_CDROM">DRIVE_TYPE_CDROM</a></b>
+								</div>
+								<div class="description">ドライブタイプの定数：CD-ROM(4)</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								Drive.<b><a href="../symbols/Drive.html#.DRIVE_TYPE_HARD_DISK">DRIVE_TYPE_HARD_DISK</a></b>
+								</div>
+								<div class="description">ドライブタイプの定数：ハードディスク(2)</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								Drive.<b><a href="../symbols/Drive.html#.DRIVE_TYPE_NETWORK_DRIVE">DRIVE_TYPE_NETWORK_DRIVE</a></b>
+								</div>
+								<div class="description">ドライブタイプの定数：ネットワークドライブ(3)</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								Drive.<b><a href="../symbols/Drive.html#.DRIVE_TYPE_RAM_DISK">DRIVE_TYPE_RAM_DISK</a></b>
+								</div>
+								<div class="description">ドライブタイプの定数：RAMディスク(5)</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								Drive.<b><a href="../symbols/Drive.html#.DRIVE_TYPE_REMOVABLE_DISK">DRIVE_TYPE_REMOVABLE_DISK</a></b>
+								</div>
+								<div class="description">ドライブタイプの定数：リムーバブルディスク(1)</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								Drive.<b><a href="../symbols/Drive.html#.DRIVE_TYPE_UNKNOWN">DRIVE_TYPE_UNKNOWN</a></b>
+								</div>
+								<div class="description">ドライブタイプの定数：不明(0)</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
 
 <!-- ============================== methods summary ======================== -->
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class SpecialFolders.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Drive.">
 					<caption>メソッドの概要</caption>
 					<thead>
 						<tr>
@@ -325,144 +404,108 @@ print(SpecialFolders.getDesktop());
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">SpecialFolders.<b><a href="../symbols/SpecialFolders.html#.getAllUsersDesktop">getAllUsersDesktop</a></b>()
+								<div class="fixedFont">Drive.<b><a href="../symbols/Drive.html#.exist">exist</a></b>(path)
 								</div>
-								<div class="description">AllUsersのデスクトップパスを取得します。</div>
+								<div class="description">pathで与えられたドライブが存在するかどうかをチェックします。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Drive.html#getAvailableSpace">getAvailableSpace</a></b>()
+								</div>
+								<div class="description">このドライブのAvailableSpaceを取得します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Drive.html#getDriveLetter">getDriveLetter</a></b>()
+								</div>
+								<div class="description">このドライブのDriveLetterを取得します。</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">SpecialFolders.<b><a href="../symbols/SpecialFolders.html#.getAllUsersPrograms">getAllUsersPrograms</a></b>()
+								<div class="fixedFont">Drive.<b><a href="../symbols/Drive.html#.getDrives">getDrives</a></b>()
 								</div>
-								<div class="description">AllUsersのプログラムパスを取得します。</div>
+								<div class="description">ドライブの一覧を取得します。</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">SpecialFolders.<b><a href="../symbols/SpecialFolders.html#.getAllUsersStartMenu">getAllUsersStartMenu</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/Drive.html#getDriveType">getDriveType</a></b>()
 								</div>
-								<div class="description">AllUsersのスタートメニューパスを取得します。</div>
+								<div class="description">このドライブのDriveTypeを取得します。</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">SpecialFolders.<b><a href="../symbols/SpecialFolders.html#.getAllUsersStartup">getAllUsersStartup</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/Drive.html#getFileSystem">getFileSystem</a></b>()
 								</div>
-								<div class="description">AllUsersのスタートアップパスを取得します。</div>
+								<div class="description">このドライブのFileSystemを取得します。</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">SpecialFolders.<b><a href="../symbols/SpecialFolders.html#.getDesktop">getDesktop</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/Drive.html#getFreeSpace">getFreeSpace</a></b>()
 								</div>
-								<div class="description">デスクトップパスを取得します。</div>
+								<div class="description">このドライブのFreeSpaceを取得します。</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">SpecialFolders.<b><a href="../symbols/SpecialFolders.html#.getFavorites">getFavorites</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/Drive.html#getSerialNumber">getSerialNumber</a></b>()
 								</div>
-								<div class="description">お気に入りパスを取得します。</div>
+								<div class="description">このドライブのSerialNumberを取得します。</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">SpecialFolders.<b><a href="../symbols/SpecialFolders.html#.getFonts">getFonts</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/Drive.html#getShareName">getShareName</a></b>()
 								</div>
-								<div class="description">フォントパスを取得します。</div>
+								<div class="description">このドライブのShareNameを取得します。</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">SpecialFolders.<b><a href="../symbols/SpecialFolders.html#.getMyDocuments">getMyDocuments</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/Drive.html#getTotalSize">getTotalSize</a></b>()
 								</div>
-								<div class="description">マイドキュメントパスを取得します。</div>
+								<div class="description">このドライブのTotalSizeを取得します。</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">SpecialFolders.<b><a href="../symbols/SpecialFolders.html#.getNetHood">getNetHood</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/Drive.html#getVolumeName">getVolumeName</a></b>()
 								</div>
-								<div class="description">ネットフードパスを取得します。</div>
+								<div class="description">このドライブのVolumeNameを取得します。</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">SpecialFolders.<b><a href="../symbols/SpecialFolders.html#.getPrintHood">getPrintHood</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/Drive.html#isReady">isReady</a></b>()
 								</div>
-								<div class="description">プリントフードパスを取得します。</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">SpecialFolders.<b><a href="../symbols/SpecialFolders.html#.getPrograms">getPrograms</a></b>()
-								</div>
-								<div class="description">プログラムパスを取得します。</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">SpecialFolders.<b><a href="../symbols/SpecialFolders.html#.getRecent">getRecent</a></b>()
-								</div>
-								<div class="description">最近使ったファイルパスを取得します。</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">SpecialFolders.<b><a href="../symbols/SpecialFolders.html#.getSendTo">getSendTo</a></b>()
-								</div>
-								<div class="description">送るパスを取得します。</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">SpecialFolders.<b><a href="../symbols/SpecialFolders.html#.getStartMenu">getStartMenu</a></b>()
-								</div>
-								<div class="description">スタートメニューパスを取得します。</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">SpecialFolders.<b><a href="../symbols/SpecialFolders.html#.getStartup">getStartup</a></b>()
-								</div>
-								<div class="description">スタートアップパスを取得します。</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">SpecialFolders.<b><a href="../symbols/SpecialFolders.html#.getTemplates">getTemplates</a></b>()
-								</div>
-								<div class="description">テンプレートパスを取得します。</div>
+								<div class="description">このドライブが使用可能かどうかを取得します。</div>
 							</td>
 						</tr>
 					
@@ -483,11 +526,11 @@ print(SpecialFolders.getDesktop());
 				</div>
 				
 				<div class="fixedFont">
-						<b>SpecialFolders</b>()
+						<b>Drive</b>(path)
 				</div>
 				
 				<div class="description">
-					インスタンス化しません。
+					ドライブの存在チェックを行った上で、ドライブオブジェクトを作成します。
 					
 				</div>
 				
@@ -495,8 +538,29 @@ print(SpecialFolders.getDesktop());
 				
 				
 					
+						<dl class="detailList">
+						<dt class="heading">引数:</dt>
+						
+							<dt>
+								<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span>  <b>path</b>
+								
+							</dt>
+								<dd>ディレクトリのパスを文字列で指定します。</dd>
+						
+						</dl>
 					
 					
+					
+					
+						<dl class="detailList">
+						<dt class="heading">例外:</dt>
+						
+							<dt>
+								 <b></b>
+							</dt>
+								<dd>ディレクトリが存在しない場合にスローされます。</dd>
+						
+						</dl>
 					
 					
 					
@@ -507,6 +571,143 @@ print(SpecialFolders.getDesktop());
 
 <!-- ============================== field details ========================== -->		
 			
+				<div class="sectionTitle">
+					フィールドの詳細
+				</div>
+				
+					<a name=".DRIVE_TYPE_CDROM"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">Drive.</span><b>DRIVE_TYPE_CDROM</b>
+					
+					</div>
+					<div class="description">
+						ドライブタイプの定数：CD-ROM(4)
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".DRIVE_TYPE_HARD_DISK"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">Drive.</span><b>DRIVE_TYPE_HARD_DISK</b>
+					
+					</div>
+					<div class="description">
+						ドライブタイプの定数：ハードディスク(2)
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".DRIVE_TYPE_NETWORK_DRIVE"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">Drive.</span><b>DRIVE_TYPE_NETWORK_DRIVE</b>
+					
+					</div>
+					<div class="description">
+						ドライブタイプの定数：ネットワークドライブ(3)
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".DRIVE_TYPE_RAM_DISK"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">Drive.</span><b>DRIVE_TYPE_RAM_DISK</b>
+					
+					</div>
+					<div class="description">
+						ドライブタイプの定数：RAMディスク(5)
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".DRIVE_TYPE_REMOVABLE_DISK"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">Drive.</span><b>DRIVE_TYPE_REMOVABLE_DISK</b>
+					
+					</div>
+					<div class="description">
+						ドライブタイプの定数：リムーバブルディスク(1)
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".DRIVE_TYPE_UNKNOWN"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">Drive.</span><b>DRIVE_TYPE_UNKNOWN</b>
+					
+					</div>
+					<div class="description">
+						ドライブタイプの定数：不明(0)
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					
+				
+			
 
 <!-- ============================== method details ========================= -->		
 			
@@ -514,21 +715,32 @@ print(SpecialFolders.getDesktop());
 					メソッドの詳細
 				</div>
 				
-					<a name=".getAllUsersDesktop"> </a>
+					<a name=".exist"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<span class="light">SpecialFolders.</span><b>getAllUsersDesktop</b>()
+					<span class="light">{Boolean}</span>
+					<span class="light">Drive.</span><b>exist</b>(path)
 					
 					</div>
 					<div class="description">
-						AllUsersのデスクトップパスを取得します。
+						pathで与えられたドライブが存在するかどうかをチェックします。
 						
 						
 					</div>
 					
 					
 					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>path</b>
+									
+								</dt>
+								<dd>ドライブのパスを文字列で指定します。</dd>
+							
+							</dl>
 						
 						
 						
@@ -537,7 +749,7 @@ print(SpecialFolders.getDesktop());
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> AllUsersのデスクトップパス</dd>
+								<dd><span class="light fixedFont">{Boolean}</span> 存在する場合はtrue、存在しない場合はfalseを返します。</dd>
 							
 							</dl>
 						
@@ -546,15 +758,15 @@ print(SpecialFolders.getDesktop());
 
 					<hr />
 				
-					<a name=".getAllUsersPrograms"> </a>
-					<div class="fixedFont">&lt;static&gt; 
+					<a name="getAvailableSpace"> </a>
+					<div class="fixedFont">
 					
-					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<span class="light">SpecialFolders.</span><b>getAllUsersPrograms</b>()
+					<span class="light">{Number}</span>
+					<b>getAvailableSpace</b>()
 					
 					</div>
 					<div class="description">
-						AllUsersのプログラムパスを取得します。
+						このドライブのAvailableSpaceを取得します。
 						
 						
 					</div>
@@ -569,7 +781,7 @@ print(SpecialFolders.getDesktop());
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> AllUsersのプログラムパス</dd>
+								<dd><span class="light fixedFont">{Number}</span> このドライブのAvailableSpace</dd>
 							
 							</dl>
 						
@@ -578,15 +790,15 @@ print(SpecialFolders.getDesktop());
 
 					<hr />
 				
-					<a name=".getAllUsersStartMenu"> </a>
-					<div class="fixedFont">&lt;static&gt; 
+					<a name="getDriveLetter"> </a>
+					<div class="fixedFont">
 					
 					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<span class="light">SpecialFolders.</span><b>getAllUsersStartMenu</b>()
+					<b>getDriveLetter</b>()
 					
 					</div>
 					<div class="description">
-						AllUsersのスタートメニューパスを取得します。
+						このドライブのDriveLetterを取得します。
 						
 						
 					</div>
@@ -601,7 +813,7 @@ print(SpecialFolders.getDesktop());
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> AllUsersのスタートメニューパス</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> このドライブのDriveLetter</dd>
 							
 							</dl>
 						
@@ -610,15 +822,15 @@ print(SpecialFolders.getDesktop());
 
 					<hr />
 				
-					<a name=".getAllUsersStartup"> </a>
+					<a name=".getDrives"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<span class="light">SpecialFolders.</span><b>getAllUsersStartup</b>()
+					<span class="light">{<a href="../symbols/Array.html">Array</a>}</span>
+					<span class="light">Drive.</span><b>getDrives</b>()
 					
 					</div>
 					<div class="description">
-						AllUsersのスタートアップパスを取得します。
+						ドライブの一覧を取得します。
 						
 						
 					</div>
@@ -633,7 +845,7 @@ print(SpecialFolders.getDesktop());
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> AllUsersのスタートアップパス</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/Array.html">Array</a>}</span> Driveオブジェクトの配列</dd>
 							
 							</dl>
 						
@@ -642,15 +854,15 @@ print(SpecialFolders.getDesktop());
 
 					<hr />
 				
-					<a name=".getDesktop"> </a>
-					<div class="fixedFont">&lt;static&gt; 
+					<a name="getDriveType"> </a>
+					<div class="fixedFont">
 					
-					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<span class="light">SpecialFolders.</span><b>getDesktop</b>()
+					<span class="light">{Number}</span>
+					<b>getDriveType</b>()
 					
 					</div>
 					<div class="description">
-						デスクトップパスを取得します。
+						このドライブのDriveTypeを取得します。
 						
 						
 					</div>
@@ -665,7 +877,7 @@ print(SpecialFolders.getDesktop());
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> デスクトップパス</dd>
+								<dd><span class="light fixedFont">{Number}</span> このドライブのDriveType</dd>
 							
 							</dl>
 						
@@ -674,15 +886,15 @@ print(SpecialFolders.getDesktop());
 
 					<hr />
 				
-					<a name=".getFavorites"> </a>
-					<div class="fixedFont">&lt;static&gt; 
+					<a name="getFileSystem"> </a>
+					<div class="fixedFont">
 					
 					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<span class="light">SpecialFolders.</span><b>getFavorites</b>()
+					<b>getFileSystem</b>()
 					
 					</div>
 					<div class="description">
-						お気に入りパスを取得します。
+						このドライブのFileSystemを取得します。
 						
 						
 					</div>
@@ -697,7 +909,7 @@ print(SpecialFolders.getDesktop());
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> お気に入りパス</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> このドライブのFileSystem</dd>
 							
 							</dl>
 						
@@ -706,15 +918,15 @@ print(SpecialFolders.getDesktop());
 
 					<hr />
 				
-					<a name=".getFonts"> </a>
-					<div class="fixedFont">&lt;static&gt; 
+					<a name="getFreeSpace"> </a>
+					<div class="fixedFont">
 					
-					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<span class="light">SpecialFolders.</span><b>getFonts</b>()
+					<span class="light">{Number}</span>
+					<b>getFreeSpace</b>()
 					
 					</div>
 					<div class="description">
-						フォントパスを取得します。
+						このドライブのFreeSpaceを取得します。
 						
 						
 					</div>
@@ -729,7 +941,7 @@ print(SpecialFolders.getDesktop());
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> フォントパス</dd>
+								<dd><span class="light fixedFont">{Number}</span> このドライブのFreeSpace</dd>
 							
 							</dl>
 						
@@ -738,15 +950,15 @@ print(SpecialFolders.getDesktop());
 
 					<hr />
 				
-					<a name=".getMyDocuments"> </a>
-					<div class="fixedFont">&lt;static&gt; 
+					<a name="getSerialNumber"> </a>
+					<div class="fixedFont">
 					
 					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<span class="light">SpecialFolders.</span><b>getMyDocuments</b>()
+					<b>getSerialNumber</b>()
 					
 					</div>
 					<div class="description">
-						マイドキュメントパスを取得します。
+						このドライブのSerialNumberを取得します。
 						
 						
 					</div>
@@ -761,7 +973,7 @@ print(SpecialFolders.getDesktop());
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> マイドキュメントパス</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> このドライブのSerialNumber</dd>
 							
 							</dl>
 						
@@ -770,15 +982,15 @@ print(SpecialFolders.getDesktop());
 
 					<hr />
 				
-					<a name=".getNetHood"> </a>
-					<div class="fixedFont">&lt;static&gt; 
+					<a name="getShareName"> </a>
+					<div class="fixedFont">
 					
 					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<span class="light">SpecialFolders.</span><b>getNetHood</b>()
+					<b>getShareName</b>()
 					
 					</div>
 					<div class="description">
-						ネットフードパスを取得します。
+						このドライブのShareNameを取得します。
 						
 						
 					</div>
@@ -793,7 +1005,7 @@ print(SpecialFolders.getDesktop());
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> ネットフードパス</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> このドライブのShareName</dd>
 							
 							</dl>
 						
@@ -802,15 +1014,15 @@ print(SpecialFolders.getDesktop());
 
 					<hr />
 				
-					<a name=".getPrintHood"> </a>
-					<div class="fixedFont">&lt;static&gt; 
+					<a name="getTotalSize"> </a>
+					<div class="fixedFont">
 					
 					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<span class="light">SpecialFolders.</span><b>getPrintHood</b>()
+					<b>getTotalSize</b>()
 					
 					</div>
 					<div class="description">
-						プリントフードパスを取得します。
+						このドライブのTotalSizeを取得します。
 						
 						
 					</div>
@@ -825,7 +1037,7 @@ print(SpecialFolders.getDesktop());
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> プリントフードパス</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> このドライブのTotalSize</dd>
 							
 							</dl>
 						
@@ -834,15 +1046,15 @@ print(SpecialFolders.getDesktop());
 
 					<hr />
 				
-					<a name=".getPrograms"> </a>
-					<div class="fixedFont">&lt;static&gt; 
+					<a name="getVolumeName"> </a>
+					<div class="fixedFont">
 					
 					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<span class="light">SpecialFolders.</span><b>getPrograms</b>()
+					<b>getVolumeName</b>()
 					
 					</div>
 					<div class="description">
-						プログラムパスを取得します。
+						このドライブのVolumeNameを取得します。
 						
 						
 					</div>
@@ -857,7 +1069,7 @@ print(SpecialFolders.getDesktop());
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> プログラムパス</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> このドライブのVolumeName</dd>
 							
 							</dl>
 						
@@ -866,15 +1078,15 @@ print(SpecialFolders.getDesktop());
 
 					<hr />
 				
-					<a name=".getRecent"> </a>
-					<div class="fixedFont">&lt;static&gt; 
+					<a name="isReady"> </a>
+					<div class="fixedFont">
 					
 					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<span class="light">SpecialFolders.</span><b>getRecent</b>()
+					<b>isReady</b>()
 					
 					</div>
 					<div class="description">
-						最近使ったファイルパスを取得します。
+						このドライブが使用可能かどうかを取得します。
 						
 						
 					</div>
@@ -889,135 +1101,7 @@ print(SpecialFolders.getDesktop());
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> 最近使ったファイルパス</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name=".getSendTo"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<span class="light">SpecialFolders.</span><b>getSendTo</b>()
-					
-					</div>
-					<div class="description">
-						送るパスを取得します。
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">戻り値:</dt>
-							
-								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> 送るパス</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name=".getStartMenu"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<span class="light">SpecialFolders.</span><b>getStartMenu</b>()
-					
-					</div>
-					<div class="description">
-						スタートメニューパスを取得します。
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">戻り値:</dt>
-							
-								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> スタートメニューパス</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name=".getStartup"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<span class="light">SpecialFolders.</span><b>getStartup</b>()
-					
-					</div>
-					<div class="description">
-						スタートアップパスを取得します。
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">戻り値:</dt>
-							
-								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> スタートアップパス</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name=".getTemplates"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<span class="light">SpecialFolders.</span><b>getTemplates</b>()
-					
-					</div>
-					<div class="description">
-						テンプレートパスを取得します。
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">戻り値:</dt>
-							
-								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> テンプレートパス</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> このドライブが使用可能な場合true、そうでない場合はfalseを返します。</dd>
 							
 							</dl>
 						
@@ -1038,7 +1122,7 @@ print(SpecialFolders.getDesktop());
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Fri May 27 2011 10:59:56 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Fri May 27 2011 10:59:54 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

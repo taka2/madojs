@@ -15,6 +15,7 @@ copy /B mado-debug.js+src\string.js mado-debug.js
 REM File
 copy /B mado-debug.js+src\file.js mado-debug.js
 copy /B mado-debug.js+src\dir.js mado-debug.js
+copy /B mado-debug.js+src\drive.js mado-debug.js
 
 REM Network
 copy /B mado-debug.js+src\http.js mado-debug.js

@@ -221,6 +221,8 @@ MadoJS
 	
 	<li><a href="symbols/Dir.html">Dir</a></li>
 	
+	<li><a href="symbols/Drive.html">Drive</a></li>
+	
 	<li><a href="symbols/Excel.html">Excel</a></li>
 	
 	<li><a href="symbols/ExcelSheet.html">ExcelSheet</a></li>
@@ -383,6 +385,18 @@ d.each(function(item) {
 			<hr />
 			
 			<div>
+				<h2><a href="symbols/Drive.html">Drive</a></h2>
+				ドライブの操作を行うためのクラスです。
+<pre class = "code">
+使用例：
+// Cドライブの空き容量を表示
+var d = new Drive("c:");
+print(d.getFreeSpace());
+</pre>
+			</div>
+			<hr />
+			
+			<div>
 				<h2><a href="symbols/Excel.html">Excel</a></h2>
 				Excelファイルの操作と読み書きを行うためのクラスです。<br/>Excelがインストールされている必要があります。
 <pre class = "code">
@@ -537,7 +551,7 @@ print(SpecialFolders.getDesktop());
 		</div>
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Thu May 26 2011 18:16:29 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Fri May 27 2011 10:59:57 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

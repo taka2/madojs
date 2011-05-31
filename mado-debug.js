@@ -1548,6 +1548,723 @@ FTP.put = function(host, userId, password, mode, path, fileName) {
   });
 };
 /** 
+ * 新しいクリップボードを作成する
+ * @class InternetExplorerを利用した、クリップボードへの格納、および、取得を行うクラス。
+ */
+var ClipboardIE = function() {
+  this._ie = new ActiveXObject('InternetExplorer.Application');
+  this._ie.navigate("about:blank");
+  while(this._ie.Busy) {
+    sleep(10);
+  }
+  this._ie.Visible = false;
+  this._textarea = this._ie.document.createElement("textarea");
+  this._ie.document.body.appendChild(this._textarea);
+  this._textarea.focus();
+  this._closed = false;
+};
+
+// Prototypes of ClipboardIE
+ClipboardIE.prototype = {
+  /**
+   * クリップボードへ文字列を格納します。
+   * @param {String} text 格納する文字列
+   */
+  set: function(text) {
+    if (this._closed) {
+      return;
+    }
+    this._textarea.innerText = text;
+    this._ie.execWB(17 /* select all */, 0);
+    this._ie.execWB(12 /* copy */, 0);
+  },
+  /**
+   * クリップボードの文字列を取得します。
+   * @return {String} 取得した文字列
+   */
+  get: function() {
+    if (this._closed) {
+      return;
+    }
+    this._textarea.innerText = "";
+    this._ie.execWB(13 /* paste */, 0);
+    return this._textarea.innerText;
+  },
+  /**
+   * クリップボードをクローズします。
+   */
+  close: function() {
+    this._ie.Quit();
+    this._closed = true;
+  }
+};
+/** 
+ * 新しいクリップボードを作成する
+ * @class Excelを利用した、クリップボードへの格納、および、取得を行うクラス。
+ */
+var ClipboardExcel = function() {
+  this.excel = Excel.create();
+  this.sheet = this.excel.getSheetByIndex(0);
+  this.sheet.setFormat(1, 1, "@");
+};
+
+// Prototypes of ClipboardExcel
+ClipboardExcel.prototype = {
+  /**
+   * クリップボードへ文字列を格納します。
+   * @param {String} text 格納する文字列
+   */
+  set: function(text) {
+    this.sheet.setValue(1, 1, text);
+    this.sheet.copy(1, 1);
+  },
+  /**
+   * クリップボードの文字列を取得します。
+   * @return {String} 取得した文字列
+   */
+  get: function() {
+    return this.sheet.getValue(1, 1);
+  },
+  /**
+   * クリップボードをクローズします。
+   */
+  close: function() {
+    this.excel.quitDiscardChanges();
+  }
+};
+/** 
+ * 新しいクリップボードを作成する
+ * @class クリップボードへの格納、および、取得を行うクラス。
+<pre class = "code">
+使用例：
+// "日本語"という文字列をクリップボードへコピーして、ペーストします。
+Clipboard.open(function(clip) {
+  clip.set("日本語");
+  sendKeys("^v");
+});
+</pre>
+ */
+var Clipboard = function() {
+  if(Excel.available()) {
+    this.clip = new ClipboardExcel();
+  } else {
+    this.clip = new ClipboardIE();
+  }
+};
+
+/** 
+ * 新しいクリップボードを作成し、ブロックを実行します。
+ * ブロックが指定されていない場合は、作成したクリップボードを返します。
+ * @param {Function} block ブロック
+ * @return {Object} ブロックが指定されていない場合は、作成したクリップボード
+ */
+Clipboard.open = function(block) {
+  if (!isFunction(block)) {
+    return new Clipboard();
+  }
+
+  try {
+    var clip = new Clipboard();
+    block(clip);
+  } finally {
+    if(clip) {
+      clip.close();
+    }
+  }
+};
+
+// Prototypes of Clipboard
+Clipboard.prototype = {
+  /**
+   * クリップボードへ文字列を格納します。
+   * @param {String} text 格納する文字列
+   */
+  set: function(text) {
+    this.clip.set(text);
+  },
+  /**
+   * クリップボードの文字列を取得します。
+   * @return {String} 取得した文字列
+   */
+  get: function() {
+    return this.clip.get();
+  },
+  /**
+   * クリップボードをクローズします。
+   */
+  close: function() {
+    this.clip.close();
+  }
+};
+/** 
+ * 新しいADOのコネクションを作成する
+ * @class ADOを使ったデータベースへの接続を行うクラス。<br/>
+          通常はこのクラスを直接使用せず、サブクラスを使います。
+ * @param {String} connectString 接続文字列
+ * @param {String} userName ユーザ名
+ * @param {String} password パスワード
+ */
+var AdoConnection = function(connectString, userName, password) {
+  this.con = new ActiveXObject("ADODB.Connection");
+  this.con.Open(connectString, userName, password);
+};
+
+/** 
+ * 新しいADOのコネクションを作成し、ブロックを実行します。
+ * ブロックが指定されていない場合は、作成したADOのコネクションを返します。
+ * @param {String} connectString 接続文字列
+ * @param {String} userName ユーザ名
+ * @param {String} password パスワード
+ * @param {Function} block ブロック
+ * @return {Object} ブロックが指定されていない場合は、作成したADOのコネクション
+ */
+AdoConnection.open = function(connectString, userName, password, block) {
+  if (!isFunction(block)) {
+    return new AdoConnection(connectString, userName, password);
+  }
+
+  try {
+    var con = new AdoConnection(connectString, userName, password);
+    block(con);
+  } finally {
+    if(con) {
+      con.close();
+    }
+  }
+};
+
+// Prototypes of AdoConnection
+AdoConnection.prototype = {
+  // private
+  getRawConnection: function() {
+    return this.con;
+  },
+  /**
+   * コネクションの接続文字列を取得する。
+   * @return {String} コネクションの接続文字列
+   */
+  getConnectionString: function() {
+    return this.con.ConnectionString;
+  },
+  /**
+   * 指定されたsqlを実行し、ハッシュ{fieldName: value}の配列として値を返す。
+   * @param {String} sql 実行するSQL
+   * @return {Array} ハッシュ{fieldName: value}の配列
+   */
+  executeQuery: function(sql) {
+    try {
+      // SQLの実行
+      var rs = this.con.Execute(sql);
+      return this.convertToArrayRs(rs);
+    } catch(e) {
+      throw e;
+    } finally {
+      if(rs) {
+        rs.Close();
+      }
+    }
+  },
+  /**
+   * 指定されたsqlを実行する。
+   * @param {String} sql 実行するSQL
+   */
+  executeUpdate: function(sql) {
+    // SQLの実行
+    this.con.Execute(sql);
+  },
+  // private
+  // Recordsetを配列にコンバートする。
+  convertToArrayRs: function(rs) {
+    // フィールドリストの取得
+    var fe = new Enumerator(rs.Fields);
+
+    // データの取得
+    var result = [];
+
+    while(!rs.EOF) {
+      var record = {};
+      for(fe.moveFirst(); !fe.atEnd(); fe.moveNext()) {
+        var field = fe.item();
+        record[field.Name] = field.Value;
+      }
+      result.push(record);
+
+      rs.MoveNext();
+    }
+
+    return result;
+  },
+  /**
+   * 指定されたsqlを実行するコマンドを作成します。
+   * @param {String} sql 実行するSQL
+   * @return {Object} コマンドオブジェクト
+   */
+  createCommand: function(sql) {
+    return new AdoCommand(this, sql);
+  },
+  /**
+   * データベースの接続を閉じる。
+   */
+  close: function() {
+    this.con.Close();
+  },
+  /**
+   * トランザクションを開始します。
+   * @return {Number} トランザクションネストレベル
+   */
+  beginTrans: function() {
+    return this.con.BeginTrans();
+  },
+  /**
+   * トランザクションをコミットします。
+   */
+  commitTrans: function() {
+    this.con.CommitTrans();
+  },
+  /**
+   * トランザクションをロールバックします。
+   */
+  rollbackTrans: function() {
+    this.con.RollbackTrans();
+  }
+};
+/** 
+ * 新しいADOのコマンドを作成する。<br/>
+   通常、AdoCommandを直接インスタンス化せず、AdoConnectionのサブクラスから、createCommandを呼びます。
+ * @class ADOコマンドを表すクラス。クエリにパラメータが必要な場合は、このクラスを使います。
+<pre class = "code">
+使用例：
+AdoAccessConnection.open("c:\\path\\to\\test.mdb", "", "", function(con) {
+  var command = con.createCommand("UPDATE TEST SET COL2 = ? WHERE COL1 = ?");
+  command.setStringParameter("COL2", "えええ");
+  command.setStringParameter("COL1", "Z");
+  command.executeUpdate();
+});
+
+AdoAccessConnection.open("c:\\path\\to\\test.mdb", "", "", function(con) {
+  var command = con.createCommand("SELECT COL2 FROM TEST WHERE COL1 = ?");
+  command.setStringParameter("COL1", "Z");
+  var rs = command.executeQuery();
+
+  print(rs[0]["COL2"]);
+});
+
+</pre>
+ * @param {Object} con Adoコネクション
+ */
+var AdoCommand = function(con, sql) {
+  this.con = con;
+  this.sql = sql;
+  this.params = [];
+
+  // コマンドの生成
+  this.command = new ActiveXObject("ADODB.Command");
+  this.command.CommandText = this.sql;
+  this.command.CommandType = AdoCommand.COMMAND_TYPE_CMD_TEXT;
+  this.command.ActiveConnection = this.con.getRawConnection();
+};
+
+/**
+ * Command Typeの定数：テキスト(1)
+ */
+AdoCommand.COMMAND_TYPE_CMD_TEXT = 1; // 通常
+
+/**
+ * データ型の定数: Boolean(11)
+ */
+AdoCommand.DATA_TYPE_BOOLEAN = 11;
+
+/**
+ * データ型の定数: Char(129)
+ */
+AdoCommand.DATA_TYPE_CHAR = 129;
+
+/**
+ * データ型の定数: DBDate(133)
+ */
+AdoCommand.DATA_TYPE_DBDATE = 133;
+
+/**
+ * データ型の定数: DBTime(134)
+ */
+AdoCommand.DATA_TYPE_DBTIME = 134;
+
+/**
+ * データ型の定数: DBTimestamp(135)
+ */
+AdoCommand.DATA_TYPE_DBTIMESTAMP = 135;
+
+/**
+ * データ型の定数: Decimal(14)
+ */
+AdoCommand.DATA_TYPE_DECIMAL = 14;
+
+/**
+ * データ型の定数: Double(5)
+ */
+AdoCommand.DATA_TYPE_DOUBLE = 5;
+
+/**
+ * データ型の定数: Integer(3)
+ */
+AdoCommand.DATA_TYPE_INTEGER = 3;
+
+/**
+ * データ型の定数: Numeric(131)
+ */
+AdoCommand.DATA_TYPE_NUMERIC = 131;
+
+/**
+ * データ型の定数: Single(4)
+ */
+AdoCommand.DATA_TYPE_SINGLE = 4;
+
+/**
+ * パラメータ方向の定数: Input(1)
+ */
+AdoCommand.PARAMETER_DIRECTION_INPUT = 1;
+
+// Prototypes of AdoCommand
+AdoCommand.prototype = {
+  /**
+   * 指定されたsqlを実行し、ハッシュ{fieldName: value}の配列として値を返す。
+   * @param {String} sql 実行するSQL
+   * @param {Array} params パラメータ
+   * @return {Array} ハッシュ{fieldName: value}の配列
+   */
+  executeQuery: function(sql, params) {
+    try {
+      // パラメータの追加
+      this.prepareParameter();
+
+      // SQLの実行
+      var rs = this.command.Execute();
+      return this.con.convertToArrayRs(rs);
+    } catch(e) {
+      throw e;
+    } finally {
+      if(rs) {
+        rs.Close();
+      }
+    }
+  },
+  /**
+   * 指定されたsqlを実行する。
+   * @param {String} sql 実行するSQL
+   * @param {Array} params パラメータ
+   */
+  executeUpdate: function(sql, params) {
+    // パラメータの追加
+    this.prepareParameter();
+
+    // SQLの実行
+    this.command.Execute();
+  },
+  // private
+  // パラメータの準備をする。
+  prepareParameter: function() {
+    // パラメータの追加
+    var command = this.command;
+    this.params.each(function(param) {
+      var objParam = command.CreateParameter(
+        param.Name
+        , param.Type
+        , param.Direction
+        , param.Size
+        , param.Value
+      );
+      command.Parameters.Append(objParam);
+    });
+  },
+  /**
+   * 論理型のパラメータを作成する。
+   * @param {String} paramName パラメータ名
+   * @param {Boolean} paramValue パラメータ値
+   */
+  setBooleanParameter: function(paramName, paramValue) {
+    this.params.push({
+      "Name": paramName
+      , "Type": AdoCommand.DATA_TYPE_BOOLEAN
+      , "Direction": AdoCommand.PARAMETER_DIRECTION_INPUT
+      , "Size": -1
+      , "Value": paramValue
+    });
+  },
+  /**
+   * 文字列型のパラメータを作成する。
+   * @param {String} paramName パラメータ名
+   * @param {String} paramValue パラメータ値
+   */
+  setStringParameter: function(paramName, paramValue) {
+    this.params.push({
+      "Name": paramName
+      , "Type": AdoCommand.DATA_TYPE_CHAR
+      , "Direction": AdoCommand.PARAMETER_DIRECTION_INPUT
+      , "Size": -1
+      , "Value": paramValue
+    });
+  },
+  /**
+   * 日付型のパラメータを作成する。
+   * @param {String} paramName パラメータ名
+   * @param {Date} paramValue パラメータ値
+   */
+  setDateParameter: function(paramName, paramValue) {
+    this.params.push({
+      "Name": paramName
+      , "Type": AdoCommand.DATA_TYPE_DBDATE
+      , "Direction": AdoCommand.PARAMETER_DIRECTION_INPUT
+      , "Size": -1
+      , "Value": paramValue
+    });
+  },
+  /**
+   * 時刻型のパラメータを作成する。
+   * @param {String} paramName パラメータ名
+   * @param {Date} paramValue パラメータ値
+   */
+  setTimeParameter: function(paramName, paramValue) {
+    this.params.push({
+      "Name": paramName
+      , "Type": AdoCommand.DATA_TYPE_DBTIME
+      , "Direction": AdoCommand.PARAMETER_DIRECTION_INPUT
+      , "Size": -1
+      , "Value": paramValue
+    });
+  },
+  /**
+   * Timestamp型のパラメータを作成する。
+   * @param {String} paramName パラメータ名
+   * @param {Date} paramValue パラメータ値
+   */
+  setTimestampParameter: function(paramName, paramValue) {
+    this.params.push({
+      "Name": paramName
+      , "Type": AdoCommand.DATA_TYPE_DBTIMESTAMP
+      , "Direction": AdoCommand.PARAMETER_DIRECTION_INPUT
+      , "Size": -1
+      , "Value": paramValue
+    });
+  },
+  /**
+   * Deciaml型のパラメータを作成する。
+   * @param {String} paramName パラメータ名
+   * @param {Number} paramValue パラメータ値
+   */
+  setDecimalParameter: function(paramName, paramValue) {
+    this.params.push({
+      "Name": paramName
+      , "Type": AdoCommand.DATA_TYPE_DECIMAL
+      , "Direction": AdoCommand.PARAMETER_DIRECTION_INPUT
+      , "Size": -1
+      , "Value": paramValue
+    });
+  },
+  /**
+   * Double型のパラメータを作成する。
+   * @param {String} paramName パラメータ名
+   * @param {Date} paramValue パラメータ値
+   */
+  setDoubleParameter: function(paramName, paramValue) {
+    this.params.push({
+      "Name": paramName
+      , "Type": AdoCommand.DATA_TYPE_DOUBLE
+      , "Direction": AdoCommand.PARAMETER_DIRECTION_INPUT
+      , "Size": -1
+      , "Value": paramValue
+    });
+  },
+  /**
+   * Integer型のパラメータを作成する。
+   * @param {String} paramName パラメータ名
+   * @param {Date} paramValue パラメータ値
+   */
+  setIntegerParameter: function(paramName, paramValue) {
+    this.params.push({
+      "Name": paramName
+      , "Type": AdoCommand.DATA_TYPE_INTEGER
+      , "Direction": AdoCommand.PARAMETER_DIRECTION_INPUT
+      , "Size": -1
+      , "Value": paramValue
+    });
+  },
+  /**
+   * Numeric型のパラメータを作成する。
+   * @param {String} paramName パラメータ名
+   * @param {Date} paramValue パラメータ値
+   */
+  setNumericParameter: function(paramName, paramValue) {
+    this.params.push({
+      "Name": paramName
+      , "Type": AdoCommand.DATA_TYPE_NUMERIC
+      , "Direction": AdoCommand.PARAMETER_DIRECTION_INPUT
+      , "Size": -1
+      , "Value": paramValue
+    });
+  },
+  /**
+   * Single型のパラメータを作成する。
+   * @param {String} paramName パラメータ名
+   * @param {Date} paramValue パラメータ値
+   */
+  setSingleParameter: function(paramName, paramValue) {
+    this.params.push({
+      "Name": paramName
+      , "Type": AdoCommand.DATA_TYPE_SINGLE
+      , "Direction": AdoCommand.PARAMETER_DIRECTION_INPUT
+      , "Size": -1
+      , "Value": paramValue
+    });
+  }
+};
+/** 
+ * 新しいADOのコネクションを作成する
+ * @class ADOを使ったAccessデータベースへの接続を行うクラス
+<pre class = "code">
+使用例：
+AdoAccessConnection.open("c:\\path\\to\\test.mdb", "hoge", "fuga", function(con) {
+  var result = con.executeQuery("SELECT * FROM TEST");
+
+  result.each(function(row) {
+    print(row["COL1"]); // 'X'
+  });
+});
+
+</pre>
+ * @param {String} mdbFilePath mdbファイルのパス
+ * @param {String} userName ユーザ名
+ * @param {String} password パスワード
+ */
+var AdoAccessConnection = function(mdbFilePath, userName, password) {
+  var connectString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + mdbFilePath;
+  this.con = new AdoConnection(connectString, userName, password).getRawConnection();
+};
+
+/** 
+ * 新しいADOのコネクションを作成し、ブロックを実行します。
+ * ブロックが指定されていない場合は、作成したADOのコネクションを返します。
+ * @param {String} mdbFilePath mdbファイルのパス
+ * @param {String} userName ユーザ名
+ * @param {String} password パスワード
+ * @param {Function} block ブロック
+ * @return {Object} ブロックが指定されていない場合は、作成したADOのコネクション
+ */
+AdoAccessConnection.open = function(mdbFilePath, userName, password, block) {
+  if (!isFunction(block)) {
+    return new AdoAccessConnection(mdbFilePath, userName, password);
+  }
+
+  try {
+    var con = new AdoAccessConnection(mdbFilePath, userName, password);
+    block(con);
+  } finally {
+    if(con) {
+      con.close();
+    }
+  }
+};
+
+// Prototypes of AdoAccessConnection
+AdoAccessConnection.prototype = AdoConnection.prototype;
+/**
+ * 新しいADOのコネクションを作成する
+ * @class ADOを使ったOracleデータベースへの接続を行うクラス
+<pre class = "code">
+使用例：
+AdoOracleConnection.open("ORCL", "scott", "tiger", function(oracon) {
+  var result = oracon.executeQuery("SELECT * FROM DUAL");
+
+  result.each(function(row) {
+    print(row["DUMMY"]); // 'X'
+  });
+});
+
+</pre>
+ * @param {String} dsName データソース名
+ * @param {String} userName ユーザ名
+ * @param {String} password パスワード
+ */
+var AdoOracleConnection = function(dsName, userName, password) {
+  var connectString = "Provider=MSDAORA;Data Source=" + dsName + ";";
+  this.con = new AdoConnection(connectString, userName, password).getRawConnection();
+};
+
+/**
+ * 新しいADOのコネクションを作成し、ブロックを実行します。
+ * ブロックが指定されていない場合は、作成したADOのコネクションを返します。
+ * @param {String} dsName データソース名
+ * @param {String} userName ユーザ名
+ * @param {String} password パスワード
+ * @param {Function} block ブロック
+ * @return {Object} ブロックが指定されていない場合は、作成したADOのコネクション
+ */
+AdoOracleConnection.open = function(dsName, userName, password, block) {
+  if (!isFunction(block)) {
+    return new AdoOracleConnection(dsName, userName, password);
+  }
+
+  try {
+    var con = new AdoOracleConnection(dsName, userName, password);
+    block(con);
+  } finally {
+    if(con) {
+      con.close();
+    }
+  }
+};
+
+// Prototypes of AdoOracleConnection
+AdoOracleConnection.prototype = AdoConnection.prototype;
+/**
+ * 新しいADOのコネクションを作成する
+ * @class ADOを使ったODBCデータベースへの接続を行うクラス
+<pre class = "code">
+使用例：
+AdoOdbcConnection.open("DSN1", "user", "password", function(odbccon) {
+  var result = odbccon.executeQuery("SELECT * FROM TEST");
+
+  result.each(function(row) {
+    print(row["COL1"]); // 'X'
+  });
+});
+
+</pre>
+ * @param {String} dsName データソース名
+ * @param {String} userName ユーザ名
+ * @param {String} password パスワード
+ */
+var AdoOdbcConnection = function(dsName, userName, password) {
+  var connectString = "Provider=MSDASQL;DSN=" + dsName + ";";
+  this.con = new AdoConnection(connectString, userName, password).getRawConnection();
+};
+
+/**
+ * 新しいADOのコネクションを作成し、ブロックを実行します。
+ * ブロックが指定されていない場合は、作成したADOのコネクションを返します。
+ * @param {String} dsName データソース名
+ * @param {String} userName ユーザ名
+ * @param {String} password パスワード
+ * @param {Function} block ブロック
+ * @return {Object} ブロックが指定されていない場合は、作成したADOのコネクション
+ */
+AdoOdbcConnection.open = function(dsName, userName, password, block) {
+  if (!isFunction(block)) {
+    return new AdoOdbcConnection(dsName, userName, password);
+  }
+
+  try {
+    var con = new AdoOdbcConnection(dsName, userName, password);
+    block(con);
+  } finally {
+    if(con) {
+      con.close();
+    }
+  }
+};
+
+// Prototypes of AdoOracleConnection
+AdoOdbcConnection.prototype = AdoConnection.prototype;
+/** 
  * 新しいキー送信クラスを作成する。
  * @class 連続で自動的にキー送信を行う
 <pre class = "code">
@@ -2420,674 +3137,6 @@ ExcelSheet.prototype = {
     this.sheetObj.Cells(x, y).Copy();
   }
 };
-/** 
- * 新しいクリップボードを作成する
- * @class InternetExplorerを利用した、クリップボードへの格納、および、取得を行うクラス。
- */
-var ClipboardIE = function() {
-  this._ie = new ActiveXObject('InternetExplorer.Application');
-  this._ie.navigate("about:blank");
-  while(this._ie.Busy) {
-    sleep(10);
-  }
-  this._ie.Visible = false;
-  this._textarea = this._ie.document.createElement("textarea");
-  this._ie.document.body.appendChild(this._textarea);
-  this._textarea.focus();
-  this._closed = false;
-};
-
-// Prototypes of ClipboardIE
-ClipboardIE.prototype = {
-  /**
-   * クリップボードへ文字列を格納します。
-   * @param {String} text 格納する文字列
-   */
-  set: function(text) {
-    if (this._closed) {
-      return;
-    }
-    this._textarea.innerText = text;
-    this._ie.execWB(17 /* select all */, 0);
-    this._ie.execWB(12 /* copy */, 0);
-  },
-  /**
-   * クリップボードの文字列を取得します。
-   * @return {String} 取得した文字列
-   */
-  get: function() {
-    if (this._closed) {
-      return;
-    }
-    this._textarea.innerText = "";
-    this._ie.execWB(13 /* paste */, 0);
-    return this._textarea.innerText;
-  },
-  /**
-   * クリップボードをクローズします。
-   */
-  close: function() {
-    this._ie.Quit();
-    this._closed = true;
-  }
-};
-/** 
- * 新しいクリップボードを作成する
- * @class Excelを利用した、クリップボードへの格納、および、取得を行うクラス。
- */
-var ClipboardExcel = function() {
-  this.excel = Excel.create();
-  this.sheet = this.excel.getSheetByIndex(0);
-  this.sheet.setFormat(1, 1, "@");
-};
-
-// Prototypes of ClipboardExcel
-ClipboardExcel.prototype = {
-  /**
-   * クリップボードへ文字列を格納します。
-   * @param {String} text 格納する文字列
-   */
-  set: function(text) {
-    this.sheet.setValue(1, 1, text);
-    this.sheet.copy(1, 1);
-  },
-  /**
-   * クリップボードの文字列を取得します。
-   * @return {String} 取得した文字列
-   */
-  get: function() {
-    return this.sheet.getValue(1, 1);
-  },
-  /**
-   * クリップボードをクローズします。
-   */
-  close: function() {
-    this.excel.quitDiscardChanges();
-  }
-};
-/** 
- * 新しいクリップボードを作成する
- * @class クリップボードへの格納、および、取得を行うクラス。
-<pre class = "code">
-使用例：
-// "日本語"という文字列をクリップボードへコピーして、ペーストします。
-Clipboard.open(function(clip) {
-  clip.set("日本語");
-  sendKeys("^v");
-});
-</pre>
- */
-var Clipboard = function() {
-  if(Excel.available()) {
-    this.clip = new ClipboardExcel();
-  } else {
-    this.clip = new ClipboardIE();
-  }
-};
-
-/** 
- * 新しいクリップボードを作成し、ブロックを実行します。
- * ブロックが指定されていない場合は、作成したクリップボードを返します。
- * @param {Function} block ブロック
- * @return {Object} ブロックが指定されていない場合は、作成したクリップボード
- */
-Clipboard.open = function(block) {
-  if (!isFunction(block)) {
-    return new Clipboard();
-  }
-
-  try {
-    var clip = new Clipboard();
-    block(clip);
-  } finally {
-    if(clip) {
-      clip.close();
-    }
-  }
-};
-
-// Prototypes of Clipboard
-Clipboard.prototype = {
-  /**
-   * クリップボードへ文字列を格納します。
-   * @param {String} text 格納する文字列
-   */
-  set: function(text) {
-    this.clip.set(text);
-  },
-  /**
-   * クリップボードの文字列を取得します。
-   * @return {String} 取得した文字列
-   */
-  get: function() {
-    return this.clip.get();
-  },
-  /**
-   * クリップボードをクローズします。
-   */
-  close: function() {
-    this.clip.close();
-  }
-};
-/** 
- * 新しいADOのコネクションを作成する
- * @class ADOを使ったデータベースへの接続を行うクラス。<br/>
-          通常はこのクラスを直接使用せず、サブクラスを使います。
- * @param {String} connectString 接続文字列
- * @param {String} userName ユーザ名
- * @param {String} password パスワード
- */
-var AdoConnection = function(connectString, userName, password) {
-  this.con = new ActiveXObject("ADODB.Connection");
-  this.con.Open(connectString, userName, password);
-};
-
-/** 
- * 新しいADOのコネクションを作成し、ブロックを実行します。
- * ブロックが指定されていない場合は、作成したADOのコネクションを返します。
- * @param {String} connectString 接続文字列
- * @param {String} userName ユーザ名
- * @param {String} password パスワード
- * @param {Function} block ブロック
- * @return {Object} ブロックが指定されていない場合は、作成したADOのコネクション
- */
-AdoConnection.open = function(connectString, userName, password, block) {
-  if (!isFunction(block)) {
-    return new AdoConnection(connectString, userName, password);
-  }
-
-  try {
-    var con = new AdoConnection(connectString, userName, password);
-    block(con);
-  } finally {
-    if(con) {
-      con.close();
-    }
-  }
-};
-
-// Prototypes of AdoConnection
-AdoConnection.prototype = {
-  // private
-  getRawConnection: function() {
-    return this.con;
-  },
-  /**
-   * コネクションの接続文字列を取得する。
-   * @return {String} コネクションの接続文字列
-   */
-  getConnectionString: function() {
-    return this.con.ConnectionString;
-  },
-  /**
-   * 指定されたsqlを実行し、ハッシュ{fieldName: value}の配列として値を返す。
-   * @param {String} sql 実行するSQL
-   * @return {Array} ハッシュ{fieldName: value}の配列
-   */
-  executeQuery: function(sql) {
-    try {
-      // SQLの実行
-      var rs = this.con.Execute(sql);
-      return this.convertToArrayRs(rs);
-    } catch(e) {
-      throw e;
-    } finally {
-      if(rs) {
-        rs.Close();
-      }
-    }
-  },
-  /**
-   * 指定されたsqlを実行する。
-   * @param {String} sql 実行するSQL
-   */
-  executeUpdate: function(sql) {
-    // SQLの実行
-    this.con.Execute(sql);
-  },
-  // private
-  // Recordsetを配列にコンバートする。
-  convertToArrayRs: function(rs) {
-    // フィールドリストの取得
-    var fe = new Enumerator(rs.Fields);
-
-    // データの取得
-    var result = [];
-
-    while(!rs.EOF) {
-      var record = {};
-      for(fe.moveFirst(); !fe.atEnd(); fe.moveNext()) {
-        var field = fe.item();
-        record[field.Name] = field.Value;
-      }
-      result.push(record);
-
-      rs.MoveNext();
-    }
-
-    return result;
-  },
-  /**
-   * 指定されたsqlを実行するコマンドを作成します。
-   * @param {String} sql 実行するSQL
-   * @return {Object} コマンドオブジェクト
-   */
-  createCommand: function(sql) {
-    return new AdoCommand(this, sql);
-  },
-  /**
-   * データベースの接続を閉じる。
-   */
-  close: function() {
-    this.con.Close();
-  },
-  /**
-   * トランザクションを開始します。
-   * @return {Number} トランザクションネストレベル
-   */
-  beginTrans: function() {
-    return this.con.BeginTrans();
-  },
-  /**
-   * トランザクションをコミットします。
-   */
-  commitTrans: function() {
-    this.con.CommitTrans();
-  },
-  /**
-   * トランザクションをロールバックします。
-   */
-  rollbackTrans: function() {
-    this.con.RollbackTrans();
-  }
-};
-/** 
- * 新しいADOのコマンドを作成する。<br/>
-   通常、AdoCommandを直接インスタンス化せず、AdoConnectionのサブクラスから、createCommandを呼びます。
- * @class ADOコマンドを表すクラス。クエリにパラメータが必要な場合は、このクラスを使います。
-<pre class = "code">
-使用例：
-AdoAccessConnection.open("c:\\path\\to\\test.mdb", "", "", function(con) {
-  var command = con.createCommand("UPDATE TEST SET COL2 = ? WHERE COL1 = ?");
-  command.setStringParameter("COL2", "えええ");
-  command.setStringParameter("COL1", "Z");
-  command.executeUpdate();
-});
-
-AdoAccessConnection.open("c:\\path\\to\\test.mdb", "", "", function(con) {
-  var command = con.createCommand("SELECT COL2 FROM TEST WHERE COL1 = ?");
-  command.setStringParameter("COL1", "Z");
-  var rs = command.executeQuery();
-
-  print(rs[0]["COL2"]);
-});
-
-</pre>
- * @param {Object} con Adoコネクション
- */
-var AdoCommand = function(con, sql) {
-  this.con = con;
-  this.sql = sql;
-  this.params = [];
-
-  // コマンドの生成
-  this.command = new ActiveXObject("ADODB.Command");
-  this.command.CommandText = this.sql;
-  this.command.CommandType = AdoCommand.COMMAND_TYPE_CMD_TEXT;
-  this.command.ActiveConnection = this.con.getRawConnection();
-};
-
-/**
- * Command Typeの定数：テキスト(1)
- */
-AdoCommand.COMMAND_TYPE_CMD_TEXT = 1; // 通常
-
-/**
- * データ型の定数: Boolean(11)
- */
-AdoCommand.DATA_TYPE_BOOLEAN = 11;
-
-/**
- * データ型の定数: Char(129)
- */
-AdoCommand.DATA_TYPE_CHAR = 129;
-
-/**
- * データ型の定数: DBDate(133)
- */
-AdoCommand.DATA_TYPE_DBDATE = 133;
-
-/**
- * データ型の定数: DBTime(134)
- */
-AdoCommand.DATA_TYPE_DBTIME = 134;
-
-/**
- * データ型の定数: DBTimestamp(135)
- */
-AdoCommand.DATA_TYPE_DBTIMESTAMP = 135;
-
-/**
- * データ型の定数: Decimal(14)
- */
-AdoCommand.DATA_TYPE_DECIMAL = 14;
-
-/**
- * データ型の定数: Double(5)
- */
-AdoCommand.DATA_TYPE_DOUBLE = 5;
-
-/**
- * データ型の定数: Integer(3)
- */
-AdoCommand.DATA_TYPE_INTEGER = 3;
-
-/**
- * データ型の定数: Numeric(131)
- */
-AdoCommand.DATA_TYPE_NUMERIC = 131;
-
-/**
- * データ型の定数: Single(4)
- */
-AdoCommand.DATA_TYPE_SINGLE = 4;
-
-/**
- * パラメータ方向の定数: Input(1)
- */
-AdoCommand.PARAMETER_DIRECTION_INPUT = 1;
-
-// Prototypes of AdoCommand
-AdoCommand.prototype = {
-  /**
-   * 指定されたsqlを実行し、ハッシュ{fieldName: value}の配列として値を返す。
-   * @param {String} sql 実行するSQL
-   * @param {Array} params パラメータ
-   * @return {Array} ハッシュ{fieldName: value}の配列
-   */
-  executeQuery: function(sql, params) {
-    try {
-      // パラメータの追加
-      this.prepareParameter();
-
-      // SQLの実行
-      var rs = this.command.Execute();
-      return this.con.convertToArrayRs(rs);
-    } catch(e) {
-      throw e;
-    } finally {
-      if(rs) {
-        rs.Close();
-      }
-    }
-  },
-  /**
-   * 指定されたsqlを実行する。
-   * @param {String} sql 実行するSQL
-   * @param {Array} params パラメータ
-   */
-  executeUpdate: function(sql, params) {
-    // パラメータの追加
-    this.prepareParameter();
-
-    // SQLの実行
-    this.command.Execute();
-  },
-  // private
-  // パラメータの準備をする。
-  prepareParameter: function() {
-    // パラメータの追加
-    var command = this.command;
-    this.params.each(function(param) {
-      var objParam = command.CreateParameter(
-        param.Name
-        , param.Type
-        , param.Direction
-        , param.Size
-        , param.Value
-      );
-      command.Parameters.Append(objParam);
-    });
-  },
-  /**
-   * 論理型のパラメータを作成する。
-   * @param {String} paramName パラメータ名
-   * @param {Boolean} paramValue パラメータ値
-   */
-  setBooleanParameter: function(paramName, paramValue) {
-    this.params.push({
-      "Name": paramName
-      , "Type": AdoCommand.DATA_TYPE_BOOLEAN
-      , "Direction": AdoCommand.PARAMETER_DIRECTION_INPUT
-      , "Size": -1
-      , "Value": paramValue
-    });
-  },
-  /**
-   * 文字列型のパラメータを作成する。
-   * @param {String} paramName パラメータ名
-   * @param {String} paramValue パラメータ値
-   */
-  setStringParameter: function(paramName, paramValue) {
-    this.params.push({
-      "Name": paramName
-      , "Type": AdoCommand.DATA_TYPE_CHAR
-      , "Direction": AdoCommand.PARAMETER_DIRECTION_INPUT
-      , "Size": -1
-      , "Value": paramValue
-    });
-  },
-  /**
-   * 日付型のパラメータを作成する。
-   * @param {String} paramName パラメータ名
-   * @param {Date} paramValue パラメータ値
-   */
-  setDateParameter: function(paramName, paramValue) {
-    this.params.push({
-      "Name": paramName
-      , "Type": AdoCommand.DATA_TYPE_DBDATE
-      , "Direction": AdoCommand.PARAMETER_DIRECTION_INPUT
-      , "Size": -1
-      , "Value": paramValue
-    });
-  },
-  /**
-   * 時刻型のパラメータを作成する。
-   * @param {String} paramName パラメータ名
-   * @param {Date} paramValue パラメータ値
-   */
-  setTimeParameter: function(paramName, paramValue) {
-    this.params.push({
-      "Name": paramName
-      , "Type": AdoCommand.DATA_TYPE_DBTIME
-      , "Direction": AdoCommand.PARAMETER_DIRECTION_INPUT
-      , "Size": -1
-      , "Value": paramValue
-    });
-  },
-  /**
-   * Timestamp型のパラメータを作成する。
-   * @param {String} paramName パラメータ名
-   * @param {Date} paramValue パラメータ値
-   */
-  setTimestampParameter: function(paramName, paramValue) {
-    this.params.push({
-      "Name": paramName
-      , "Type": AdoCommand.DATA_TYPE_DBTIMESTAMP
-      , "Direction": AdoCommand.PARAMETER_DIRECTION_INPUT
-      , "Size": -1
-      , "Value": paramValue
-    });
-  },
-  /**
-   * Deciaml型のパラメータを作成する。
-   * @param {String} paramName パラメータ名
-   * @param {Number} paramValue パラメータ値
-   */
-  setDecimalParameter: function(paramName, paramValue) {
-    this.params.push({
-      "Name": paramName
-      , "Type": AdoCommand.DATA_TYPE_DECIMAL
-      , "Direction": AdoCommand.PARAMETER_DIRECTION_INPUT
-      , "Size": -1
-      , "Value": paramValue
-    });
-  },
-  /**
-   * Double型のパラメータを作成する。
-   * @param {String} paramName パラメータ名
-   * @param {Date} paramValue パラメータ値
-   */
-  setDoubleParameter: function(paramName, paramValue) {
-    this.params.push({
-      "Name": paramName
-      , "Type": AdoCommand.DATA_TYPE_DOUBLE
-      , "Direction": AdoCommand.PARAMETER_DIRECTION_INPUT
-      , "Size": -1
-      , "Value": paramValue
-    });
-  },
-  /**
-   * Integer型のパラメータを作成する。
-   * @param {String} paramName パラメータ名
-   * @param {Date} paramValue パラメータ値
-   */
-  setIntegerParameter: function(paramName, paramValue) {
-    this.params.push({
-      "Name": paramName
-      , "Type": AdoCommand.DATA_TYPE_INTEGER
-      , "Direction": AdoCommand.PARAMETER_DIRECTION_INPUT
-      , "Size": -1
-      , "Value": paramValue
-    });
-  },
-  /**
-   * Numeric型のパラメータを作成する。
-   * @param {String} paramName パラメータ名
-   * @param {Date} paramValue パラメータ値
-   */
-  setNumericParameter: function(paramName, paramValue) {
-    this.params.push({
-      "Name": paramName
-      , "Type": AdoCommand.DATA_TYPE_NUMERIC
-      , "Direction": AdoCommand.PARAMETER_DIRECTION_INPUT
-      , "Size": -1
-      , "Value": paramValue
-    });
-  },
-  /**
-   * Single型のパラメータを作成する。
-   * @param {String} paramName パラメータ名
-   * @param {Date} paramValue パラメータ値
-   */
-  setSingleParameter: function(paramName, paramValue) {
-    this.params.push({
-      "Name": paramName
-      , "Type": AdoCommand.DATA_TYPE_SINGLE
-      , "Direction": AdoCommand.PARAMETER_DIRECTION_INPUT
-      , "Size": -1
-      , "Value": paramValue
-    });
-  }
-};
-/** 
- * 新しいADOのコネクションを作成する
- * @class ADOを使ったAccessデータベースへの接続を行うクラス
-<pre class = "code">
-使用例：
-AdoAccessConnection.open("c:\\path\\to\\test.mdb", "hoge", "fuga", function(con) {
-  var result = con.executeQuery("SELECT * FROM TEST");
-
-  result.each(function(row) {
-    print(row["COL1"]); // 'X'
-  });
-});
-
-</pre>
- * @param {String} mdbFilePath mdbファイルのパス
- * @param {String} userName ユーザ名
- * @param {String} password パスワード
- */
-var AdoAccessConnection = function(mdbFilePath, userName, password) {
-  var connectString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + mdbFilePath;
-  this.con = new AdoConnection(connectString, userName, password).getRawConnection();
-};
-
-/** 
- * 新しいADOのコネクションを作成し、ブロックを実行します。
- * ブロックが指定されていない場合は、作成したADOのコネクションを返します。
- * @param {String} mdbFilePath mdbファイルのパス
- * @param {String} userName ユーザ名
- * @param {String} password パスワード
- * @param {Function} block ブロック
- * @return {Object} ブロックが指定されていない場合は、作成したADOのコネクション
- */
-AdoAccessConnection.open = function(mdbFilePath, userName, password, block) {
-  if (!isFunction(block)) {
-    return new AdoAccessConnection(mdbFilePath, userName, password);
-  }
-
-  try {
-    var con = new AdoAccessConnection(mdbFilePath, userName, password);
-    block(con);
-  } finally {
-    if(con) {
-      con.close();
-    }
-  }
-};
-
-// Prototypes of AdoAccessConnection
-AdoAccessConnection.prototype = AdoConnection.prototype;
-/**
- * 新しいADOのコネクションを作成する
- * @class ADOを使ったOracleデータベースへの接続を行うクラス
-<pre class = "code">
-使用例：
-AdoOracleConnection.open("ORCL", "scott", "tiger", function(oracon) {
-  var result = oracon.executeQuery("SELECT * FROM DUAL");
-
-  result.each(function(row) {
-    print(row["DUMMY"]); // 'X'
-  });
-});
-
-</pre>
- * @param {String} dsName データソース名
- * @param {String} userName ユーザ名
- * @param {String} password パスワード
- */
-var AdoOracleConnection = function(dsName, userName, password) {
-  var connectString = "Provider=MSDAORA;Data Source=" + dsName + ";";
-  this.con = new AdoConnection(connectString, userName, password).getRawConnection();
-};
-
-/**
- * 新しいADOのコネクションを作成し、ブロックを実行します。
- * ブロックが指定されていない場合は、作成したADOのコネクションを返します。
- * @param {String} dsName データソース名
- * @param {String} userName ユーザ名
- * @param {String} password パスワード
- * @param {Function} block ブロック
- * @return {Object} ブロックが指定されていない場合は、作成したADOのコネクション
- */
-AdoOracleConnection.open = function(dsName, userName, password, block) {
-  if (!isFunction(block)) {
-    return new AdoOracleConnection(dsName, userName, password);
-  }
-
-  try {
-    var con = new AdoOracleConnection(dsName, userName, password);
-    block(con);
-  } finally {
-    if(con) {
-      con.close();
-    }
-  }
-};
-
-// Prototypes of AdoOracleConnection
-AdoOracleConnection.prototype = AdoConnection.prototype;
 /**
  * インスタンス化しません。
  * @class イベントエントリをログファイルに追加する機能を提供するクラス

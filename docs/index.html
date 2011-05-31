@@ -205,6 +205,8 @@ MadoJS
 	
 	<li><a href="symbols/AdoConnection.html">AdoConnection</a></li>
 	
+	<li><a href="symbols/AdoOdbcConnection.html">AdoOdbcConnection</a></li>
+	
 	<li><a href="symbols/AdoOracleConnection.html">AdoOracleConnection</a></li>
 	
 	<li><a href="symbols/Array.html">Array</a></li>
@@ -306,6 +308,23 @@ AdoAccessConnection.open("c:\\path\\to\\test.mdb", "", "", function(con) {
 				<h2><a href="symbols/AdoConnection.html">AdoConnection</a></h2>
 				ADOを使ったデータベースへの接続を行うクラス。<br/>
           通常はこのクラスを直接使用せず、サブクラスを使います。
+			</div>
+			<hr />
+			
+			<div>
+				<h2><a href="symbols/AdoOdbcConnection.html">AdoOdbcConnection</a></h2>
+				ADOを使ったODBCデータベースへの接続を行うクラス
+<pre class = "code">
+使用例：
+AdoOdbcConnection.open("DSN1", "user", "password", function(odbccon) {
+  var result = odbccon.executeQuery("SELECT * FROM TEST");
+
+  result.each(function(row) {
+    print(row["COL1"]); // 'X'
+  });
+});
+
+</pre>
 			</div>
 			<hr />
 			
@@ -551,7 +570,7 @@ print(SpecialFolders.getDesktop());
 		</div>
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Fri May 27 2011 15:17:09 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Tue May 31 2011 17:55:18 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

@@ -26,7 +26,7 @@ JScript/Windows Scripting Hostにruby風の味付けをほどこし、
   * イベントログの書き込み
   * 特殊フォルダパスの取得
   * Excelへのアクセス
-  * ADOを使ったOracle/MSAccessへのアクセス
+  * ADOを使ったOracle/MSAccess/ODBCデータソースへのアクセス
   * String/Array/Date組み込みクラスの拡張
 
 =インストール=

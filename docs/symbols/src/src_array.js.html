@@ -9,13 +9,13 @@
 <span class='line'>  2</span>  * 各要素に対してブロックを評価します。
 <span class='line'>  3</span>  * @param {Function} block ブロック
 <span class='line'>  4</span>  * @example 使用例：
-<span class='line'>  5</span>  * var x = [1, 2, 3].each(function(i) {
+<span class='line'>  5</span>  * var x = [1, 2, 3].forEach(function(i) {
 <span class='line'>  6</span>  *   return i*2;
 <span class='line'>  7</span>  * });
 <span class='line'>  8</span>  *
 <span class='line'>  9</span>  * print(x); // 2,4,6
 <span class='line'> 10</span>  */</span><span class="WHIT">
-<span class='line'> 11</span> </span><span class="NAME">Array.prototype.each</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">block</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 11</span> </span><span class="NAME">Array.prototype.forEach</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">block</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'> 12</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">result</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 13</span> 
 <span class='line'> 14</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">thisLength</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.length</span><span class="PUNC">;</span><span class="WHIT">

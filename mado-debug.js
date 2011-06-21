@@ -464,13 +464,13 @@ SpecialFolders.getTemplates = function () {
  * 各要素に対してブロックを評価します。
  * @param {Function} block ブロック
  * @example 使用例：
- * var x = [1, 2, 3].each(function(i) {
+ * var x = [1, 2, 3].forEach(function(i) {
  *   return i*2;
  * });
  *
  * print(x); // 2,4,6
  */
-Array.prototype.each = function(block) {
+Array.prototype.forEach = function(block) {
   var result = [];
 
   var thisLength = this.length;

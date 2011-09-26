@@ -80,10 +80,13 @@ var isWScriptRunning = function() {
  * 指定したkeyのキー入力を行います。
  * @param {String} key 入力する文字列
  * @param {Number} num (オプション)送信する回数(初期値 1)
+ * @param {Number} duration (オプション)送信までの待ち時間(ミリ秒)(初期値 0)
  */
-var sendKeys = function (key, num) {
+var sendKeys = function (key, num, duration) {
   var myNum = num || 1;
+  var myDuration = duration || 0;
   for(var i=0; i<myNum; i++) {
+    sleep(myDuration);
     Const.WSHELL.Sendkeys(key);
   }
   return this;

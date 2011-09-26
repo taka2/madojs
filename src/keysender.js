@@ -16,8 +16,11 @@ var ks = new KeySender("無題")
     .sendKeys("abc.txt")
     .sendEnter();
 </pre>
+ * @param {String} targetWindow KeySend対象のウインドウ名を指定します。
+ * @param {Number} duration (オプション)KeySendごとの待ち時間(ミリ秒)を指定します(初期値 0)。
  */
-var KeySender = function(targetWindow) {
+var KeySender = function(targetWindow, duration) {
+  this.myDuration = duration || 0;
   Const.WSHELL.AppActivate(targetWindow);
   sleep(KeySender.DURATION);
 };
@@ -36,7 +39,7 @@ KeySender.prototype = {
    * @return this
    */
   sendKeys: function(text, num) {
-    sendKeys(text, num);
+    sendKeys(text, num, this.myDuration);
     return this;
   },
   /**
@@ -46,10 +49,11 @@ KeySender.prototype = {
    * @return this
    */
   sendJapaneseKeys: function(text, num) {
+    var myNum = num || 1;
     Clipboard.open(function(clip) {
-      for(var i=0; i<num; i++) {
+      for(var i=0; i<myNum; i++) {
         clip.set(text);
-        sendKeys("^v");
+        sendKeys("^v", 1, this.myDuration);
       }
     });
     return this;
@@ -61,7 +65,7 @@ KeySender.prototype = {
    * @return this
    */
   sendKeyWithShift: function(ch, num) {
-    sendKeys("+" + ch, num);
+    sendKeys("+" + ch, num, this.myDuration);
     return this;
   },
   /**
@@ -71,7 +75,7 @@ KeySender.prototype = {
    * @return this
    */
   sendKeyWithControl: function(ch, num) {
-    sendKeys("^" + ch, num);
+    sendKeys("^" + ch, num, this.myDuration);
     return this;
   },
   /**
@@ -81,7 +85,7 @@ KeySender.prototype = {
    * @return this
    */
   sendKeyWithAlt: function(ch, num) {
-    sendKeys("%" + ch, num);
+    sendKeys("%" + ch, num, this.myDuration);
     return this;
   },
   /**
@@ -90,7 +94,7 @@ KeySender.prototype = {
    * @return this
    */
   sendBackspace: function(ch, num) {
-    sendKeys("{BACKSPACE}", num);
+    sendKeys("{BACKSPACE}", num, this.myDuration);
     return this;
   },
   /**
@@ -99,7 +103,7 @@ KeySender.prototype = {
    * @return this
    */
   sendBreak: function(ch, num) {
-    sendKeys("{BREAK}", num);
+    sendKeys("{BREAK}", num, this.myDuration);
     return this;
   },
   /**
@@ -108,7 +112,7 @@ KeySender.prototype = {
    * @return this
    */
   sendCapsLock: function(ch, num) {
-    sendKeys("{CAPSLOCK}", num);
+    sendKeys("{CAPSLOCK}", num, this.myDuration);
     return this;
   },
   /**
@@ -117,7 +121,7 @@ KeySender.prototype = {
    * @return this
    */
   sendDelete: function(ch, num) {
-    sendKeys("{DELETE}", num);
+    sendKeys("{DELETE}", num, this.myDuration);
     return this;
   },
   /**
@@ -126,7 +130,7 @@ KeySender.prototype = {
    * @return this
    */
   sendDownArrow: function(ch, num) {
-    sendKeys("{DOWN}", num);
+    sendKeys("{DOWN}", num, this.myDuration);
     return this;
   },
   /**
@@ -135,7 +139,7 @@ KeySender.prototype = {
    * @return this
    */
   sendEnd: function(ch, num) {
-    sendKeys("{END}", num);
+    sendKeys("{END}", num, this.myDuration);
     return this;
   },
   /**
@@ -144,7 +148,7 @@ KeySender.prototype = {
    * @return this
    */
   sendEnter: function(num) {
-    sendKeys("{ENTER}", num);
+    sendKeys("{ENTER}", num, this.myDuration);
     return this;
   },
   /**
@@ -153,7 +157,7 @@ KeySender.prototype = {
    * @return this
    */
   sendEsc: function(num) {
-    sendKeys("{ESC}", num);
+    sendKeys("{ESC}", num, this.myDuration);
     return this;
   },
   /**
@@ -162,7 +166,7 @@ KeySender.prototype = {
    * @return this
    */
   sendHelp: function(num) {
-    sendKeys("{HELP}", num);
+    sendKeys("{HELP}", num, this.myDuration);
     return this;
   },
   /**
@@ -171,7 +175,7 @@ KeySender.prototype = {
    * @return this
    */
   sendHome: function(num) {
-    sendKeys("{HOME}", num);
+    sendKeys("{HOME}", num, this.myDuration);
     return this;
   },
   /**
@@ -180,7 +184,7 @@ KeySender.prototype = {
    * @return this
    */
   sendInsert: function(num) {
-    sendKeys("{INSERT}", num);
+    sendKeys("{INSERT}", num, this.myDuration);
     return this;
   },
   /**
@@ -189,7 +193,7 @@ KeySender.prototype = {
    * @return this
    */
   sendLeftArrow: function(num) {
-    sendKeys("{LEFT}", num);
+    sendKeys("{LEFT}", num, this.myDuration);
     return this;
   },
   /**
@@ -198,7 +202,7 @@ KeySender.prototype = {
    * @return this
    */
   sendNumLock: function(num) {
-    sendKeys("{NUMLOCK}", num);
+    sendKeys("{NUMLOCK}", num, this.myDuration);
     return this;
   },
   /**
@@ -207,7 +211,7 @@ KeySender.prototype = {
    * @return this
    */
   sendPageDown: function(num) {
-    sendKeys("{PGDN}", num);
+    sendKeys("{PGDN}", num, this.myDuration);
     return this;
   },
   /**
@@ -216,7 +220,7 @@ KeySender.prototype = {
    * @return this
    */
   sendPageUp: function(num) {
-    sendKeys("{PGUP}", num);
+    sendKeys("{PGUP}", num, this.myDuration);
     return this;
   },
   /**
@@ -225,7 +229,7 @@ KeySender.prototype = {
    * @return this
    */
   sendPrintScreen: function(num) {
-    sendKeys("{PRTSC}", num);
+    sendKeys("{PRTSC}", num, this.myDuration);
     return this;
   },
   /**
@@ -234,7 +238,7 @@ KeySender.prototype = {
    * @return this
    */
   sendRightArrow: function(num) {
-    sendKeys("{RIGHT}", num);
+    sendKeys("{RIGHT}", num, this.myDuration);
     return this;
   },
   /**
@@ -243,7 +247,7 @@ KeySender.prototype = {
    * @return this
    */
   sendScrollLock: function(num) {
-    sendKeys("{SCROLLLOCK}", num);
+    sendKeys("{SCROLLLOCK}", num, this.myDuration);
     return this;
   },
   /**
@@ -252,7 +256,7 @@ KeySender.prototype = {
    * @return this
    */
   sendTab: function(num) {
-    sendKeys("{TAB}", num);
+    sendKeys("{TAB}", num, this.myDuration);
     return this;
   },
   /**
@@ -261,7 +265,7 @@ KeySender.prototype = {
    * @return this
    */
   sendUpArrow: function(num) {
-    sendKeys("{UP}", num);
+    sendKeys("{UP}", num, this.myDuration);
     return this;
   },
   /**
@@ -270,7 +274,7 @@ KeySender.prototype = {
    * @return this
    */
   sendF1: function(num) {
-    sendKeys("{F1}", num);
+    sendKeys("{F1}", num, this.myDuration);
     return this;
   },
   /**
@@ -279,7 +283,7 @@ KeySender.prototype = {
    * @return this
    */
   sendF2: function(num) {
-    sendKeys("{F2}", num);
+    sendKeys("{F2}", num, this.myDuration);
     return this;
   },
   /**
@@ -288,7 +292,7 @@ KeySender.prototype = {
    * @return this
    */
   sendF3: function(num) {
-    sendKeys("{F3}", num);
+    sendKeys("{F3}", num, this.myDuration);
     return this;
   },
   /**
@@ -297,7 +301,7 @@ KeySender.prototype = {
    * @return this
    */
   sendF4: function(num) {
-    sendKeys("{F4}", num);
+    sendKeys("{F4}", num, this.myDuration);
     return this;
   },
   /**
@@ -306,7 +310,7 @@ KeySender.prototype = {
    * @return this
    */
   sendF5: function(num) {
-    sendKeys("{F5}", num);
+    sendKeys("{F5}", num, this.myDuration);
     return this;
   },
   /**
@@ -315,7 +319,7 @@ KeySender.prototype = {
    * @return this
    */
   sendF6: function(num) {
-    sendKeys("{F6}", num);
+    sendKeys("{F6}", num, this.myDuration);
     return this;
   },
   /**
@@ -324,7 +328,7 @@ KeySender.prototype = {
    * @return this
    */
   sendF7: function(num) {
-    sendKeys("{F7}", num);
+    sendKeys("{F7}", num, this.myDuration);
     return this;
   },
   /**
@@ -333,7 +337,7 @@ KeySender.prototype = {
    * @return this
    */
   sendF8: function(num) {
-    sendKeys("{F8}", num);
+    sendKeys("{F8}", num, this.myDuration);
     return this;
   },
   /**
@@ -342,7 +346,7 @@ KeySender.prototype = {
    * @return this
    */
   sendF9: function(num) {
-    sendKeys("{F9}", num);
+    sendKeys("{F9}", num, this.myDuration);
     return this;
   },
   /**
@@ -351,7 +355,7 @@ KeySender.prototype = {
    * @return this
    */
   sendF10: function(num) {
-    sendKeys("{F10}", num);
+    sendKeys("{F10}", num, this.myDuration);
     return this;
   },
   /**
@@ -360,7 +364,7 @@ KeySender.prototype = {
    * @return this
    */
   sendF11: function(num) {
-    sendKeys("{F11}", num);
+    sendKeys("{F11}", num, this.myDuration);
     return this;
   },
   /**
@@ -369,7 +373,7 @@ KeySender.prototype = {
    * @return this
    */
   sendF12: function(num) {
-    sendKeys("{F12}", num);
+    sendKeys("{F12}", num, this.myDuration);
     return this;
   },
   /**
@@ -378,7 +382,7 @@ KeySender.prototype = {
    * @return this
    */
   sendF13: function(num) {
-    sendKeys("{F13}", num);
+    sendKeys("{F13}", num, this.myDuration);
     return this;
   },
   /**
@@ -387,7 +391,7 @@ KeySender.prototype = {
    * @return this
    */
   sendF14: function(num) {
-    sendKeys("{F14}", num);
+    sendKeys("{F14}", num, this.myDuration);
     return this;
   },
   /**
@@ -396,7 +400,7 @@ KeySender.prototype = {
    * @return this
    */
   sendF15: function(num) {
-    sendKeys("{F15}", num);
+    sendKeys("{F15}", num, this.myDuration);
     return this;
   },
   /**
@@ -405,7 +409,7 @@ KeySender.prototype = {
    * @return this
    */
   sendF16: function(num) {
-    sendKeys("{F16}", num);
+    sendKeys("{F16}", num, this.myDuration);
     return this;
   }
 };

@@ -308,7 +308,7 @@ var ks = new KeySender("無題")
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/KeySender.html#constructor">KeySender</a></b>(targetWindow)
+								<b><a href="../symbols/KeySender.html#constructor">KeySender</a></b>(targetWindow, duration)
 							</div>
 							<div class="description">新しいキー送信クラスを作成する。</div>
 						</td>
@@ -720,7 +720,7 @@ var ks = new KeySender("無題")
 				</div>
 				
 				<div class="fixedFont">
-						<b>KeySender</b>(targetWindow)
+						<b>KeySender</b>(targetWindow, duration)
 				</div>
 				
 				<div class="description">
@@ -736,10 +736,16 @@ var ks = new KeySender("無題")
 						<dt class="heading">引数:</dt>
 						
 							<dt>
-								 <b>targetWindow</b>
+								<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span>  <b>targetWindow</b>
 								
 							</dt>
-								<dd></dd>
+								<dd>KeySend対象のウインドウ名を指定します。</dd>
+						
+							<dt>
+								<span class="light fixedFont">{Number}</span>  <b>duration</b>
+								
+							</dt>
+								<dd>(オプション)KeySendごとの待ち時間(ミリ秒)を指定します(初期値 0)。</dd>
 						
 						</dl>
 					
@@ -2603,7 +2609,7 @@ var ks = new KeySender("無題")
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Tue Jun 21 2011 10:56:37 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Mon Sep 26 2011 11:57:05 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

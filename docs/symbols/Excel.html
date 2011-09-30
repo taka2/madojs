@@ -335,6 +335,16 @@ Excel.open("abc.xls", function(excel) {
 							</td>
 						</tr>
 					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								Excel.<b><a href="../symbols/Excel.html#.FILE_FORMAT_TSV">FILE_FORMAT_TSV</a></b>
+								</div>
+								<div class="description">ファイルフォーマット：xlCurrentPlatformText(-4158)</div>
+							</td>
+						</tr>
+					
 					</tbody>
 				</table>
 				
@@ -380,6 +390,15 @@ Excel.open("abc.xls", function(excel) {
 								<div class="fixedFont">Excel.<b><a href="../symbols/Excel.html#.convertToCsv">convertToCsv</a></b>(path)
 								</div>
 								<div class="description">ExcelブックをCSVファイルに変換する。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">Excel.<b><a href="../symbols/Excel.html#.convertToTsv">convertToTsv</a></b>(path)
+								</div>
+								<div class="description">Excelブックをタブ区切りファイルに変換する。</div>
 							</td>
 						</tr>
 					
@@ -491,6 +510,15 @@ Excel.open("abc.xls", function(excel) {
 							</td>
 						</tr>
 					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Excel.html#saveAsTsv">saveAsTsv</a></b>(fileName)
+								</div>
+								<div class="description">Excelファイルをファイル名を指定してタブ区切り形式で保存します。</div>
+							</td>
+						</tr>
+					
 					</tbody>
 				</table>
 				
@@ -572,6 +600,28 @@ Excel.open("abc.xls", function(excel) {
 					</div>
 					<div class="description">
 						ファイルフォーマット：xlCSV(6)
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".FILE_FORMAT_TSV"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">Excel.</span><b>FILE_FORMAT_TSV</b>
+					
+					</div>
+					<div class="description">
+						ファイルフォーマット：xlCurrentPlatformText(-4158)
 						
 						
 					</div>
@@ -683,6 +733,49 @@ Excel.open("abc.xls", function(excel) {
 					</div>
 					<div class="description">
 						ExcelブックをCSVファイルに変換する。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>path</b>
+									
+								</dt>
+								<dd>Excelファイルのパスを文字列で指定します。</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{Boolean}</span> 成功した場合はtrue、失敗した場合はfalseを返す。</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".convertToTsv"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Boolean}</span>
+					<span class="light">Excel.</span><b>convertToTsv</b>(path)
+					
+					</div>
+					<div class="description">
+						Excelブックをタブ区切りファイルに変換する。
 						
 						
 					</div>
@@ -1163,6 +1256,42 @@ Excel.open("abc.xls", function(excel) {
 						
 						
 
+					<hr />
+				
+					<a name="saveAsTsv"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>saveAsTsv</b>(fileName)
+					
+					</div>
+					<div class="description">
+						Excelファイルをファイル名を指定してタブ区切り形式で保存します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>fileName</b>
+									
+								</dt>
+								<dd>保存先のファイル名</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
 					
 				
 			
@@ -1177,7 +1306,7 @@ Excel.open("abc.xls", function(excel) {
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Fri Sep 30 2011 17:02:51 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Fri Sep 30 2011 17:10:48 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

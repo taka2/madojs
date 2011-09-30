@@ -35,6 +35,11 @@ var Excel = function(path, bNew) {
  */
 Excel.FILE_FORMAT_CSV = 6;
 
+/**
+ * ファイルフォーマット：xlCurrentPlatformText(-4158)
+ */
+Excel.FILE_FORMAT_TSV = -4158;
+
 /** 
  * Excelファイルを開き、ブロックを実行します。
  * ブロックが指定されていない場合は、Excelオブジェクトを返します。
@@ -129,6 +134,21 @@ Excel.convertToCsv = function(path) {
   });
 }
 
+/**
+ * Excelブックをタブ区切りファイルに変換する。
+ * @param {String} path Excelファイルのパスを文字列で指定します。
+ * @return {Boolean} 成功した場合はtrue、失敗した場合はfalseを返す。
+ */
+Excel.convertToTsv = function(path) {
+  Excel.openReadonly(path, function(excel) {
+    excel.each(function(sheet) {
+      sheet.activate();
+      var outFileName = path + "_" + sheet.getName() + ".tsv";
+      excel.saveAsTsv(outFileName);
+    });
+  });
+}
+
 // Prototypes of Excel
 Excel.prototype = {
   /**
@@ -214,6 +234,13 @@ Excel.prototype = {
    */
   saveAsCsv: function(fileName) {
     this.workbookObj.SaveAs(fileName, Excel.FILE_FORMAT_CSV);
+  },
+  /** 
+   * Excelファイルをファイル名を指定してタブ区切り形式で保存します。
+   * @param {String} fileName 保存先のファイル名
+   */
+  saveAsTsv: function(fileName) {
+    this.workbookObj.SaveAs(fileName, Excel.FILE_FORMAT_TSV);
   },
   /**
    * Excelファイルを保存せずに閉じます

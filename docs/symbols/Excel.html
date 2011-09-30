@@ -313,6 +313,34 @@ Excel.open("abc.xls", function(excel) {
 
 <!-- ============================== properties summary ===================== -->
 			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class Excel.">
+					<caption>フィールドの概要</caption>
+					<thead>
+						<tr>
+							<th scope="col">フィールド</th>
+							<th scope="col">フィールド名と説明</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								Excel.<b><a href="../symbols/Excel.html#.FILE_FORMAT_CSV">FILE_FORMAT_CSV</a></b>
+								</div>
+								<div class="description">ファイルフォーマット：xlCSV(6)</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
 
 <!-- ============================== methods summary ======================== -->
 			
@@ -343,6 +371,15 @@ Excel.open("abc.xls", function(excel) {
 								<div class="fixedFont">Excel.<b><a href="../symbols/Excel.html#.available">available</a></b>()
 								</div>
 								<div class="description">プログラムを動作させる端末でExcelが利用可能かどうか。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">Excel.<b><a href="../symbols/Excel.html#.convertToCsv">convertToCsv</a></b>(path)
+								</div>
+								<div class="description">ExcelブックをCSVファイルに変換する。</div>
 							</td>
 						</tr>
 					
@@ -445,6 +482,15 @@ Excel.open("abc.xls", function(excel) {
 							</td>
 						</tr>
 					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Excel.html#saveAsCsv">saveAsCsv</a></b>(fileName)
+								</div>
+								<div class="description">Excelファイルをファイル名を指定してCSV形式で保存します。</div>
+							</td>
+						</tr>
+					
 					</tbody>
 				</table>
 				
@@ -512,6 +558,33 @@ Excel.open("abc.xls", function(excel) {
 			
 
 <!-- ============================== field details ========================== -->		
+			
+				<div class="sectionTitle">
+					フィールドの詳細
+				</div>
+				
+					<a name=".FILE_FORMAT_CSV"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">Excel.</span><b>FILE_FORMAT_CSV</b>
+					
+					</div>
+					<div class="description">
+						ファイルフォーマット：xlCSV(6)
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					
+				
 			
 
 <!-- ============================== method details ========================= -->		
@@ -593,6 +666,49 @@ Excel.open("abc.xls", function(excel) {
 							<dt class="heading">戻り値:</dt>
 							
 								<dd><span class="light fixedFont">{Boolean}</span> Excelが利用可能な場合はtrue、それ以外の場合はfalseを返す。</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".convertToCsv"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Boolean}</span>
+					<span class="light">Excel.</span><b>convertToCsv</b>(path)
+					
+					</div>
+					<div class="description">
+						ExcelブックをCSVファイルに変換する。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>path</b>
+									
+								</dt>
+								<dd>Excelファイルのパスを文字列で指定します。</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{Boolean}</span> 成功した場合はtrue、失敗した場合はfalseを返す。</dd>
 							
 							</dl>
 						
@@ -997,10 +1113,46 @@ Excel.open("abc.xls", function(excel) {
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<b>fileName</b>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>fileName</b>
 									
 								</dt>
-								<dd></dd>
+								<dd>保存先のファイル名</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="saveAsCsv"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>saveAsCsv</b>(fileName)
+					
+					</div>
+					<div class="description">
+						Excelファイルをファイル名を指定してCSV形式で保存します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>fileName</b>
+									
+								</dt>
+								<dd>保存先のファイル名</dd>
 							
 							</dl>
 						
@@ -1025,7 +1177,7 @@ Excel.open("abc.xls", function(excel) {
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Mon Sep 26 2011 11:57:04 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Fri Sep 30 2011 17:02:51 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

@@ -30,6 +30,11 @@ var Excel = function(path, bNew) {
   }
 };
 
+/**
+ * ファイルフォーマット：xlCSV(6)
+ */
+Excel.FILE_FORMAT_CSV = 6;
+
 /** 
  * Excelファイルを開き、ブロックを実行します。
  * ブロックが指定されていない場合は、Excelオブジェクトを返します。
@@ -109,6 +114,21 @@ Excel.available = function() {
   }
 }
 
+/**
+ * ExcelブックをCSVファイルに変換する。
+ * @param {String} path Excelファイルのパスを文字列で指定します。
+ * @return {Boolean} 成功した場合はtrue、失敗した場合はfalseを返す。
+ */
+Excel.convertToCsv = function(path) {
+  Excel.openReadonly(path, function(excel) {
+    excel.each(function(sheet) {
+      sheet.activate();
+      var outFileName = path + "_" + sheet.getName() + ".csv";
+      excel.saveAsCsv(outFileName);
+    });
+  });
+}
+
 // Prototypes of Excel
 Excel.prototype = {
   /**
@@ -183,9 +203,17 @@ Excel.prototype = {
   },
   /** 
    * Excelファイルをファイル名を指定して保存します。
+   * @param {String} fileName 保存先のファイル名
    */
   saveAs: function(fileName) {
     this.workbookObj.SaveAs(fileName);
+  },
+  /** 
+   * Excelファイルをファイル名を指定してCSV形式で保存します。
+   * @param {String} fileName 保存先のファイル名
+   */
+  saveAsCsv: function(fileName) {
+    this.workbookObj.SaveAs(fileName, Excel.FILE_FORMAT_CSV);
   },
   /**
    * Excelファイルを保存せずに閉じます

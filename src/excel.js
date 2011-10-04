@@ -106,6 +106,28 @@ Excel.create = function(block) {
   }
 };
 
+/** 
+ * Excelファイルを読み取り専用(最後に変更を破棄)で作成し、ブロックを実行します。
+ * ブロックが指定されていない場合は、Excelオブジェクトを返します。
+ * @param {String} path Excelファイルのパスを文字列で指定します。
+ * @param {Function} block ブロック
+ * @return {Object} ブロックが指定されていない場合は、作成したクリップボード
+ */
+Excel.createReadonly = function(block) {
+  if(!isFunction(block)) {
+    return new Excel("", true);
+  }
+
+  try {
+    var excel = new Excel("", true);
+    block(excel);
+  } finally {
+    if(excel) {
+      excel.quitDiscardChanges();
+    }
+  }
+};
+
 /**
  * プログラムを動作させる端末でExcelが利用可能かどうか。
  * @return {Boolean} Excelが利用可能な場合はtrue、それ以外の場合はfalseを返す。
@@ -147,6 +169,34 @@ Excel.convertToTsv = function(path) {
       excel.saveAsTsv(outFileName);
     });
   });
+}
+
+/**
+ * JScriptの二次元配列を、二次元のSafeArrayに変換する。
+ * @param {Array} jsArray2d JScriptの二次元配列を指定します。
+ * @return {Object} 変換された二次元のSafeArrayを返します。通常、VBArrayでラップして使います。<br/>
+ *                  変換に失敗した場合はundefinedを返します。
+ */
+Excel.array2dToSafeArray2d = function(jsArray2d) {
+  var safeArray = undefined;
+
+  Excel.createReadonly(function(excel) {
+    // 1シート目を取得
+    var sheet = excel.getSheetByIndex(1);
+
+    // 各セルに値を設定
+    for(i=0; i<jsArray2d.length; i++) {
+      for(j=0; j<jsArray2d[i].length; j++) {
+        var value = jsArray2d[i][j];
+        sheet.setValue(i+1, j+1, value);
+      }
+    }
+
+    // SafeArrayを取り出す。
+    safeArray = sheet.getRawObject().Cells(1, 1).CurrentRegion.Value;
+  });
+
+  return safeArray;
 }
 
 // Prototypes of Excel

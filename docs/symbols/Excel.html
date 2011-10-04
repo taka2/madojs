@@ -378,6 +378,15 @@ Excel.open("abc.xls", function(excel) {
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont">Excel.<b><a href="../symbols/Excel.html#.array2dToSafeArray2d">array2dToSafeArray2d</a></b>(jsArray2d)
+								</div>
+								<div class="description">JScriptの二次元配列を、二次元のSafeArrayに変換する。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont">Excel.<b><a href="../symbols/Excel.html#.available">available</a></b>()
 								</div>
 								<div class="description">プログラムを動作させる端末でExcelが利用可能かどうか。</div>
@@ -408,6 +417,15 @@ Excel.open("abc.xls", function(excel) {
 								<div class="fixedFont">Excel.<b><a href="../symbols/Excel.html#.create">create</a></b>(path, block)
 								</div>
 								<div class="description">Excelファイルを作成し、ブロックを実行します。ブロックが指定されていない場合は、Excelオブジェクトを返します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">Excel.<b><a href="../symbols/Excel.html#.createReadonly">createReadonly</a></b>(path, block)
+								</div>
+								<div class="description">Excelファイルを読み取り専用(最後に変更を破棄)で作成し、ブロックを実行します。ブロックが指定されていない場合は、Excelオブジェクトを返します。</div>
 							</td>
 						</tr>
 					
@@ -692,6 +710,49 @@ Excel.open("abc.xls", function(excel) {
 
 					<hr />
 				
+					<a name=".array2dToSafeArray2d"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Object}</span>
+					<span class="light">Excel.</span><b>array2dToSafeArray2d</b>(jsArray2d)
+					
+					</div>
+					<div class="description">
+						JScriptの二次元配列を、二次元のSafeArrayに変換する。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/Array.html">Array</a>}</span> <b>jsArray2d</b>
+									
+								</dt>
+								<dd>JScriptの二次元配列を指定します。</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{Object}</span> 変換された二次元のSafeArrayを返します。通常、VBArrayでラップして使います。<br/>                 変換に失敗した場合はundefinedを返します。</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
 					<a name=".available"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
@@ -819,6 +880,55 @@ Excel.open("abc.xls", function(excel) {
 					</div>
 					<div class="description">
 						Excelファイルを作成し、ブロックを実行します。ブロックが指定されていない場合は、Excelオブジェクトを返します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>path</b>
+									
+								</dt>
+								<dd>Excelファイルのパスを文字列で指定します。</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>block</b>
+									
+								</dt>
+								<dd>ブロック</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{Object}</span> ブロックが指定されていない場合は、作成したクリップボード</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".createReadonly"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Object}</span>
+					<span class="light">Excel.</span><b>createReadonly</b>(path, block)
+					
+					</div>
+					<div class="description">
+						Excelファイルを読み取り専用(最後に変更を破棄)で作成し、ブロックを実行します。ブロックが指定されていない場合は、Excelオブジェクトを返します。
 						
 						
 					</div>
@@ -1306,7 +1416,7 @@ Excel.open("abc.xls", function(excel) {
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Fri Sep 30 2011 17:10:48 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Tue Oct 04 2011 10:28:48 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

@@ -37,6 +37,11 @@ var File = function(path, mode) {
   }
 };
 
+/**
+ * パス区切り文字：\
+ */
+File.PATH_SEPARATOR = "\\";
+
 /** 
  * 指定したpathのファイルを指定したmodeで開き、ブロックを実行します。
  * ブロックが指定されていない場合は、作成したファイルオブジェクトを返します。
@@ -147,11 +152,9 @@ File.size = function(path) {
  * @return {String} ファイル、または、ディレクトリのフルパス
  */
 File.realpath = function(pathname, basedir) {
-  if(!basedir) {
-    basedir = Dir.getwd();
-  }
+  var myBasedir = basedir || Dir.getwd();
 
-  Dir.cd(basedir, function(path) {
+  Dir.chdir(myBasedir, function(path) {
     realpath = Const.FSO.GetAbsolutePathName(pathname);
   });
 

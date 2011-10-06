@@ -396,33 +396,41 @@ Excel.prototype = {
   save: function() {
     this.workbookObj.Save();
   },
+  getFullPathName: function(fileName) {
+    var myFileName = fileName;
+    if(myFileName.indexOf(File.PATH_SEPARATOR) === -1) {
+      myFileName = File.realpath(myFileName);
+    }
+
+    return myFileName;
+  },
   /** 
    * Excelファイルをファイル名を指定して保存します。
    * @param {String} fileName 保存先のファイル名
    */
   saveAs: function(fileName) {
-    this.workbookObj.SaveAs(fileName);
+    this.workbookObj.SaveAs(this.getFullPathName(fileName));
   },
   /** 
    * Excelファイルをファイル名を指定してCSV形式で保存します。
    * @param {String} fileName 保存先のファイル名
    */
   saveAsCsv: function(fileName) {
-    this.workbookObj.SaveAs(fileName, Excel.FILE_FORMAT_CSV);
+    this.workbookObj.SaveAs(this.getFullPathName(fileName), Excel.FILE_FORMAT_CSV);
   },
   /** 
    * Excelファイルをファイル名を指定してタブ区切り形式で保存します。
    * @param {String} fileName 保存先のファイル名
    */
   saveAsTsv: function(fileName) {
-    this.workbookObj.SaveAs(fileName, Excel.FILE_FORMAT_TSV);
+    this.workbookObj.SaveAs(this.getFullPathName(fileName), Excel.FILE_FORMAT_TSV);
   },
   /** 
    * Excelファイルをファイル名を指定してExcel形式で保存します。
    * @param {String} fileName 保存先のファイル名
    */
   saveAsExcel: function(fileName) {
-    this.workbookObj.SaveAs(fileName, Excel.FILE_FORMAT_EXCEL);
+    this.workbookObj.SaveAs(this.getFullPathName(fileName), Excel.FILE_FORMAT_EXCEL);
   },
   /**
    * Excelファイルを保存せずに閉じます。

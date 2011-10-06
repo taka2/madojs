@@ -11,22 +11,29 @@ Excel.open("abc.xls", function(excel) {
   excel.save();
 });
 </pre>
- * @param {String} path Excelファイルのパスを文字列で指定します。
- * @param {Boolean} bNew (オプション)新しくファイルを作成するかどうか(初期値 false)
- * @throws bNewがfalse、かつ、ファイルが存在しない場合にスローされます。
+ * @param {String} path Excelファイルのパスを文字列で指定します。指定しない場合は新しくブックを作成します。
+ * @param {Boolean} fileType (オプション)Excel以外のファイルを開くときに、指定します。
+ * @param {Boolean} columnInfo (オプション)Excel以外のファイルを開くときに、カラムの情報を指定します。
+ * @throws pathがundefinedでない、かつ、ファイルが存在しない場合にスローされます。
  */
-var Excel = function(path, bNew) {
+var Excel = function(path, fileType, columnInfo) {
   this.path = path;
-
   this.excelObj = new ActiveXObject("Excel.Application");
-  if(bNew) {
+
+  if(path === undefined) {
     this.workbookObj = this.excelObj.Workbooks.Add();
   } else {
     if(!File.exist(path)) {
       throw new Error(-1, "File Not Found: " + path);
     }
 
-    this.workbookObj = this.excelObj.Workbooks.Open(path);
+    if(fileType === Excel.IN_FILETYPE_CSV) {
+      var columnInfoSafeArray = Excel.array2dToSafeArray2d(columnInfo);
+      this.excelObj.Workbooks.OpenText(path, 932, 1, 1, 1, false, false, false, true, false, false, false, columnInfoSafeArray);
+      this.workbookObj = this.excelObj.ActiveWorkbook;
+    } else {
+      this.workbookObj = this.excelObj.Workbooks.Open(path);
+    }
   }
 };
 
@@ -40,6 +47,66 @@ Excel.FILE_FORMAT_CSV = 6;
  */
 Excel.FILE_FORMAT_TSV = -4158;
 
+/**
+ * ファイルフォーマット：xlWorkbookNormal(-4143)
+ */
+Excel.FILE_FORMAT_EXCEL = -4143;
+
+/**
+ * 入力ファイルタイプ：CSV(1)
+ */
+Excel.IN_FILETYPE_CSV = 1;
+
+/**
+ * カラムタイプ：xlGeneralFormat(1)
+ */
+Excel.COLUMN_TYPE_GENERAL = 1;
+
+/**
+ * カラムタイプ：xlTextFormat(2)
+ */
+Excel.COLUMN_TYPE_TEXT = 2;
+
+/**
+ * カラムタイプ：xlMDYFormat(3)
+ */
+Excel.COLUMN_TYPE_MDY = 3;
+
+/**
+ * カラムタイプ：xlDMYFormat(4)
+ */
+Excel.COLUMN_TYPE_DMY = 4;
+
+/**
+ * カラムタイプ：xlYMDFormat(5)
+ */
+Excel.COLUMN_TYPE_YMD = 5;
+
+/**
+ * カラムタイプ：xlMYDFormat(6)
+ */
+Excel.COLUMN_TYPE_MYD = 6;
+
+/**
+ * カラムタイプ：xlDYMFormat(7)
+ */
+Excel.COLUMN_TYPE_DYM = 7;
+
+/**
+ * カラムタイプ：xlYDMFormat(8)
+ */
+Excel.COLUMN_TYPE_YDM = 8;
+
+/**
+ * カラムタイプ：xlSkipColumn(9)
+ */
+Excel.COLUMN_TYPE_SKIP = 9;
+
+/**
+ * カラムタイプ：xlEMDFormat(10)
+ */
+Excel.COLUMN_TYPE_EMD = 10;
+
 /** 
  * Excelファイルを開き、ブロックを実行します。
  * ブロックが指定されていない場合は、Excelオブジェクトを返します。
@@ -49,11 +116,11 @@ Excel.FILE_FORMAT_TSV = -4158;
  */
 Excel.open = function(path, block) {
   if(!isFunction(block)) {
-    return new Excel(path, false);
+    return new Excel(path);
   }
 
   try {
-    var excel = new Excel(path, false);
+    var excel = new Excel(path);
     block(excel);
   } finally {
     if(excel) {
@@ -71,11 +138,11 @@ Excel.open = function(path, block) {
  */
 Excel.openReadonly = function(path, block) {
   if(!isFunction(block)) {
-    return new Excel(path, false);
+    return new Excel(path);
   }
 
   try {
-    var excel = new Excel(path, false);
+    var excel = new Excel(path);
     block(excel);
   } finally {
     if(excel) {
@@ -93,11 +160,11 @@ Excel.openReadonly = function(path, block) {
  */
 Excel.create = function(block) {
   if(!isFunction(block)) {
-    return new Excel("", true);
+    return new Excel();
   }
 
   try {
-    var excel = new Excel("", true);
+    var excel = new Excel();
     block(excel);
   } finally {
     if(excel) {
@@ -115,11 +182,11 @@ Excel.create = function(block) {
  */
 Excel.createReadonly = function(block) {
   if(!isFunction(block)) {
-    return new Excel("", true);
+    return new Excel();
   }
 
   try {
-    var excel = new Excel("", true);
+    var excel = new Excel();
     block(excel);
   } finally {
     if(excel) {
@@ -197,6 +264,27 @@ Excel.array2dToSafeArray2d = function(jsArray2d) {
   });
 
   return safeArray;
+}
+
+/**
+ * CSVファイルをExcelファイルに変換する。
+ * @param {String} path CSVファイルのパスを文字列で指定します。
+ * @return {Boolean} 成功した場合はtrue、失敗した場合はfalseを返す。
+ * @example 使用例：
+// 3カラム全て文字列として取り込む
+var columnInfo = [
+	[1, Excel.COLUMN_TYPE_TEXT]
+	, [2, Excel.COLUMN_TYPE_TEXT]
+	, [3, Excel.COLUMN_TYPE_TEXT]
+];
+
+// 拡張子がCSVだと、Excelが自動的に変換してうまくいかない
+Excel.convertFromCsv("csv.txt", columnInfo);
+ */
+Excel.convertFromCsv = function(path, columnInfo) {
+  var excel = new Excel(path, Excel.IN_FILETYPE_CSV, columnInfo);
+  excel.saveAsExcel(path + ".xls");
+  excel.quit();
 }
 
 // Prototypes of Excel
@@ -292,8 +380,15 @@ Excel.prototype = {
   saveAsTsv: function(fileName) {
     this.workbookObj.SaveAs(fileName, Excel.FILE_FORMAT_TSV);
   },
+  /** 
+   * Excelファイルをファイル名を指定してExcel形式で保存します。
+   * @param {String} fileName 保存先のファイル名
+   */
+  saveAsExcel: function(fileName) {
+    this.workbookObj.SaveAs(fileName, Excel.FILE_FORMAT_EXCEL);
+  },
   /**
-   * Excelファイルを保存せずに閉じます
+   * Excelファイルを保存せずに閉じます。
    */
   quitDiscardChanges: function() {
     this.workbookObj.Close(false);

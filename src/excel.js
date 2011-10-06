@@ -27,12 +27,18 @@ var Excel = function(path, fileType, columnInfo) {
       throw new Error(-1, "File Not Found: " + path);
     }
 
-    if(fileType === Excel.IN_FILETYPE_CSV) {
-      var columnInfoSafeArray = Excel.array2dToSafeArray2d(columnInfo);
-      this.excelObj.Workbooks.OpenText(path, 932, 1, 1, 1, false, false, false, true, false, false, false, columnInfoSafeArray);
-      this.workbookObj = this.excelObj.ActiveWorkbook;
-    } else {
-      this.workbookObj = this.excelObj.Workbooks.Open(path);
+    switch(fileType) {
+      case Excel.IN_FILETYPE_CSV:
+      case Excel.IN_FILETYPE_TSV:
+        var isFileTypeCsv = fileType === Excel.IN_FILETYPE_CSV;
+        var isFileTypeTsv = fileType === Excel.IN_FILETYPE_TSV;
+
+        var columnInfoSafeArray = Excel.array2dToSafeArray2d(columnInfo);
+        this.excelObj.Workbooks.OpenText(path, 932, 1, 1, 1, false, isFileTypeTsv, false, isFileTypeCsv, false, false, false, columnInfoSafeArray);
+        this.workbookObj = this.excelObj.ActiveWorkbook;
+        break;
+      default:
+        this.workbookObj = this.excelObj.Workbooks.Open(path);
     }
   }
 };
@@ -53,9 +59,29 @@ Excel.FILE_FORMAT_TSV = -4158;
 Excel.FILE_FORMAT_EXCEL = -4143;
 
 /**
- * 入力ファイルタイプ：CSV(1)
+ * 入力ファイルタイプ：タブ区切り(1)
  */
-Excel.IN_FILETYPE_CSV = 1;
+Excel.IN_FILETYPE_TSV = 1;
+
+/**
+ * 入力ファイルタイプ：セミコロン(2)
+ */
+Excel.IN_FILETYPE_SEMI_COLON = 2;
+
+/**
+ * 入力ファイルタイプ：CSV(4)
+ */
+Excel.IN_FILETYPE_CSV = 4;
+
+/**
+ * 入力ファイルタイプ：スペース(8)
+ */
+Excel.IN_FILETYPE_SPACE = 8;
+
+/**
+ * 入力ファイルタイプ：その他(16)
+ */
+Excel.IN_FILETYPE_OTHER = 16;
 
 /**
  * カラムタイプ：xlGeneralFormat(1)
@@ -283,6 +309,17 @@ Excel.convertFromCsv("csv.txt", columnInfo);
  */
 Excel.convertFromCsv = function(path, columnInfo) {
   var excel = new Excel(path, Excel.IN_FILETYPE_CSV, columnInfo);
+  excel.saveAsExcel(path + ".xls");
+  excel.quit();
+}
+
+/**
+ * タブ区切りファイルをExcelファイルに変換する。
+ * @param {String} path タブ区切りファイルのパスを文字列で指定します。
+ * @return {Boolean} 成功した場合はtrue、失敗した場合はfalseを返す。
+ */
+Excel.convertFromTsv = function(path, columnInfo) {
+  var excel = new Excel(path, Excel.IN_FILETYPE_TSV, columnInfo);
   excel.saveAsExcel(path + ".xls");
   excel.quit();
 }

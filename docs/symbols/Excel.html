@@ -461,7 +461,47 @@ Excel.open("abc.xls", function(excel) {
 								<div class="fixedFont">
 								Excel.<b><a href="../symbols/Excel.html#.IN_FILETYPE_CSV">IN_FILETYPE_CSV</a></b>
 								</div>
-								<div class="description">入力ファイルタイプ：CSV(1)</div>
+								<div class="description">入力ファイルタイプ：CSV(4)</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								Excel.<b><a href="../symbols/Excel.html#.IN_FILETYPE_OTHER">IN_FILETYPE_OTHER</a></b>
+								</div>
+								<div class="description">入力ファイルタイプ：その他(16)</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								Excel.<b><a href="../symbols/Excel.html#.IN_FILETYPE_SEMI_COLON">IN_FILETYPE_SEMI_COLON</a></b>
+								</div>
+								<div class="description">入力ファイルタイプ：セミコロン(2)</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								Excel.<b><a href="../symbols/Excel.html#.IN_FILETYPE_SPACE">IN_FILETYPE_SPACE</a></b>
+								</div>
+								<div class="description">入力ファイルタイプ：スペース(8)</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								Excel.<b><a href="../symbols/Excel.html#.IN_FILETYPE_TSV">IN_FILETYPE_TSV</a></b>
+								</div>
+								<div class="description">入力ファイルタイプ：タブ区切り(1)</div>
 							</td>
 						</tr>
 					
@@ -519,6 +559,15 @@ Excel.open("abc.xls", function(excel) {
 								<div class="fixedFont">Excel.<b><a href="../symbols/Excel.html#.convertFromCsv">convertFromCsv</a></b>(path, columnInfo)
 								</div>
 								<div class="description">CSVファイルをExcelファイルに変換する。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">Excel.<b><a href="../symbols/Excel.html#.convertFromTsv">convertFromTsv</a></b>(path, columnInfo)
+								</div>
+								<div class="description">タブ区切りファイルをExcelファイルに変換する。</div>
 							</td>
 						</tr>
 					
@@ -1047,7 +1096,95 @@ Excel.open("abc.xls", function(excel) {
 					
 					</div>
 					<div class="description">
-						入力ファイルタイプ：CSV(1)
+						入力ファイルタイプ：CSV(4)
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".IN_FILETYPE_OTHER"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">Excel.</span><b>IN_FILETYPE_OTHER</b>
+					
+					</div>
+					<div class="description">
+						入力ファイルタイプ：その他(16)
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".IN_FILETYPE_SEMI_COLON"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">Excel.</span><b>IN_FILETYPE_SEMI_COLON</b>
+					
+					</div>
+					<div class="description">
+						入力ファイルタイプ：セミコロン(2)
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".IN_FILETYPE_SPACE"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">Excel.</span><b>IN_FILETYPE_SPACE</b>
+					
+					</div>
+					<div class="description">
+						入力ファイルタイプ：スペース(8)
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".IN_FILETYPE_TSV"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">Excel.</span><b>IN_FILETYPE_TSV</b>
+					
+					</div>
+					<div class="description">
+						入力ファイルタイプ：タブ区切り(1)
 						
 						
 					</div>
@@ -1230,6 +1367,55 @@ Excel.convertFromCsv("csv.txt", columnInfo);</pre>
 									
 								</dt>
 								<dd>CSVファイルのパスを文字列で指定します。</dd>
+							
+								<dt>
+									<b>columnInfo</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{Boolean}</span> 成功した場合はtrue、失敗した場合はfalseを返す。</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".convertFromTsv"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Boolean}</span>
+					<span class="light">Excel.</span><b>convertFromTsv</b>(path, columnInfo)
+					
+					</div>
+					<div class="description">
+						タブ区切りファイルをExcelファイルに変換する。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>path</b>
+									
+								</dt>
+								<dd>タブ区切りファイルのパスを文字列で指定します。</dd>
 							
 								<dt>
 									<b>columnInfo</b>
@@ -1922,7 +2108,7 @@ Excel.convertFromCsv("csv.txt", columnInfo);</pre>
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Thu Oct 06 2011 10:51:34 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Thu Oct 06 2011 11:08:50 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

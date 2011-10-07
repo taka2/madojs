@@ -295,6 +295,8 @@ Excel.array2dToSafeArray2d = function(jsArray2d) {
 /**
  * CSVファイルをExcelファイルに変換する。
  * @param {String} path CSVファイルのパスを文字列で指定します。
+ * @param {Array} columnInfo (オプション)CSVファイルのカラム情報を指定します。<br>
+<a href = "Excel.html#.COLUMN_TYPE_GENERAL">カラムタイプ</a>参照(初期値 全列に対しConst.COLUMN_TYPE_TEXT)
  * @return {Boolean} 成功した場合はtrue、失敗した場合はfalseを返す。
  * @example 使用例：
 // 3カラム全て文字列として取り込む
@@ -315,7 +317,13 @@ Excel.convertFromCsv = function(path, columnInfo) {
     myPath = path + ".txt";
     File.copy(path, myPath);
   }
-  var excel = new Excel(myPath, Excel.IN_FILETYPE_CSV, columnInfo);
+
+  var myColumnInfo = columnInfo;
+  if(columnInfo === undefined) {
+    myColumnInfo = Excel.generateDefaultColumnInfo(myPath, ",");
+  }
+
+  var excel = new Excel(myPath, Excel.IN_FILETYPE_CSV, myColumnInfo);
   excel.saveAsExcel(path + ".xls");
   excel.quit();
 
@@ -328,12 +336,36 @@ Excel.convertFromCsv = function(path, columnInfo) {
 /**
  * タブ区切りファイルをExcelファイルに変換する。
  * @param {String} path タブ区切りファイルのパスを文字列で指定します。
+ * @param {Array} columnInfo (オプション)タブ区切りファイルのカラム情報を指定します。<br>
+<a href = "Excel.html#.COLUMN_TYPE_GENERAL">カラムタイプ</a>参照(初期値 全列に対しConst.COLUMN_TYPE_TEXT)
  * @return {Boolean} 成功した場合はtrue、失敗した場合はfalseを返す。
  */
 Excel.convertFromTsv = function(path, columnInfo) {
-  var excel = new Excel(path, Excel.IN_FILETYPE_TSV, columnInfo);
+  var myColumnInfo = columnInfo;
+  if(columnInfo === undefined) {
+    myColumnInfo = Excel.generateDefaultColumnInfo(path, "\t");
+  }
+
+  var excel = new Excel(path, Excel.IN_FILETYPE_TSV, myColumnInfo);
   excel.saveAsExcel(path + ".xls");
   excel.quit();
+}
+
+// 1行目の内容に基づいてデフォルトのcolumnInfoを生成する。
+Excel.generateDefaultColumnInfo = function(path, separateChar) {
+  var columnInfo = [];
+
+  File.open(path, "r", function(file) {
+    var firstLine = file.readLine();
+    var columnCount = firstLine.split(separateChar).length;
+
+    var i;
+    for(i=0; i<columnCount; i++) {
+      columnInfo.push([(i+1), Excel.COLUMN_TYPE_TEXT]);
+    }
+  });
+
+  return columnInfo;
 }
 
 // Prototypes of Excel

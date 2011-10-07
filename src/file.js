@@ -306,6 +306,9 @@ File.prototype = {
       block(this.ts.ReadLine());
     }
   },
+  readLine: function() {
+    return this.ts.ReadLine();
+  },
   /** 
    * ファイルへ一行書き込みます。
    * @param {String} line 書きこむ文字列

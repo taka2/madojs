@@ -313,60 +313,63 @@
 <span class='line'>306</span> </span><span class="WHIT">      </span><span class="NAME">block</span><span class="PUNC">(</span><span class="NAME">this.ts.ReadLine</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>307</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>308</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>309</span> </span><span class="WHIT">  </span><span class="COMM">/** 
-<span class='line'>310</span>    * ファイルへ一行書き込みます。
-<span class='line'>311</span>    * @param {String} line 書きこむ文字列
-<span class='line'>312</span>    */</span><span class="WHIT">
-<span class='line'>313</span> </span><span class="WHIT">  </span><span class="NAME">puts</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">line</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>314</span> </span><span class="WHIT">    </span><span class="NAME">this.ts.WriteLine</span><span class="PUNC">(</span><span class="NAME">line</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>315</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>316</span> </span><span class="WHIT">  </span><span class="COMM">/** 
-<span class='line'>317</span>    * ファイルへ書き込みます。
-<span class='line'>318</span>    * @param {String} line 書きこむ文字列
-<span class='line'>319</span>    */</span><span class="WHIT">
-<span class='line'>320</span> </span><span class="WHIT">  </span><span class="NAME">write</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">line</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>321</span> </span><span class="WHIT">    </span><span class="NAME">this.ts.Write</span><span class="PUNC">(</span><span class="NAME">line</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>322</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>323</span> </span><span class="WHIT">  </span><span class="COMM">/** 
-<span class='line'>324</span>    * ファイルをクローズします。
-<span class='line'>325</span>    */</span><span class="WHIT">
-<span class='line'>326</span> </span><span class="WHIT">  </span><span class="NAME">close</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>327</span> </span><span class="WHIT">    </span><span class="NAME">this.ts.Close</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>328</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>329</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>330</span>    * このファイルのパスを取得します。
-<span class='line'>331</span>    * @return {String} このファイルのパス
-<span class='line'>332</span>    */</span><span class="WHIT">
-<span class='line'>333</span> </span><span class="WHIT">  </span><span class="NAME">getPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>334</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.path</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>335</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>336</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>337</span>    * 指定されたファイルが最後にアクセスされたときの日付と時刻を返します。
-<span class='line'>338</span>    * @return {Date} 指定されたファイルが最後にアクセスされたときの日付と時刻
-<span class='line'>339</span>    */</span><span class="WHIT">
-<span class='line'>340</span> </span><span class="WHIT">  </span><span class="NAME">atime</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>341</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">File.atime</span><span class="PUNC">(</span><span class="NAME">this.getPath</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>342</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>343</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>344</span>    * 指定されたファイルが最後に更新されたときの日付と時刻を返します。
-<span class='line'>345</span>    * @return {Date} 指定されたファイルが最後に更新されたときの日付と時刻
-<span class='line'>346</span>    */</span><span class="WHIT">
-<span class='line'>347</span> </span><span class="WHIT">  </span><span class="NAME">mtime</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>348</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">File.mtime</span><span class="PUNC">(</span><span class="NAME">this.getPath</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>349</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>350</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>351</span>    * 指定されたファイルが作成されたときの日付と時刻を返します。
-<span class='line'>352</span>    * @return {Date} 指定されたファイルが作成されたときの日付と時刻
-<span class='line'>353</span>    */</span><span class="WHIT">
-<span class='line'>354</span> </span><span class="WHIT">  </span><span class="NAME">ctime</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>355</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">File.ctime</span><span class="PUNC">(</span><span class="NAME">this.getPath</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>356</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>357</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>358</span>    * 指定されたファイルの8.3形式のファイル名を返します。
-<span class='line'>359</span>    * @return {Date} 指定されたファイルの8.3形式のファイル名
-<span class='line'>360</span>    */</span><span class="WHIT">
-<span class='line'>361</span> </span><span class="WHIT">  </span><span class="NAME">getShortName</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>362</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">File.getShortName</span><span class="PUNC">(</span><span class="NAME">this.getPath</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>363</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>364</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>365</span> </span></pre></body></html>
+<span class='line'>309</span> </span><span class="WHIT">  </span><span class="NAME">readLine</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>310</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.ts.ReadLine</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>311</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>312</span> </span><span class="WHIT">  </span><span class="COMM">/** 
+<span class='line'>313</span>    * ファイルへ一行書き込みます。
+<span class='line'>314</span>    * @param {String} line 書きこむ文字列
+<span class='line'>315</span>    */</span><span class="WHIT">
+<span class='line'>316</span> </span><span class="WHIT">  </span><span class="NAME">puts</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">line</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>317</span> </span><span class="WHIT">    </span><span class="NAME">this.ts.WriteLine</span><span class="PUNC">(</span><span class="NAME">line</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>318</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>319</span> </span><span class="WHIT">  </span><span class="COMM">/** 
+<span class='line'>320</span>    * ファイルへ書き込みます。
+<span class='line'>321</span>    * @param {String} line 書きこむ文字列
+<span class='line'>322</span>    */</span><span class="WHIT">
+<span class='line'>323</span> </span><span class="WHIT">  </span><span class="NAME">write</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">line</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>324</span> </span><span class="WHIT">    </span><span class="NAME">this.ts.Write</span><span class="PUNC">(</span><span class="NAME">line</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>325</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>326</span> </span><span class="WHIT">  </span><span class="COMM">/** 
+<span class='line'>327</span>    * ファイルをクローズします。
+<span class='line'>328</span>    */</span><span class="WHIT">
+<span class='line'>329</span> </span><span class="WHIT">  </span><span class="NAME">close</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>330</span> </span><span class="WHIT">    </span><span class="NAME">this.ts.Close</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>331</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>332</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>333</span>    * このファイルのパスを取得します。
+<span class='line'>334</span>    * @return {String} このファイルのパス
+<span class='line'>335</span>    */</span><span class="WHIT">
+<span class='line'>336</span> </span><span class="WHIT">  </span><span class="NAME">getPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>337</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.path</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>338</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>339</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>340</span>    * 指定されたファイルが最後にアクセスされたときの日付と時刻を返します。
+<span class='line'>341</span>    * @return {Date} 指定されたファイルが最後にアクセスされたときの日付と時刻
+<span class='line'>342</span>    */</span><span class="WHIT">
+<span class='line'>343</span> </span><span class="WHIT">  </span><span class="NAME">atime</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>344</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">File.atime</span><span class="PUNC">(</span><span class="NAME">this.getPath</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>345</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>346</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>347</span>    * 指定されたファイルが最後に更新されたときの日付と時刻を返します。
+<span class='line'>348</span>    * @return {Date} 指定されたファイルが最後に更新されたときの日付と時刻
+<span class='line'>349</span>    */</span><span class="WHIT">
+<span class='line'>350</span> </span><span class="WHIT">  </span><span class="NAME">mtime</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>351</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">File.mtime</span><span class="PUNC">(</span><span class="NAME">this.getPath</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>352</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>353</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>354</span>    * 指定されたファイルが作成されたときの日付と時刻を返します。
+<span class='line'>355</span>    * @return {Date} 指定されたファイルが作成されたときの日付と時刻
+<span class='line'>356</span>    */</span><span class="WHIT">
+<span class='line'>357</span> </span><span class="WHIT">  </span><span class="NAME">ctime</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>358</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">File.ctime</span><span class="PUNC">(</span><span class="NAME">this.getPath</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>359</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>360</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>361</span>    * 指定されたファイルの8.3形式のファイル名を返します。
+<span class='line'>362</span>    * @return {Date} 指定されたファイルの8.3形式のファイル名
+<span class='line'>363</span>    */</span><span class="WHIT">
+<span class='line'>364</span> </span><span class="WHIT">  </span><span class="NAME">getShortName</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>365</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">File.getShortName</span><span class="PUNC">(</span><span class="NAME">this.getPath</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>366</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>367</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>368</span> </span></pre></body></html>

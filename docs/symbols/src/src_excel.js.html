@@ -315,311 +315,323 @@
 <span class='line'>308</span> Excel.convertFromCsv("csv.txt", columnInfo);
 <span class='line'>309</span>  */</span><span class="WHIT">
 <span class='line'>310</span> </span><span class="NAME">Excel.convertFromCsv</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">columnInfo</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>311</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">excel</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Excel</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Excel.IN_FILETYPE_CSV</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">columnInfo</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>312</span> </span><span class="WHIT">  </span><span class="NAME">excel.saveAsExcel</span><span class="PUNC">(</span><span class="NAME">path</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">".xls"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>313</span> </span><span class="WHIT">  </span><span class="NAME">excel.quit</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>314</span> </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>315</span> 
-<span class='line'>316</span> </span><span class="COMM">/**
-<span class='line'>317</span>  * タブ区切りファイルをExcelファイルに変換する。
-<span class='line'>318</span>  * @param {String} path タブ区切りファイルのパスを文字列で指定します。
-<span class='line'>319</span>  * @return {Boolean} 成功した場合はtrue、失敗した場合はfalseを返す。
-<span class='line'>320</span>  */</span><span class="WHIT">
-<span class='line'>321</span> </span><span class="NAME">Excel.convertFromTsv</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">columnInfo</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>322</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">excel</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Excel</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Excel.IN_FILETYPE_TSV</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">columnInfo</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>323</span> </span><span class="WHIT">  </span><span class="NAME">excel.saveAsExcel</span><span class="PUNC">(</span><span class="NAME">path</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">".xls"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>324</span> </span><span class="WHIT">  </span><span class="NAME">excel.quit</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>325</span> </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>326</span> 
-<span class='line'>327</span> </span><span class="COMM">// Prototypes of Excel</span><span class="WHIT">
-<span class='line'>328</span> </span><span class="NAME">Excel.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>329</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>330</span>    * ワークブックに含まれる、ワークシートを処理します。
-<span class='line'>331</span>    * @param {Function} block ブロック
-<span class='line'>332</span>    */</span><span class="WHIT">
-<span class='line'>333</span> </span><span class="WHIT">  </span><span class="NAME">each</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">block</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>334</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">enumSheet</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Enumerator</span><span class="PUNC">(</span><span class="NAME">this.workbookObj.Sheets</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>335</span> </span><span class="WHIT">    </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">;</span><span class="PUNC">!</span><span class="NAME">enumSheet.atEnd</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">enumSheet.moveNext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>336</span> </span><span class="WHIT">       </span><span class="NAME">block</span><span class="PUNC">(</span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">ExcelSheet</span><span class="PUNC">(</span><span class="NAME">enumSheet.item</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>337</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>338</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>339</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>340</span>    * 指定したsheetNameのワークシートを取得します。
-<span class='line'>341</span>    * @param {String} sheetName 取得するワークシート名
-<span class='line'>342</span>    * @return {Object} ワークシートオブジェクト
-<span class='line'>343</span>    */</span><span class="WHIT">
-<span class='line'>344</span> </span><span class="WHIT">  </span><span class="NAME">getSheetByName</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">sheetName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>345</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">result</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>346</span> </span><span class="WHIT">    </span><span class="NAME">this.each</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">sheet</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>347</span> </span><span class="WHIT">      </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">sheet.getName</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">sheetName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>348</span> </span><span class="WHIT">        </span><span class="NAME">result</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sheet</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>349</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>350</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>351</span> 
-<span class='line'>352</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">result</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>353</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>354</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>355</span>    * 指定したindexのワークシートを取得します。
-<span class='line'>356</span>    * @param {Number} index 取得するワークシートのインデックス番号
-<span class='line'>357</span>    * @return {ExcelSheet} ワークシートオブジェクト
-<span class='line'>358</span>    */</span><span class="WHIT">
-<span class='line'>359</span> </span><span class="WHIT">  </span><span class="NAME">getSheetByIndex</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">index</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>360</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">result</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>361</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">=</span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>362</span> </span><span class="WHIT">    </span><span class="NAME">this.each</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">sheet</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>363</span> </span><span class="WHIT">      </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">index</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>364</span> </span><span class="WHIT">        </span><span class="NAME">result</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sheet</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>365</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>366</span> </span><span class="WHIT">      </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>367</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>368</span> 
-<span class='line'>369</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">result</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>370</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>371</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>372</span>    * 指定したindexのワークシートの後にシートを1枚追加します。
-<span class='line'>373</span>    * @param {String} sheetName 追加するシートのシート名
-<span class='line'>374</span>    * @param {Number} index (オプション)追加するシートの位置(初期値 最後尾)
-<span class='line'>375</span>    * @return {ExcelSheet} ワークシートオブジェクト
-<span class='line'>376</span>    */</span><span class="WHIT">
-<span class='line'>377</span> </span><span class="WHIT">  </span><span class="NAME">addSheet</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">sheetName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">index</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>378</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">myIndex</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">index</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">this.getSheetCount</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>379</span> 
-<span class='line'>380</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">targetSheet</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.getSheetByIndex</span><span class="PUNC">(</span><span class="NAME">myIndex</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">getRawObject</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>381</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">addedSheet</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.workbookObj.Sheets.Add</span><span class="PUNC">(</span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">targetSheet</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>382</span> </span><span class="WHIT">    </span><span class="NAME">addedSheet.Name</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sheetName</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>383</span> 
-<span class='line'>384</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">ExcelSheet</span><span class="PUNC">(</span><span class="NAME">addedSheet</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>385</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>386</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>387</span>    * ワークシート数を取得します。
-<span class='line'>388</span>    * @return {Number} ワークシート数
-<span class='line'>389</span>    */</span><span class="WHIT">
-<span class='line'>390</span> </span><span class="WHIT">  </span><span class="NAME">getSheetCount</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>391</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.workbookObj.Sheets.Count</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>392</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>393</span> </span><span class="WHIT">  </span><span class="COMM">/** 
-<span class='line'>394</span>    * Excelファイルを保存します。
-<span class='line'>395</span>    */</span><span class="WHIT">
-<span class='line'>396</span> </span><span class="WHIT">  </span><span class="NAME">save</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>397</span> </span><span class="WHIT">    </span><span class="NAME">this.workbookObj.Save</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>398</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>399</span> </span><span class="WHIT">  </span><span class="NAME">getFullPathName</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fileName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>400</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">myFileName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">fileName</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>401</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">myFileName.indexOf</span><span class="PUNC">(</span><span class="NAME">File.PATH_SEPARATOR</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>402</span> </span><span class="WHIT">      </span><span class="NAME">myFileName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">File.realpath</span><span class="PUNC">(</span><span class="NAME">myFileName</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>403</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>404</span> 
-<span class='line'>405</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">myFileName</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>406</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>407</span> </span><span class="WHIT">  </span><span class="COMM">/** 
-<span class='line'>408</span>    * Excelファイルをファイル名を指定して保存します。
-<span class='line'>409</span>    * @param {String} fileName 保存先のファイル名
-<span class='line'>410</span>    */</span><span class="WHIT">
-<span class='line'>411</span> </span><span class="WHIT">  </span><span class="NAME">saveAs</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fileName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>412</span> </span><span class="WHIT">    </span><span class="NAME">this.workbookObj.SaveAs</span><span class="PUNC">(</span><span class="NAME">this.getFullPathName</span><span class="PUNC">(</span><span class="NAME">fileName</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>413</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>414</span> </span><span class="WHIT">  </span><span class="COMM">/** 
-<span class='line'>415</span>    * Excelファイルをファイル名を指定してCSV形式で保存します。
-<span class='line'>416</span>    * @param {String} fileName 保存先のファイル名
-<span class='line'>417</span>    */</span><span class="WHIT">
-<span class='line'>418</span> </span><span class="WHIT">  </span><span class="NAME">saveAsCsv</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fileName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>419</span> </span><span class="WHIT">    </span><span class="NAME">this.workbookObj.SaveAs</span><span class="PUNC">(</span><span class="NAME">this.getFullPathName</span><span class="PUNC">(</span><span class="NAME">fileName</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Excel.FILE_FORMAT_CSV</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>420</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>421</span> </span><span class="WHIT">  </span><span class="COMM">/** 
-<span class='line'>422</span>    * Excelファイルをファイル名を指定してタブ区切り形式で保存します。
-<span class='line'>423</span>    * @param {String} fileName 保存先のファイル名
-<span class='line'>424</span>    */</span><span class="WHIT">
-<span class='line'>425</span> </span><span class="WHIT">  </span><span class="NAME">saveAsTsv</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fileName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>426</span> </span><span class="WHIT">    </span><span class="NAME">this.workbookObj.SaveAs</span><span class="PUNC">(</span><span class="NAME">this.getFullPathName</span><span class="PUNC">(</span><span class="NAME">fileName</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Excel.FILE_FORMAT_TSV</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>427</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>428</span> </span><span class="WHIT">  </span><span class="COMM">/** 
-<span class='line'>429</span>    * Excelファイルをファイル名を指定してExcel形式で保存します。
-<span class='line'>430</span>    * @param {String} fileName 保存先のファイル名
-<span class='line'>431</span>    */</span><span class="WHIT">
-<span class='line'>432</span> </span><span class="WHIT">  </span><span class="NAME">saveAsExcel</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fileName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>433</span> </span><span class="WHIT">    </span><span class="NAME">this.workbookObj.SaveAs</span><span class="PUNC">(</span><span class="NAME">this.getFullPathName</span><span class="PUNC">(</span><span class="NAME">fileName</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Excel.FILE_FORMAT_EXCEL</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>434</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>435</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>436</span>    * Excelファイルを保存せずに閉じます。
-<span class='line'>437</span>    */</span><span class="WHIT">
-<span class='line'>438</span> </span><span class="WHIT">  </span><span class="NAME">quitDiscardChanges</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>439</span> </span><span class="WHIT">    </span><span class="NAME">this.workbookObj.Close</span><span class="PUNC">(</span><span class="KEYW">false</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>440</span> </span><span class="WHIT">    </span><span class="NAME">this.excelObj.Quit</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>441</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>442</span> </span><span class="WHIT">  </span><span class="COMM">/** 
-<span class='line'>443</span>    * Excelを終了します。&lt;br/>
-<span class='line'>444</span>    * 未保存の変更がある場合は、ダイアログが表示されます。
-<span class='line'>445</span>    */</span><span class="WHIT">
-<span class='line'>446</span> </span><span class="WHIT">  </span><span class="NAME">quit</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>447</span> </span><span class="WHIT">    </span><span class="NAME">this.workbookObj.Close</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>448</span> </span><span class="WHIT">    </span><span class="NAME">this.excelObj.Quit</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>449</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>450</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>451</span> 
-<span class='line'>452</span> </span><span class="COMM">/** 
-<span class='line'>453</span>  * Excelシートオブジェクトを作成します。
-<span class='line'>454</span>  * @class Excelシートの操作と読み書きを行うためのクラスです。&lt;br/>
-<span class='line'>455</span>  * Excelがインストールされている必要があります。
-<span class='line'>456</span>  * @param {String} sheetObj Worksheetオブジェクトを指定します。
-<span class='line'>457</span>  */</span><span class="WHIT">
-<span class='line'>458</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ExcelSheet</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">sheetObj</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>459</span> </span><span class="WHIT">  </span><span class="NAME">this.sheetObj</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sheetObj</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>460</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>461</span> 
-<span class='line'>462</span> </span><span class="COMM">// Prototypes of ExcelSheet</span><span class="WHIT">
-<span class='line'>463</span> </span><span class="NAME">ExcelSheet.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>464</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>465</span>    * ワークシート名を取得します。
-<span class='line'>466</span>    * @return {String} ワークシート名
-<span class='line'>467</span>    */</span><span class="WHIT">
-<span class='line'>468</span> </span><span class="WHIT">  </span><span class="NAME">getName</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>469</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.sheetObj.Name</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>470</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>471</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>472</span>    * ワークシート名を設定します。
-<span class='line'>473</span>    * @param {String} sheetName ワークシート名
-<span class='line'>474</span>    */</span><span class="WHIT">
-<span class='line'>475</span> </span><span class="WHIT">  </span><span class="NAME">setName</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">sheetName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>476</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.sheetObj.Name</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sheetName</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>477</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>478</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>479</span>    * セルに値を設定します。
-<span class='line'>480</span>    * @param {Number} x x座標
-<span class='line'>481</span>    * @param {Number} y y座標
-<span class='line'>482</span>    * @param {Object} value 設定する値
-<span class='line'>483</span>    */</span><span class="WHIT">
-<span class='line'>484</span> </span><span class="WHIT">  </span><span class="NAME">setValue</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>485</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.Cells</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">Value</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>486</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>487</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>488</span>    * セルの値を取得します。
-<span class='line'>489</span>    * @param {Number} x x座標
-<span class='line'>490</span>    * @param {Number} y y座標
-<span class='line'>491</span>    * @return {Object} セルの値
-<span class='line'>492</span>    */</span><span class="WHIT">
-<span class='line'>493</span> </span><span class="WHIT">  </span><span class="NAME">getValue</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>494</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.sheetObj.Cells</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">Value</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>495</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>496</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>497</span>    * ラップしている生のWorksheetオブジェクトを返します。&lt;br/>
-<span class='line'>498</span>    * 通常使いません。
-<span class='line'>499</span>    */</span><span class="WHIT">
-<span class='line'>500</span> </span><span class="WHIT">  </span><span class="NAME">getRawObject</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>501</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.sheetObj</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>502</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>503</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>504</span>    * オートフィットを行います。
-<span class='line'>505</span>    */</span><span class="WHIT">
-<span class='line'>506</span> </span><span class="WHIT">  </span><span class="NAME">autoFit</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>507</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.Columns</span><span class="PUNC">(</span><span class="STRN">"A:IV"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">AutoFit</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>508</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>509</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>510</span>    * カレントリージョンに対して罫線を引きます。
+<span class='line'>311</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">myPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">path</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>312</span> 
+<span class='line'>313</span> </span><span class="WHIT">  </span><span class="COMM">// 拡張子が.csvの場合は、うまく変換できないので、拡張子に.txtを付与したファイルにコピーする。</span><span class="WHIT">
+<span class='line'>314</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">path.endsWith</span><span class="PUNC">(</span><span class="STRN">".csv"</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>315</span> </span><span class="WHIT">    </span><span class="NAME">myPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">path</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">".txt"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>316</span> </span><span class="WHIT">    </span><span class="NAME">File.copy</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">myPath</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>317</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>318</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">excel</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Excel</span><span class="PUNC">(</span><span class="NAME">myPath</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Excel.IN_FILETYPE_CSV</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">columnInfo</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>319</span> </span><span class="WHIT">  </span><span class="NAME">excel.saveAsExcel</span><span class="PUNC">(</span><span class="NAME">path</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">".xls"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>320</span> </span><span class="WHIT">  </span><span class="NAME">excel.quit</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>321</span> 
+<span class='line'>322</span> </span><span class="WHIT">  </span><span class="COMM">// 一時ファイルを削除する</span><span class="WHIT">
+<span class='line'>323</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">path</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="NAME">myPath</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>324</span> </span><span class="WHIT">    </span><span class="NAME">File.unlink</span><span class="PUNC">(</span><span class="NAME">myPath</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>325</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>326</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>327</span> 
+<span class='line'>328</span> </span><span class="COMM">/**
+<span class='line'>329</span>  * タブ区切りファイルをExcelファイルに変換する。
+<span class='line'>330</span>  * @param {String} path タブ区切りファイルのパスを文字列で指定します。
+<span class='line'>331</span>  * @return {Boolean} 成功した場合はtrue、失敗した場合はfalseを返す。
+<span class='line'>332</span>  */</span><span class="WHIT">
+<span class='line'>333</span> </span><span class="NAME">Excel.convertFromTsv</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">columnInfo</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>334</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">excel</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Excel</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Excel.IN_FILETYPE_TSV</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">columnInfo</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>335</span> </span><span class="WHIT">  </span><span class="NAME">excel.saveAsExcel</span><span class="PUNC">(</span><span class="NAME">path</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">".xls"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>336</span> </span><span class="WHIT">  </span><span class="NAME">excel.quit</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>337</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>338</span> 
+<span class='line'>339</span> </span><span class="COMM">// Prototypes of Excel</span><span class="WHIT">
+<span class='line'>340</span> </span><span class="NAME">Excel.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>341</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>342</span>    * ワークブックに含まれる、ワークシートを処理します。
+<span class='line'>343</span>    * @param {Function} block ブロック
+<span class='line'>344</span>    */</span><span class="WHIT">
+<span class='line'>345</span> </span><span class="WHIT">  </span><span class="NAME">each</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">block</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>346</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">enumSheet</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Enumerator</span><span class="PUNC">(</span><span class="NAME">this.workbookObj.Sheets</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>347</span> </span><span class="WHIT">    </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">;</span><span class="PUNC">!</span><span class="NAME">enumSheet.atEnd</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">enumSheet.moveNext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>348</span> </span><span class="WHIT">       </span><span class="NAME">block</span><span class="PUNC">(</span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">ExcelSheet</span><span class="PUNC">(</span><span class="NAME">enumSheet.item</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>349</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>350</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>351</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>352</span>    * 指定したsheetNameのワークシートを取得します。
+<span class='line'>353</span>    * @param {String} sheetName 取得するワークシート名
+<span class='line'>354</span>    * @return {Object} ワークシートオブジェクト
+<span class='line'>355</span>    */</span><span class="WHIT">
+<span class='line'>356</span> </span><span class="WHIT">  </span><span class="NAME">getSheetByName</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">sheetName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>357</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">result</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>358</span> </span><span class="WHIT">    </span><span class="NAME">this.each</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">sheet</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>359</span> </span><span class="WHIT">      </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">sheet.getName</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">sheetName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>360</span> </span><span class="WHIT">        </span><span class="NAME">result</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sheet</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>361</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>362</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>363</span> 
+<span class='line'>364</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">result</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>365</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>366</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>367</span>    * 指定したindexのワークシートを取得します。
+<span class='line'>368</span>    * @param {Number} index 取得するワークシートのインデックス番号
+<span class='line'>369</span>    * @return {ExcelSheet} ワークシートオブジェクト
+<span class='line'>370</span>    */</span><span class="WHIT">
+<span class='line'>371</span> </span><span class="WHIT">  </span><span class="NAME">getSheetByIndex</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">index</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>372</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">result</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>373</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">=</span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>374</span> </span><span class="WHIT">    </span><span class="NAME">this.each</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">sheet</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>375</span> </span><span class="WHIT">      </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">index</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>376</span> </span><span class="WHIT">        </span><span class="NAME">result</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sheet</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>377</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>378</span> </span><span class="WHIT">      </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>379</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>380</span> 
+<span class='line'>381</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">result</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>382</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>383</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>384</span>    * 指定したindexのワークシートの後にシートを1枚追加します。
+<span class='line'>385</span>    * @param {String} sheetName 追加するシートのシート名
+<span class='line'>386</span>    * @param {Number} index (オプション)追加するシートの位置(初期値 最後尾)
+<span class='line'>387</span>    * @return {ExcelSheet} ワークシートオブジェクト
+<span class='line'>388</span>    */</span><span class="WHIT">
+<span class='line'>389</span> </span><span class="WHIT">  </span><span class="NAME">addSheet</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">sheetName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">index</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>390</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">myIndex</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">index</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">this.getSheetCount</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>391</span> 
+<span class='line'>392</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">targetSheet</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.getSheetByIndex</span><span class="PUNC">(</span><span class="NAME">myIndex</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">getRawObject</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>393</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">addedSheet</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.workbookObj.Sheets.Add</span><span class="PUNC">(</span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">targetSheet</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>394</span> </span><span class="WHIT">    </span><span class="NAME">addedSheet.Name</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sheetName</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>395</span> 
+<span class='line'>396</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">ExcelSheet</span><span class="PUNC">(</span><span class="NAME">addedSheet</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>397</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>398</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>399</span>    * ワークシート数を取得します。
+<span class='line'>400</span>    * @return {Number} ワークシート数
+<span class='line'>401</span>    */</span><span class="WHIT">
+<span class='line'>402</span> </span><span class="WHIT">  </span><span class="NAME">getSheetCount</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>403</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.workbookObj.Sheets.Count</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>404</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>405</span> </span><span class="WHIT">  </span><span class="COMM">/** 
+<span class='line'>406</span>    * Excelファイルを保存します。
+<span class='line'>407</span>    */</span><span class="WHIT">
+<span class='line'>408</span> </span><span class="WHIT">  </span><span class="NAME">save</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>409</span> </span><span class="WHIT">    </span><span class="NAME">this.workbookObj.Save</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>410</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>411</span> </span><span class="WHIT">  </span><span class="NAME">getFullPathName</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fileName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>412</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">myFileName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">fileName</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>413</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">myFileName.indexOf</span><span class="PUNC">(</span><span class="NAME">File.PATH_SEPARATOR</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>414</span> </span><span class="WHIT">      </span><span class="NAME">myFileName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">File.realpath</span><span class="PUNC">(</span><span class="NAME">myFileName</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>415</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>416</span> 
+<span class='line'>417</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">myFileName</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>418</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>419</span> </span><span class="WHIT">  </span><span class="COMM">/** 
+<span class='line'>420</span>    * Excelファイルをファイル名を指定して保存します。
+<span class='line'>421</span>    * @param {String} fileName 保存先のファイル名
+<span class='line'>422</span>    */</span><span class="WHIT">
+<span class='line'>423</span> </span><span class="WHIT">  </span><span class="NAME">saveAs</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fileName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>424</span> </span><span class="WHIT">    </span><span class="NAME">this.workbookObj.SaveAs</span><span class="PUNC">(</span><span class="NAME">this.getFullPathName</span><span class="PUNC">(</span><span class="NAME">fileName</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>425</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>426</span> </span><span class="WHIT">  </span><span class="COMM">/** 
+<span class='line'>427</span>    * Excelファイルをファイル名を指定してCSV形式で保存します。
+<span class='line'>428</span>    * @param {String} fileName 保存先のファイル名
+<span class='line'>429</span>    */</span><span class="WHIT">
+<span class='line'>430</span> </span><span class="WHIT">  </span><span class="NAME">saveAsCsv</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fileName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>431</span> </span><span class="WHIT">    </span><span class="NAME">this.workbookObj.SaveAs</span><span class="PUNC">(</span><span class="NAME">this.getFullPathName</span><span class="PUNC">(</span><span class="NAME">fileName</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Excel.FILE_FORMAT_CSV</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>432</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>433</span> </span><span class="WHIT">  </span><span class="COMM">/** 
+<span class='line'>434</span>    * Excelファイルをファイル名を指定してタブ区切り形式で保存します。
+<span class='line'>435</span>    * @param {String} fileName 保存先のファイル名
+<span class='line'>436</span>    */</span><span class="WHIT">
+<span class='line'>437</span> </span><span class="WHIT">  </span><span class="NAME">saveAsTsv</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fileName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>438</span> </span><span class="WHIT">    </span><span class="NAME">this.workbookObj.SaveAs</span><span class="PUNC">(</span><span class="NAME">this.getFullPathName</span><span class="PUNC">(</span><span class="NAME">fileName</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Excel.FILE_FORMAT_TSV</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>439</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>440</span> </span><span class="WHIT">  </span><span class="COMM">/** 
+<span class='line'>441</span>    * Excelファイルをファイル名を指定してExcel形式で保存します。
+<span class='line'>442</span>    * @param {String} fileName 保存先のファイル名
+<span class='line'>443</span>    */</span><span class="WHIT">
+<span class='line'>444</span> </span><span class="WHIT">  </span><span class="NAME">saveAsExcel</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fileName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>445</span> </span><span class="WHIT">    </span><span class="NAME">this.workbookObj.SaveAs</span><span class="PUNC">(</span><span class="NAME">this.getFullPathName</span><span class="PUNC">(</span><span class="NAME">fileName</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Excel.FILE_FORMAT_EXCEL</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>446</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>447</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>448</span>    * Excelファイルを保存せずに閉じます。
+<span class='line'>449</span>    */</span><span class="WHIT">
+<span class='line'>450</span> </span><span class="WHIT">  </span><span class="NAME">quitDiscardChanges</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>451</span> </span><span class="WHIT">    </span><span class="NAME">this.workbookObj.Close</span><span class="PUNC">(</span><span class="KEYW">false</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>452</span> </span><span class="WHIT">    </span><span class="NAME">this.excelObj.Quit</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>453</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>454</span> </span><span class="WHIT">  </span><span class="COMM">/** 
+<span class='line'>455</span>    * Excelを終了します。&lt;br/>
+<span class='line'>456</span>    * 未保存の変更がある場合は、ダイアログが表示されます。
+<span class='line'>457</span>    */</span><span class="WHIT">
+<span class='line'>458</span> </span><span class="WHIT">  </span><span class="NAME">quit</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>459</span> </span><span class="WHIT">    </span><span class="NAME">this.workbookObj.Close</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>460</span> </span><span class="WHIT">    </span><span class="NAME">this.excelObj.Quit</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>461</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>462</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>463</span> 
+<span class='line'>464</span> </span><span class="COMM">/** 
+<span class='line'>465</span>  * Excelシートオブジェクトを作成します。
+<span class='line'>466</span>  * @class Excelシートの操作と読み書きを行うためのクラスです。&lt;br/>
+<span class='line'>467</span>  * Excelがインストールされている必要があります。
+<span class='line'>468</span>  * @param {String} sheetObj Worksheetオブジェクトを指定します。
+<span class='line'>469</span>  */</span><span class="WHIT">
+<span class='line'>470</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ExcelSheet</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">sheetObj</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>471</span> </span><span class="WHIT">  </span><span class="NAME">this.sheetObj</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sheetObj</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>472</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>473</span> 
+<span class='line'>474</span> </span><span class="COMM">// Prototypes of ExcelSheet</span><span class="WHIT">
+<span class='line'>475</span> </span><span class="NAME">ExcelSheet.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>476</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>477</span>    * ワークシート名を取得します。
+<span class='line'>478</span>    * @return {String} ワークシート名
+<span class='line'>479</span>    */</span><span class="WHIT">
+<span class='line'>480</span> </span><span class="WHIT">  </span><span class="NAME">getName</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>481</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.sheetObj.Name</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>482</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>483</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>484</span>    * ワークシート名を設定します。
+<span class='line'>485</span>    * @param {String} sheetName ワークシート名
+<span class='line'>486</span>    */</span><span class="WHIT">
+<span class='line'>487</span> </span><span class="WHIT">  </span><span class="NAME">setName</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">sheetName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>488</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.sheetObj.Name</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sheetName</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>489</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>490</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>491</span>    * セルに値を設定します。
+<span class='line'>492</span>    * @param {Number} x x座標
+<span class='line'>493</span>    * @param {Number} y y座標
+<span class='line'>494</span>    * @param {Object} value 設定する値
+<span class='line'>495</span>    */</span><span class="WHIT">
+<span class='line'>496</span> </span><span class="WHIT">  </span><span class="NAME">setValue</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>497</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.Cells</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">Value</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>498</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>499</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>500</span>    * セルの値を取得します。
+<span class='line'>501</span>    * @param {Number} x x座標
+<span class='line'>502</span>    * @param {Number} y y座標
+<span class='line'>503</span>    * @return {Object} セルの値
+<span class='line'>504</span>    */</span><span class="WHIT">
+<span class='line'>505</span> </span><span class="WHIT">  </span><span class="NAME">getValue</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>506</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.sheetObj.Cells</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">Value</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>507</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>508</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>509</span>    * ラップしている生のWorksheetオブジェクトを返します。&lt;br/>
+<span class='line'>510</span>    * 通常使いません。
 <span class='line'>511</span>    */</span><span class="WHIT">
-<span class='line'>512</span> </span><span class="WHIT">  </span><span class="NAME">drawBorder</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>513</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">range</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.sheetObj.Cells</span><span class="PUNC">(</span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">CurrentRegion</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>514</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">toIndex</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">12</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>515</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">range.Rows.Count</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>516</span> </span><span class="WHIT">      </span><span class="COMM">// 1行しかない場合は12は引かない</span><span class="WHIT">
-<span class='line'>517</span> </span><span class="WHIT">      </span><span class="NAME">toIndex</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">11</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>518</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>519</span> </span><span class="WHIT">    </span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">=</span><span class="NUMB">7</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">&lt;=</span><span class="NAME">toIndex</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>520</span> </span><span class="WHIT">      </span><span class="NAME">range.Borders</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">LineStyle</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>521</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>522</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>523</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>524</span>    * セルの書式を設定します。
-<span class='line'>525</span>    * @param {Number} x x座標
-<span class='line'>526</span>    * @param {Number} y y座標
-<span class='line'>527</span>    * @param {String} format 書式
-<span class='line'>528</span>    */</span><span class="WHIT">
-<span class='line'>529</span> </span><span class="WHIT">  </span><span class="NAME">setFormat</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">format</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>530</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.Cells</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">NumberFormatLocal</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">format</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>531</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>532</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>533</span>    * セルにコメントを追加します。
-<span class='line'>534</span>    * @param {Number} x x座標
-<span class='line'>535</span>    * @param {Number} y y座標
-<span class='line'>536</span>    * @param {String} comment コメント
-<span class='line'>537</span>    * @param {Boolean} visible コメントを表示するかどうか
-<span class='line'>538</span>    */</span><span class="WHIT">
-<span class='line'>539</span> </span><span class="WHIT">  </span><span class="NAME">addComment</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">comment</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">visible</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>540</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.Cells</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">AddComment</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>541</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.Cells</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">Comment.Visible</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">visible</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>542</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.Cells</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">Comment.Text</span><span class="PUNC">(</span><span class="NAME">comment</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>512</span> </span><span class="WHIT">  </span><span class="NAME">getRawObject</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>513</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.sheetObj</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>514</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>515</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>516</span>    * オートフィットを行います。
+<span class='line'>517</span>    */</span><span class="WHIT">
+<span class='line'>518</span> </span><span class="WHIT">  </span><span class="NAME">autoFit</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>519</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.Columns</span><span class="PUNC">(</span><span class="STRN">"A:IV"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">AutoFit</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>520</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>521</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>522</span>    * カレントリージョンに対して罫線を引きます。
+<span class='line'>523</span>    */</span><span class="WHIT">
+<span class='line'>524</span> </span><span class="WHIT">  </span><span class="NAME">drawBorder</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>525</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">range</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.sheetObj.Cells</span><span class="PUNC">(</span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">CurrentRegion</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>526</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">toIndex</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">12</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>527</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">range.Rows.Count</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>528</span> </span><span class="WHIT">      </span><span class="COMM">// 1行しかない場合は12は引かない</span><span class="WHIT">
+<span class='line'>529</span> </span><span class="WHIT">      </span><span class="NAME">toIndex</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">11</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>530</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>531</span> </span><span class="WHIT">    </span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">=</span><span class="NUMB">7</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">&lt;=</span><span class="NAME">toIndex</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>532</span> </span><span class="WHIT">      </span><span class="NAME">range.Borders</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">LineStyle</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>533</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>534</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>535</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>536</span>    * セルの書式を設定します。
+<span class='line'>537</span>    * @param {Number} x x座標
+<span class='line'>538</span>    * @param {Number} y y座標
+<span class='line'>539</span>    * @param {String} format 書式
+<span class='line'>540</span>    */</span><span class="WHIT">
+<span class='line'>541</span> </span><span class="WHIT">  </span><span class="NAME">setFormat</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">format</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>542</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.Cells</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">NumberFormatLocal</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">format</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>543</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>544</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>545</span>    * シートをアクティブ化します。
-<span class='line'>546</span>    */</span><span class="WHIT">
-<span class='line'>547</span> </span><span class="WHIT">  </span><span class="NAME">activate</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>548</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.Activate</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>549</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>550</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>551</span>    * シートを削除します。
-<span class='line'>552</span>    */</span><span class="WHIT">
-<span class='line'>553</span> </span><span class="WHIT">  </span><span class="NAME">remove</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>554</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.Delete</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>545</span>    * セルにコメントを追加します。
+<span class='line'>546</span>    * @param {Number} x x座標
+<span class='line'>547</span>    * @param {Number} y y座標
+<span class='line'>548</span>    * @param {String} comment コメント
+<span class='line'>549</span>    * @param {Boolean} visible コメントを表示するかどうか
+<span class='line'>550</span>    */</span><span class="WHIT">
+<span class='line'>551</span> </span><span class="WHIT">  </span><span class="NAME">addComment</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">comment</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">visible</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>552</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.Cells</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">AddComment</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>553</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.Cells</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">Comment.Visible</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">visible</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>554</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.Cells</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">Comment.Text</span><span class="PUNC">(</span><span class="NAME">comment</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>555</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>556</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>557</span>    * ズームを設定します。
-<span class='line'>558</span>    * @param {Number} zoom 拡大率(整数)
-<span class='line'>559</span>    */</span><span class="WHIT">
-<span class='line'>560</span> </span><span class="WHIT">  </span><span class="NAME">setZoom</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">zoom</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>561</span> </span><span class="WHIT">    </span><span class="COMM">// シートをアクテイブ化する</span><span class="WHIT">
-<span class='line'>562</span> </span><span class="WHIT">    </span><span class="NAME">this.activate</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>563</span> 
-<span class='line'>564</span> </span><span class="WHIT">    </span><span class="COMM">// 拡大率を設定する</span><span class="WHIT">
-<span class='line'>565</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.Application.ActiveWindow.Zoom</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">zoom</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>566</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>567</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>568</span>    * センターヘッダを設定します。
-<span class='line'>569</span>    * @param {String} header センターヘッダに設定する内容
-<span class='line'>570</span>    */</span><span class="WHIT">
-<span class='line'>571</span> </span><span class="WHIT">  </span><span class="NAME">setCenterHeader</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">header</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>572</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.PageSetup.CenterHeader</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">header</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>573</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>574</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>575</span>    * レフトヘッダを設定します。
-<span class='line'>576</span>    * @param {String} header レフトヘッダに設定する内容
-<span class='line'>577</span>    */</span><span class="WHIT">
-<span class='line'>578</span> </span><span class="WHIT">  </span><span class="NAME">setLeftHeader</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">header</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>579</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.PageSetup.LeftHeader</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">header</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>580</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>581</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>582</span>    * ライトヘッダを設定します。
-<span class='line'>583</span>    * @param {String} header ライトヘッダに設定する内容
-<span class='line'>584</span>    */</span><span class="WHIT">
-<span class='line'>585</span> </span><span class="WHIT">  </span><span class="NAME">setRightHeader</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">header</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>586</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.PageSetup.RightHeader</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">header</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>587</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>588</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>589</span>    * センターフッタを設定します。
-<span class='line'>590</span>    * @param {String} footer センターフッタに設定する内容
-<span class='line'>591</span>    */</span><span class="WHIT">
-<span class='line'>592</span> </span><span class="WHIT">  </span><span class="NAME">setCenterFooter</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">footer</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>593</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.PageSetup.CenterFooter</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">footer</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>594</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>595</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>596</span>    * レフトフッタを設定します。
-<span class='line'>597</span>    * @param {String} footer レフトフッタに設定する内容
-<span class='line'>598</span>    */</span><span class="WHIT">
-<span class='line'>599</span> </span><span class="WHIT">  </span><span class="NAME">setLeftFooter</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">footer</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>600</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.PageSetup.LeftFooter</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">footer</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>601</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>602</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>603</span>    * ライトフッタを設定します。
-<span class='line'>604</span>    * @param {String} footer ライトフッタに設定する内容
-<span class='line'>605</span>    */</span><span class="WHIT">
-<span class='line'>606</span> </span><span class="WHIT">  </span><span class="NAME">setRightFooter</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">footer</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>607</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.PageSetup.RightFooter</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">footer</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>608</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>609</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>610</span>    * セル値をクリップボードへコピーします。
-<span class='line'>611</span>    * @param {Number} x x座標
-<span class='line'>612</span>    * @param {Number} y y座標
-<span class='line'>613</span>    */</span><span class="WHIT">
-<span class='line'>614</span> </span><span class="WHIT">  </span><span class="NAME">copy</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>615</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.Cells</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">Copy</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>616</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>617</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>618</span> </span></pre></body></html>
+<span class='line'>557</span>    * シートをアクティブ化します。
+<span class='line'>558</span>    */</span><span class="WHIT">
+<span class='line'>559</span> </span><span class="WHIT">  </span><span class="NAME">activate</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>560</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.Activate</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>561</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>562</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>563</span>    * シートを削除します。
+<span class='line'>564</span>    */</span><span class="WHIT">
+<span class='line'>565</span> </span><span class="WHIT">  </span><span class="NAME">remove</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>566</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.Delete</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>567</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>568</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>569</span>    * ズームを設定します。
+<span class='line'>570</span>    * @param {Number} zoom 拡大率(整数)
+<span class='line'>571</span>    */</span><span class="WHIT">
+<span class='line'>572</span> </span><span class="WHIT">  </span><span class="NAME">setZoom</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">zoom</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>573</span> </span><span class="WHIT">    </span><span class="COMM">// シートをアクテイブ化する</span><span class="WHIT">
+<span class='line'>574</span> </span><span class="WHIT">    </span><span class="NAME">this.activate</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>575</span> 
+<span class='line'>576</span> </span><span class="WHIT">    </span><span class="COMM">// 拡大率を設定する</span><span class="WHIT">
+<span class='line'>577</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.Application.ActiveWindow.Zoom</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">zoom</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>578</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>579</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>580</span>    * センターヘッダを設定します。
+<span class='line'>581</span>    * @param {String} header センターヘッダに設定する内容
+<span class='line'>582</span>    */</span><span class="WHIT">
+<span class='line'>583</span> </span><span class="WHIT">  </span><span class="NAME">setCenterHeader</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">header</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>584</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.PageSetup.CenterHeader</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">header</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>585</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>586</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>587</span>    * レフトヘッダを設定します。
+<span class='line'>588</span>    * @param {String} header レフトヘッダに設定する内容
+<span class='line'>589</span>    */</span><span class="WHIT">
+<span class='line'>590</span> </span><span class="WHIT">  </span><span class="NAME">setLeftHeader</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">header</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>591</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.PageSetup.LeftHeader</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">header</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>592</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>593</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>594</span>    * ライトヘッダを設定します。
+<span class='line'>595</span>    * @param {String} header ライトヘッダに設定する内容
+<span class='line'>596</span>    */</span><span class="WHIT">
+<span class='line'>597</span> </span><span class="WHIT">  </span><span class="NAME">setRightHeader</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">header</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>598</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.PageSetup.RightHeader</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">header</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>599</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>600</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>601</span>    * センターフッタを設定します。
+<span class='line'>602</span>    * @param {String} footer センターフッタに設定する内容
+<span class='line'>603</span>    */</span><span class="WHIT">
+<span class='line'>604</span> </span><span class="WHIT">  </span><span class="NAME">setCenterFooter</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">footer</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>605</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.PageSetup.CenterFooter</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">footer</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>606</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>607</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>608</span>    * レフトフッタを設定します。
+<span class='line'>609</span>    * @param {String} footer レフトフッタに設定する内容
+<span class='line'>610</span>    */</span><span class="WHIT">
+<span class='line'>611</span> </span><span class="WHIT">  </span><span class="NAME">setLeftFooter</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">footer</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>612</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.PageSetup.LeftFooter</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">footer</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>613</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>614</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>615</span>    * ライトフッタを設定します。
+<span class='line'>616</span>    * @param {String} footer ライトフッタに設定する内容
+<span class='line'>617</span>    */</span><span class="WHIT">
+<span class='line'>618</span> </span><span class="WHIT">  </span><span class="NAME">setRightFooter</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">footer</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>619</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.PageSetup.RightFooter</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">footer</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>620</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>621</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>622</span>    * セル値をクリップボードへコピーします。
+<span class='line'>623</span>    * @param {Number} x x座標
+<span class='line'>624</span>    * @param {Number} y y座標
+<span class='line'>625</span>    */</span><span class="WHIT">
+<span class='line'>626</span> </span><span class="WHIT">  </span><span class="NAME">copy</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>627</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.Cells</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">Copy</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>628</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>629</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>630</span> </span></pre></body></html>

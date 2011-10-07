@@ -10,28 +10,27 @@ String.prototype.trim = function() {
 };
 
 /**
- * 文字列がchで始まるかどうか
- * @param {String} ch テストする文字
- * @return {Boolean} 文字列がchで始まる場合true、そうでない場合はfalseを返す。
+ * 文字列がstrで始まるかどうか
+ * @param {String} str テストする文字列
+ * @return {Boolean} 文字列がstrで始まる場合true、そうでない場合はfalseを返す。
  * @example 使用例：
 "abc".startsWith("a"); // true
  */
-String.prototype.startsWith = function(ch) {
+String.prototype.startsWith = function(str) {
   var text = this.valueOf();
-  return(text.substring(0, 1) === ch);
+  return(text.match("^" + str) === null ? false : true);
 };
 
 /**
- * 文字列がchで終わるかどうか
- * @param {String} ch テストする文字
- * @return {Boolean} 文字列がchで終わる場合true、そうでない場合はfalseを返す。
+ * 文字列がstrで終わるかどうか
+ * @param {String} str テストする文字列
+ * @return {Boolean} 文字列がstrで終わる場合true、そうでない場合はfalseを返す。
  * @example 使用例：
 "abc".endsWith("c"); // true
  */
-String.prototype.endsWith = function(ch) {
+String.prototype.endsWith = function(str) {
   var text = this.valueOf();
-  var textLength = text.length;
-  return(text.substring(textLength - 1, textLength) === ch);
+  return(text.match(str + "$") === null ? false : true);
 };
 
 /**

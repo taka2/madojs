@@ -308,9 +308,21 @@ var columnInfo = [
 Excel.convertFromCsv("csv.txt", columnInfo);
  */
 Excel.convertFromCsv = function(path, columnInfo) {
-  var excel = new Excel(path, Excel.IN_FILETYPE_CSV, columnInfo);
+  var myPath = path;
+
+  // 拡張子が.csvの場合は、うまく変換できないので、拡張子に.txtを付与したファイルにコピーする。
+  if(path.endsWith(".csv")) {
+    myPath = path + ".txt";
+    File.copy(path, myPath);
+  }
+  var excel = new Excel(myPath, Excel.IN_FILETYPE_CSV, columnInfo);
   excel.saveAsExcel(path + ".xls");
   excel.quit();
+
+  // 一時ファイルを削除する
+  if(path !== myPath) {
+    File.unlink(myPath);
+  }
 }
 
 /**

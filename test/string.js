@@ -9,7 +9,15 @@ Test.String.testStartsWith = function() {
 };
 
 Test.String.testStartsWith2 = function() {
+  testUtil.assertEquals(true, "abc".startsWith("ab"));
+};
+
+Test.String.testStartsWith3 = function() {
   testUtil.assertEquals(false, "abc".startsWith("b"));
+};
+
+Test.String.testStartsWith4 = function() {
+  testUtil.assertEquals(false, "abc".startsWith("bc"));
 };
 
 Test.String.testEndsWith = function() {
@@ -17,7 +25,15 @@ Test.String.testEndsWith = function() {
 };
 
 Test.String.testEndsWith = function() {
+  testUtil.assertEquals(true, "abc".endsWith("bc"));
+};
+
+Test.String.testEndsWith3 = function() {
   testUtil.assertEquals(false, "abc".endsWith("b"));
+};
+
+Test.String.testEndsWith4 = function() {
+  testUtil.assertEquals(false, "abc".endsWith("ab"));
 };
 
 Test.String.testIsZenkaku = function() {

@@ -34,7 +34,7 @@ var Excel = function(path, fileType, columnInfo) {
         var isFileTypeTsv = fileType === Excel.IN_FILETYPE_TSV;
 
         var columnInfoSafeArray = Excel.array2dToSafeArray2d(columnInfo);
-        this.excelObj.Workbooks.OpenText(path, 932, 1, 1, 1, false, isFileTypeTsv, false, isFileTypeCsv, false, false, false, columnInfoSafeArray);
+        this.excelObj.Workbooks.OpenText(path, 1, 1, 1, 1, false, isFileTypeTsv, false, isFileTypeCsv, false, false, false, columnInfoSafeArray);
         this.workbookObj = this.excelObj.ActiveWorkbook;
         break;
       default:

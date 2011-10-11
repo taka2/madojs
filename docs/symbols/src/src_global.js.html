@@ -174,4 +174,27 @@
 <span class='line'>167</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">myIconType</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">iconType</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">Const.ICON_TYPE_INFO</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>168</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Const.WSHELL.popup</span><span class="PUNC">(</span><span class="NAME">strText</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">myNSecondsToWait</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">myStrTitle</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">myButtonType</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">myIconType</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>169</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>170</span> </span></pre></body></html>
+<span class='line'>170</span> 
+<span class='line'>171</span> </span><span class="COMM">// ----------------------------------------</span><span class="WHIT">
+<span class='line'>172</span> </span><span class="COMM">// Import VBScript Source Code</span><span class="WHIT">
+<span class='line'>173</span> </span><span class="COMM">// ----------------------------------------</span><span class="WHIT">
+<span class='line'>174</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">objJS</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">ActiveXObject</span><span class="PUNC">(</span><span class="STRN">"ScriptControl"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>175</span> </span><span class="NAME">objJS.Language</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"VBScript"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>176</span> </span><span class="NAME">objJS.AddCode</span><span class="PUNC">(</span><span class="WHIT">
+<span class='line'>177</span> </span><span class="STRN">'Function JSInputBox(prompt, title) '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>178</span> </span><span class="STRN">'  JSInputBox = InputBox(prompt, title) '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>179</span> </span><span class="STRN">'End Function'</span><span class="WHIT">
+<span class='line'>180</span> </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>181</span> </span><span class="COMM">// ----------------------------------------</span><span class="WHIT">
+<span class='line'>182</span> 
+<span class='line'>183</span> </span><span class="COMM">/**
+<span class='line'>184</span>  * インプットボックスを表示します。
+<span class='line'>185</span>  * @param {String} prompt (オプション)ダイアログボックス内にメッセージとして表示する文字列を示す文字列式を指定します。(初期値 空文字)
+<span class='line'>186</span>  * @param {String} title (オプション)ダイアログボックスのタイトルバーに表示する文字列を示す文字列式を指定します。(初期値 空文字)
+<span class='line'>187</span>  */</span><span class="WHIT">
+<span class='line'>188</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">inputBox</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">prompt</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">title</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>189</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">myPrompt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">prompt</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>190</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">myTitle</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">title</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>191</span> 
+<span class='line'>192</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">objJS.CodeObject.JSInputBox</span><span class="PUNC">(</span><span class="NAME">myPrompt</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">myTitle</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>193</span> </span><span class="PUNC">}</span><span class="PUNC">;</span></pre></body></html>

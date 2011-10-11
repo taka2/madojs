@@ -167,3 +167,27 @@ var popup = function(strText, nSecondsToWait, strTitle, buttonType, iconType) {
   var myIconType = iconType || Const.ICON_TYPE_INFO;
   return Const.WSHELL.popup(strText, myNSecondsToWait, myStrTitle, myButtonType + myIconType);
 };
+
+// ----------------------------------------
+// Import VBScript Source Code
+// ----------------------------------------
+var objJS = new ActiveXObject("ScriptControl");
+objJS.Language = "VBScript";
+objJS.AddCode(
+'Function JSInputBox(prompt, title) ' + 
+'  JSInputBox = InputBox(prompt, title) ' + 
+'End Function'
+);
+// ----------------------------------------
+
+/**
+ * インプットボックスを表示します。
+ * @param {String} prompt (オプション)ダイアログボックス内にメッセージとして表示する文字列を示す文字列式を指定します。(初期値 空文字)
+ * @param {String} title (オプション)ダイアログボックスのタイトルバーに表示する文字列を示す文字列式を指定します。(初期値 空文字)
+ */
+var inputBox = function(prompt, title) {
+  var myPrompt = prompt || "";
+  var myTitle = title || "";
+
+  return objJS.CodeObject.JSInputBox(myPrompt, myTitle);
+};

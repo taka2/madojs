@@ -278,6 +278,7 @@ Excel.array2dToSafeArray2d = function(jsArray2d) {
     var sheet = excel.getSheetByIndex(1);
 
     // 各セルに値を設定
+    var i, j;
     for(i=0; i<jsArray2d.length; i++) {
       for(j=0; j<jsArray2d[i].length; j++) {
         var value = jsArray2d[i][j];

@@ -348,7 +348,23 @@ var inputBox = function(prompt, title) {
   var myTitle = title || "";
 
   return objJS.CodeObject.JSInputBox(myPrompt, myTitle);
-};/**
+};
+
+/**
+ * JScriptの一次元配列を、一次元のSafeArrayに変換する。<br/>
+ * http://www.imasy.or.jp/~hir/hir/tech/js_tips.html#safearray を参考にしました。
+ * @param {Array} jsArray JScriptの配列を指定します。
+ * @return {Object} 変換されたSafeArrayを返します。通常、VBArrayでラップして使います。
+ */
+var arrayToSafeArray = function(jsArray) {
+  var dic = new ActiveXObject("Scripting.Dictionary");
+  var jsArrayLength = jsArray.length;
+  for (var i = 0; i < jsArrayLength; i++) {
+    dic.add(i, jsArray[i]);
+  }
+
+  return dic.items();
+}/**
  * インスタンス化しません。
  * @class 特定のフォルダパスを取得する機能を提供するクラス
 <pre class = "code">
@@ -506,6 +522,8 @@ Array.prototype.forEach = function(block) {
 
   return result;
 };
+
+Array.prototype.each = Array.prototype.forEach;
 
 /**
  * objが配列に含まれるかどうかチェックします。
@@ -1740,6 +1758,11 @@ var AdoConnection = function(connectString, userName, password) {
   this.con.Open(connectString, userName, password);
 };
 
+/**
+ * Schema Enumの定数：Table(20)
+ */
+AdoConnection.AD_SCHEMA_TABLES = 20;
+
 /** 
  * 新しいADOのコネクションを作成し、ブロックを実行します。
  * ブロックが指定されていない場合は、作成したADOのコネクションを返します。
@@ -1857,6 +1880,20 @@ AdoConnection.prototype = {
    */
   rollbackTrans: function() {
     this.con.RollbackTrans();
+  },
+  /**
+   * テーブル名一覧を取得します。
+   * @return {Array} テーブル名の配列を返します。
+   */
+  getTableNames: function() {
+    var rs = this.con.OpenSchema(AdoConnection.AD_SCHEMA_TABLES, arrayToSafeArray([undefined, undefined, undefined, "TABLE"]));
+    var array = this.convertToArrayRs(rs);
+    var result = [];
+    array.each(function(elem) {
+      result.push(elem["TABLE_NAME"]);
+    });
+
+    return result;
   }
 };
 /** 

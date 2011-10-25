@@ -191,3 +191,19 @@ var inputBox = function(prompt, title) {
 
   return objJS.CodeObject.JSInputBox(myPrompt, myTitle);
 };
+
+/**
+ * JScriptの一次元配列を、一次元のSafeArrayに変換する。<br/>
+ * http://www.imasy.or.jp/~hir/hir/tech/js_tips.html#safearray を参考にしました。
+ * @param {Array} jsArray JScriptの配列を指定します。
+ * @return {Object} 変換されたSafeArrayを返します。通常、VBArrayでラップして使います。
+ */
+var arrayToSafeArray = function(jsArray) {
+  var dic = new ActiveXObject("Scripting.Dictionary");
+  var jsArrayLength = jsArray.length;
+  for (var i = 0; i < jsArrayLength; i++) {
+    dic.add(i, jsArray[i]);
+  }
+
+  return dic.items();
+}

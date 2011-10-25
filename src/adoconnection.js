@@ -11,6 +11,11 @@ var AdoConnection = function(connectString, userName, password) {
   this.con.Open(connectString, userName, password);
 };
 
+/**
+ * Schema Enumの定数：Table(20)
+ */
+AdoConnection.AD_SCHEMA_TABLES = 20;
+
 /** 
  * 新しいADOのコネクションを作成し、ブロックを実行します。
  * ブロックが指定されていない場合は、作成したADOのコネクションを返します。
@@ -128,5 +133,19 @@ AdoConnection.prototype = {
    */
   rollbackTrans: function() {
     this.con.RollbackTrans();
+  },
+  /**
+   * テーブル名一覧を取得します。
+   * @return {Array} テーブル名の配列を返します。
+   */
+  getTableNames: function() {
+    var rs = this.con.OpenSchema(AdoConnection.AD_SCHEMA_TABLES, arrayToSafeArray([undefined, undefined, undefined, "TABLE"]));
+    var array = this.convertToArrayRs(rs);
+    var result = [];
+    array.each(function(elem) {
+      result.push(elem["TABLE_NAME"]);
+    });
+
+    return result;
   }
 };

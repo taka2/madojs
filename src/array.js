@@ -19,6 +19,8 @@ Array.prototype.forEach = function(block) {
   return result;
 };
 
+Array.prototype.each = Array.prototype.forEach;
+
 /**
  * objが配列に含まれるかどうかチェックします。
  * @param {Object} obj 配列に含まれるかどうかチェックするオブジェクト

@@ -180,7 +180,6 @@ Excel.openReadonly = function(path, block) {
 /** 
  * Excelファイルを作成し、ブロックを実行します。
  * ブロックが指定されていない場合は、Excelオブジェクトを返します。
- * @param {String} path Excelファイルのパスを文字列で指定します。
  * @param {Function} block ブロック
  * @return {Object} ブロックが指定されていない場合は、作成したクリップボード
  */
@@ -202,7 +201,6 @@ Excel.create = function(block) {
 /** 
  * Excelファイルを読み取り専用(最後に変更を破棄)で作成し、ブロックを実行します。
  * ブロックが指定されていない場合は、Excelオブジェクトを返します。
- * @param {String} path Excelファイルのパスを文字列で指定します。
  * @param {Function} block ブロック
  * @return {Object} ブロックが指定されていない場合は、作成したクリップボード
  */
@@ -491,6 +489,23 @@ Excel.prototype = {
   quit: function() {
     this.workbookObj.Close();
     this.excelObj.Quit();
+  },
+  /**
+   * 先頭から指定した枚数のシートを削除します。
+   * @param {Number} numSheet 削除するシート数
+   */
+  removeSheets: function(numSheets) {
+    var i;
+    for(i=0; i<numSheets; i++) {
+      var sheet = this.getSheetByIndex(0);
+      sheet.remove();
+    }
+  },
+  /**
+   * 先頭のシートを選択します。
+   */
+  activateHeadSheet: function() {
+    this.getSheetByIndex(0).activate();
   }
 };
 
@@ -556,13 +571,14 @@ ExcelSheet.prototype = {
    */
   drawBorder: function() {
     var range = this.sheetObj.Cells(1, 1).CurrentRegion;
-    var toIndex = 12;
-    if(range.Rows.Count === 1) {
-      // 1行しかない場合は12は引かない
-      toIndex = 11;
-    }
-    for(var i=7; i<=toIndex; i++) {
+    for(var i=7; i<=10; i++) {
       range.Borders(i).LineStyle = 1;
+    }
+    if(range.Columns.Count > 1) {
+        range.Borders(11).LineStyle = 1;
+    }
+    if(range.Rows.Count > 1) {
+        range.Borders(12).LineStyle = 1;
     }
   },
   /**
@@ -658,5 +674,14 @@ ExcelSheet.prototype = {
    */
   copy: function(x, y) {
     this.sheetObj.Cells(x, y).Copy();
+  },
+  /**
+   * セルの背景色を設定します。
+   * @param {Number} x x座標
+   * @param {Number} y y座標
+   * @param {Number} colorIndex カラーインデックス
+   */
+  setBackgroundColor: function(x, y, colorIndex) {
+    this.sheetObj.Cells(x, y).Interior.ColorIndex = colorIndex;
   }
 };

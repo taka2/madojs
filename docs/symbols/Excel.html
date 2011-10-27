@@ -529,6 +529,15 @@ Excel.open("abc.xls", function(excel) {
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Excel.html#activateHeadSheet">activateHeadSheet</a></b>()
+								</div>
+								<div class="description">先頭のシートを選択します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/Excel.html#addSheet">addSheet</a></b>(sheetName, index)
 								</div>
 								<div class="description">指定したindexのワークシートの後にシートを1枚追加します。</div>
@@ -592,7 +601,7 @@ Excel.open("abc.xls", function(excel) {
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">Excel.<b><a href="../symbols/Excel.html#.create">create</a></b>(path, block)
+								<div class="fixedFont">Excel.<b><a href="../symbols/Excel.html#.create">create</a></b>(block)
 								</div>
 								<div class="description">Excelファイルを作成し、ブロックを実行します。ブロックが指定されていない場合は、Excelオブジェクトを返します。</div>
 							</td>
@@ -601,7 +610,7 @@ Excel.open("abc.xls", function(excel) {
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">Excel.<b><a href="../symbols/Excel.html#.createReadonly">createReadonly</a></b>(path, block)
+								<div class="fixedFont">Excel.<b><a href="../symbols/Excel.html#.createReadonly">createReadonly</a></b>(block)
 								</div>
 								<div class="description">Excelファイルを読み取り専用(最後に変更を破棄)で作成し、ブロックを実行します。ブロックが指定されていない場合は、Excelオブジェクトを返します。</div>
 							</td>
@@ -676,6 +685,15 @@ Excel.open("abc.xls", function(excel) {
 								<div class="fixedFont"><b><a href="../symbols/Excel.html#quitDiscardChanges">quitDiscardChanges</a></b>()
 								</div>
 								<div class="description">Excelファイルを保存せずに閉じます。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Excel.html#removeSheets">removeSheets</a></b>(numSheet)
+								</div>
+								<div class="description">先頭から指定した枚数のシートを削除します。</div>
 							</td>
 						</tr>
 					
@@ -1206,6 +1224,31 @@ Excel.open("abc.xls", function(excel) {
 					メソッドの詳細
 				</div>
 				
+					<a name="activateHeadSheet"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>activateHeadSheet</b>()
+					
+					</div>
+					<div class="description">
+						先頭のシートを選択します。
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
 					<a name="addSheet"> </a>
 					<div class="fixedFont">
 					
@@ -1533,7 +1576,7 @@ Excel.convertFromCsv("csv.txt", columnInfo);</pre>
 					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{Object}</span>
-					<span class="light">Excel.</span><b>create</b>(path, block)
+					<span class="light">Excel.</span><b>create</b>(block)
 					
 					</div>
 					<div class="description">
@@ -1547,12 +1590,6 @@ Excel.convertFromCsv("csv.txt", columnInfo);</pre>
 						
 							<dl class="detailList">
 							<dt class="heading">引数:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>path</b>
-									
-								</dt>
-								<dd>Excelファイルのパスを文字列で指定します。</dd>
 							
 								<dt>
 									<span class="light fixedFont">{Function}</span> <b>block</b>
@@ -1582,7 +1619,7 @@ Excel.convertFromCsv("csv.txt", columnInfo);</pre>
 					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{Object}</span>
-					<span class="light">Excel.</span><b>createReadonly</b>(path, block)
+					<span class="light">Excel.</span><b>createReadonly</b>(block)
 					
 					</div>
 					<div class="description">
@@ -1596,12 +1633,6 @@ Excel.convertFromCsv("csv.txt", columnInfo);</pre>
 						
 							<dl class="detailList">
 							<dt class="heading">引数:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>path</b>
-									
-								</dt>
-								<dd>Excelファイルのパスを文字列で指定します。</dd>
 							
 								<dt>
 									<span class="light fixedFont">{Function}</span> <b>block</b>
@@ -1929,6 +1960,42 @@ Excel.convertFromCsv("csv.txt", columnInfo);</pre>
 
 					<hr />
 				
+					<a name="removeSheets"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>removeSheets</b>(numSheet)
+					
+					</div>
+					<div class="description">
+						先頭から指定した枚数のシートを削除します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>numSheet</b>
+									
+								</dt>
+								<dd>削除するシート数</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
 					<a name="save"> </a>
 					<div class="fixedFont">
 					
@@ -2110,7 +2177,7 @@ Excel.convertFromCsv("csv.txt", columnInfo);</pre>
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Wed Oct 26 2011 03:43:06 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Thu Oct 27 2011 17:58:18 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

@@ -147,5 +147,26 @@ AdoConnection.prototype = {
     });
 
     return result;
+  },
+  /**
+   * 指定したテーブルのフィールド名一覧を取得します。
+   * @param {String} tableName フィールド名一覧を取得するテーブル名を指定します。
+   * @return {Array} フィールド名一覧を返します。
+   */
+  getFieldNames: function(tableName) {
+    // フィールドリスト取得のためのSQL空実行
+    var rs = this.con.Execute("SELECT * FROM " + tableName);
+
+    // フィールドリストの取得
+    var fe = new Enumerator(rs.Fields);
+
+    // データの取得
+    var result = [];
+
+    for(fe.moveFirst(); !fe.atEnd(); fe.moveNext()) {
+      result.push(fe.item().Name);
+    }
+
+    return result;
   }
 };

@@ -1840,6 +1840,7 @@ AdoConnection.prototype = {
       for(fe.moveFirst(); !fe.atEnd(); fe.moveNext()) {
         var field = fe.item();
         record[field.Name] = field.Value;
+        print(field.Name);
       }
       result.push(record);
 
@@ -1883,10 +1884,11 @@ AdoConnection.prototype = {
   },
   /**
    * テーブル名一覧を取得します。
+   * @param {String} schema (オプション)スキーマを指定します。
    * @return {Array} テーブル名の配列を返します。
    */
-  getTableNames: function() {
-    var rs = this.con.OpenSchema(AdoConnection.AD_SCHEMA_TABLES, arrayToSafeArray([undefined, undefined, undefined, "TABLE"]));
+  getTableNames: function(schema) {
+    var rs = this.con.OpenSchema(AdoConnection.AD_SCHEMA_TABLES, arrayToSafeArray([undefined, schema, undefined, "TABLE"]));
     var array = this.convertToArrayRs(rs);
     var result = [];
     array.each(function(elem) {

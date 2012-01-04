@@ -11,6 +11,7 @@
     <script language="JScript" src="test/dir.js"></script>
     <script language="JScript" src="test/excel.js"></script>
     <script language="JScript" src="test/file.js"></script>
+    <script language="JScript" src="test/global.js"></script>
     <script language="JScript" src="test/http.js"></script>
     <script language="JScript" src="test/specialfolders.js"></script>
     <script language="JScript" src="test/string.js"></script>

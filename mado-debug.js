@@ -1763,6 +1763,167 @@ var AdoConnection = function(connectString, userName, password) {
  */
 AdoConnection.AD_SCHEMA_TABLES = 20;
 
+/**
+ * DataTypeEnumの定数：adArray(0x2000)
+ */
+AdoConnection.AD_DATATYPE_ARRAY = 0x2000;
+/**
+ * DataTypeEnumの定数：adBigInt(20)
+ */
+AdoConnection.AD_DATATYPE_BIGINT = 20;
+/**
+ * DataTypeEnumの定数：adBinary(128)
+ */
+AdoConnection.AD_DATATYPE_BINARY = 128;
+/**
+ * DataTypeEnumの定数：adBoolean(11)
+ */
+AdoConnection.AD_DATATYPE_BOOLEAN = 11;
+/**
+ * DataTypeEnumの定数：adBSTR(8)
+ */
+AdoConnection.AD_DATATYPE_BSTR = 8;
+/**
+ * DataTypeEnumの定数：adChapter(136)
+ */
+AdoConnection.AD_DATATYPE_CHAPTER = 136;
+/**
+ * DataTypeEnumの定数：adChar(129)
+ */
+AdoConnection.AD_DATATYPE_CHAR = 129;
+/**
+ * DataTypeEnumの定数：adCurrency(6)
+ */
+AdoConnection.AD_DATATYPE_CURRENCY = 6;
+/**
+ * DataTypeEnumの定数：adDate(7)
+ */
+AdoConnection.AD_DATATYPE_DATE = 7;
+/**
+ * DataTypeEnumの定数：adDBDate(133)
+ */
+AdoConnection.AD_DATATYPE_DBDATE = 133;
+/**
+ * DataTypeEnumの定数：adDBTime(134)
+ */
+AdoConnection.AD_DATATYPE_DBTIME = 134;
+/**
+ * DataTypeEnumの定数：adDBTimeStamp(135)
+ */
+AdoConnection.AD_DATATYPE_DBTIMESTAMP = 135;
+/**
+ * DataTypeEnumの定数：adDecimal(14)
+ */
+AdoConnection.AD_DATATYPE_DECIMAL = 14;
+/**
+ * DataTypeEnumの定数：adDouble(5)
+ */
+AdoConnection.AD_DATATYPE_DOUBLE = 5;
+/**
+ * DataTypeEnumの定数：adEmpty(0)
+ */
+AdoConnection.AD_DATATYPE_EMPTY = 0;
+/**
+ * DataTypeEnumの定数：adError(10)
+ */
+AdoConnection.AD_DATATYPE_ERROR = 10;
+/**
+ * DataTypeEnumの定数：adFileTime(64)
+ */
+AdoConnection.AD_DATATYPE_FILETIME = 64;
+/**
+ * DataTypeEnumの定数：adGUID(72)
+ */
+AdoConnection.AD_DATATYPE_GUID = 72;
+/**
+ * DataTypeEnumの定数：adIDispatch(9)
+ */
+AdoConnection.AD_DATATYPE_IDISPATCH = 9;
+/**
+ * DataTypeEnumの定数：adInteger(3)
+ */
+AdoConnection.AD_DATATYPE_INTEGER = 3;
+/**
+ * DataTypeEnumの定数：adIUnknown(13)
+ */
+AdoConnection.AD_DATATYPE_IUNKNOWN = 13;
+/**
+ * DataTypeEnumの定数：adLongVarBinary(205)
+ */
+AdoConnection.AD_DATATYPE_LONGVARBINARY = 205;
+/**
+ * DataTypeEnumの定数：adLongVarChar(201)
+ */
+AdoConnection.AD_DATATYPE_LONGVARCHAR = 201;
+/**
+ * DataTypeEnumの定数：adLongVarWChar(203)
+ */
+AdoConnection.AD_DATATYPE_LONGVARWCHAR = 203;
+/**
+ * DataTypeEnumの定数：adNumeric(131)
+ */
+AdoConnection.AD_DATATYPE_NUMERIC = 131;
+/**
+ * DataTypeEnumの定数：adPropVariant(138)
+ */
+AdoConnection.AD_DATATYPE_PROPVARIANT = 138;
+/**
+ * DataTypeEnumの定数：adSingle(4)
+ */
+AdoConnection.AD_DATATYPE_SINGLE = 4;
+/**
+ * DataTypeEnumの定数：adSmallInt(2)
+ */
+AdoConnection.AD_DATATYPE_SMALLINT = 2;
+/**
+ * DataTypeEnumの定数：adTinyInt(16)
+ */
+AdoConnection.AD_DATATYPE_TINYINT = 16;
+/**
+ * DataTypeEnumの定数：adUnsignedBigInt(21)
+ */
+AdoConnection.AD_DATATYPE_UNSIGNEDBIGINT = 21;
+/**
+ * DataTypeEnumの定数：adUnsignedInt(19)
+ */
+AdoConnection.AD_DATATYPE_UNSIGNEDINT = 19;
+/**
+ * DataTypeEnumの定数：adUnsignedSmallInt(18)
+ */
+AdoConnection.AD_DATATYPE_UNSIGNEDSMALLINT = 18;
+/**
+ * DataTypeEnumの定数：adUnsignedTinyInt(17)
+ */
+AdoConnection.AD_DATATYPE_UNSIGNEDTINYINT = 17;
+/**
+ * DataTypeEnumの定数：adUserDefined(132)
+ */
+AdoConnection.AD_DATATYPE_USERDEFINED = 132;
+/**
+ * DataTypeEnumの定数：adVarBinary(204)
+ */
+AdoConnection.AD_DATATYPE_VARBINARY = 204;
+/**
+ * DataTypeEnumの定数：adVarChar(200)
+ */
+AdoConnection.AD_DATATYPE_VARCHAR = 200;
+/**
+ * DataTypeEnumの定数：adVariant(12)
+ */
+AdoConnection.AD_DATATYPE_VARIANT = 12;
+/**
+ * DataTypeEnumの定数：adVarNumeric(139)
+ */
+AdoConnection.AD_DATATYPE_VARNUMERIC = 139;
+/**
+ * DataTypeEnumの定数：adVarWChar(202)
+ */
+AdoConnection.AD_DATATYPE_VARWCHAR = 202;
+/**
+ * DataTypeEnumの定数：adWChar(130)
+ */
+AdoConnection.AD_DATATYPE_WCHAR = 130;
+
 /** 
  * 新しいADOのコネクションを作成し、ブロックを実行します。
  * ブロックが指定されていない場合は、作成したADOのコネクションを返します。
@@ -1913,6 +2074,28 @@ AdoConnection.prototype = {
 
     for(fe.moveFirst(); !fe.atEnd(); fe.moveNext()) {
       result.push(fe.item().Name);
+    }
+
+    return result;
+  },
+  /**
+   * 指定したテーブルのフィールド情報一覧を取得します。[{カラム名:カラムタイプ}]
+   * @param {String} tableName フィールド情報一覧を取得するテーブル名を指定します。
+   * @return {Array} フィールド情報一覧を返します。
+   */
+  getFieldInfo: function(tableName) {
+    // フィールドリスト取得のためのSQL空実行
+    var rs = this.con.Execute("SELECT * FROM " + tableName);
+
+    // フィールドリストの取得
+    var fe = new Enumerator(rs.Fields);
+
+    // データの取得
+    var result = [];
+
+    for(fe.moveFirst(); !fe.atEnd(); fe.moveNext()) {
+      var item = fe.item();
+      result.push({'Name': item.Name, 'Type': item.Type});
     }
 
     return result;
@@ -3005,7 +3188,7 @@ Excel.COLOR_INDEX_01 = 1;
 Excel.COLOR_INDEX_02 = 2;
 
 /**
- * カラーインデックス：3<span style = 'color: #0000FF'>■■■■■</span>
+ * カラーインデックス：3<span style = 'color: #FF0000'>■■■■■</span>
  */
 Excel.COLOR_INDEX_03 = 3;
 
@@ -3015,12 +3198,12 @@ Excel.COLOR_INDEX_03 = 3;
 Excel.COLOR_INDEX_04 = 4;
 
 /**
- * カラーインデックス：5<span style = 'color: #FF0000'>■■■■■</span>
+ * カラーインデックス：5<span style = 'color: #0000FF'>■■■■■</span>
  */
 Excel.COLOR_INDEX_05 = 5;
 
 /**
- * カラーインデックス：6<span style = 'color: #00FFFF'>■■■■■</span>
+ * カラーインデックス：6<span style = 'color: #FFFF00'>■■■■■</span>
  */
 Excel.COLOR_INDEX_06 = 6;
 
@@ -3030,12 +3213,12 @@ Excel.COLOR_INDEX_06 = 6;
 Excel.COLOR_INDEX_07 = 7;
 
 /**
- * カラーインデックス：8<span style = 'color: #FFFF00'>■■■■■</span>
+ * カラーインデックス：8<span style = 'color: #00FFFF'>■■■■■</span>
  */
 Excel.COLOR_INDEX_08 = 8;
 
 /**
- * カラーインデックス：9<span style = 'color: #000080'>■■■■■</span>
+ * カラーインデックス：9<span style = 'color: #800000'>■■■■■</span>
  */
 Excel.COLOR_INDEX_09 = 9;
 
@@ -3045,12 +3228,12 @@ Excel.COLOR_INDEX_09 = 9;
 Excel.COLOR_INDEX_10 = 10;
 
 /**
- * カラーインデックス：11<span style = 'color: #800000'>■■■■■</span>
+ * カラーインデックス：11<span style = 'color: #000080'>■■■■■</span>
  */
 Excel.COLOR_INDEX_11 = 11;
 
 /**
- * カラーインデックス：12<span style = 'color: #008080'>■■■■■</span>
+ * カラーインデックス：12<span style = 'color: #808000'>■■■■■</span>
  */
 Excel.COLOR_INDEX_12 = 12;
 
@@ -3060,7 +3243,7 @@ Excel.COLOR_INDEX_12 = 12;
 Excel.COLOR_INDEX_13 = 13;
 
 /**
- * カラーインデックス：14<span style = 'color: #808000'>■■■■■</span>
+ * カラーインデックス：14<span style = 'color: #008080'>■■■■■</span>
  */
 Excel.COLOR_INDEX_14 = 14;
 
@@ -3075,22 +3258,22 @@ Excel.COLOR_INDEX_15 = 15;
 Excel.COLOR_INDEX_16 = 16;
 
 /**
- * カラーインデックス：17<span style = 'color: #FF9999'>■■■■■</span>
+ * カラーインデックス：17<span style = 'color: #9999FF'>■■■■■</span>
  */
 Excel.COLOR_INDEX_17 = 17;
 
 /**
- * カラーインデックス：18<span style = 'color: #663399'>■■■■■</span>
+ * カラーインデックス：18<span style = 'color: #993366'>■■■■■</span>
  */
 Excel.COLOR_INDEX_18 = 18;
 
 /**
- * カラーインデックス：19<span style = 'color: #CCFFFF'>■■■■■</span>
+ * カラーインデックス：19<span style = 'color: #FFFFCC'>■■■■■</span>
  */
 Excel.COLOR_INDEX_19 = 19;
 
 /**
- * カラーインデックス：20<span style = 'color: #FFFFCC'>■■■■■</span>
+ * カラーインデックス：20<span style = 'color: #CCFFFF'>■■■■■</span>
  */
 Excel.COLOR_INDEX_20 = 20;
 
@@ -3100,22 +3283,22 @@ Excel.COLOR_INDEX_20 = 20;
 Excel.COLOR_INDEX_21 = 21;
 
 /**
- * カラーインデックス：22<span style = 'color: #8080FF'>■■■■■</span>
+ * カラーインデックス：22<span style = 'color: #FF8080'>■■■■■</span>
  */
 Excel.COLOR_INDEX_22 = 22;
 
 /**
- * カラーインデックス：23<span style = 'color: #CC6600'>■■■■■</span>
+ * カラーインデックス：23<span style = 'color: #0066CC'>■■■■■</span>
  */
 Excel.COLOR_INDEX_23 = 23;
 
 /**
- * カラーインデックス：24<span style = 'color: #FFCCCC'>■■■■■</span>
+ * カラーインデックス：24<span style = 'color: #CCCCFF'>■■■■■</span>
  */
 Excel.COLOR_INDEX_24 = 24;
 
 /**
- * カラーインデックス：25<span style = 'color: #800000'>■■■■■</span>
+ * カラーインデックス：25<span style = 'color: #000080'>■■■■■</span>
  */
 Excel.COLOR_INDEX_25 = 25;
 
@@ -3125,12 +3308,12 @@ Excel.COLOR_INDEX_25 = 25;
 Excel.COLOR_INDEX_26 = 26;
 
 /**
- * カラーインデックス：27<span style = 'color: #00FFFF'>■■■■■</span>
+ * カラーインデックス：27<span style = 'color: #FFFF00'>■■■■■</span>
  */
 Excel.COLOR_INDEX_27 = 27;
 
 /**
- * カラーインデックス：28<span style = 'color: #FFFF00'>■■■■■</span>
+ * カラーインデックス：28<span style = 'color: #00FFFF'>■■■■■</span>
  */
 Excel.COLOR_INDEX_28 = 28;
 
@@ -3140,27 +3323,27 @@ Excel.COLOR_INDEX_28 = 28;
 Excel.COLOR_INDEX_29 = 29;
 
 /**
- * カラーインデックス：30<span style = 'color: #000080'>■■■■■</span>
+ * カラーインデックス：30<span style = 'color: #800000'>■■■■■</span>
  */
 Excel.COLOR_INDEX_30 = 30;
 
 /**
- * カラーインデックス：31<span style = 'color: #808000'>■■■■■</span>
+ * カラーインデックス：31<span style = 'color: #008080'>■■■■■</span>
  */
 Excel.COLOR_INDEX_31 = 31;
 
 /**
- * カラーインデックス：32<span style = 'color: #FF0000'>■■■■■</span>
+ * カラーインデックス：32<span style = 'color: #0000FF'>■■■■■</span>
  */
 Excel.COLOR_INDEX_32 = 32;
 
 /**
- * カラーインデックス：33<span style = 'color: #FFCC00'>■■■■■</span>
+ * カラーインデックス：33<span style = 'color: #00CCFF'>■■■■■</span>
  */
 Excel.COLOR_INDEX_33 = 33;
 
 /**
- * カラーインデックス：34<span style = 'color: #FFFFCC'>■■■■■</span>
+ * カラーインデックス：34<span style = 'color: #CCFFFF'>■■■■■</span>
  */
 Excel.COLOR_INDEX_34 = 34;
 
@@ -3170,62 +3353,62 @@ Excel.COLOR_INDEX_34 = 34;
 Excel.COLOR_INDEX_35 = 35;
 
 /**
- * カラーインデックス：36<span style = 'color: #99FFFF'>■■■■■</span>
+ * カラーインデックス：36<span style = 'color: #FFFF99'>■■■■■</span>
  */
 Excel.COLOR_INDEX_36 = 36;
 
 /**
- * カラーインデックス：37<span style = 'color: #FFCC99'>■■■■■</span>
+ * カラーインデックス：37<span style = 'color: #99CCFF'>■■■■■</span>
  */
 Excel.COLOR_INDEX_37 = 37;
 
 /**
- * カラーインデックス：38<span style = 'color: #CC99FF'>■■■■■</span>
+ * カラーインデックス：38<span style = 'color: #FF99CC'>■■■■■</span>
  */
 Excel.COLOR_INDEX_38 = 38;
 
 /**
- * カラーインデックス：39<span style = 'color: #FF99CC'>■■■■■</span>
+ * カラーインデックス：39<span style = 'color: #CC99FF'>■■■■■</span>
  */
 Excel.COLOR_INDEX_39 = 39;
 
 /**
- * カラーインデックス：40<span style = 'color: #99CCFF'>■■■■■</span>
+ * カラーインデックス：40<span style = 'color: #FFCC99'>■■■■■</span>
  */
 Excel.COLOR_INDEX_40 = 40;
 
 /**
- * カラーインデックス：41<span style = 'color: #FF6633'>■■■■■</span>
+ * カラーインデックス：41<span style = 'color: #3366FF'>■■■■■</span>
  */
 Excel.COLOR_INDEX_41 = 41;
 
 /**
- * カラーインデックス：42<span style = 'color: #CCCC33'>■■■■■</span>
+ * カラーインデックス：42<span style = 'color: #33CCCC'>■■■■■</span>
  */
 Excel.COLOR_INDEX_42 = 42;
 
 /**
- * カラーインデックス：43<span style = 'color: #00CC99'>■■■■■</span>
+ * カラーインデックス：43<span style = 'color: #99CC00'>■■■■■</span>
  */
 Excel.COLOR_INDEX_43 = 43;
 
 /**
- * カラーインデックス：44<span style = 'color: #00CCFF'>■■■■■</span>
+ * カラーインデックス：44<span style = 'color: #FFCC00'>■■■■■</span>
  */
 Excel.COLOR_INDEX_44 = 44;
 
 /**
- * カラーインデックス：45<span style = 'color: #0099FF'>■■■■■</span>
+ * カラーインデックス：45<span style = 'color: #FF9900'>■■■■■</span>
  */
 Excel.COLOR_INDEX_45 = 45;
 
 /**
- * カラーインデックス：46<span style = 'color: #0066FF'>■■■■■</span>
+ * カラーインデックス：46<span style = 'color: #FF6600'>■■■■■</span>
  */
 Excel.COLOR_INDEX_46 = 46;
 
 /**
- * カラーインデックス：47<span style = 'color: #996666'>■■■■■</span>
+ * カラーインデックス：47<span style = 'color: #666699'>■■■■■</span>
  */
 Excel.COLOR_INDEX_47 = 47;
 
@@ -3235,12 +3418,12 @@ Excel.COLOR_INDEX_47 = 47;
 Excel.COLOR_INDEX_48 = 48;
 
 /**
- * カラーインデックス：49<span style = 'color: #663300'>■■■■■</span>
+ * カラーインデックス：49<span style = 'color: #003366'>■■■■■</span>
  */
 Excel.COLOR_INDEX_49 = 49;
 
 /**
- * カラーインデックス：50<span style = 'color: #669933'>■■■■■</span>
+ * カラーインデックス：50<span style = 'color: #339966'>■■■■■</span>
  */
 Excel.COLOR_INDEX_50 = 50;
 
@@ -3250,22 +3433,22 @@ Excel.COLOR_INDEX_50 = 50;
 Excel.COLOR_INDEX_51 = 51;
 
 /**
- * カラーインデックス：52<span style = 'color: #003333'>■■■■■</span>
+ * カラーインデックス：52<span style = 'color: #333300'>■■■■■</span>
  */
 Excel.COLOR_INDEX_52 = 52;
 
 /**
- * カラーインデックス：53<span style = 'color: #003399'>■■■■■</span>
+ * カラーインデックス：53<span style = 'color: #993300'>■■■■■</span>
  */
 Excel.COLOR_INDEX_53 = 53;
 
 /**
- * カラーインデックス：54<span style = 'color: #663399'>■■■■■</span>
+ * カラーインデックス：54<span style = 'color: #993366'>■■■■■</span>
  */
 Excel.COLOR_INDEX_54 = 54;
 
 /**
- * カラーインデックス：55<span style = 'color: #993333'>■■■■■</span>
+ * カラーインデックス：55<span style = 'color: #333399'>■■■■■</span>
  */
 Excel.COLOR_INDEX_55 = 55;
 

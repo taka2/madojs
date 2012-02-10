@@ -16,6 +16,167 @@ var AdoConnection = function(connectString, userName, password) {
  */
 AdoConnection.AD_SCHEMA_TABLES = 20;
 
+/**
+ * DataTypeEnumの定数：adArray(0x2000)
+ */
+AdoConnection.AD_DATATYPE_ARRAY = 0x2000;
+/**
+ * DataTypeEnumの定数：adBigInt(20)
+ */
+AdoConnection.AD_DATATYPE_BIGINT = 20;
+/**
+ * DataTypeEnumの定数：adBinary(128)
+ */
+AdoConnection.AD_DATATYPE_BINARY = 128;
+/**
+ * DataTypeEnumの定数：adBoolean(11)
+ */
+AdoConnection.AD_DATATYPE_BOOLEAN = 11;
+/**
+ * DataTypeEnumの定数：adBSTR(8)
+ */
+AdoConnection.AD_DATATYPE_BSTR = 8;
+/**
+ * DataTypeEnumの定数：adChapter(136)
+ */
+AdoConnection.AD_DATATYPE_CHAPTER = 136;
+/**
+ * DataTypeEnumの定数：adChar(129)
+ */
+AdoConnection.AD_DATATYPE_CHAR = 129;
+/**
+ * DataTypeEnumの定数：adCurrency(6)
+ */
+AdoConnection.AD_DATATYPE_CURRENCY = 6;
+/**
+ * DataTypeEnumの定数：adDate(7)
+ */
+AdoConnection.AD_DATATYPE_DATE = 7;
+/**
+ * DataTypeEnumの定数：adDBDate(133)
+ */
+AdoConnection.AD_DATATYPE_DBDATE = 133;
+/**
+ * DataTypeEnumの定数：adDBTime(134)
+ */
+AdoConnection.AD_DATATYPE_DBTIME = 134;
+/**
+ * DataTypeEnumの定数：adDBTimeStamp(135)
+ */
+AdoConnection.AD_DATATYPE_DBTIMESTAMP = 135;
+/**
+ * DataTypeEnumの定数：adDecimal(14)
+ */
+AdoConnection.AD_DATATYPE_DECIMAL = 14;
+/**
+ * DataTypeEnumの定数：adDouble(5)
+ */
+AdoConnection.AD_DATATYPE_DOUBLE = 5;
+/**
+ * DataTypeEnumの定数：adEmpty(0)
+ */
+AdoConnection.AD_DATATYPE_EMPTY = 0;
+/**
+ * DataTypeEnumの定数：adError(10)
+ */
+AdoConnection.AD_DATATYPE_ERROR = 10;
+/**
+ * DataTypeEnumの定数：adFileTime(64)
+ */
+AdoConnection.AD_DATATYPE_FILETIME = 64;
+/**
+ * DataTypeEnumの定数：adGUID(72)
+ */
+AdoConnection.AD_DATATYPE_GUID = 72;
+/**
+ * DataTypeEnumの定数：adIDispatch(9)
+ */
+AdoConnection.AD_DATATYPE_IDISPATCH = 9;
+/**
+ * DataTypeEnumの定数：adInteger(3)
+ */
+AdoConnection.AD_DATATYPE_INTEGER = 3;
+/**
+ * DataTypeEnumの定数：adIUnknown(13)
+ */
+AdoConnection.AD_DATATYPE_IUNKNOWN = 13;
+/**
+ * DataTypeEnumの定数：adLongVarBinary(205)
+ */
+AdoConnection.AD_DATATYPE_LONGVARBINARY = 205;
+/**
+ * DataTypeEnumの定数：adLongVarChar(201)
+ */
+AdoConnection.AD_DATATYPE_LONGVARCHAR = 201;
+/**
+ * DataTypeEnumの定数：adLongVarWChar(203)
+ */
+AdoConnection.AD_DATATYPE_LONGVARWCHAR = 203;
+/**
+ * DataTypeEnumの定数：adNumeric(131)
+ */
+AdoConnection.AD_DATATYPE_NUMERIC = 131;
+/**
+ * DataTypeEnumの定数：adPropVariant(138)
+ */
+AdoConnection.AD_DATATYPE_PROPVARIANT = 138;
+/**
+ * DataTypeEnumの定数：adSingle(4)
+ */
+AdoConnection.AD_DATATYPE_SINGLE = 4;
+/**
+ * DataTypeEnumの定数：adSmallInt(2)
+ */
+AdoConnection.AD_DATATYPE_SMALLINT = 2;
+/**
+ * DataTypeEnumの定数：adTinyInt(16)
+ */
+AdoConnection.AD_DATATYPE_TINYINT = 16;
+/**
+ * DataTypeEnumの定数：adUnsignedBigInt(21)
+ */
+AdoConnection.AD_DATATYPE_UNSIGNEDBIGINT = 21;
+/**
+ * DataTypeEnumの定数：adUnsignedInt(19)
+ */
+AdoConnection.AD_DATATYPE_UNSIGNEDINT = 19;
+/**
+ * DataTypeEnumの定数：adUnsignedSmallInt(18)
+ */
+AdoConnection.AD_DATATYPE_UNSIGNEDSMALLINT = 18;
+/**
+ * DataTypeEnumの定数：adUnsignedTinyInt(17)
+ */
+AdoConnection.AD_DATATYPE_UNSIGNEDTINYINT = 17;
+/**
+ * DataTypeEnumの定数：adUserDefined(132)
+ */
+AdoConnection.AD_DATATYPE_USERDEFINED = 132;
+/**
+ * DataTypeEnumの定数：adVarBinary(204)
+ */
+AdoConnection.AD_DATATYPE_VARBINARY = 204;
+/**
+ * DataTypeEnumの定数：adVarChar(200)
+ */
+AdoConnection.AD_DATATYPE_VARCHAR = 200;
+/**
+ * DataTypeEnumの定数：adVariant(12)
+ */
+AdoConnection.AD_DATATYPE_VARIANT = 12;
+/**
+ * DataTypeEnumの定数：adVarNumeric(139)
+ */
+AdoConnection.AD_DATATYPE_VARNUMERIC = 139;
+/**
+ * DataTypeEnumの定数：adVarWChar(202)
+ */
+AdoConnection.AD_DATATYPE_VARWCHAR = 202;
+/**
+ * DataTypeEnumの定数：adWChar(130)
+ */
+AdoConnection.AD_DATATYPE_WCHAR = 130;
+
 /** 
  * 新しいADOのコネクションを作成し、ブロックを実行します。
  * ブロックが指定されていない場合は、作成したADOのコネクションを返します。
@@ -166,6 +327,28 @@ AdoConnection.prototype = {
 
     for(fe.moveFirst(); !fe.atEnd(); fe.moveNext()) {
       result.push(fe.item().Name);
+    }
+
+    return result;
+  },
+  /**
+   * 指定したテーブルのフィールド情報一覧を取得します。[{カラム名:カラムタイプ}]
+   * @param {String} tableName フィールド情報一覧を取得するテーブル名を指定します。
+   * @return {Array} フィールド情報一覧を返します。
+   */
+  getFieldInfo: function(tableName) {
+    // フィールドリスト取得のためのSQL空実行
+    var rs = this.con.Execute("SELECT * FROM " + tableName);
+
+    // フィールドリストの取得
+    var fe = new Enumerator(rs.Fields);
+
+    // データの取得
+    var result = [];
+
+    for(fe.moveFirst(); !fe.atEnd(); fe.moveNext()) {
+      var item = fe.item();
+      result.push({'Name': item.Name, 'Type': item.Type});
     }
 
     return result;

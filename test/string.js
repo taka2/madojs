@@ -63,3 +63,7 @@ Test.String.testSubstringb2 = function() {
 Test.String.testSubstringb3 = function() {
   testUtil.assertEquals("±ÉA1", "±ÉA1ÇP".substringb(0, 4));
 };
+
+Test.String.testLpad = function() {
+  testUtil.assertEquals("00012", "12".lpad("0", 5));
+};

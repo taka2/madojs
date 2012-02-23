@@ -686,6 +686,29 @@ String.prototype.substringb = function(start, end) {
 
   return result;
 }
+
+/**
+ * 指定文字を、指定文字数に達するまで左側にパディングします。
+ * @param {String} ch 文字
+ * @param {Number} length 文字数
+ * @return {String} 指定位置の文字列
+ * @example 使用例：
+"12".lpad("0", 5); // "00012"
+ */
+String.prototype.lpad = function(ch, length) {
+  var text = this.valueOf();
+
+  // 文字列が指定文字数に既に達している場合はそのまま返す。
+  if(text.length >= length) {
+    return text;
+  }
+
+  var result = text;
+  for(var i=0; i<length - text.length; i++) {
+    result = ch + result;
+  }
+  return result;
+}
 /** 
  * ファイルオブジェクトを作成します。
  * @class ファイルの操作と読み書きを行うためのクラスです。

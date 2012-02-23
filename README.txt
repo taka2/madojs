@@ -9,8 +9,8 @@ JScript/Windows Scripting Hostにruby風の味付けをほどこし、
 
 =クイックスタート=
   * http://code.google.com/p/madojs/downloads/list からアーカイブされた最新版をダウンロードします。
-  * ダウンロードしたzipファイルを解凍し、test.wsfをダブルクリックします。
-  * test.jsに記述されたプログラムによって、mado.jsがcopy_of_mado.jsにコピーされます。
+  * ダウンロードしたzipファイルを解凍し、examples/file/filecopy.wsfをダブルクリックします。
+  * filecopy.jsに記述されたプログラムによって、filecopy.jsがcopy_of_filecopy.jsにコピーされます。
 
 =機能一覧=
   * ファイルI/O
@@ -48,10 +48,10 @@ zipアーカイブは古い場合があります。
 実行には三つのファイルが必要です。
 
   * mado.js (ライブラリ本体)
-  * test.js (プログラム本体)
-  * test.wsf (実行可能ファイル; HTMLに相当)
+  * filecopy.js (プログラム本体)
+  * filecopy.wsf (実行可能ファイル; HTMLに相当)
 
-test.wsfをダブルクリックすると、test.jsに記述したプログラムが実行されます。
+filecopy.wsfをダブルクリックすると、filecopy.jsに記述したプログラムが実行されます。
 
 =ドキュメント=
 <p>

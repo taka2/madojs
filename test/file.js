@@ -28,6 +28,10 @@ Test.File.testFile = function() {
     });
   });
 
+  File.open("test2.txt", "r", function(file) {
+    testUtil.assertEquals("hoge", file.readLine());
+  });
+
   // Ext Name
   testUtil.assertEquals(".txt", File.extname("test2.txt"));
 

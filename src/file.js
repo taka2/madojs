@@ -306,6 +306,10 @@ File.prototype = {
       block(this.ts.ReadLine());
     }
   },
+  /**
+   * ファイルから一行読み取ります。
+   * @return {String} 読み取った文字列
+   */
   readLine: function() {
     return this.ts.ReadLine();
   },

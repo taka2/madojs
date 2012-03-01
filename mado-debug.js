@@ -3747,7 +3747,7 @@ Excel.prototype = {
   },
   /**
    * 指定したindexのワークシートを取得します。
-   * @param {Number} index 取得するワークシートのインデックス番号
+   * @param {Number} index 取得するワークシートのインデックス番号(0オリジン)
    * @return {ExcelSheet} ワークシートオブジェクト
    */
   getSheetByIndex: function(index) {
@@ -3918,7 +3918,7 @@ ExcelSheet.prototype = {
     this.sheetObj.Columns("A:IV").AutoFit();
   },
   /**
-   * カレントリージョンに対して罫線を引きます。
+   * Cell(1, 1)のカレントリージョンに対して罫線を引きます。
    */
   drawBorder: function() {
     var range = this.sheetObj.Cells(1, 1).CurrentRegion;
@@ -4034,6 +4034,69 @@ ExcelSheet.prototype = {
    */
   setBackgroundColor: function(x, y, colorIndex) {
     this.sheetObj.Cells(x, y).Interior.ColorIndex = colorIndex;
+  },
+  /**
+   * セルのフォント色を設定します。
+   * @param {Number} x x座標
+   * @param {Number} y y座標
+   * @param {Number} colorIndex カラーインデックス
+   */
+  setFontColor: function(x, y, colorIndex) {
+    this.sheetObj.Cells(x, y).Font.ColorIndex = colorIndex;
+  },
+  /**
+   * セルのフォントを太字に設定または解除します。
+   * @param {Number} x x座標
+   * @param {Number} y y座標
+   * @param {Number} isBold 太字にするかどうか
+   */
+  setFontBold: function(x, y, isBold) {
+    this.sheetObj.Cells(x, y).Font.Bold = isBold;
+  },
+  /**
+   * セルのフォントをイタリックに設定または解除します。
+   * @param {Number} x x座標
+   * @param {Number} y y座標
+   * @param {Number} isItalic 太字にするかどうか
+   */
+  setFontItalic: function(x, y, isItalic) {
+    this.sheetObj.Cells(x, y).Font.Italic = isItalic;
+  },
+  /**
+   * セルのフォントに取消し線を設定または解除します。
+   * @param {Number} x x座標
+   * @param {Number} y y座標
+   * @param {Number} isStrikethrough 取消し線を設定するかどうか
+   */
+  setFontStrikethrough: function(x, y, isStrikethrough) {
+    this.sheetObj.Cells(x, y).Font.Strikethrough = isStrikethrough;
+  },
+  /**
+   * セルのフォントに下線を設定または解除します。
+   * @param {Number} x x座標
+   * @param {Number} y y座標
+   * @param {Number} isUnderline 下線を設定するかどうか
+   */
+  setFontUnderline: function(x, y, isUnderline) {
+    this.sheetObj.Cells(x, y).Font.Underline = isUnderline;
+  },
+  /**
+   * セルを選択します。
+   * @param {Number} x x座標
+   * @param {Number} y y座標
+   */
+  selectCell: function(x, y) {
+    this.sheetObj.Cells(x, y).Select();
+  },
+  /**
+   * セル範囲を選択します。
+   * @param {Number} x1 x座標（始点）
+   * @param {Number} y1 y座標（始点）
+   * @param {Number} x2 x座標（終点）
+   * @param {Number} y2 y座標（終点）
+   */
+  selectRange: function(x1, y1, x2, y2) {
+    this.sheetObj.Range(this.sheetObj.Cells(x1, y1), this.sheetObj.Cells(x2, y2)).Select();
   }
 };
 /**

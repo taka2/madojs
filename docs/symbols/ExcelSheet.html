@@ -360,7 +360,7 @@ MadoJS
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#drawBorder">drawBorder</a></b>()
 								</div>
-								<div class="description">カレントリージョンに対して罫線を引きます。</div>
+								<div class="description">Cell(1, 1)のカレントリージョンに対して罫線を引きます。</div>
 							</td>
 						</tr>
 					
@@ -403,6 +403,24 @@ MadoJS
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#selectCell">selectCell</a></b>(x, y)
+								</div>
+								<div class="description">セルを選択します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#selectRange">selectRange</a></b>(x1, y1, x2, y2)
+								</div>
+								<div class="description">セル範囲を選択します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#setBackgroundColor">setBackgroundColor</a></b>(x, y, colorIndex)
 								</div>
 								<div class="description">セルの背景色を設定します。</div>
@@ -424,6 +442,51 @@ MadoJS
 								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#setCenterHeader">setCenterHeader</a></b>(header)
 								</div>
 								<div class="description">センターヘッダを設定します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#setFontBold">setFontBold</a></b>(x, y, isBold)
+								</div>
+								<div class="description">セルのフォントを太字に設定または解除します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#setFontColor">setFontColor</a></b>(x, y, colorIndex)
+								</div>
+								<div class="description">セルのフォント色を設定します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#setFontItalic">setFontItalic</a></b>(x, y, isItalic)
+								</div>
+								<div class="description">セルのフォントをイタリックに設定または解除します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#setFontStrikethrough">setFontStrikethrough</a></b>(x, y, isStrikethrough)
+								</div>
+								<div class="description">セルのフォントに取消し線を設定または解除します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#setFontUnderline">setFontUnderline</a></b>(x, y, isUnderline)
+								</div>
+								<div class="description">セルのフォントに下線を設定または解除します。</div>
 							</td>
 						</tr>
 					
@@ -712,7 +775,7 @@ MadoJS
 					
 					</div>
 					<div class="description">
-						カレントリージョンに対して罫線を引きます。
+						Cell(1, 1)のカレントリージョンに対して罫線を引きます。
 						
 						
 					</div>
@@ -860,6 +923,102 @@ MadoJS
 
 					<hr />
 				
+					<a name="selectCell"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>selectCell</b>(x, y)
+					
+					</div>
+					<div class="description">
+						セルを選択します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>x</b>
+									
+								</dt>
+								<dd>x座標</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>y</b>
+									
+								</dt>
+								<dd>y座標</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="selectRange"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>selectRange</b>(x1, y1, x2, y2)
+					
+					</div>
+					<div class="description">
+						セル範囲を選択します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>x1</b>
+									
+								</dt>
+								<dd>x座標（始点）</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>y1</b>
+									
+								</dt>
+								<dd>y座標（始点）</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>x2</b>
+									
+								</dt>
+								<dd>x座標（終点）</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>y2</b>
+									
+								</dt>
+								<dd>y座標（終点）</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
 					<a name="setBackgroundColor"> </a>
 					<div class="fixedFont">
 					
@@ -968,6 +1127,246 @@ MadoJS
 									
 								</dt>
 								<dd>センターヘッダに設定する内容</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="setFontBold"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>setFontBold</b>(x, y, isBold)
+					
+					</div>
+					<div class="description">
+						セルのフォントを太字に設定または解除します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>x</b>
+									
+								</dt>
+								<dd>x座標</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>y</b>
+									
+								</dt>
+								<dd>y座標</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>isBold</b>
+									
+								</dt>
+								<dd>太字にするかどうか</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="setFontColor"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>setFontColor</b>(x, y, colorIndex)
+					
+					</div>
+					<div class="description">
+						セルのフォント色を設定します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>x</b>
+									
+								</dt>
+								<dd>x座標</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>y</b>
+									
+								</dt>
+								<dd>y座標</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>colorIndex</b>
+									
+								</dt>
+								<dd>カラーインデックス</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="setFontItalic"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>setFontItalic</b>(x, y, isItalic)
+					
+					</div>
+					<div class="description">
+						セルのフォントをイタリックに設定または解除します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>x</b>
+									
+								</dt>
+								<dd>x座標</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>y</b>
+									
+								</dt>
+								<dd>y座標</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>isItalic</b>
+									
+								</dt>
+								<dd>太字にするかどうか</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="setFontStrikethrough"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>setFontStrikethrough</b>(x, y, isStrikethrough)
+					
+					</div>
+					<div class="description">
+						セルのフォントに取消し線を設定または解除します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>x</b>
+									
+								</dt>
+								<dd>x座標</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>y</b>
+									
+								</dt>
+								<dd>y座標</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>isStrikethrough</b>
+									
+								</dt>
+								<dd>取消し線を設定するかどうか</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="setFontUnderline"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>setFontUnderline</b>(x, y, isUnderline)
+					
+					</div>
+					<div class="description">
+						セルのフォントに下線を設定または解除します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>x</b>
+									
+								</dt>
+								<dd>x座標</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>y</b>
+									
+								</dt>
+								<dd>y座標</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>isUnderline</b>
+									
+								</dt>
+								<dd>下線を設定するかどうか</dd>
 							
 							</dl>
 						
@@ -1304,7 +1703,7 @@ MadoJS
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Fri Feb 24 2012 14:19:48 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Thu Mar 01 2012 13:51:43 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

@@ -168,6 +168,11 @@ var ARGV = [];
   }
 }());
 
+/**
+ * スクリプトのフルパス
+ */
+var __FILE__ = WScript.ScriptFullName;
+
 // Global Functions
 /**
  * 指定したmsec(ミリ秒)スリープします。
@@ -4097,6 +4102,28 @@ ExcelSheet.prototype = {
    */
   selectRange: function(x1, y1, x2, y2) {
     this.sheetObj.Range(this.sheetObj.Cells(x1, y1), this.sheetObj.Cells(x2, y2)).Select();
+  },
+  /**
+   * セルにハイパーリンクを設定します。
+   * @param {Number} x x座標
+   * @param {Number} y y座標
+   * @param {String} address リンク先
+   * @param {String} displayText (オプション)表示文字列(初期値 リンク先)
+   */
+  addHyperLink: function(x, y, address, displayText) {
+    if(!displayText) {
+      displayText = address;
+    }
+    var anchor = this.sheetObj.Cells(x, y);
+    this.sheetObj.Hyperlinks.Add(anchor, address, "", address, displayText);
+  },
+  /**
+   * セルに設定されたハイパーリンクを削除します。
+   * @param {Number} x x座標
+   * @param {Number} y y座標
+   */
+  deleteHyperLink: function(x, y) {
+    this.sheetObj.Cells(x, y).Hyperlinks.Delete();
   }
 };
 /**

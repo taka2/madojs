@@ -10,6 +10,11 @@ var ARGV = [];
   }
 }());
 
+/**
+ * スクリプトのフルパス
+ */
+var __FILE__ = WScript.ScriptFullName;
+
 // Global Functions
 /**
  * 指定したmsec(ミリ秒)スリープします。

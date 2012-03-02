@@ -1,3 +1,23 @@
+// オリジナルのtoStringをorgToStringとして保存
+Array.prototype.orgToString = Array.prototype.toString;
+
+/**
+ * オブジェクトの値を表す文字列を返します。
+ * @return {String} オブジェクトの値を表す文字列
+ */
+Array.prototype.toString = function() {
+  var result = "[";
+  var length = this.length;
+  for(var i=0; i<length; i++) {
+    if(result !== "[") {
+      result += ", ";
+    }
+    result += this[i].toString();
+  }
+  result += "]";
+  return result;
+};
+
 /** 
  * 各要素に対してブロックを評価します。
  * @param {Function} block ブロック

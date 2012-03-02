@@ -186,13 +186,17 @@ var sleep = function(msec) {
  * 指定したfnがtrueを返すまで、msec(ミリ秒)間隔でfnを実行します。
  * @param {Number} msec スリープするミリ秒
  * @param {Function} fn 実行する関数
- * @param {Array} args 関数に渡す引数
+ * @param {Array} args (オプション)関数に渡す引数
  */
 var sleepif = function(msec, fn, args) {
+  if(!args) {
+    args = [];
+  }
   while(true) {
-    if(fn(args)) {
+    if(fn.apply({}, args)) {
       return true;
     }
+
     sleep(msec);
   }
 };
@@ -507,6 +511,26 @@ SpecialFolders.getStartup = function () {
 SpecialFolders.getTemplates = function () {
   return Const.WSHELL.SpecialFolders("Templates");
 };
+// オリジナルのtoStringをorgToStringとして保存
+Array.prototype.orgToString = Array.prototype.toString;
+
+/**
+ * オブジェクトの値を表す文字列を返します。
+ * @return {String} オブジェクトの値を表す文字列
+ */
+Array.prototype.toString = function() {
+  var result = "[";
+  var length = this.length;
+  for(var i=0; i<length; i++) {
+    if(result !== "[") {
+      result += ", ";
+    }
+    result += this[i].toString();
+  }
+  result += "]";
+  return result;
+};
+
 /** 
  * 各要素に対してブロックを評価します。
  * @param {Function} block ブロック
@@ -600,6 +624,34 @@ Date.prototype.getFormattedDate = function() {
   if (ss < 10) ss = "0" + ss;
   return yyyy + "/" + mm + "/" + dd + " " + hh + ":" + mi + ":" + ss;
 };
+/** 
+ * オブジェクトの値を表す文字列を返します。
+ * @return {String} オブジェクトの値を表す文字列
+ */
+Object.prototype.toString = function() {
+  var result = "{";
+  for(e in this) {
+    if(this.hasOwnProperty(e)) {
+      if(result !== "{") {
+        result += ", ";
+      }
+      result += '"' + e + '": ' + this[e].toString();
+    }
+  }
+  result += "}";
+  return result;
+};
+// オリジナルのtoStringをorgToStringとして保存
+String.prototype.orgToString = String.prototype.toString;
+
+/**
+ * オブジェクトの値を表す文字列を返します。
+ * @return {String} オブジェクトの値を表す文字列
+ */
+String.prototype.toString = function() {
+  return '"' + this.valueOf() + '"';
+};
+
 /** 
  * 文字列先頭と末尾のスペースをトリムした文字列を生成して返します。
  * @return {String} トリムした文字列
@@ -4284,4 +4336,32 @@ Shell.zip = function(zipFileTo, targetFolder) {
       break;
     }
   }
+};
+/**
+ * インスタンス化しません。
+ * @class JSONの解析(parse)と、文字列化(stringify)をサポートするクラス
+<pre class = "code">
+使用例：
+JSON.parse("[1,2,3]");
+JSON.stringify([1,2,3]);
+</pre>
+ */
+var JSON = {};
+
+/**
+ * 指定した文字列をオブジェクトを解析してオブジェクトとして返します。
+ * @param {String} str JSON文字列
+ * @return {Object} 解析結果のオブジェクト
+ */
+JSON.parse = function(str) {
+  return eval('(' + str + ')');
+};
+
+/**
+ * 指定したオブジェクトを文字列として返します。
+ * @param {String} obj オブジェクト
+ * @return {Object} 文字列化したオブジェクト
+ */
+JSON.stringify = function(obj) {
+  return obj.toString();
 };

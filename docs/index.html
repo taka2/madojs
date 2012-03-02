@@ -235,9 +235,13 @@ MadoJS
 	
 	<li><a href="symbols/HTTP.html">HTTP</a></li>
 	
+	<li><a href="symbols/JSON.html">JSON</a></li>
+	
 	<li><a href="symbols/KeySender.html">KeySender</a></li>
 	
 	<li><a href="symbols/LogEvent.html">LogEvent</a></li>
+	
+	<li><a href="symbols/Object.html">Object</a></li>
 	
 	<li><a href="symbols/Process.html">Process</a></li>
 	
@@ -475,6 +479,17 @@ HTTP.start("www.yahoo.co.jp", 80, function(http) {
 			<hr />
 			
 			<div>
+				<h2><a href="symbols/JSON.html">JSON</a></h2>
+				JSONの解析(parse)と、文字列化(stringify)をサポートするクラス
+<pre class = "code">
+使用例：
+JSON.parse("[1,2,3]");
+JSON.stringify([1,2,3]);
+</pre>
+			</div>
+			<hr />
+			
+			<div>
 				<h2><a href="symbols/KeySender.html">KeySender</a></h2>
 				連続で自動的にキー送信を行う
 <pre class = "code">
@@ -507,6 +522,12 @@ LogEvent.information("hoge4");
 LogEvent.auditSuccess("hoge5");
 LogEvent.auditFailure("hoge6");
 </pre>
+			</div>
+			<hr />
+			
+			<div>
+				<h2><a href="symbols/Object.html">Object</a></h2>
+				
 			</div>
 			<hr />
 			
@@ -570,7 +591,7 @@ print(SpecialFolders.getDesktop());
 		</div>
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Thu Mar 01 2012 19:05:14 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Fri Mar 02 2012 11:54:18 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

@@ -10,6 +10,7 @@ copy /B mado-debug.js+src\specialfolders.js mado-debug.js
 REM Language Extension
 copy /B mado-debug.js+src\array.js mado-debug.js
 copy /B mado-debug.js+src\date.js mado-debug.js
+copy /B mado-debug.js+src\object.js mado-debug.js
 copy /B mado-debug.js+src\string.js mado-debug.js
 
 REM File
@@ -40,6 +41,7 @@ copy /B mado-debug.js+src\registry.js mado-debug.js
 copy /B mado-debug.js+src\excel.js mado-debug.js
 copy /B mado-debug.js+src\logevent.js mado-debug.js
 copy /B mado-debug.js+src\shell.js mado-debug.js
+copy /B mado-debug.js+src\json.js mado-debug.js
 
 REM jsƒtƒ@ƒCƒ‹‚ğˆ³k
 java -jar yuicompressor-2.4.2\build\yuicompressor-2.4.2.jar --type js -o mado.js mado-debug.js

@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>MadoJS リファレンス - FTP</title>
+		<title>MadoJS リファレンス - JSON</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -267,7 +267,7 @@ MadoJS
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				FTP クラス 
+				JSON クラス 
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -275,20 +275,21 @@ MadoJS
 				
 				
 			
-				FTP通信に関する機能を提供するクラス
+				JSONの解析(parse)と、文字列化(stringify)をサポートするクラス
 <pre class = "code">
 使用例：
-FTP.get("ftp.example.com", "user", "password", "/path/to/file", "test.log");
+JSON.parse("[1,2,3]");
+JSON.stringify([1,2,3]);
 </pre>
 				
 				
-					<br /><i></i> <a href="../symbols/src/src_ftp.js.html">ftp.js</a>で定義されています。
+					<br /><i></i> <a href="../symbols/src/src_json.js.html">json.js</a>で定義されています。
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class FTP.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class JSON.">
 				<caption>クラス 概要</caption>
 				<thead>
 					<tr>
@@ -301,7 +302,7 @@ FTP.get("ftp.example.com", "user", "password", "/path/to/file", "test.log");
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/FTP.html#constructor">FTP</a></b>()
+								<b><a href="../symbols/JSON.html#constructor">JSON</a></b>()
 							</div>
 							<div class="description">インスタンス化しません。</div>
 						</td>
@@ -312,50 +313,12 @@ FTP.get("ftp.example.com", "user", "password", "/path/to/file", "test.log");
 
 <!-- ============================== properties summary ===================== -->
 			
-				
-				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class FTP.">
-					<caption>フィールドの概要</caption>
-					<thead>
-						<tr>
-							<th scope="col">フィールド</th>
-							<th scope="col">フィールド名と説明</th>
-						</tr>
-					</thead>
-					<tbody>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								FTP.<b><a href="../symbols/FTP.html#.MODE_ASCII">MODE_ASCII</a></b>
-								</div>
-								<div class="description">FTP転送モードの定数：ASCIIモード(1)</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								FTP.<b><a href="../symbols/FTP.html#.MODE_BINARY">MODE_BINARY</a></b>
-								</div>
-								<div class="description">FTP転送モードの定数：BINARYモード(2)</div>
-							</td>
-						</tr>
-					
-					</tbody>
-				</table>
-				
-				
-				
-			
 
 <!-- ============================== methods summary ======================== -->
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class FTP.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class JSON.">
 					<caption>メソッドの概要</caption>
 					<thead>
 						<tr>
@@ -368,18 +331,18 @@ FTP.get("ftp.example.com", "user", "password", "/path/to/file", "test.log");
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">FTP.<b><a href="../symbols/FTP.html#.get">get</a></b>(host, userId, password, mode, path, fileName)
+								<div class="fixedFont">JSON.<b><a href="../symbols/JSON.html#.parse">parse</a></b>(str)
 								</div>
-								<div class="description">指定したパラメータのファイルをFTPで取得します。</div>
+								<div class="description">指定した文字列をオブジェクトを解析してオブジェクトとして返します。</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">FTP.<b><a href="../symbols/FTP.html#.put">put</a></b>(host, userId, password, mode, path, fileName)
+								<div class="fixedFont">JSON.<b><a href="../symbols/JSON.html#.stringify">stringify</a></b>(obj)
 								</div>
-								<div class="description">指定したパラメータのファイルをFTPでPUTします。</div>
+								<div class="description">指定したオブジェクトを文字列として返します。</div>
 							</td>
 						</tr>
 					
@@ -400,7 +363,7 @@ FTP.get("ftp.example.com", "user", "password", "/path/to/file", "test.log");
 				</div>
 				
 				<div class="fixedFont">
-						<b>FTP</b>()
+						<b>JSON</b>()
 				</div>
 				
 				<div class="description">
@@ -424,55 +387,6 @@ FTP.get("ftp.example.com", "user", "password", "/path/to/file", "test.log");
 
 <!-- ============================== field details ========================== -->		
 			
-				<div class="sectionTitle">
-					フィールドの詳細
-				</div>
-				
-					<a name=".MODE_ASCII"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					
-					<span class="light">FTP.</span><b>MODE_ASCII</b>
-					
-					</div>
-					<div class="description">
-						FTP転送モードの定数：ASCIIモード(1)
-						
-						
-					</div>
-					
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name=".MODE_BINARY"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					
-					<span class="light">FTP.</span><b>MODE_BINARY</b>
-					
-					</div>
-					<div class="description">
-						FTP転送モードの定数：BINARYモード(2)
-						
-						
-					</div>
-					
-					
-
-						
-						
-						
-						
-
-					
-				
-			
 
 <!-- ============================== method details ========================= -->		
 			
@@ -480,15 +394,15 @@ FTP.get("ftp.example.com", "user", "password", "/path/to/file", "test.log");
 					メソッドの詳細
 				</div>
 				
-					<a name=".get"> </a>
+					<a name=".parse"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					
-					<span class="light">FTP.</span><b>get</b>(host, userId, password, mode, path, fileName)
+					<span class="light">{<a href="../symbols/Object.html">Object</a>}</span>
+					<span class="light">JSON.</span><b>parse</b>(str)
 					
 					</div>
 					<div class="description">
-						指定したパラメータのファイルをFTPで取得します。
+						指定した文字列をオブジェクトを解析してオブジェクトとして返します。
 						
 						
 					</div>
@@ -500,61 +414,38 @@ FTP.get("ftp.example.com", "user", "password", "/path/to/file", "test.log");
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>host</b>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>str</b>
 									
 								</dt>
-								<dd>FTPサーバ</dd>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>userId</b>
-									
-								</dt>
-								<dd>FTPユーザID</dd>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>password</b>
-									
-								</dt>
-								<dd>FTPパスワード</dd>
-							
-								<dt>
-									<span class="light fixedFont">{Number}</span> <b>mode</b>
-									
-								</dt>
-								<dd>FTP転送モード</dd>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>path</b>
-									
-								</dt>
-								<dd>GETするファイルのあるパス</dd>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>fileName</b>
-									
-								</dt>
-								<dd>GETするファイル名</dd>
+								<dd>JSON文字列</dd>
 							
 							</dl>
 						
 						
 						
 						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Object.html">Object</a>}</span> 解析結果のオブジェクト</dd>
+							
+							</dl>
 						
 						
 						
 
 					<hr />
 				
-					<a name=".put"> </a>
+					<a name=".stringify"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					
-					<span class="light">FTP.</span><b>put</b>(host, userId, password, mode, path, fileName)
+					<span class="light">{<a href="../symbols/Object.html">Object</a>}</span>
+					<span class="light">JSON.</span><b>stringify</b>(obj)
 					
 					</div>
 					<div class="description">
-						指定したパラメータのファイルをFTPでPUTします。
+						指定したオブジェクトを文字列として返します。
 						
 						
 					</div>
@@ -566,46 +457,23 @@ FTP.get("ftp.example.com", "user", "password", "/path/to/file", "test.log");
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>host</b>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>obj</b>
 									
 								</dt>
-								<dd>FTPサーバ</dd>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>userId</b>
-									
-								</dt>
-								<dd>FTPユーザID</dd>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>password</b>
-									
-								</dt>
-								<dd>FTPパスワード</dd>
-							
-								<dt>
-									<span class="light fixedFont">{Number}</span> <b>mode</b>
-									
-								</dt>
-								<dd>FTP転送モード</dd>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>path</b>
-									
-								</dt>
-								<dd>PUTする先のパス</dd>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>fileName</b>
-									
-								</dt>
-								<dd>PUTするファイル名</dd>
+								<dd>オブジェクト</dd>
 							
 							</dl>
 						
 						
 						
 						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Object.html">Object</a>}</span> 文字列化したオブジェクト</dd>
+							
+							</dl>
 						
 						
 						

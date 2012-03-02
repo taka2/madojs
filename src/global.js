@@ -28,13 +28,17 @@ var sleep = function(msec) {
  * 指定したfnがtrueを返すまで、msec(ミリ秒)間隔でfnを実行します。
  * @param {Number} msec スリープするミリ秒
  * @param {Function} fn 実行する関数
- * @param {Array} args 関数に渡す引数
+ * @param {Array} args (オプション)関数に渡す引数
  */
 var sleepif = function(msec, fn, args) {
+  if(!args) {
+    args = [];
+  }
   while(true) {
-    if(fn(args)) {
+    if(fn.apply({}, args)) {
       return true;
     }
+
     sleep(msec);
   }
 };

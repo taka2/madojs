@@ -1,3 +1,14 @@
+// オリジナルのtoStringをorgToStringとして保存
+String.prototype.orgToString = String.prototype.toString;
+
+/**
+ * オブジェクトの値を表す文字列を返します。
+ * @return {String} オブジェクトの値を表す文字列
+ */
+String.prototype.toString = function() {
+  return '"' + this.valueOf() + '"';
+};
+
 /** 
  * 文字列先頭と末尾のスペースをトリムした文字列を生成して返します。
  * @return {String} トリムした文字列

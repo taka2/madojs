@@ -3,7 +3,7 @@ var currentDateYYYYMMDD = new Date().getYYYYMMDD();
 
 // ATND APIで本日のイベントを検索
 HTTP.start("api.atnd.org", 80, function(http) {
-  var atndResponse = eval('(' + http.get("/events/?ymd=" + currentDateYYYYMMDD + "&count=100&format=json") + ')');
+  var atndResponse = JSON.parse(http.get("/events/?ymd=" + currentDateYYYYMMDD + "&count=100&format=json"));
   var resultCount = atndResponse.results_returned;
   var outputFileName = File.realpath("TodaysEvents.xls", Dir.getParentDir(__FILE__));
 

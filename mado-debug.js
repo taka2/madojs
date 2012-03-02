@@ -3945,21 +3945,36 @@ ExcelSheet.prototype = {
   },
   /**
    * セルに値を設定します。
-   * @param {Number} x x座標
-   * @param {Number} y y座標
+   * @param {Number} row 行
+   * @param {Number} col 列
    * @param {Object} value 設定する値
    */
-  setValue: function(x, y, value) {
-    this.sheetObj.Cells(x, y).Value = value;
+  setValue: function(row, col, value) {
+    this.sheetObj.Cells(row, col).Value = value;
+  },
+  /**
+   * セルに値を設定します。
+   * @param {Number} row 行
+   * @param {Array} value 設定する値
+   * @param {Number} coloffset (オプション)列の開始位置(初期値 先頭列)
+   */
+  setArrayValue: function(row, value, coloffset) {
+    if(!coloffset) {
+      coloffset = 1;
+    }
+    var valueLength = value.length;
+    for(var i=0; i<valueLength; i++) {
+      this.sheetObj.Cells(row, i+coloffset).Value = value[i];
+    }
   },
   /**
    * セルの値を取得します。
-   * @param {Number} x x座標
-   * @param {Number} y y座標
+   * @param {Number} row 行
+   * @param {Number} col 列
    * @return {Object} セルの値
    */
-  getValue: function(x, y) {
-    return this.sheetObj.Cells(x, y).Value;
+  getValue: function(row, col) {
+    return this.sheetObj.Cells(row, col).Value;
   },
   /**
    * ラップしている生のWorksheetオブジェクトを返します。<br/>
@@ -3991,24 +4006,24 @@ ExcelSheet.prototype = {
   },
   /**
    * セルの書式を設定します。
-   * @param {Number} x x座標
-   * @param {Number} y y座標
+   * @param {Number} row 行
+   * @param {Number} col 列
    * @param {String} format 書式
    */
-  setFormat: function(x, y, format) {
-    this.sheetObj.Cells(x, y).NumberFormatLocal = format;
+  setFormat: function(row, col, format) {
+    this.sheetObj.Cells(row, col).NumberFormatLocal = format;
   },
   /**
    * セルにコメントを追加します。
-   * @param {Number} x x座標
-   * @param {Number} y y座標
+   * @param {Number} row 行
+   * @param {Number} col 列
    * @param {String} comment コメント
    * @param {Boolean} visible コメントを表示するかどうか
    */
-  addComment: function(x, y, comment, visible) {
-    this.sheetObj.Cells(x, y).AddComment();
-    this.sheetObj.Cells(x, y).Comment.Visible = visible;
-    this.sheetObj.Cells(x, y).Comment.Text(comment);
+  addComment: function(row, col, comment, visible) {
+    this.sheetObj.Cells(row, col).AddComment();
+    this.sheetObj.Cells(row, col).Comment.Visible = visible;
+    this.sheetObj.Cells(row, col).Comment.Text(comment);
   },
   /**
    * シートをアクティブ化します。
@@ -4077,105 +4092,105 @@ ExcelSheet.prototype = {
   },
   /**
    * セル値をクリップボードへコピーします。
-   * @param {Number} x x座標
-   * @param {Number} y y座標
+   * @param {Number} row 行
+   * @param {Number} col 列
    */
-  copy: function(x, y) {
-    this.sheetObj.Cells(x, y).Copy();
+  copy: function(row, col) {
+    this.sheetObj.Cells(row, col).Copy();
   },
   /**
    * セルの背景色を設定します。
-   * @param {Number} x x座標
-   * @param {Number} y y座標
+   * @param {Number} row 行
+   * @param {Number} col 列
    * @param {Number} colorIndex カラーインデックス
    */
-  setBackgroundColor: function(x, y, colorIndex) {
-    this.sheetObj.Cells(x, y).Interior.ColorIndex = colorIndex;
+  setBackgroundColor: function(row, col, colorIndex) {
+    this.sheetObj.Cells(row, col).Interior.ColorIndex = colorIndex;
   },
   /**
    * セルのフォント色を設定します。
-   * @param {Number} x x座標
-   * @param {Number} y y座標
+   * @param {Number} row 行
+   * @param {Number} col 列
    * @param {Number} colorIndex カラーインデックス
    */
-  setFontColor: function(x, y, colorIndex) {
-    this.sheetObj.Cells(x, y).Font.ColorIndex = colorIndex;
+  setFontColor: function(row, col, colorIndex) {
+    this.sheetObj.Cells(row, col).Font.ColorIndex = colorIndex;
   },
   /**
    * セルのフォントを太字に設定または解除します。
-   * @param {Number} x x座標
-   * @param {Number} y y座標
+   * @param {Number} row 行
+   * @param {Number} col 列
    * @param {Number} isBold 太字にするかどうか
    */
-  setFontBold: function(x, y, isBold) {
-    this.sheetObj.Cells(x, y).Font.Bold = isBold;
+  setFontBold: function(row, col, isBold) {
+    this.sheetObj.Cells(row, col).Font.Bold = isBold;
   },
   /**
    * セルのフォントをイタリックに設定または解除します。
-   * @param {Number} x x座標
-   * @param {Number} y y座標
+   * @param {Number} row 行
+   * @param {Number} col 列
    * @param {Number} isItalic 太字にするかどうか
    */
-  setFontItalic: function(x, y, isItalic) {
-    this.sheetObj.Cells(x, y).Font.Italic = isItalic;
+  setFontItalic: function(row, col, isItalic) {
+    this.sheetObj.Cells(row, col).Font.Italic = isItalic;
   },
   /**
    * セルのフォントに取消し線を設定または解除します。
-   * @param {Number} x x座標
-   * @param {Number} y y座標
+   * @param {Number} row 行
+   * @param {Number} col 列
    * @param {Number} isStrikethrough 取消し線を設定するかどうか
    */
-  setFontStrikethrough: function(x, y, isStrikethrough) {
-    this.sheetObj.Cells(x, y).Font.Strikethrough = isStrikethrough;
+  setFontStrikethrough: function(row, col, isStrikethrough) {
+    this.sheetObj.Cells(row, col).Font.Strikethrough = isStrikethrough;
   },
   /**
    * セルのフォントに下線を設定または解除します。
-   * @param {Number} x x座標
-   * @param {Number} y y座標
+   * @param {Number} row 行
+   * @param {Number} col 列
    * @param {Number} isUnderline 下線を設定するかどうか
    */
-  setFontUnderline: function(x, y, isUnderline) {
-    this.sheetObj.Cells(x, y).Font.Underline = isUnderline;
+  setFontUnderline: function(row, col, isUnderline) {
+    this.sheetObj.Cells(row, col).Font.Underline = isUnderline;
   },
   /**
    * セルを選択します。
-   * @param {Number} x x座標
-   * @param {Number} y y座標
+   * @param {Number} row 行
+   * @param {Number} col 列
    */
-  selectCell: function(x, y) {
-    this.sheetObj.Cells(x, y).Select();
+  selectCell: function(row, col) {
+    this.sheetObj.Cells(row, col).Select();
   },
   /**
    * セル範囲を選択します。
-   * @param {Number} x1 x座標（始点）
-   * @param {Number} y1 y座標（始点）
-   * @param {Number} x2 x座標（終点）
-   * @param {Number} y2 y座標（終点）
+   * @param {Number} row1 行（始点）
+   * @param {Number} col1 列（始点）
+   * @param {Number} row2 行（終点）
+   * @param {Number} col2 列（終点）
    */
-  selectRange: function(x1, y1, x2, y2) {
-    this.sheetObj.Range(this.sheetObj.Cells(x1, y1), this.sheetObj.Cells(x2, y2)).Select();
+  selectRange: function(row1, col1, row2, col2) {
+    this.sheetObj.Range(this.sheetObj.Cells(row1, col1), this.sheetObj.Cells(row2, col2)).Select();
   },
   /**
    * セルにハイパーリンクを設定します。
-   * @param {Number} x x座標
-   * @param {Number} y y座標
+   * @param {Number} row 行
+   * @param {Number} col 列
    * @param {String} address リンク先
    * @param {String} displayText (オプション)表示文字列(初期値 リンク先)
    */
-  addHyperLink: function(x, y, address, displayText) {
+  addHyperLink: function(row, col, address, displayText) {
     if(!displayText) {
       displayText = address;
     }
-    var anchor = this.sheetObj.Cells(x, y);
+    var anchor = this.sheetObj.Cells(row, col);
     this.sheetObj.Hyperlinks.Add(anchor, address, "", address, displayText);
   },
   /**
    * セルに設定されたハイパーリンクを削除します。
-   * @param {Number} x x座標
-   * @param {Number} y y座標
+   * @param {Number} row 行
+   * @param {Number} col 列
    */
-  deleteHyperLink: function(x, y) {
-    this.sheetObj.Cells(x, y).Hyperlinks.Delete();
+  deleteHyperLink: function(row, col) {
+    this.sheetObj.Cells(row, col).Hyperlinks.Delete();
   }
 };
 /**

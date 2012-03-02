@@ -1,25 +1,26 @@
 // 本日日付をYYYYMMDD形式で取得
 var currentDateYYYYMMDD = new Date().getYYYYMMDD();
 
-// ATND APIで本日のイベントを検索
 HTTP.start("api.atnd.org", 80, function(http) {
+  // ATND APIで本日のイベントを検索
   var atndResponse = JSON.parse(http.get("/events/?ymd=" + currentDateYYYYMMDD + "&count=100&format=json"));
   var resultCount = atndResponse.results_returned;
-  var outputFileName = File.realpath("TodaysEvents.xls", Dir.getParentDir(__FILE__));
+
+  // 出力ファイル名
+  var outputName = "ATND検索結果" + currentDateYYYYMMDD;
+  var outputFileName = File.realpath(outputName + ".xls", Dir.getParentDir(__FILE__));
 
   Excel.create(function(excel) {
-    var sheet1 = excel.getSheetByIndex(0);
+    // シートの取得
+    var sheet1 = excel.addSheet(outputName);
 
     // ヘッダの書き出し
-    sheet1.setValue(1, 1, "イベントID");
-    sheet1.setValue(1, 2, "タイトル");
-    sheet1.setValue(1, 3, "開始日時");
-    sheet1.setValue(1, 4, "終了日時");
-    sheet1.setValue(1, 5, "会場");
+    sheet1.setArrayValue(1, ["イベントID", "タイトル", "開始日時", "終了日時", "会場"]);
 
     // データの書き出し
     var currentRow = 2;
     for(var i=0; i<resultCount; i++) {
+      // レスポンスデータの整形など
       var eventObj = atndResponse.events[i];
       var no = i+1;
       var eventUrl = eventObj.event_url;
@@ -37,16 +38,15 @@ HTTP.start("api.atnd.org", 80, function(http) {
       }
       var place = eventObj.place;
 
+      // セルへの書き込み
       sheet1.addHyperLink(currentRow, 1, eventUrl, eventId+"");
-      sheet1.setValue(currentRow, 2, title);
-      sheet1.setValue(currentRow, 3, startedAt);
-      sheet1.setValue(currentRow, 4, endedAt);
-      sheet1.setValue(currentRow, 5, place);
+      sheet1.setArrayValue(currentRow, [title, startedAt, endedAt, place], 2);
 
       currentRow++;
     }
 
-    // 各種調整
+    // Excelシートの各種調整
+    excel.removeSheets(3);
     for(var i=1; i<=5; i++) {
       sheet1.setBackgroundColor(1, i, Excel.COLOR_INDEX_37);
     }

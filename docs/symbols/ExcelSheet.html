@@ -335,7 +335,7 @@ MadoJS
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#addComment">addComment</a></b>(x, y, comment, visible)
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#addComment">addComment</a></b>(row, col, comment, visible)
 								</div>
 								<div class="description">セルにコメントを追加します。</div>
 							</td>
@@ -344,7 +344,7 @@ MadoJS
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#addHyperLink">addHyperLink</a></b>(x, y, address, displayText)
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#addHyperLink">addHyperLink</a></b>(row, col, address, displayText)
 								</div>
 								<div class="description">セルにハイパーリンクを設定します。</div>
 							</td>
@@ -362,7 +362,7 @@ MadoJS
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#copy">copy</a></b>(x, y)
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#copy">copy</a></b>(row, col)
 								</div>
 								<div class="description">セル値をクリップボードへコピーします。</div>
 							</td>
@@ -371,7 +371,7 @@ MadoJS
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#deleteHyperLink">deleteHyperLink</a></b>(x, y)
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#deleteHyperLink">deleteHyperLink</a></b>(row, col)
 								</div>
 								<div class="description">セルに設定されたハイパーリンクを削除します。</div>
 							</td>
@@ -407,7 +407,7 @@ MadoJS
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#getValue">getValue</a></b>(x, y)
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#getValue">getValue</a></b>(row, col)
 								</div>
 								<div class="description">セルの値を取得します。</div>
 							</td>
@@ -425,7 +425,7 @@ MadoJS
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#selectCell">selectCell</a></b>(x, y)
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#selectCell">selectCell</a></b>(row, col)
 								</div>
 								<div class="description">セルを選択します。</div>
 							</td>
@@ -434,7 +434,7 @@ MadoJS
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#selectRange">selectRange</a></b>(x1, y1, x2, y2)
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#selectRange">selectRange</a></b>(row1, col1, row2, col2)
 								</div>
 								<div class="description">セル範囲を選択します。</div>
 							</td>
@@ -443,7 +443,16 @@ MadoJS
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#setBackgroundColor">setBackgroundColor</a></b>(x, y, colorIndex)
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#setArrayValue">setArrayValue</a></b>(row, value, coloffset)
+								</div>
+								<div class="description">セルに値を設定します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#setBackgroundColor">setBackgroundColor</a></b>(row, col, colorIndex)
 								</div>
 								<div class="description">セルの背景色を設定します。</div>
 							</td>
@@ -470,7 +479,7 @@ MadoJS
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#setFontBold">setFontBold</a></b>(x, y, isBold)
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#setFontBold">setFontBold</a></b>(row, col, isBold)
 								</div>
 								<div class="description">セルのフォントを太字に設定または解除します。</div>
 							</td>
@@ -479,7 +488,7 @@ MadoJS
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#setFontColor">setFontColor</a></b>(x, y, colorIndex)
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#setFontColor">setFontColor</a></b>(row, col, colorIndex)
 								</div>
 								<div class="description">セルのフォント色を設定します。</div>
 							</td>
@@ -488,7 +497,7 @@ MadoJS
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#setFontItalic">setFontItalic</a></b>(x, y, isItalic)
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#setFontItalic">setFontItalic</a></b>(row, col, isItalic)
 								</div>
 								<div class="description">セルのフォントをイタリックに設定または解除します。</div>
 							</td>
@@ -497,7 +506,7 @@ MadoJS
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#setFontStrikethrough">setFontStrikethrough</a></b>(x, y, isStrikethrough)
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#setFontStrikethrough">setFontStrikethrough</a></b>(row, col, isStrikethrough)
 								</div>
 								<div class="description">セルのフォントに取消し線を設定または解除します。</div>
 							</td>
@@ -506,7 +515,7 @@ MadoJS
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#setFontUnderline">setFontUnderline</a></b>(x, y, isUnderline)
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#setFontUnderline">setFontUnderline</a></b>(row, col, isUnderline)
 								</div>
 								<div class="description">セルのフォントに下線を設定または解除します。</div>
 							</td>
@@ -515,7 +524,7 @@ MadoJS
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#setFormat">setFormat</a></b>(x, y, format)
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#setFormat">setFormat</a></b>(row, col, format)
 								</div>
 								<div class="description">セルの書式を設定します。</div>
 							</td>
@@ -569,7 +578,7 @@ MadoJS
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#setValue">setValue</a></b>(x, y, value)
+								<div class="fixedFont"><b><a href="../symbols/ExcelSheet.html#setValue">setValue</a></b>(row, col, value)
 								</div>
 								<div class="description">セルに値を設定します。</div>
 							</td>
@@ -672,7 +681,7 @@ MadoJS
 					<div class="fixedFont">
 					
 					
-					<b>addComment</b>(x, y, comment, visible)
+					<b>addComment</b>(row, col, comment, visible)
 					
 					</div>
 					<div class="description">
@@ -688,16 +697,16 @@ MadoJS
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>x</b>
+									<span class="light fixedFont">{Number}</span> <b>row</b>
 									
 								</dt>
-								<dd>x座標</dd>
+								<dd>行</dd>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>y</b>
+									<span class="light fixedFont">{Number}</span> <b>col</b>
 									
 								</dt>
-								<dd>y座標</dd>
+								<dd>列</dd>
 							
 								<dt>
 									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>comment</b>
@@ -726,7 +735,7 @@ MadoJS
 					<div class="fixedFont">
 					
 					
-					<b>addHyperLink</b>(x, y, address, displayText)
+					<b>addHyperLink</b>(row, col, address, displayText)
 					
 					</div>
 					<div class="description">
@@ -742,16 +751,16 @@ MadoJS
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>x</b>
+									<span class="light fixedFont">{Number}</span> <b>row</b>
 									
 								</dt>
-								<dd>x座標</dd>
+								<dd>行</dd>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>y</b>
+									<span class="light fixedFont">{Number}</span> <b>col</b>
 									
 								</dt>
-								<dd>y座標</dd>
+								<dd>列</dd>
 							
 								<dt>
 									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>address</b>
@@ -805,7 +814,7 @@ MadoJS
 					<div class="fixedFont">
 					
 					
-					<b>copy</b>(x, y)
+					<b>copy</b>(row, col)
 					
 					</div>
 					<div class="description">
@@ -821,16 +830,16 @@ MadoJS
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>x</b>
+									<span class="light fixedFont">{Number}</span> <b>row</b>
 									
 								</dt>
-								<dd>x座標</dd>
+								<dd>行</dd>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>y</b>
+									<span class="light fixedFont">{Number}</span> <b>col</b>
 									
 								</dt>
-								<dd>y座標</dd>
+								<dd>列</dd>
 							
 							</dl>
 						
@@ -847,7 +856,7 @@ MadoJS
 					<div class="fixedFont">
 					
 					
-					<b>deleteHyperLink</b>(x, y)
+					<b>deleteHyperLink</b>(row, col)
 					
 					</div>
 					<div class="description">
@@ -863,16 +872,16 @@ MadoJS
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>x</b>
+									<span class="light fixedFont">{Number}</span> <b>row</b>
 									
 								</dt>
-								<dd>x座標</dd>
+								<dd>行</dd>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>y</b>
+									<span class="light fixedFont">{Number}</span> <b>col</b>
 									
 								</dt>
-								<dd>y座標</dd>
+								<dd>列</dd>
 							
 							</dl>
 						
@@ -971,7 +980,7 @@ MadoJS
 					<div class="fixedFont">
 					
 					<span class="light">{<a href="../symbols/Object.html">Object</a>}</span>
-					<b>getValue</b>(x, y)
+					<b>getValue</b>(row, col)
 					
 					</div>
 					<div class="description">
@@ -987,16 +996,16 @@ MadoJS
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>x</b>
+									<span class="light fixedFont">{Number}</span> <b>row</b>
 									
 								</dt>
-								<dd>x座標</dd>
+								<dd>行</dd>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>y</b>
+									<span class="light fixedFont">{Number}</span> <b>col</b>
 									
 								</dt>
-								<dd>y座標</dd>
+								<dd>列</dd>
 							
 							</dl>
 						
@@ -1045,7 +1054,7 @@ MadoJS
 					<div class="fixedFont">
 					
 					
-					<b>selectCell</b>(x, y)
+					<b>selectCell</b>(row, col)
 					
 					</div>
 					<div class="description">
@@ -1061,16 +1070,16 @@ MadoJS
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>x</b>
+									<span class="light fixedFont">{Number}</span> <b>row</b>
 									
 								</dt>
-								<dd>x座標</dd>
+								<dd>行</dd>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>y</b>
+									<span class="light fixedFont">{Number}</span> <b>col</b>
 									
 								</dt>
-								<dd>y座標</dd>
+								<dd>列</dd>
 							
 							</dl>
 						
@@ -1087,7 +1096,7 @@ MadoJS
 					<div class="fixedFont">
 					
 					
-					<b>selectRange</b>(x1, y1, x2, y2)
+					<b>selectRange</b>(row1, col1, row2, col2)
 					
 					</div>
 					<div class="description">
@@ -1103,28 +1112,76 @@ MadoJS
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>x1</b>
+									<span class="light fixedFont">{Number}</span> <b>row1</b>
 									
 								</dt>
-								<dd>x座標（始点）</dd>
+								<dd>行（始点）</dd>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>y1</b>
+									<span class="light fixedFont">{Number}</span> <b>col1</b>
 									
 								</dt>
-								<dd>y座標（始点）</dd>
+								<dd>列（始点）</dd>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>x2</b>
+									<span class="light fixedFont">{Number}</span> <b>row2</b>
 									
 								</dt>
-								<dd>x座標（終点）</dd>
+								<dd>行（終点）</dd>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>y2</b>
+									<span class="light fixedFont">{Number}</span> <b>col2</b>
 									
 								</dt>
-								<dd>y座標（終点）</dd>
+								<dd>列（終点）</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="setArrayValue"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>setArrayValue</b>(row, value, coloffset)
+					
+					</div>
+					<div class="description">
+						セルに値を設定します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>row</b>
+									
+								</dt>
+								<dd>行</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/Array.html">Array</a>}</span> <b>value</b>
+									
+								</dt>
+								<dd>設定する値</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>coloffset</b>
+									
+								</dt>
+								<dd>(オプション)列の開始位置(初期値 先頭列)</dd>
 							
 							</dl>
 						
@@ -1141,7 +1198,7 @@ MadoJS
 					<div class="fixedFont">
 					
 					
-					<b>setBackgroundColor</b>(x, y, colorIndex)
+					<b>setBackgroundColor</b>(row, col, colorIndex)
 					
 					</div>
 					<div class="description">
@@ -1157,16 +1214,16 @@ MadoJS
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>x</b>
+									<span class="light fixedFont">{Number}</span> <b>row</b>
 									
 								</dt>
-								<dd>x座標</dd>
+								<dd>行</dd>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>y</b>
+									<span class="light fixedFont">{Number}</span> <b>col</b>
 									
 								</dt>
-								<dd>y座標</dd>
+								<dd>列</dd>
 							
 								<dt>
 									<span class="light fixedFont">{Number}</span> <b>colorIndex</b>
@@ -1261,7 +1318,7 @@ MadoJS
 					<div class="fixedFont">
 					
 					
-					<b>setFontBold</b>(x, y, isBold)
+					<b>setFontBold</b>(row, col, isBold)
 					
 					</div>
 					<div class="description">
@@ -1277,16 +1334,16 @@ MadoJS
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>x</b>
+									<span class="light fixedFont">{Number}</span> <b>row</b>
 									
 								</dt>
-								<dd>x座標</dd>
+								<dd>行</dd>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>y</b>
+									<span class="light fixedFont">{Number}</span> <b>col</b>
 									
 								</dt>
-								<dd>y座標</dd>
+								<dd>列</dd>
 							
 								<dt>
 									<span class="light fixedFont">{Number}</span> <b>isBold</b>
@@ -1309,7 +1366,7 @@ MadoJS
 					<div class="fixedFont">
 					
 					
-					<b>setFontColor</b>(x, y, colorIndex)
+					<b>setFontColor</b>(row, col, colorIndex)
 					
 					</div>
 					<div class="description">
@@ -1325,16 +1382,16 @@ MadoJS
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>x</b>
+									<span class="light fixedFont">{Number}</span> <b>row</b>
 									
 								</dt>
-								<dd>x座標</dd>
+								<dd>行</dd>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>y</b>
+									<span class="light fixedFont">{Number}</span> <b>col</b>
 									
 								</dt>
-								<dd>y座標</dd>
+								<dd>列</dd>
 							
 								<dt>
 									<span class="light fixedFont">{Number}</span> <b>colorIndex</b>
@@ -1357,7 +1414,7 @@ MadoJS
 					<div class="fixedFont">
 					
 					
-					<b>setFontItalic</b>(x, y, isItalic)
+					<b>setFontItalic</b>(row, col, isItalic)
 					
 					</div>
 					<div class="description">
@@ -1373,16 +1430,16 @@ MadoJS
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>x</b>
+									<span class="light fixedFont">{Number}</span> <b>row</b>
 									
 								</dt>
-								<dd>x座標</dd>
+								<dd>行</dd>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>y</b>
+									<span class="light fixedFont">{Number}</span> <b>col</b>
 									
 								</dt>
-								<dd>y座標</dd>
+								<dd>列</dd>
 							
 								<dt>
 									<span class="light fixedFont">{Number}</span> <b>isItalic</b>
@@ -1405,7 +1462,7 @@ MadoJS
 					<div class="fixedFont">
 					
 					
-					<b>setFontStrikethrough</b>(x, y, isStrikethrough)
+					<b>setFontStrikethrough</b>(row, col, isStrikethrough)
 					
 					</div>
 					<div class="description">
@@ -1421,16 +1478,16 @@ MadoJS
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>x</b>
+									<span class="light fixedFont">{Number}</span> <b>row</b>
 									
 								</dt>
-								<dd>x座標</dd>
+								<dd>行</dd>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>y</b>
+									<span class="light fixedFont">{Number}</span> <b>col</b>
 									
 								</dt>
-								<dd>y座標</dd>
+								<dd>列</dd>
 							
 								<dt>
 									<span class="light fixedFont">{Number}</span> <b>isStrikethrough</b>
@@ -1453,7 +1510,7 @@ MadoJS
 					<div class="fixedFont">
 					
 					
-					<b>setFontUnderline</b>(x, y, isUnderline)
+					<b>setFontUnderline</b>(row, col, isUnderline)
 					
 					</div>
 					<div class="description">
@@ -1469,16 +1526,16 @@ MadoJS
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>x</b>
+									<span class="light fixedFont">{Number}</span> <b>row</b>
 									
 								</dt>
-								<dd>x座標</dd>
+								<dd>行</dd>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>y</b>
+									<span class="light fixedFont">{Number}</span> <b>col</b>
 									
 								</dt>
-								<dd>y座標</dd>
+								<dd>列</dd>
 							
 								<dt>
 									<span class="light fixedFont">{Number}</span> <b>isUnderline</b>
@@ -1501,7 +1558,7 @@ MadoJS
 					<div class="fixedFont">
 					
 					
-					<b>setFormat</b>(x, y, format)
+					<b>setFormat</b>(row, col, format)
 					
 					</div>
 					<div class="description">
@@ -1517,16 +1574,16 @@ MadoJS
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>x</b>
+									<span class="light fixedFont">{Number}</span> <b>row</b>
 									
 								</dt>
-								<dd>x座標</dd>
+								<dd>行</dd>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>y</b>
+									<span class="light fixedFont">{Number}</span> <b>col</b>
 									
 								</dt>
-								<dd>y座標</dd>
+								<dd>列</dd>
 							
 								<dt>
 									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>format</b>
@@ -1729,7 +1786,7 @@ MadoJS
 					<div class="fixedFont">
 					
 					
-					<b>setValue</b>(x, y, value)
+					<b>setValue</b>(row, col, value)
 					
 					</div>
 					<div class="description">
@@ -1745,16 +1802,16 @@ MadoJS
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>x</b>
+									<span class="light fixedFont">{Number}</span> <b>row</b>
 									
 								</dt>
-								<dd>x座標</dd>
+								<dd>行</dd>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>y</b>
+									<span class="light fixedFont">{Number}</span> <b>col</b>
 									
 								</dt>
-								<dd>y座標</dd>
+								<dd>列</dd>
 							
 								<dt>
 									<span class="light fixedFont">{<a href="../symbols/Object.html">Object</a>}</span> <b>value</b>
@@ -1821,7 +1878,7 @@ MadoJS
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Fri Mar 02 2012 11:54:17 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Fri Mar 02 2012 14:53:20 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

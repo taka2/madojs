@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <script language="JScript" src="../../mado.js"></script>
+    <script language="JScript" src="ATNDEventsToExcel.js"></script>
+    <script language="JScript">
+      function body_OnLoad() {
+        // 本日日付をYYYYMMDD形式で取得
+        var currentDateYYYYMMDD = new Date().getYYYYMMDD();
+
+        // テキストボックスに設定
+        document.form1.target_date.value = currentDateYYYYMMDD;
+      }
+    </script>
+  </head>
+  <body onLoad = "body_OnLoad()">
+    <form name = "form1">
+      対象日付: <input type = "text" name = "target_date" length = "8" size = "10">
+
+      <p>
+      <input type = "button" name = "button1" value = "Excel出力" onClick = "button1_Click()">
+    </form>
+  </body>
+</html>

@@ -6,8 +6,8 @@ var Const = {};
 
 // Static members of Global
 Const.FSO = new ActiveXObject("Scripting.FileSystemObject");
-Const.WSHELL = WScript.CreateObject("WScript.Shell");
-Const.SHELLAPP = WScript.CreateObject("Shell.Application");
+Const.WSHELL = new ActiveXObject("WScript.Shell");
+Const.SHELLAPP = new ActiveXObject("Shell.Application");
 
 // Static Variables
 Const.INITIAL_CURRENT_DIRECTORY = Const.WSHELL.CurrentDirectory;

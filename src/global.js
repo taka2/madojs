@@ -1,27 +1,50 @@
 // Global Variables
 /**
- * 引数で構成された配列
+ * 引数で構成された配列<br/>
+ * hta環境では[]となります。
  */
 var ARGV = [];
 (function() {
-  var argvLength = WScript.Arguments.length;
-  for(var i=0; i<argvLength; i++) {
-    ARGV.push(WScript.Arguments(i));
+  try {
+    var argvLength = WScript.Arguments.length;
+    for(var i=0; i<argvLength; i++) {
+      ARGV.push(WScript.Arguments(i));
+    }
+  } catch(e) {
+    // WScriptが未定義の場合、ARGV = []
   }
 }());
 
 /**
- * スクリプトのフルパス
+ * スクリプトのフルパス<br/>
+ * hta環境ではundefinedとなります。
  */
-var __FILE__ = WScript.ScriptFullName;
+try {
+  var __FILE__ = WScript.ScriptFullName;
+} catch(e) {
+  if(e.name === 'TypeError') {
+    // WScriptが未定義の場合、__FILE__ = undefined
+  } else {
+    throw e;
+  }
+}
 
 // Global Functions
 /**
- * 指定したmsec(ミリ秒)スリープします。
+ * 指定したmsec(ミリ秒)スリープします。<br/>
+ * hta環境では何もしません。
  * @param {Number} msec スリープするミリ秒
  */
 var sleep = function(msec) {
-  WScript.Sleep(msec);
+  try {
+    WScript.Sleep(msec);
+  } catch(e) {
+    if(e.name === 'TypeError') {
+      // 何もしない
+    } else {
+      throw e;
+    }
+  }
 };
 
 /**
@@ -44,20 +67,46 @@ var sleepif = function(msec, fn, args) {
 };
 
 /**
- * msgを表示します。
+ * msgを表示します。<br/>
+ * hta環境では印刷ダイアログが表示されるため、代わりに<a href = "_global_.html#echo">echo</a>を使用してください。
  * @param {String} msg メッセージ
  */
 var print = function(msg) {
-  WScript.Echo(msg);
+  try {
+    WScript.Echo(msg);
+  } catch(e) {
+    if(e.name === 'TypeError') {
+      window.alert(msg);
+    } else {
+      throw e;
+    }
+  }
 };
 
 /**
- * プログラムを指定したステータスで終了します。
+ * msgを表示します。<br/>
+ * hta環境ではwindow.alertを実行します。
+ * 
+ * @param {String} msg メッセージ
+ */
+var echo = print;
+
+/**
+ * プログラムを指定したステータスで終了します。<br/>
+ * hta環境ではwindow.closeを実行します。
  * @param {Number} status (オプション)終了ステータス(初期値 0)
  */
 var exit = function(status) {
   var exitStatus = status || 0;
-  WScript.Quit(exitStatus);
+  try {
+    WScript.Quit(exitStatus);
+  } catch(e) {
+    if(e.name === 'TypeError') {
+      window.close();
+    } else {
+      throw e;
+    }
+  }
 };
 
 /**
@@ -78,11 +127,20 @@ var getComputerName = function () {
 };
 
 /**
- * WScript.exeで実行しているかどうか判定します。
+ * WScript.exeで実行しているかどうか判定します。<br/>
+ * hta環境の場合は常にfalseを返します。
  * @return {Boolean} WScript.exeで実行している場合はtrue、そうでない場合(CScript.exe)はfalseを返す。
  */
 var isWScriptRunning = function() {
-  return /wscript\.exe$/i.test(WScript.FullName);
+  try {
+    return /wscript\.exe$/i.test(WScript.FullName);
+  } catch(e) {
+    if(e.name === 'TypeError') {
+      return false;
+    } else {
+      throw e;
+    }
+  }
 };
 
 /**

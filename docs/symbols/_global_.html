@@ -303,7 +303,7 @@ MadoJS
 								<div class="fixedFont">
 								<b><a href="../symbols/_global_.html#__FILE__">__FILE__</a></b>
 								</div>
-								<div class="description">スクリプトのフルパス</div>
+								<div class="description">スクリプトのフルパス<br/>hta環境ではundefinedとなります。</div>
 							</td>
 						</tr>
 					
@@ -313,7 +313,17 @@ MadoJS
 								<div class="fixedFont">
 								<b><a href="../symbols/_global_.html#ARGV">ARGV</a></b>
 								</div>
-								<div class="description">引数で構成された配列</div>
+								<div class="description">引数で構成された配列<br/>hta環境では[]となります。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/_global_.html#echo">echo</a></b>
+								</div>
+								<div class="description">msgを表示します。<br/>hta環境ではwindow.alertを実行します。</div>
 							</td>
 						</tr>
 					
@@ -361,7 +371,7 @@ MadoJS
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/_global_.html#exit">exit</a></b>(status)
 								</div>
-								<div class="description">プログラムを指定したステータスで終了します。</div>
+								<div class="description">プログラムを指定したステータスで終了します。<br/>hta環境ではwindow.closeを実行します。</div>
 							</td>
 						</tr>
 					
@@ -406,7 +416,7 @@ MadoJS
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/_global_.html#isWScriptRunning">isWScriptRunning</a></b>()
 								</div>
-								<div class="description">WScript.exeで実行しているかどうか判定します。</div>
+								<div class="description">WScript.exeで実行しているかどうか判定します。<br/>hta環境の場合は常にfalseを返します。</div>
 							</td>
 						</tr>
 					
@@ -442,7 +452,7 @@ MadoJS
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/_global_.html#print">print</a></b>(msg)
 								</div>
-								<div class="description">msgを表示します。</div>
+								<div class="description">msgを表示します。<br/>hta環境では印刷ダイアログが表示されるため、代わりに<a href = "_global_.html#echo">echo</a>を使用してください。</div>
 							</td>
 						</tr>
 					
@@ -460,7 +470,7 @@ MadoJS
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/_global_.html#sleep">sleep</a></b>(msec)
 								</div>
-								<div class="description">指定したmsec(ミリ秒)スリープします。</div>
+								<div class="description">指定したmsec(ミリ秒)スリープします。<br/>hta環境では何もしません。</div>
 							</td>
 						</tr>
 					
@@ -499,7 +509,7 @@ MadoJS
 					
 					</div>
 					<div class="description">
-						スクリプトのフルパス
+						スクリプトのフルパス<br/>hta環境ではundefinedとなります。
 						
 							<br />
 							<a href="../symbols/src/src_global.js.html">global.js</a>で<i>定義されています</i>。
@@ -524,7 +534,32 @@ MadoJS
 					
 					</div>
 					<div class="description">
-						引数で構成された配列
+						引数で構成された配列<br/>hta環境では[]となります。
+						
+							<br />
+							<a href="../symbols/src/src_global.js.html">global.js</a>で<i>定義されています</i>。
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="echo"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>echo</b>
+					
+					</div>
+					<div class="description">
+						msgを表示します。<br/>hta環境ではwindow.alertを実行します。
 						
 							<br />
 							<a href="../symbols/src/src_global.js.html">global.js</a>で<i>定義されています</i>。
@@ -657,7 +692,7 @@ createShortcut(SpecialFolders.getDesktop() + "\\yahoo.url", "http://www.yahoo.co
 					
 					</div>
 					<div class="description">
-						プログラムを指定したステータスで終了します。
+						プログラムを指定したステータスで終了します。<br/>hta環境ではwindow.closeを実行します。
 						
 							<br />
 							<a href="../symbols/src/src_global.js.html">global.js</a>で<i>定義されています</i>。
@@ -868,7 +903,7 @@ createShortcut(SpecialFolders.getDesktop() + "\\yahoo.url", "http://www.yahoo.co
 					
 					</div>
 					<div class="description">
-						WScript.exeで実行しているかどうか判定します。
+						WScript.exeで実行しているかどうか判定します。<br/>hta環境の場合は常にfalseを返します。
 						
 							<br />
 							<a href="../symbols/src/src_global.js.html">global.js</a>で<i>定義されています</i>。
@@ -1067,7 +1102,7 @@ if(popup("mado.jsを使いますか？"
 					
 					</div>
 					<div class="description">
-						msgを表示します。
+						msgを表示します。<br/>hta環境では印刷ダイアログが表示されるため、代わりに<a href = "_global_.html#echo">echo</a>を使用してください。
 						
 							<br />
 							<a href="../symbols/src/src_global.js.html">global.js</a>で<i>定義されています</i>。
@@ -1157,7 +1192,7 @@ if(popup("mado.jsを使いますか？"
 					
 					</div>
 					<div class="description">
-						指定したmsec(ミリ秒)スリープします。
+						指定したmsec(ミリ秒)スリープします。<br/>hta環境では何もしません。
 						
 							<br />
 							<a href="../symbols/src/src_global.js.html">global.js</a>で<i>定義されています</i>。
@@ -1251,7 +1286,7 @@ if(popup("mado.jsを使いますか？"
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Fri Mar 02 2012 14:53:19 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Thu Mar 08 2012 14:15:25 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

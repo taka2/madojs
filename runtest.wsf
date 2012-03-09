@@ -16,7 +16,6 @@
     <script language="JScript" src="test/object.js"></script>
     <script language="JScript" src="test/process.js"></script>
     <script language="JScript" src="test/registry.js"></script>
-    <script language="JScript" src="test/specialfolders.js"></script>
     <script language="JScript" src="test/string.js"></script>
     <script language="JScript">
       var testUtil = new TestUtil();

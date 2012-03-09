@@ -245,39 +245,45 @@
 <span class='line'>238</span> </span><span class="COMM">// ----------------------------------------</span><span class="WHIT">
 <span class='line'>239</span> </span><span class="COMM">// Import VBScript Source Code</span><span class="WHIT">
 <span class='line'>240</span> </span><span class="COMM">// ----------------------------------------</span><span class="WHIT">
-<span class='line'>241</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">objJS</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">ActiveXObject</span><span class="PUNC">(</span><span class="STRN">"ScriptControl"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>242</span> </span><span class="NAME">objJS.Language</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"VBScript"</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>243</span> </span><span class="NAME">objJS.AddCode</span><span class="PUNC">(</span><span class="WHIT">
-<span class='line'>244</span> </span><span class="STRN">'Function JSInputBox(prompt, title) '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="WHIT">
-<span class='line'>245</span> </span><span class="STRN">'  JSInputBox = InputBox(prompt, title) '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="WHIT">
-<span class='line'>246</span> </span><span class="STRN">'End Function'</span><span class="WHIT">
-<span class='line'>247</span> </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>248</span> </span><span class="COMM">// ----------------------------------------</span><span class="WHIT">
-<span class='line'>249</span> 
-<span class='line'>250</span> </span><span class="COMM">/**
-<span class='line'>251</span>  * インプットボックスを表示します。
-<span class='line'>252</span>  * @param {String} prompt (オプション)ダイアログボックス内にメッセージとして表示する文字列を示す文字列式を指定します。(初期値 空文字)
-<span class='line'>253</span>  * @param {String} title (オプション)ダイアログボックスのタイトルバーに表示する文字列を示す文字列式を指定します。(初期値 空文字)
-<span class='line'>254</span>  */</span><span class="WHIT">
-<span class='line'>255</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">inputBox</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">prompt</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">title</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>256</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">myPrompt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">prompt</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>257</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">myTitle</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">title</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>258</span> 
-<span class='line'>259</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">objJS.CodeObject.JSInputBox</span><span class="PUNC">(</span><span class="NAME">myPrompt</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">myTitle</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>260</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>261</span> 
-<span class='line'>262</span> </span><span class="COMM">/**
-<span class='line'>263</span>  * JScriptの一次元配列を、一次元のSafeArrayに変換する。&lt;br/>
-<span class='line'>264</span>  * http://www.imasy.or.jp/~hir/hir/tech/js_tips.html#safearray を参考にしました。
-<span class='line'>265</span>  * @param {Array} jsArray JScriptの配列を指定します。
-<span class='line'>266</span>  * @return {Object} 変換されたSafeArrayを返します。通常、VBArrayでラップして使います。
-<span class='line'>267</span>  */</span><span class="WHIT">
-<span class='line'>268</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">arrayToSafeArray</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">jsArray</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>269</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">dic</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">ActiveXObject</span><span class="PUNC">(</span><span class="STRN">"Scripting.Dictionary"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>270</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">jsArrayLength</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">jsArray.length</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>271</span> </span><span class="WHIT">  </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">jsArrayLength</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>272</span> </span><span class="WHIT">    </span><span class="NAME">dic.add</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">jsArray</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>273</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>274</span> 
-<span class='line'>275</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">dic.items</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>276</span> </span><span class="PUNC">}</span></pre></body></html>
+<span class='line'>241</span> </span><span class="KEYW">try</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>242</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">objJS</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">ActiveXObject</span><span class="PUNC">(</span><span class="STRN">"ScriptControl"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>243</span> </span><span class="WHIT">  </span><span class="NAME">objJS.Language</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"VBScript"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>244</span> </span><span class="WHIT">  </span><span class="NAME">objJS.AddCode</span><span class="PUNC">(</span><span class="WHIT">
+<span class='line'>245</span> </span><span class="WHIT">  </span><span class="STRN">'Function JSInputBox(prompt, title) '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>246</span> </span><span class="WHIT">  </span><span class="STRN">'  JSInputBox = InputBox(prompt, title) '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>247</span> </span><span class="WHIT">  </span><span class="STRN">'End Function'</span><span class="WHIT">
+<span class='line'>248</span> </span><span class="WHIT">  </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>249</span> </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">catch</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>250</span> </span><span class="WHIT">  </span><span class="COMM">// 何もしない</span><span class="WHIT">
+<span class='line'>251</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>252</span> </span><span class="COMM">// ----------------------------------------</span><span class="WHIT">
+<span class='line'>253</span> 
+<span class='line'>254</span> </span><span class="COMM">/**
+<span class='line'>255</span>  * インプットボックスを表示します。
+<span class='line'>256</span>  * @param {String} prompt (オプション)ダイアログボックス内にメッセージとして表示する文字列を示す文字列式を指定します。(初期値 空文字)
+<span class='line'>257</span>  * @param {String} title (オプション)ダイアログボックスのタイトルバーに表示する文字列を示す文字列式を指定します。(初期値 空文字)
+<span class='line'>258</span>  */</span><span class="WHIT">
+<span class='line'>259</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">inputBox</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">prompt</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">title</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>260</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">myPrompt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">prompt</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>261</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">myTitle</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">title</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>262</span> 
+<span class='line'>263</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">objJS</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>264</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">objJS.CodeObject.JSInputBox</span><span class="PUNC">(</span><span class="NAME">myPrompt</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">myTitle</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>265</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>266</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>267</span> 
+<span class='line'>268</span> </span><span class="COMM">/**
+<span class='line'>269</span>  * JScriptの一次元配列を、一次元のSafeArrayに変換する。&lt;br/>
+<span class='line'>270</span>  * http://www.imasy.or.jp/~hir/hir/tech/js_tips.html#safearray を参考にしました。
+<span class='line'>271</span>  * @param {Array} jsArray JScriptの配列を指定します。
+<span class='line'>272</span>  * @return {Object} 変換されたSafeArrayを返します。通常、VBArrayでラップして使います。
+<span class='line'>273</span>  */</span><span class="WHIT">
+<span class='line'>274</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">arrayToSafeArray</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">jsArray</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>275</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">dic</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">ActiveXObject</span><span class="PUNC">(</span><span class="STRN">"Scripting.Dictionary"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>276</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">jsArrayLength</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">jsArray.length</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>277</span> </span><span class="WHIT">  </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">jsArrayLength</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>278</span> </span><span class="WHIT">    </span><span class="NAME">dic.add</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">jsArray</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>279</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>280</span> 
+<span class='line'>281</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">dic.items</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>282</span> </span><span class="PUNC">}</span></pre></body></html>

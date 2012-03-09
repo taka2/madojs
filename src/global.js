@@ -238,13 +238,17 @@ var popup = function(strText, nSecondsToWait, strTitle, buttonType, iconType) {
 // ----------------------------------------
 // Import VBScript Source Code
 // ----------------------------------------
-var objJS = new ActiveXObject("ScriptControl");
-objJS.Language = "VBScript";
-objJS.AddCode(
-'Function JSInputBox(prompt, title) ' + 
-'  JSInputBox = InputBox(prompt, title) ' + 
-'End Function'
-);
+try {
+  var objJS = new ActiveXObject("ScriptControl");
+  objJS.Language = "VBScript";
+  objJS.AddCode(
+  'Function JSInputBox(prompt, title) ' + 
+  '  JSInputBox = InputBox(prompt, title) ' + 
+  'End Function'
+  );
+} catch(e) {
+  // 何もしない
+}
 // ----------------------------------------
 
 /**
@@ -256,7 +260,9 @@ var inputBox = function(prompt, title) {
   var myPrompt = prompt || "";
   var myTitle = title || "";
 
-  return objJS.CodeObject.JSInputBox(myPrompt, myTitle);
+  if(objJS) {
+    return objJS.CodeObject.JSInputBox(myPrompt, myTitle);
+  }
 };
 
 /**

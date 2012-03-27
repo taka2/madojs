@@ -1,14 +1,17 @@
-TestCase("ClipboardExcel Test", {
-  testHankaku: function() {
+if(Excel.available()) {
+  Test.ClipboardExcel = {};
+
+  Test.ClipboardExcel.testHankaku = function() {
     var clip = new ClipboardExcel();
     clip.set("abcde");
-    assertEquals("abcde", clip.get());
+    testUtil.assertEquals("abcde", clip.get());
     clip.close();
-  },
-  testZenkaku: function() {
+  };
+
+  Test.ClipboardExcel.testZenkaku = function() {
     var clip = new ClipboardExcel();
     clip.set("‚ ‚¢‚¤‚¦‚¨");
-    assertEquals("‚ ‚¢‚¤‚¦‚¨", clip.get());
+    testUtil.assertEquals("‚ ‚¢‚¤‚¦‚¨", clip.get());
     clip.close();
-  }
-});
+  };
+}

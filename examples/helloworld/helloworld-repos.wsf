@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<package>
-  <job>
-    <!-- リポジトリのmado.jsを使用 -->
-    <script language="JScript" src="http://madojs.googlecode.com/svn/trunk/mado.js"></script>
-    <script language="JScript" src="helloworld.js"></script>
-  </job>
-</package>

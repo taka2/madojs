@@ -1,0 +1,668 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>MadoJS リファレンス - LogEvent</title>
+
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 24px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2 { font-size: 110%; }
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul.inheritsList
+{
+	list-style: square;
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px; 
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+
+#logo
+{
+	text-align: center;
+	font-size: 28px;
+	color: #3A6EA5;
+	text-shadow: 3px 3px 3px gray;
+	font-family: Verdana, Helvetica, sans-serif;
+}
+
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->	
+		<!-- begin static/header.html -->
+		<div id="header">
+</div>
+		<!-- end static/header.html -->
+
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<p id="logo">
+MadoJS
+</p>
+<div align="center"><a href="../index.html">クラス索引</a>
+| <a href="../files.html">ファイル索引</a></div>
+<hr />
+<h2>クラス</h2>
+<ul class="classList">
+	
+	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+	
+	<li><a href="../symbols/AdoAccessConnection.html">AdoAccessConnection</a></li>
+	
+	<li><a href="../symbols/AdoCommand.html">AdoCommand</a></li>
+	
+	<li><a href="../symbols/AdoConnection.html">AdoConnection</a></li>
+	
+	<li><a href="../symbols/AdoOdbcConnection.html">AdoOdbcConnection</a></li>
+	
+	<li><a href="../symbols/AdoOracleConnection.html">AdoOracleConnection</a></li>
+	
+	<li><a href="../symbols/Array.html">Array</a></li>
+	
+	<li><a href="../symbols/Clipboard.html">Clipboard</a></li>
+	
+	<li><a href="../symbols/ClipboardExcel.html">ClipboardExcel</a></li>
+	
+	<li><a href="../symbols/ClipboardIE.html">ClipboardIE</a></li>
+	
+	<li><a href="../symbols/Const.html">Const</a></li>
+	
+	<li><a href="../symbols/Date.html">Date</a></li>
+	
+	<li><a href="../symbols/Dir.html">Dir</a></li>
+	
+	<li><a href="../symbols/Drive.html">Drive</a></li>
+	
+	<li><a href="../symbols/Excel.html">Excel</a></li>
+	
+	<li><a href="../symbols/ExcelSheet.html">ExcelSheet</a></li>
+	
+	<li><a href="../symbols/File.html">File</a></li>
+	
+	<li><a href="../symbols/FTP.html">FTP</a></li>
+	
+	<li><a href="../symbols/HTTP.html">HTTP</a></li>
+	
+	<li><a href="../symbols/JSON.html">JSON</a></li>
+	
+	<li><a href="../symbols/KeySender.html">KeySender</a></li>
+	
+	<li><a href="../symbols/LogEvent.html">LogEvent</a></li>
+	
+	<li><a href="../symbols/Object.html">Object</a></li>
+	
+	<li><a href="../symbols/Process.html">Process</a></li>
+	
+	<li><a href="../symbols/Registry.html">Registry</a></li>
+	
+	<li><a href="../symbols/Shell.html">Shell</a></li>
+	
+	<li><a href="../symbols/SpecialFolders.html">SpecialFolders</a></li>
+	
+	<li><a href="../symbols/String.html">String</a></li>
+	
+</ul>
+<hr />
+			<!-- end publish.classesIndex -->
+		</div>
+		
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				LogEvent クラス 
+			</h1>
+
+<!-- ============================== class summary ========================== -->			
+			<p class="description">
+				
+				
+			
+				イベントエントリをログファイルに追加する機能を提供するクラス
+<pre class = "code">
+使用例：
+LogEvent.success("hoge1");
+LogEvent.error("hoge2");
+LogEvent.warning("hoge3");
+LogEvent.information("hoge4");
+LogEvent.auditSuccess("hoge5");
+LogEvent.auditFailure("hoge6");
+</pre>
+				
+				
+					<br /><i></i> <a href="../symbols/src/src_logevent.js.html">logevent.js</a>で定義されています。
+				
+			</p>
+
+<!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class LogEvent.">
+				<caption>クラス 概要</caption>
+				<thead>
+					<tr>
+						<th scope="col">コンストラクタの属性</th>
+						<th scope="col">コンストラクタ名と説明</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/LogEvent.html#constructor">LogEvent</a></b>()
+							</div>
+							<div class="description">インスタンス化しません。</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class LogEvent.">
+					<caption>メソッドの概要</caption>
+					<thead>
+						<tr>
+							<th scope="col">メソッド</th>
+							<th scope="col">メソッド名と説明</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">LogEvent.<b><a href="../symbols/LogEvent.html#.auditFailure">auditFailure</a></b>(strMessage)
+								</div>
+								<div class="description">イベントエントリをログファイルにAUDIT_FAILUREで追加します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">LogEvent.<b><a href="../symbols/LogEvent.html#.auditSuccess">auditSuccess</a></b>(strMessage)
+								</div>
+								<div class="description">イベントエントリをログファイルにAUDIT_SUCCESSで追加します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">LogEvent.<b><a href="../symbols/LogEvent.html#.error">error</a></b>(strMessage)
+								</div>
+								<div class="description">イベントエントリをログファイルにERRORで追加します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">LogEvent.<b><a href="../symbols/LogEvent.html#.information">information</a></b>(strMessage)
+								</div>
+								<div class="description">イベントエントリをログファイルにINFORMATIONで追加します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">LogEvent.<b><a href="../symbols/LogEvent.html#.success">success</a></b>(strMessage)
+								</div>
+								<div class="description">イベントエントリをログファイルにSUCCESSで追加します。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">LogEvent.<b><a href="../symbols/LogEvent.html#.warning">warning</a></b>(strMessage)
+								</div>
+								<div class="description">イベントエントリをログファイルにWARNINGで追加します。</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== constructor details ==================== -->		
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					クラス 詳細
+				</div>
+				
+				<div class="fixedFont">
+						<b>LogEvent</b>()
+				</div>
+				
+				<div class="description">
+					インスタンス化しません。
+					
+				</div>
+				
+				
+				
+				
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== field details ========================== -->		
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<div class="sectionTitle">
+					メソッドの詳細
+				</div>
+				
+					<a name=".auditFailure"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">LogEvent.</span><b>auditFailure</b>(strMessage)
+					
+					</div>
+					<div class="description">
+						イベントエントリをログファイルにAUDIT_FAILUREで追加します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>strMessage</b>
+									
+								</dt>
+								<dd>ログエントリのテキストです。</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".auditSuccess"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">LogEvent.</span><b>auditSuccess</b>(strMessage)
+					
+					</div>
+					<div class="description">
+						イベントエントリをログファイルにAUDIT_SUCCESSで追加します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>strMessage</b>
+									
+								</dt>
+								<dd>ログエントリのテキストです。</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".error"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">LogEvent.</span><b>error</b>(strMessage)
+					
+					</div>
+					<div class="description">
+						イベントエントリをログファイルにERRORで追加します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>strMessage</b>
+									
+								</dt>
+								<dd>ログエントリのテキストです。</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".information"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">LogEvent.</span><b>information</b>(strMessage)
+					
+					</div>
+					<div class="description">
+						イベントエントリをログファイルにINFORMATIONで追加します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>strMessage</b>
+									
+								</dt>
+								<dd>ログエントリのテキストです。</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".success"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">LogEvent.</span><b>success</b>(strMessage)
+					
+					</div>
+					<div class="description">
+						イベントエントリをログファイルにSUCCESSで追加します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>strMessage</b>
+									
+								</dt>
+								<dd>ログエントリのテキストです。</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".warning"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">LogEvent.</span><b>warning</b>(strMessage)
+					
+					</div>
+					<div class="description">
+						イベントエントリをログファイルにWARNINGで追加します。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>strMessage</b>
+									
+								</dt>
+								<dd>ログエントリのテキストです。</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+			
+			<hr />
+		</div>
+
+		
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			このドキュメントは、Thu Mar 08 2012 14:15:25 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+		</div>
+	</body>
+</html>

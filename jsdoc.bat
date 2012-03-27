@@ -1,1 +1,1 @@
-java -Djsdoc.dir=jsdoc-toolkit -Djsdoc.template.dir=jsdoc-toolkit\templates\myjsdoc -jar jsdoc-toolkit\jsrun.jar jsdoc-toolkit\app\run.js -d=docs src
+java -Djsdoc.dir=jsdoc-toolkit -Djsdoc.template.dir=jsdoc-toolkit\templates\myjsdoc -jar jsdoc-toolkit\jsrun.jar jsdoc-toolkit\app\run.js -d=. src

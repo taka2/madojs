@@ -1,0 +1,1 @@
+C:\Windows\SysWOW64\wscript ExecuteSQLFileForMdb.wsf test.mdb test.sql

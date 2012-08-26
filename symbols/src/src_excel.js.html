@@ -1070,6 +1070,14 @@
 <span class='line'>1063</span>    */</span><span class="WHIT">
 <span class='line'>1064</span> </span><span class="WHIT">  </span><span class="NAME">deleteHyperLink</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">row</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">col</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>1065</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.Cells</span><span class="PUNC">(</span><span class="NAME">row</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">col</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">Hyperlinks.Delete</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1066</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>1067</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1068</span> </span></pre></body></html>
+<span class='line'>1066</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1067</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>1068</span>    * 指定した列のカラム幅を設定します。
+<span class='line'>1069</span>    * @param {Number} col 列(1オリジン)
+<span class='line'>1070</span>    * @param {Number} columnWidth 列幅
+<span class='line'>1071</span>    */</span><span class="WHIT">
+<span class='line'>1072</span> </span><span class="WHIT">  </span><span class="NAME">setColumnWidth</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">col</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">columnWidth</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1073</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.Columns</span><span class="PUNC">(</span><span class="NAME">col</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">ColumnWidth</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">columnWidth</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1074</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1075</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1076</span> </span></pre></body></html>

@@ -1063,5 +1063,13 @@ ExcelSheet.prototype = {
    */
   deleteHyperLink: function(row, col) {
     this.sheetObj.Cells(row, col).Hyperlinks.Delete();
+  },
+  /**
+   * 指定した列のカラム幅を設定します。
+   * @param {Number} col 列(1オリジン)
+   * @param {Number} columnWidth 列幅
+   */
+  setColumnWidth: function(col, columnWidth) {
+    this.sheetObj.Columns(col).ColumnWidth = columnWidth;
   }
 };

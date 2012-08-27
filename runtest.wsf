@@ -2,7 +2,7 @@
 <package>
   <job>
     <script language="JScript" src="mado.js"></script>
-    <script language="JScript" src="test/testfw.js"></script>
+    <script language="JScript" src="test/jscriptunit.js"></script>
     <script language="JScript" src="test/array.js"></script>
     <script language="JScript" src="test/clipboard.js"></script>
     <script language="JScript" src="test/clipboardexcel.js"></script>
@@ -17,10 +17,5 @@
     <script language="JScript" src="test/process.js"></script>
     <script language="JScript" src="test/registry.js"></script>
     <script language="JScript" src="test/string.js"></script>
-    <script language="JScript">
-      var testUtil = new TestUtil();
-      testUtil.runTest();
-      testUtil.printTestResult();
-    </script>
   </job>
 </package>

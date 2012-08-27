@@ -1,15 +1,14 @@
-Test.ClipboardIE = {};
-
-Test.ClipboardIE.testHankaku = function() {
-  var clip = new ClipboardIE();
-  clip.set("abcde");
-  testUtil.assertEquals("abcde", clip.get());
-  clip.close();
-};
-
-Test.ClipboardIE.testZenkaku = function() {
-  var clip = new ClipboardIE();
-  clip.set("‚ ‚¢‚¤‚¦‚¨");
-  testUtil.assertEquals("‚ ‚¢‚¤‚¦‚¨", clip.get());
-  clip.close();
-};
+TestCase("ClipboardIE Test", {
+  testHankaku: function() {
+    var clip = new ClipboardIE();
+    clip.set("abcde");
+    assertEquals("abcde", clip.get());
+    clip.close();
+  },
+  testZenkaku: function() {
+    var clip = new ClipboardIE();
+    clip.set("‚ ‚¢‚¤‚¦‚¨");
+    assertEquals("‚ ‚¢‚¤‚¦‚¨", clip.get());
+    clip.close();
+  }
+});

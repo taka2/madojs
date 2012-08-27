@@ -1078,6 +1078,14 @@
 <span class='line'>1071</span>    */</span><span class="WHIT">
 <span class='line'>1072</span> </span><span class="WHIT">  </span><span class="NAME">setColumnWidth</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">col</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">columnWidth</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>1073</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.Columns</span><span class="PUNC">(</span><span class="NAME">col</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">ColumnWidth</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">columnWidth</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1074</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>1075</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1076</span> </span></pre></body></html>
+<span class='line'>1074</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1075</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>1076</span>    * 指定したセルにオートフィルタを設定します。
+<span class='line'>1077</span>    * @param {Number} row 行
+<span class='line'>1078</span>    * @param {Number} col 列
+<span class='line'>1079</span>    */</span><span class="WHIT">
+<span class='line'>1080</span> </span><span class="WHIT">  </span><span class="NAME">setAutoFilter</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">row</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">col</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1081</span> </span><span class="WHIT">    </span><span class="NAME">this.sheetObj.Cells</span><span class="PUNC">(</span><span class="NAME">row</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">col</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">CurrentRegion.AutoFilter</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1082</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1083</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1084</span> </span></pre></body></html>

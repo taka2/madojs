@@ -1071,5 +1071,13 @@ ExcelSheet.prototype = {
    */
   setColumnWidth: function(col, columnWidth) {
     this.sheetObj.Columns(col).ColumnWidth = columnWidth;
+  },
+  /**
+   * 指定したセルにオートフィルタを設定します。
+   * @param {Number} row 行
+   * @param {Number} col 列
+   */
+  setAutoFilter: function(row, col) {
+    this.sheetObj.Cells(row, col).CurrentRegion.AutoFilter();
   }
 };

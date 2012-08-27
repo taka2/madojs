@@ -15,6 +15,27 @@ var ClipboardIE = function() {
   this._closed = false;
 };
 
+/** 
+ * 新しいクリップボードを作成し、ブロックを実行します。
+ * ブロックが指定されていない場合は、作成したクリップボードを返します。
+ * @param {Function} block ブロック
+ * @return {Object} ブロックが指定されていない場合は、作成したクリップボード
+ */
+ClipboardIE.open = function(block) {
+  if (!isFunction(block)) {
+    return new ClipboardIE();
+  }
+
+  try {
+    var clip = new ClipboardIE();
+    block(clip);
+  } finally {
+    if(clip) {
+      clip.close();
+    }
+  }
+};
+
 // Prototypes of ClipboardIE
 ClipboardIE.prototype = {
   /**

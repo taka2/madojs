@@ -1761,6 +1761,27 @@ var ClipboardIE = function() {
   this._closed = false;
 };
 
+/** 
+ * 新しいクリップボードを作成し、ブロックを実行します。
+ * ブロックが指定されていない場合は、作成したクリップボードを返します。
+ * @param {Function} block ブロック
+ * @return {Object} ブロックが指定されていない場合は、作成したクリップボード
+ */
+ClipboardIE.open = function(block) {
+  if (!isFunction(block)) {
+    return new ClipboardIE();
+  }
+
+  try {
+    var clip = new ClipboardIE();
+    block(clip);
+  } finally {
+    if(clip) {
+      clip.close();
+    }
+  }
+};
+
 // Prototypes of ClipboardIE
 ClipboardIE.prototype = {
   /**
@@ -1803,6 +1824,27 @@ var ClipboardExcel = function() {
   this.excel = Excel.create();
   this.sheet = this.excel.getSheetByIndex(0);
   this.sheet.setFormat(1, 1, "@");
+};
+
+/** 
+ * 新しいクリップボードを作成し、ブロックを実行します。
+ * ブロックが指定されていない場合は、作成したクリップボードを返します。
+ * @param {Function} block ブロック
+ * @return {Object} ブロックが指定されていない場合は、作成したクリップボード
+ */
+ClipboardExcel.open = function(block) {
+  if (!isFunction(block)) {
+    return new ClipboardExcel();
+  }
+
+  try {
+    var clip = new ClipboardExcel();
+    block(clip);
+  } finally {
+    if(clip) {
+      clip.close();
+    }
+  }
 };
 
 // Prototypes of ClipboardExcel

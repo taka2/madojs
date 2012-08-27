@@ -1,4 +1,10 @@
 TestCase("ClipboardIE Test", {
+  testOpen: function() {
+    ClipboardIE.open(function(clip) {
+      clip.set("12345");
+      assertEquals("12345", clip.get());
+    });
+  },
   testHankaku: function() {
     var clip = new ClipboardIE();
     clip.set("abcde");

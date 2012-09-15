@@ -1212,6 +1212,13 @@ File.prototype = {
    */
   eof: function() {
     return this.ts.AtEndOfStream;
+  },
+  /**
+   * ファイルから全ての内容を読み取ります。
+   * @return {String} 読み取った文字列
+   */
+  read: function() {
+    return this.ts.ReadAll();
   }
 };
 /** 

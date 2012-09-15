@@ -37,6 +37,10 @@ TestCase("File Test", {
       assertEquals("hoge", file.readLine());
     });
 
+    File.open("test2.txt", "r", function(file) {
+      assertEquals("hoge\r\n", file.read());
+    });
+
     // Ext Name
     assertEquals(".txt", File.extname("test2.txt"));
 

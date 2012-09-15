@@ -10,7 +10,7 @@ Date.prototype.getYYYYMMDD = function() {
   var dd = this.getDate();
   if (mm < 10) mm = "0" + mm;
   if (dd < 10) dd = "0" + dd;
-  return yyyy + mm + dd;
+  return "" + yyyy + mm + dd;
 };
 
 /** 
@@ -20,18 +20,13 @@ Date.prototype.getYYYYMMDD = function() {
 print(new Date().getYYYYMMDDHH24MISS());
  */
 Date.prototype.getYYYYMMDDHH24MISS = function() {
-  var yyyy = this.getFullYear();
-  var mm = this.getMonth() + 1;
-  var dd = this.getDate();
   var hh = this.getHours();
   var mi = this.getMinutes();
   var ss = this.getSeconds();
-  if (mm < 10) mm = "0" + mm;
-  if (dd < 10) dd = "0" + dd;
   if (hh < 10) hh = "0" + hh;
   if (mi < 10) mi = "0" + mi;
   if (ss < 10) ss = "0" + ss;
-  return yyyy + mm + dd + hh + mi + ss;
+  return this.getYYYYMMDD() + hh + mi + ss;
 };
 
 /** 

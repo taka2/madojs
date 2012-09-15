@@ -1205,6 +1205,13 @@ File.prototype = {
    */
   getShortName: function() {
     return File.getShortName(this.getPath());
+  },
+  /**
+   * ファイルが終端に達しているかどうかを返します。
+   * @return {Boolean} ファイルが終端に達している場合はtrue、それ以外の場合はfalseを返します。
+   */
+  eof: function() {
+    return this.ts.AtEndOfStream;
   }
 };
 /** 

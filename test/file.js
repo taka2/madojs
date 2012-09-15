@@ -27,6 +27,12 @@ TestCase("File Test", {
       });
     });
 
+    // Open File
+    File.open("test2.txt", "r", function(file) {
+      assertEquals("hoge", file.readLine());
+      assertEquals(true, file.eof());
+    });
+
     File.open("test2.txt", "r", function(file) {
       assertEquals("hoge", file.readLine());
     });

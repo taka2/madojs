@@ -49,3 +49,15 @@ Date.prototype.getFormattedDate = function() {
   if (ss < 10) ss = "0" + ss;
   return yyyy + "/" + mm + "/" + dd + " " + hh + ":" + mi + ":" + ss;
 };
+
+/**
+ * 日付に指定ミリ秒足します。
+ * @param {Number} msec 日付に足すミリ秒
+ * @return {Date} 指定ミリ秒足した結果の日付
+ * @example 使用例：
+print(new Date().getFormattedDate());
+ */
+Date.prototype.add = function(msec) {
+  this.setTime(this.getTime() + msec);
+  return this;
+};

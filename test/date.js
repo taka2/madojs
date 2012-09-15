@@ -17,5 +17,11 @@ TestCase("Date Test", {
   },
   testGetYYYYMMDDHH24MISS: function() {
     assertEquals("20121022213024", this.dt2.getYYYYMMDDHH24MISS());
+  },
+  testAdd: function() {
+    // 10•ªŒã
+    assertEquals("20121022214024", this.dt2.add(10 * 60 * 1000).getYYYYMMDDHH24MISS());
+    // 10•ª‘O
+    assertEquals("20121022213024", this.dt2.add(-10 * 60 * 1000).getYYYYMMDDHH24MISS());
   }
 });

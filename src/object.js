@@ -15,3 +15,14 @@ Object.prototype.toString = function() {
   result += "}";
   return result;
 };
+
+/**
+ * pをプロトタイプに持つオブジェクトを生成します。
+ * @param {Object} p プロトタイプ
+ * @return {Object} pをプロトタイプに持つオブジェクト
+ */
+Object.prototype.create = function(p) {
+  function f() {};
+  f.prototype = p;
+  return new f();
+};

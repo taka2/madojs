@@ -20,5 +20,10 @@ TestCase("Object Test", {
 
     var obj8 = {"a": {"b": {"c": true}}};
     assertEquals('{"a": {"b": {"c": true}}}', obj8.toString());
+  },
+
+  testCreate: function() {
+    var obj1 = Object.create({str: 'abc'});
+    //assertEquals('abc', obj1.str);
   }
 });

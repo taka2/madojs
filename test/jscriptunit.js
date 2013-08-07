@@ -47,6 +47,9 @@ function TestCase(name, tests) {
   var testCount = 0;
   var hasSetup = typeof tests.setUp == "function";
   var hasTeardown = typeof tests.tearDown == "function";
+
+  output("---" + name + "---", true);
+
   for(var test in tests) {
     if(!/^test/.test(test)) {
       continue;

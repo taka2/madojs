@@ -3818,7 +3818,7 @@ Excel.array2dToSafeArray2d = function(jsArray2d) {
 
   Excel.createReadonly(function(excel) {
     // 1シート目を取得
-    var sheet = excel.getSheetByIndex(1);
+    var sheet = excel.getSheetByIndex(0);
 
     // 各セルに値を設定
     var i, j;

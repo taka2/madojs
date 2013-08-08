@@ -15,5 +15,16 @@ TestCase("Excel Test", {
 
       File.unlink("test.xls");
     }
+  },
+  testArray2dToSafeArray2d: function() {
+    if(Excel.available()) {
+      var actual = new VBArray(Excel.array2dToSafeArray2d([[1,2,3],[4,5,6]]));
+      var expected = [[1,2,3],[4,5,6]];
+      for(var i=1; i<=(actual.ubound(1)); i++) {
+        for(var j=1; j<=(actual.ubound(2)); j++) {
+          assertEquals(actual.getItem(i, j), expected[i-1][j-1]);
+        }
+      }
+    }
   }
 });

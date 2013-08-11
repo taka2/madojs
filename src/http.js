@@ -19,6 +19,18 @@ var HTTP = function(host, port) {
  * 定数：デフォルトのポート番号(80)
  */
 HTTP.DEFAULT_PORT_NUMBER = 80;
+/**
+ * 定数：レスポンス形式（テキスト）
+ */
+HTTP.RESPONSE_TYPE_TEXT = "TEXT";
+/**
+ * 定数：レスポンス形式（ボディ）
+ */
+HTTP.RESPONSE_TYPE_BODY = "BODY";
+/**
+ * 定数：レスポンス形式（XML）
+ */
+HTTP.RESPONSE_TYPE_XML = "XML";
 
 /** 
  * hostとportを指定してHTTPオブジェクトを作成し、ブロックを実行します。
@@ -42,14 +54,18 @@ HTTP.start = function(host, port, block) {
  * @param {String} address HTTP操作の対象ホスト
  * @param {String} path HTTP操作の対象パス
  * @param {Number} port (オプション)HTTP操作の対象ポート(初期値 80)
- * @return {String} レスポンステキスト
+ * @param {Object} header (オプション)HTTPヘッダ(初期値 {})
+ * @param {String} responseType (オプション)レスポンス形式(初期値 TEXT)
+ * @return {String} レスポンス
  * @example 使用例：
 print(HTTP.get("www.yahoo.co.jp", "/index.html", 80));
  */
-HTTP.get = function(address, path, port) {
+HTTP.get = function(address, path, port, header, responseType) {
   var myPort = port || DEFAULT_PORT_NUMBER;
-  var http = new HTTP(address, port);
-  return http.get(path);
+  var myHeader = header || {};
+  var myResponseType = responseType || HTTP.RESPONSE_TYPE_TEXT;
+  var http = new HTTP(address, myPort);
+  return http.get(path, myHeader, myResponseType);
 };
 
 /** 
@@ -57,11 +73,13 @@ HTTP.get = function(address, path, port) {
  * @param {String} address HTTP操作の対象ホスト
  * @param {String} path HTTP操作の対象パス
  * @param {Number} port (オプション)HTTP操作の対象ポート(初期値 80)
+ * @param {Object} header (オプション)HTTPヘッダ(初期値 {})
+ * @param {String} responseType (オプション)レスポンス形式(初期値 TEXT)
  * @example 使用例：
 HTTP.get_print("www.yahoo.co.jp", "/index.html", 80);
  */
-HTTP.get_print = function(address, path, port) {
-  print(HTTP.get(address, path, port));
+HTTP.get_print = function(address, path, port, header, responseType) {
+  print(HTTP.get(address, path, port, header, responseType));
 };
 
 // Prototypes of HTTP
@@ -70,29 +88,31 @@ HTTP.prototype = {
    * 指定されたpath、headerでGETリクエストを行い、ブロックを実行します。
    * ブロックが指定されていない場合は、レスポンステキストを返します。
    * @param {String} path HTTP操作の対象パス
-   * @param {Object} header (オプション)HTTPヘッダ
+   * @param {Object} header (オプション)HTTPヘッダ(初期値 {})
+   * @param {String} responseType (オプション)レスポンス形式(初期値 TEXT)
    * @param {Function} block (オプション)ブロック
    * @return {String} ブロックが指定されていない場合は、レスポンステキスト
    * @throws 200OK以外のレスポンスが返された場合にスローされます。
    */
-  get: function(path, header, block) {
-    return this.request("GET", path, header, "", block);
+  get: function(path, header, responseType, block) {
+    return this.request("GET", path, header, responseType, "", block);
   },
   /** 
    * 指定されたpath、headerでPOSTリクエストを行い、ブロックを実行します。
    * ブロックが指定されていない場合は、レスポンステキストを返します。
    * @param {String} path HTTP操作の対象パス
    * @param {Object} header (オプション)HTTPヘッダ(初期値 [])
+   * @param {String} responseType (オプション)レスポンス形式(初期値 TEXT)
    * @param {Object} body (オプション)HTTPボディ(初期値 undefined)
    * @param {Function} block (オプション)ブロック
    * @return {String} ブロックが指定されていない場合は、レスポンステキスト
    * @throws 200OK以外のレスポンスが返された場合にスローされます。
    */
-  post: function(path, header, body, block) {
-    return this.request("POST", path, header, body, block);
+  post: function(path, header, responseType, body, block) {
+    return this.request("POST", path, header, responseType, body, block);
   },
   // private
-  request: function(method, path, header, body, block) {
+  request: function(method, path, header, responseType, body, block) {
     // パラメータの調整
     var myHeader = header || {};
 
@@ -112,10 +132,20 @@ HTTP.prototype = {
     // レスポンスの処理
     if(xhr.readyState === 4) {
       if(xhr.status === 200) {
-        if(isFunction(block)) {
-          block(xhr.responseText);
+        var response;
+        if(responseType === HTTP.RESPONSE_TYPE_TEXT) {
+          response = xhr.responseText;
+        } else if(responseType === HTTP.RESPONSE_TYPE_BODY) {
+          response = xhr.responseBody;
+        } else if(responseType === HTTP.RESPONSE_TYPE_XML) {
+          response = xhr.responseXML;
         } else {
-          return xhr.responseText;
+          response = xhr.responseText;
+        }
+        if(isFunction(block)) {
+          block(response);
+        } else {
+          return response;
         }
       } else {
         throw new Error(xhr.statusText);

@@ -336,6 +336,36 @@ HTTP.start("www.yahoo.co.jp", 80, function(http) {
 							</td>
 						</tr>
 					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								HTTP.<b><a href="../symbols/HTTP.html#.RESPONSE_TYPE_BODY">RESPONSE_TYPE_BODY</a></b>
+								</div>
+								<div class="description">定数：レスポンス形式（ボディ）</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								HTTP.<b><a href="../symbols/HTTP.html#.RESPONSE_TYPE_TEXT">RESPONSE_TYPE_TEXT</a></b>
+								</div>
+								<div class="description">定数：レスポンス形式（テキスト）</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								HTTP.<b><a href="../symbols/HTTP.html#.RESPONSE_TYPE_XML">RESPONSE_TYPE_XML</a></b>
+								</div>
+								<div class="description">定数：レスポンス形式（XML）</div>
+							</td>
+						</tr>
+					
 					</tbody>
 				</table>
 				
@@ -360,7 +390,7 @@ HTTP.start("www.yahoo.co.jp", 80, function(http) {
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">HTTP.<b><a href="../symbols/HTTP.html#.get">get</a></b>(address, path, port)
+								<div class="fixedFont">HTTP.<b><a href="../symbols/HTTP.html#.get">get</a></b>(address, path, port, header, responseType)
 								</div>
 								<div class="description">指定されたaddress、path、portに対して、GETリクエストを行います。</div>
 							</td>
@@ -369,7 +399,7 @@ HTTP.start("www.yahoo.co.jp", 80, function(http) {
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/HTTP.html#get">get</a></b>(path, header, block)
+								<div class="fixedFont"><b><a href="../symbols/HTTP.html#get">get</a></b>(path, header, responseType, block)
 								</div>
 								<div class="description">指定されたpath、headerでGETリクエストを行い、ブロックを実行します。ブロックが指定されていない場合は、レスポンステキストを返します。</div>
 							</td>
@@ -378,7 +408,7 @@ HTTP.start("www.yahoo.co.jp", 80, function(http) {
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">HTTP.<b><a href="../symbols/HTTP.html#.get_print">get_print</a></b>(address, path, port)
+								<div class="fixedFont">HTTP.<b><a href="../symbols/HTTP.html#.get_print">get_print</a></b>(address, path, port, header, responseType)
 								</div>
 								<div class="description">指定されたaddress、path、portに対して、GETリクエストを行い、printします。</div>
 							</td>
@@ -387,7 +417,7 @@ HTTP.start("www.yahoo.co.jp", 80, function(http) {
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/HTTP.html#post">post</a></b>(path, header, body, block)
+								<div class="fixedFont"><b><a href="../symbols/HTTP.html#post">post</a></b>(path, header, responseType, body, block)
 								</div>
 								<div class="description">指定されたpath、headerでPOSTリクエストを行い、ブロックを実行します。ブロックが指定されていない場合は、レスポンステキストを返します。</div>
 							</td>
@@ -484,6 +514,72 @@ HTTP.start("www.yahoo.co.jp", 80, function(http) {
 						
 						
 
+					<hr />
+				
+					<a name=".RESPONSE_TYPE_BODY"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">HTTP.</span><b>RESPONSE_TYPE_BODY</b>
+					
+					</div>
+					<div class="description">
+						定数：レスポンス形式（ボディ）
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".RESPONSE_TYPE_TEXT"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">HTTP.</span><b>RESPONSE_TYPE_TEXT</b>
+					
+					</div>
+					<div class="description">
+						定数：レスポンス形式（テキスト）
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".RESPONSE_TYPE_XML"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">HTTP.</span><b>RESPONSE_TYPE_XML</b>
+					
+					</div>
+					<div class="description">
+						定数：レスポンス形式（XML）
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
 					
 				
 			
@@ -498,7 +594,7 @@ HTTP.start("www.yahoo.co.jp", 80, function(http) {
 					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<span class="light">HTTP.</span><b>get</b>(address, path, port)
+					<span class="light">HTTP.</span><b>get</b>(address, path, port, header, responseType)
 					
 					</div>
 					<div class="description">
@@ -536,6 +632,18 @@ print(HTTP.get("www.yahoo.co.jp", "/index.html", 80));</pre>
 								</dt>
 								<dd>(オプション)HTTP操作の対象ポート(初期値 80)</dd>
 							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/Object.html">Object</a>}</span> <b>header</b>
+									
+								</dt>
+								<dd>(オプション)HTTPヘッダ(初期値 {})</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>responseType</b>
+									
+								</dt>
+								<dd>(オプション)レスポンス形式(初期値 TEXT)</dd>
+							
 							</dl>
 						
 						
@@ -545,7 +653,7 @@ print(HTTP.get("www.yahoo.co.jp", "/index.html", 80));</pre>
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> レスポンステキスト</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> レスポンス</dd>
 							
 							</dl>
 						
@@ -558,7 +666,7 @@ print(HTTP.get("www.yahoo.co.jp", "/index.html", 80));</pre>
 					<div class="fixedFont">
 					
 					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<b>get</b>(path, header, block)
+					<b>get</b>(path, header, responseType, block)
 					
 					</div>
 					<div class="description">
@@ -583,7 +691,13 @@ print(HTTP.get("www.yahoo.co.jp", "/index.html", 80));</pre>
 									<span class="light fixedFont">{<a href="../symbols/Object.html">Object</a>}</span> <b>header</b>
 									
 								</dt>
-								<dd>(オプション)HTTPヘッダ</dd>
+								<dd>(オプション)HTTPヘッダ(初期値 {})</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>responseType</b>
+									
+								</dt>
+								<dd>(オプション)レスポンス形式(初期値 TEXT)</dd>
 							
 								<dt>
 									<span class="light fixedFont">{Function}</span> <b>block</b>
@@ -623,7 +737,7 @@ print(HTTP.get("www.yahoo.co.jp", "/index.html", 80));</pre>
 					<div class="fixedFont">&lt;static&gt; 
 					
 					
-					<span class="light">HTTP.</span><b>get_print</b>(address, path, port)
+					<span class="light">HTTP.</span><b>get_print</b>(address, path, port, header, responseType)
 					
 					</div>
 					<div class="description">
@@ -661,6 +775,18 @@ HTTP.get_print("www.yahoo.co.jp", "/index.html", 80);</pre>
 								</dt>
 								<dd>(オプション)HTTP操作の対象ポート(初期値 80)</dd>
 							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/Object.html">Object</a>}</span> <b>header</b>
+									
+								</dt>
+								<dd>(オプション)HTTPヘッダ(初期値 {})</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>responseType</b>
+									
+								</dt>
+								<dd>(オプション)レスポンス形式(初期値 TEXT)</dd>
+							
 							</dl>
 						
 						
@@ -676,7 +802,7 @@ HTTP.get_print("www.yahoo.co.jp", "/index.html", 80);</pre>
 					<div class="fixedFont">
 					
 					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<b>post</b>(path, header, body, block)
+					<b>post</b>(path, header, responseType, body, block)
 					
 					</div>
 					<div class="description">
@@ -702,6 +828,12 @@ HTTP.get_print("www.yahoo.co.jp", "/index.html", 80);</pre>
 									
 								</dt>
 								<dd>(オプション)HTTPヘッダ(初期値 [])</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>responseType</b>
+									
+								</dt>
+								<dd>(オプション)レスポンス形式(初期値 TEXT)</dd>
 							
 								<dt>
 									<span class="light fixedFont">{<a href="../symbols/Object.html">Object</a>}</span> <b>body</b>
@@ -810,7 +942,7 @@ HTTP.get_print("www.yahoo.co.jp", "/index.html", 80);</pre>
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Thu Aug 08 2013 09:41:06 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Sun Aug 11 2013 13:01:37 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

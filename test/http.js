@@ -60,5 +60,17 @@ TestCase("HTTP Test", {
     } catch(e) {
       assert(false);
     }
+  },
+  testMSXML2: function() {
+    try {
+      HTTP.XHR_IMPL_CLASS = HTTP.XHR_IMPL_CLASS_MSXML2_XMLHTTP5_0;
+      var result = HTTP.get("www.yahoo.co.jp", "/index.html", 80);
+
+      // Œ³‚É–ß‚·
+      HTTP.XHR_IMPL_CLASS = HTTP.XHR_IMPL_CLASS_MICROSOFT_XMLHTTP;
+     assert(true);
+    } catch (e) {
+      assert(false);
+    }
   }
 });

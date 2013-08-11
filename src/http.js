@@ -31,6 +31,19 @@ HTTP.RESPONSE_TYPE_BODY = "BODY";
  * 定数：レスポンス形式（XML）
  */
 HTTP.RESPONSE_TYPE_XML = "XML";
+/**
+ * 定数：XHR実装クラス：Microsoft.XMLHTTP
+ */
+HTTP.XHR_IMPL_CLASS_Microsoft_XMLHTTP = "Microsoft.XMLHTTP";
+/**
+ * 定数：XHR実装クラス：MSXML2.XMLHTTP5.0
+ */
+HTTP.XHR_IMPL_CLASS_MSXML2_XMLHTTP5_0 = "MSXML2.XMLHTTP5.0";
+
+/**
+ * グローバル変数：XHR実装クラス(初期値 XHR_IMPL_CLASS_Microsoft_XMLHTTP
+ */
+HTTP.XHR_IMPL_CLASS = HTTP.XHR_IMPL_CLASS_Microsoft_XMLHTTP;
 
 /** 
  * hostとportを指定してHTTPオブジェクトを作成し、ブロックを実行します。
@@ -117,7 +130,7 @@ HTTP.prototype = {
     var myHeader = header || {};
 
     // リクエストの準備
-    var xhr = new ActiveXObject("Microsoft.XMLHTTP");
+    var xhr = new ActiveXObject(HTTP.XHR_IMPL_CLASS);
     xhr.open(method, "http://" + this.host + ":" + this.port + path, false);
 
     for(var headerName in myHeader) {

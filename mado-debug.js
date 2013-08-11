@@ -1670,14 +1670,16 @@ HTTP.prototype = {
   // private
   request: function(method, path, header, body, block) {
     // パラメータの調整
-    var myHeader = header || [];
+    var myHeader = header || {};
 
     // リクエストの準備
     var xhr = new ActiveXObject("Microsoft.XMLHTTP");
     xhr.open(method, "http://" + this.host + ":" + this.port + path, false);
 
     for(var headerName in myHeader) {
-      xhr.setRequestHeader(headerName, myHeader[headerName]);
+      if(myHeader.hasOwnProperty(headerName)) {
+        xhr.setRequestHeader(headerName, myHeader[headerName]);
+      }
     }
 
     // リクエストの送信

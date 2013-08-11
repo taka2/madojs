@@ -32,5 +32,15 @@ TestCase("HTTP Test", {
     } catch (e) {
       assert(false);
     }
+  },
+  testStartWithHeader: function() {
+    try {
+      HTTP.start("www.yahoo.co.jp", 80, function(http) {
+        var res = http.get("/index.html", {"Connection": "Keep-Alive"});
+        assert(true);
+      });
+    } catch(e) {
+      assert(false);
+    }
   }
 });

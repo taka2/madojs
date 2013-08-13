@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<package>
+  <job>
+    <script language="JScript" src="../../mado.js"></script>
+    <script language="JScript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
+    <script language="JScript" src="use_underscore.js"></script>
+  </job>
+</package>

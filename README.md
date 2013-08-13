@@ -48,6 +48,21 @@ https://github.com/taka2/madojs/zipball/gh-pages
 
 filecopy.wsfをダブルクリックすると、filecopy.jsに記述したプログラムが実行されます。
 
+#外部ライブラリ
+外部ライブラリを参照して利用することもできます。
+今のところ動作が確認出来ているのは、以下のライブラリ。
+
+* rfc4180.js
+    * http://vird2002.s8.xrea.com/javascript/rfc4180.html
+
+* dateformat.js
+    * http://www.enjoyxstudy.com/javascript/dateformat/
+
+* underscore.js
+    * http://underscorejs.org/
+
+利用サンプルは、examples/extlibを参照してください。
+
 #ドキュメント
 <p>
 <a href = "http://taka2.github.com/madojs/">API リファレンス</a>

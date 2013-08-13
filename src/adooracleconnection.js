@@ -46,4 +46,5 @@ AdoOracleConnection.open = function(dsName, userName, password, block) {
 };
 
 // Prototypes of AdoOracleConnection
-AdoOracleConnection.prototype = AdoConnection.prototype;
+AdoOracleConnection.prototype = Object.create(AdoConnection.prototype);
+AdoOracleConnection.prototype.constructor = AdoOracleConnection;

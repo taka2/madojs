@@ -2704,7 +2704,8 @@ AdoAccessConnection.open = function(mdbFilePath, userName, password, block) {
 };
 
 // Prototypes of AdoAccessConnection
-AdoAccessConnection.prototype = AdoConnection.prototype;
+AdoAccessConnection.prototype = Object.create(AdoConnection.prototype);
+AdoAccessConnection.prototype.constructor = AdoAccessConnection;
 /**
  * 新しいADOのコネクションを作成する
  * @class ADOを使ったOracleデータベースへの接続を行うクラス
@@ -2753,7 +2754,8 @@ AdoOracleConnection.open = function(dsName, userName, password, block) {
 };
 
 // Prototypes of AdoOracleConnection
-AdoOracleConnection.prototype = AdoConnection.prototype;
+AdoOracleConnection.prototype = Object.create(AdoConnection.prototype);
+AdoOracleConnection.prototype.constructor = AdoOracleConnection;
 /**
  * 新しいADOのコネクションを作成する
  * @class ADOを使ったODBCデータベースへの接続を行うクラス
@@ -2802,7 +2804,8 @@ AdoOdbcConnection.open = function(dsName, userName, password, block) {
 };
 
 // Prototypes of AdoOracleConnection
-AdoOdbcConnection.prototype = AdoConnection.prototype;
+AdoOdbcConnection.prototype = Object.create(AdoConnection.prototype);
+AdoOdbcConnection.prototype.constructor = AdoOdbcConnection;
 /** 
  * 新しいキー送信クラスを作成する。
  * @class 連続で自動的にキー送信を行う

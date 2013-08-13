@@ -46,4 +46,5 @@ AdoOdbcConnection.open = function(dsName, userName, password, block) {
 };
 
 // Prototypes of AdoOracleConnection
-AdoOdbcConnection.prototype = AdoConnection.prototype;
+AdoOdbcConnection.prototype = Object.create(AdoConnection.prototype);
+AdoOdbcConnection.prototype.constructor = AdoOdbcConnection;

@@ -46,4 +46,5 @@ AdoAccessConnection.open = function(mdbFilePath, userName, password, block) {
 };
 
 // Prototypes of AdoAccessConnection
-AdoAccessConnection.prototype = AdoConnection.prototype;
+AdoAccessConnection.prototype = Object.create(AdoConnection.prototype);
+AdoAccessConnection.prototype.constructor = AdoAccessConnection;

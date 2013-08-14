@@ -3731,6 +3731,16 @@ Excel.COLUMN_TYPE_SKIP = 9;
  */
 Excel.COLUMN_TYPE_EMD = 10;
 
+/**
+ * 印刷の向き：xlLandscape(2)
+ */
+Excel.PAGE_ORIENTATION_LANDSCAPE = 2;
+
+/**
+ * 印刷の向き：xlPortrait(1)
+ */
+Excel.PAGE_ORIENTATION_PORTRAIT = 1;
+
 /** 
  * Excelファイルを開き、ブロックを実行します。
  * ブロックが指定されていない場合は、Excelオブジェクトを返します。
@@ -4397,6 +4407,33 @@ ExcelSheet.prototype = {
    */
   setAutoFilter: function(row, col) {
     this.sheetObj.Cells(row, col).CurrentRegion.AutoFilter();
+  },
+  /**
+   * 印刷の向きを設定します。
+   * @param {Number} orientation 印刷の向き
+   */
+  setPageOrientation: function(orientation) {
+    this.sheetObj.PageSetup.Orientation = orientation;
+  },
+  /**
+   * ページ数に合わせて印刷を設定します。
+   * @param {Number} wide 横のページ数、-1を指定した場合は指定なし。
+   * @param {Number} tall 縦のページ数、-1を指定した場合は指定なし。
+   */
+  setPageFitToPages: function(wide, tall) {
+    var myWide = wide == -1 ? false : wide;
+    var myTall = tall == -1 ? false : tall;
+
+    this.sheetObj.PageSetup.Zoom = false;
+    this.sheetObj.PageSetup.FitToPagesWide = myWide;
+    this.sheetObj.PageSetup.FitToPagesTall = myTall;
+  },
+  /**
+   * 印刷の拡大率を設定します。
+   * @param {Number} 印刷の拡大率
+   */
+  setPageZoom: function(zoom) {
+    this.sheetObj.PageSetup.Zoom = zoom;
   }
 };
 /**

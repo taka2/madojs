@@ -832,7 +832,7 @@ ExcelSheet.prototype = {
   },
   /**
    * 印刷の拡大率を設定します。
-   * @param {Number} 印刷の拡大率
+   * @param {Number} zoom 印刷の拡大率
    */
   setPageZoom: function(zoom) {
     this.sheetObj.PageSetup.Zoom = zoom;

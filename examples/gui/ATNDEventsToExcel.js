@@ -48,7 +48,7 @@ function button1_Click() {
       // Excelシートの各種調整
       excel.removeSheets(3);
       for(var i=1; i<=5; i++) {
-        sheet1.setBackgroundColor(1, i, Excel.COLOR_INDEX_37);
+        sheet1.setBackgroundColor(1, i, ExcelColorConstants.COLOR_INDEX_37);
       }
       sheet1.autoFit();
       sheet1.drawBorder();

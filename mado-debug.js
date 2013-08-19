@@ -3603,18 +3603,19 @@ ExcelColorConstants.COLOR_INDEX_56 = 56;
 <pre class = "code">
 使用例：
 // abc.xlsを開いて、Sheet1の、1行1列目の値を'hoge'に書き換えつつ、上書き保存する。
-Excel.open("abc.xls", function(excel) {
+Excel.open("abc.xls", {}, function(excel) {
   var sheet = excel.getSheetByName("Sheet1");
   sheet.setValue(1, 1, 'hoge');
   excel.save();
 });
 </pre>
  * @param {String} path Excelファイルのパスを文字列で指定します。指定しない場合は新しくブックを作成します。
+ * @param {Object} options (オプション)Excelファイルを開くときのオプションを指定します。
  * @param {Boolean} fileType (オプション)Excel以外のファイルを開くときに、指定します。
  * @param {Boolean} columnInfo (オプション)Excel以外のファイルを開くときに、カラムの情報を指定します。
  * @throws pathがundefinedでない、かつ、ファイルが存在しない場合にスローされます。
  */
-var Excel = function(path, fileType, columnInfo) {
+var Excel = function(path, options, fileType, columnInfo) {
   this.path = path;
   this.excelObj = new ActiveXObject("Excel.Application");
 
@@ -3636,7 +3637,9 @@ var Excel = function(path, fileType, columnInfo) {
         this.workbookObj = this.excelObj.ActiveWorkbook;
         break;
       default:
-        this.workbookObj = this.excelObj.Workbooks.Open(path);
+        var updateLinks = options[Excel.WORKBOOKS_OPEN_OPTION_UPDATE_LINKS] || false;
+        var readOnly = options[Excel.WORKBOOKS_OPEN_OPTION_READ_ONLY] || false;
+        this.workbookObj = this.excelObj.Workbooks.Open(path, updateLinks, readOnly);
     }
   }
 };
@@ -3741,20 +3744,31 @@ Excel.PAGE_ORIENTATION_LANDSCAPE = 2;
  */
 Excel.PAGE_ORIENTATION_PORTRAIT = 1;
 
+/**
+ * Workbooks.Openオプション：UpdateLinks
+ */
+Excel.WORKBOOKS_OPEN_OPTION_UPDATE_LINKS = "UpdateLinks";
+
+/**
+ * Workbooks.Openオプション：ReadOnly
+ */
+Excel.WORKBOOKS_OPEN_OPTION_READ_ONLY = "ReadOnly";
+
 /** 
  * Excelファイルを開き、ブロックを実行します。
  * ブロックが指定されていない場合は、Excelオブジェクトを返します。
  * @param {String} path Excelファイルのパスを文字列で指定します。
+ * @param {Object} options (オプション)Excelファイルを開くときのオプションを指定します。
  * @param {Function} block ブロック
  * @return {Object} ブロックが指定されていない場合は、作成したクリップボード
  */
-Excel.open = function(path, block) {
+Excel.open = function(path, options, block) {
   if(!isFunction(block)) {
-    return new Excel(path);
+    return new Excel(path, options);
   }
 
   try {
-    var excel = new Excel(path);
+    var excel = new Excel(path, options);
     block(excel);
   } finally {
     if(excel) {
@@ -3767,16 +3781,20 @@ Excel.open = function(path, block) {
  * Excelファイルを読み取り専用(最後に変更を破棄)で開き、ブロックを実行します。
  * ブロックが指定されていない場合は、Excelオブジェクトを返します。
  * @param {String} path Excelファイルのパスを文字列で指定します。
+ * @param {Object} options (オプション)Excelファイルを開くときのオプションを指定します。
  * @param {Function} block ブロック
  * @return {Object} ブロックが指定されていない場合は、作成したクリップボード
  */
-Excel.openReadonly = function(path, block) {
+Excel.openReadonly = function(path, options, block) {
+  var myOptions = options || {};
+  myOptions[Excel.WORKBOOKS_OPEN_OPTION_READ_ONLY] = true;
+
   if(!isFunction(block)) {
-    return new Excel(path);
+    return new Excel(path, myOptions);
   }
 
   try {
-    var excel = new Excel(path);
+    var excel = new Excel(path, myOptions);
     block(excel);
   } finally {
     if(excel) {
@@ -3846,7 +3864,7 @@ Excel.available = function() {
  * @return {Boolean} 成功した場合はtrue、失敗した場合はfalseを返す。
  */
 Excel.convertToCsv = function(path) {
-  Excel.openReadonly(path, function(excel) {
+  Excel.openReadonly(path, undefined, function(excel) {
     excel.each(function(sheet) {
       sheet.activate();
       var outFileName = path + "_" + sheet.getName() + ".csv";
@@ -3861,7 +3879,7 @@ Excel.convertToCsv = function(path) {
  * @return {Boolean} 成功した場合はtrue、失敗した場合はfalseを返す。
  */
 Excel.convertToTsv = function(path) {
-  Excel.openReadonly(path, function(excel) {
+  Excel.openReadonly(path, undefined, function(excel) {
     excel.each(function(sheet) {
       sheet.activate();
       var outFileName = path + "_" + sheet.getName() + ".tsv";
@@ -3930,7 +3948,7 @@ Excel.convertFromCsv = function(path, columnInfo) {
     myColumnInfo = Excel.generateDefaultColumnInfo(myPath, ",");
   }
 
-  var excel = new Excel(myPath, Excel.IN_FILETYPE_CSV, myColumnInfo);
+  var excel = new Excel(myPath, undefined, Excel.IN_FILETYPE_CSV, myColumnInfo);
   excel.saveAsExcel(path + ".xls");
   excel.quit();
 
@@ -3953,7 +3971,7 @@ Excel.convertFromTsv = function(path, columnInfo) {
     myColumnInfo = Excel.generateDefaultColumnInfo(path, "\t");
   }
 
-  var excel = new Excel(path, Excel.IN_FILETYPE_TSV, myColumnInfo);
+  var excel = new Excel(path, undefined, Excel.IN_FILETYPE_TSV, myColumnInfo);
   excel.saveAsExcel(path + ".xls");
   excel.quit();
 }

@@ -281,7 +281,7 @@ MadoJS
 <pre class = "code">
 使用例：
 // abc.xlsを開いて、Sheet1の、1行1列目の値を'hoge'に書き換えつつ、上書き保存する。
-Excel.open("abc.xls", function(excel) {
+Excel.open("abc.xls", {}, function(excel) {
   var sheet = excel.getSheetByName("Sheet1");
   sheet.setValue(1, 1, 'hoge');
   excel.save();
@@ -308,7 +308,7 @@ Excel.open("abc.xls", function(excel) {
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/Excel.html#constructor">Excel</a></b>(path, fileType, columnInfo)
+								<b><a href="../symbols/Excel.html#constructor">Excel</a></b>(path, options, fileType, columnInfo)
 							</div>
 							<div class="description">Excelオブジェクトを作成します。</div>
 						</td>
@@ -531,6 +531,26 @@ Excel.open("abc.xls", function(excel) {
 							</td>
 						</tr>
 					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								Excel.<b><a href="../symbols/Excel.html#.WORKBOOKS_OPEN_OPTION_READ_ONLY">WORKBOOKS_OPEN_OPTION_READ_ONLY</a></b>
+								</div>
+								<div class="description">Workbooks.Openオプション：ReadOnly</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								Excel.<b><a href="../symbols/Excel.html#.WORKBOOKS_OPEN_OPTION_UPDATE_LINKS">WORKBOOKS_OPEN_OPTION_UPDATE_LINKS</a></b>
+								</div>
+								<div class="description">Workbooks.Openオプション：UpdateLinks</div>
+							</td>
+						</tr>
+					
 					</tbody>
 				</table>
 				
@@ -681,7 +701,7 @@ Excel.open("abc.xls", function(excel) {
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">Excel.<b><a href="../symbols/Excel.html#.open">open</a></b>(path, block)
+								<div class="fixedFont">Excel.<b><a href="../symbols/Excel.html#.open">open</a></b>(path, options, block)
 								</div>
 								<div class="description">Excelファイルを開き、ブロックを実行します。ブロックが指定されていない場合は、Excelオブジェクトを返します。</div>
 							</td>
@@ -690,7 +710,7 @@ Excel.open("abc.xls", function(excel) {
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">Excel.<b><a href="../symbols/Excel.html#.openReadonly">openReadonly</a></b>(path, block)
+								<div class="fixedFont">Excel.<b><a href="../symbols/Excel.html#.openReadonly">openReadonly</a></b>(path, options, block)
 								</div>
 								<div class="description">Excelファイルを読み取り専用(最後に変更を破棄)で開き、ブロックを実行します。ブロックが指定されていない場合は、Excelオブジェクトを返します。</div>
 							</td>
@@ -785,7 +805,7 @@ Excel.open("abc.xls", function(excel) {
 				</div>
 				
 				<div class="fixedFont">
-						<b>Excel</b>(path, fileType, columnInfo)
+						<b>Excel</b>(path, options, fileType, columnInfo)
 				</div>
 				
 				<div class="description">
@@ -805,6 +825,12 @@ Excel.open("abc.xls", function(excel) {
 								
 							</dt>
 								<dd>Excelファイルのパスを文字列で指定します。指定しない場合は新しくブックを作成します。</dd>
+						
+							<dt>
+								<span class="light fixedFont">{<a href="../symbols/Object.html">Object</a>}</span>  <b>options</b>
+								
+							</dt>
+								<dd>(オプション)Excelファイルを開くときのオプションを指定します。</dd>
 						
 							<dt>
 								<span class="light fixedFont">{Boolean}</span>  <b>fileType</b>
@@ -1273,6 +1299,50 @@ Excel.open("abc.xls", function(excel) {
 					</div>
 					<div class="description">
 						印刷の向き：xlPortrait(1)
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".WORKBOOKS_OPEN_OPTION_READ_ONLY"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">Excel.</span><b>WORKBOOKS_OPEN_OPTION_READ_ONLY</b>
+					
+					</div>
+					<div class="description">
+						Workbooks.Openオプション：ReadOnly
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".WORKBOOKS_OPEN_OPTION_UPDATE_LINKS"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">Excel.</span><b>WORKBOOKS_OPEN_OPTION_UPDATE_LINKS</b>
+					
+					</div>
+					<div class="description">
+						Workbooks.Openオプション：UpdateLinks
 						
 						
 					</div>
@@ -1886,7 +1956,7 @@ Excel.convertFromCsv("csv.txt", columnInfo);</pre>
 					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{<a href="../symbols/Object.html">Object</a>}</span>
-					<span class="light">Excel.</span><b>open</b>(path, block)
+					<span class="light">Excel.</span><b>open</b>(path, options, block)
 					
 					</div>
 					<div class="description">
@@ -1906,6 +1976,12 @@ Excel.convertFromCsv("csv.txt", columnInfo);</pre>
 									
 								</dt>
 								<dd>Excelファイルのパスを文字列で指定します。</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/Object.html">Object</a>}</span> <b>options</b>
+									
+								</dt>
+								<dd>(オプション)Excelファイルを開くときのオプションを指定します。</dd>
 							
 								<dt>
 									<span class="light fixedFont">{Function}</span> <b>block</b>
@@ -1935,7 +2011,7 @@ Excel.convertFromCsv("csv.txt", columnInfo);</pre>
 					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{<a href="../symbols/Object.html">Object</a>}</span>
-					<span class="light">Excel.</span><b>openReadonly</b>(path, block)
+					<span class="light">Excel.</span><b>openReadonly</b>(path, options, block)
 					
 					</div>
 					<div class="description">
@@ -1955,6 +2031,12 @@ Excel.convertFromCsv("csv.txt", columnInfo);</pre>
 									
 								</dt>
 								<dd>Excelファイルのパスを文字列で指定します。</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/Object.html">Object</a>}</span> <b>options</b>
+									
+								</dt>
+								<dd>(オプション)Excelファイルを開くときのオプションを指定します。</dd>
 							
 								<dt>
 									<span class="light fixedFont">{Function}</span> <b>block</b>
@@ -2247,7 +2329,7 @@ Excel.convertFromCsv("csv.txt", columnInfo);</pre>
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Wed Aug 14 2013 09:42:25 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Mon Aug 19 2013 09:42:57 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

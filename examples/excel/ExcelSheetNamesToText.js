@@ -2,7 +2,7 @@
 var inFileName = ARGV[0];
 var outFileName = inFileName + ".txt";
 
-Excel.openReadonly(inFileName, function(excel) {
+Excel.openReadonly(inFileName, undefined, function(excel) {
   File.open(outFileName, "w", function(outfile) {
     excel.each(function(sheet) {
       outfile.puts(sheet.getName());

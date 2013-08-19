@@ -1,7 +1,7 @@
 // ExcelファイルからINSERT文の書かれたSQLファイルを作成する。
 var inFileName = ARGV[0];
 
-Excel.openReadonly(inFileName, function(excel) {
+Excel.openReadonly(inFileName, undefined, function(excel) {
   // 全シートを順番に処理する
   excel.each(function(sheet) {
     var outFileName = inFileName + "_" + sheet.getName() + ".sql";

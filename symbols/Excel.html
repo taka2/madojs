@@ -475,6 +475,16 @@ Excel.open("abc.xls", {}, function(excel) {
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
+								Excel.<b><a href="../symbols/Excel.html#.IN_FILETYPE_FIXED">IN_FILETYPE_FIXED</a></b>
+								</div>
+								<div class="description">入力ファイルタイプ：固定長(32)</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
 								Excel.<b><a href="../symbols/Excel.html#.IN_FILETYPE_OTHER">IN_FILETYPE_OTHER</a></b>
 								</div>
 								<div class="description">入力ファイルタイプ：その他(16)</div>
@@ -528,6 +538,26 @@ Excel.open("abc.xls", {}, function(excel) {
 								Excel.<b><a href="../symbols/Excel.html#.PAGE_ORIENTATION_PORTRAIT">PAGE_ORIENTATION_PORTRAIT</a></b>
 								</div>
 								<div class="description">印刷の向き：xlPortrait(1)</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								Excel.<b><a href="../symbols/Excel.html#.TEXT_PARSING_TYPE_DELIMITED">TEXT_PARSING_TYPE_DELIMITED</a></b>
+								</div>
+								<div class="description">テキストパースタイプ：xlDelimited(1)</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								Excel.<b><a href="../symbols/Excel.html#.TEXT_PARSING_TYPE_FIXED_WIDTH">TEXT_PARSING_TYPE_FIXED_WIDTH</a></b>
+								</div>
+								<div class="description">テキストパースタイプ：xlFixedWidth(2)</div>
 							</td>
 						</tr>
 					
@@ -614,6 +644,15 @@ Excel.open("abc.xls", {}, function(excel) {
 								<div class="fixedFont">Excel.<b><a href="../symbols/Excel.html#.convertFromCsv">convertFromCsv</a></b>(path, columnInfo)
 								</div>
 								<div class="description">CSVファイルをExcelファイルに変換する。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">Excel.<b><a href="../symbols/Excel.html#.convertFromFixed">convertFromFixed</a></b>(path, columnInfo)
+								</div>
+								<div class="description">固定長ファイルをExcelファイルに変換する。</div>
 							</td>
 						</tr>
 					
@@ -1180,6 +1219,28 @@ Excel.open("abc.xls", {}, function(excel) {
 
 					<hr />
 				
+					<a name=".IN_FILETYPE_FIXED"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">Excel.</span><b>IN_FILETYPE_FIXED</b>
+					
+					</div>
+					<div class="description">
+						入力ファイルタイプ：固定長(32)
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
 					<a name=".IN_FILETYPE_OTHER"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
@@ -1299,6 +1360,50 @@ Excel.open("abc.xls", {}, function(excel) {
 					</div>
 					<div class="description">
 						印刷の向き：xlPortrait(1)
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".TEXT_PARSING_TYPE_DELIMITED"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">Excel.</span><b>TEXT_PARSING_TYPE_DELIMITED</b>
+					
+					</div>
+					<div class="description">
+						テキストパースタイプ：xlDelimited(1)
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".TEXT_PARSING_TYPE_FIXED_WIDTH"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">Excel.</span><b>TEXT_PARSING_TYPE_FIXED_WIDTH</b>
+					
+					</div>
+					<div class="description">
+						テキストパースタイプ：xlFixedWidth(2)
 						
 						
 					</div>
@@ -1557,6 +1662,55 @@ Excel.convertFromCsv("csv.txt", columnInfo);</pre>
 								</dt>
 								<dd>(オプション)CSVファイルのカラム情報を指定します。<br>
 <a href = "Excel.html#.COLUMN_TYPE_GENERAL">カラムタイプ</a>参照(初期値 全列に対しConst.COLUMN_TYPE_TEXT)</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">戻り値:</dt>
+							
+								<dd><span class="light fixedFont">{Boolean}</span> 成功した場合はtrue、失敗した場合はfalseを返す。</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".convertFromFixed"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Boolean}</span>
+					<span class="light">Excel.</span><b>convertFromFixed</b>(path, columnInfo)
+					
+					</div>
+					<div class="description">
+						固定長ファイルをExcelファイルに変換する。
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">引数:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>path</b>
+									
+								</dt>
+								<dd>固定長ファイルのパスを文字列で指定します。</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/Array.html">Array</a>}</span> <b>columnInfo</b>
+									
+								</dt>
+								<dd>固定長ファイルのカラム情報を指定します。</dd>
 							
 							</dl>
 						
@@ -2329,7 +2483,7 @@ Excel.convertFromCsv("csv.txt", columnInfo);</pre>
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Mon Aug 19 2013 09:42:57 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Wed Aug 21 2013 23:23:54 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>

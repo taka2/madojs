@@ -3629,11 +3629,13 @@ var Excel = function(path, options, fileType, columnInfo) {
     switch(fileType) {
       case Excel.IN_FILETYPE_CSV:
       case Excel.IN_FILETYPE_TSV:
+      case Excel.IN_FILETYPE_FIXED:
         var isFileTypeCsv = fileType === Excel.IN_FILETYPE_CSV;
         var isFileTypeTsv = fileType === Excel.IN_FILETYPE_TSV;
+        var textParsingType = fileType === Excel.IN_FILETYPE_FIXED ? Excel.TEXT_PARSING_TYPE_FIXED_WIDTH : Excel.TEXT_PARSING_TYPE_DELIMITED;
 
         var columnInfoSafeArray = Excel.array2dToSafeArray2d(columnInfo);
-        this.excelObj.Workbooks.OpenText(path, 1, 1, 1, 1, false, isFileTypeTsv, false, isFileTypeCsv, false, false, false, columnInfoSafeArray);
+        this.excelObj.Workbooks.OpenText(path, 932, 1, textParsingType, 1, false, isFileTypeTsv, false, isFileTypeCsv, false, false, false, columnInfoSafeArray);
         this.workbookObj = this.excelObj.ActiveWorkbook;
         break;
       default:
@@ -3683,6 +3685,11 @@ Excel.IN_FILETYPE_SPACE = 8;
  * 入力ファイルタイプ：その他(16)
  */
 Excel.IN_FILETYPE_OTHER = 16;
+
+/**
+ * 入力ファイルタイプ：固定長(32)
+ */
+Excel.IN_FILETYPE_FIXED = 32;
 
 /**
  * カラムタイプ：xlGeneralFormat(1)
@@ -3753,6 +3760,16 @@ Excel.WORKBOOKS_OPEN_OPTION_UPDATE_LINKS = "UpdateLinks";
  * Workbooks.Openオプション：ReadOnly
  */
 Excel.WORKBOOKS_OPEN_OPTION_READ_ONLY = "ReadOnly";
+
+/**
+ * テキストパースタイプ：xlDelimited(1)
+ */
+Excel.TEXT_PARSING_TYPE_DELIMITED = 1;
+
+/**
+ * テキストパースタイプ：xlFixedWidth(2)
+ */
+Excel.TEXT_PARSING_TYPE_FIXED_WIDTH = 2;
 
 /** 
  * Excelファイルを開き、ブロックを実行します。
@@ -3972,6 +3989,18 @@ Excel.convertFromTsv = function(path, columnInfo) {
   }
 
   var excel = new Excel(path, undefined, Excel.IN_FILETYPE_TSV, myColumnInfo);
+  excel.saveAsExcel(path + ".xls");
+  excel.quit();
+}
+
+/**
+ * 固定長ファイルをExcelファイルに変換する。
+ * @param {String} path 固定長ファイルのパスを文字列で指定します。
+ * @param {Array} columnInfo 固定長ファイルのカラム情報を指定します。
+ * @return {Boolean} 成功した場合はtrue、失敗した場合はfalseを返す。
+ */
+Excel.convertFromFixed = function(path, columnInfo) {
+  var excel = new Excel(path, undefined, Excel.IN_FILETYPE_FIXED, columnInfo);
   excel.saveAsExcel(path + ".xls");
   excel.quit();
 }

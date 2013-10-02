@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>MadoJS リファレンス - Object</title>
+		<title>MadoJS リファレンス - Stream</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -271,7 +271,7 @@ MadoJS
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Object 組み込みの 名前空間 
+				Stream クラス 
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -279,22 +279,78 @@ MadoJS
 				
 				
 			
+				ADODB.Streamのラッパクラス
+<pre class = "code">
+使用例：
+// responseBodyをShift_JISにエンコーディング
+print(Stream.binaryToText(responseBody, "Shift_JIS"));
+</pre>
 				
 				
+					<br /><i></i> <a href="../symbols/src/src_stream.js.html">stream.js</a>で定義されています。
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Stream.">
+				<caption>クラス 概要</caption>
+				<thead>
+					<tr>
+						<th scope="col">コンストラクタの属性</th>
+						<th scope="col">コンストラクタ名と説明</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/Stream.html#constructor">Stream</a></b>()
+							</div>
+							<div class="description">インスタンス化しません。</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
 
 <!-- ============================== properties summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class Stream.">
+					<caption>フィールドの概要</caption>
+					<thead>
+						<tr>
+							<th scope="col">フィールド</th>
+							<th scope="col">フィールド名と説明</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								Stream.<b><a href="../symbols/Stream.html#.CHARACTER_ENCODING_AUTODETECT">CHARACTER_ENCODING_AUTODETECT</a></b>
+								</div>
+								<div class="description">文字エンコーディング：自動識別</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
 			
 
 <!-- ============================== methods summary ======================== -->
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Object.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Stream.">
 					<caption>メソッドの概要</caption>
 					<thead>
 						<tr>
@@ -305,20 +361,11 @@ MadoJS
 					<tbody>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Object.html#create">create</a></b>(p)
+								<div class="fixedFont">Stream.<b><a href="../symbols/Stream.html#.binaryToText">binaryToText</a></b>(data, encoding)
 								</div>
-								<div class="description">pをプロトタイプに持つオブジェクトを生成します。</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Object.html#toString">toString</a></b>()
-								</div>
-								<div class="description">オブジェクトの値を表す文字列を返します。</div>
+								<div class="description">バイナリデータを指定したエンコーディングのテキストに変換します。</div>
 							</td>
 						</tr>
 					
@@ -333,8 +380,62 @@ MadoJS
 
 <!-- ============================== constructor details ==================== -->		
 			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					クラス 詳細
+				</div>
+				
+				<div class="fixedFont">
+						<b>Stream</b>()
+				</div>
+				
+				<div class="description">
+					インスタンス化しません。
+					
+				</div>
+				
+				
+				
+				
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
 
 <!-- ============================== field details ========================== -->		
+			
+				<div class="sectionTitle">
+					フィールドの詳細
+				</div>
+				
+					<a name=".CHARACTER_ENCODING_AUTODETECT"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">Stream.</span><b>CHARACTER_ENCODING_AUTODETECT</b>
+					
+					</div>
+					<div class="description">
+						文字エンコーディング：自動識別
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					
+				
 			
 
 <!-- ============================== method details ========================= -->		
@@ -343,18 +444,15 @@ MadoJS
 					メソッドの詳細
 				</div>
 				
-					<a name="create"> </a>
-					<div class="fixedFont">
+					<a name=".binaryToText"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{<a href="../symbols/Object.html">Object</a>}</span>
-					<b>create</b>(p)
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<span class="light">Stream.</span><b>binaryToText</b>(data, encoding)
 					
 					</div>
 					<div class="description">
-						pをプロトタイプに持つオブジェクトを生成します。
-						
-							<br />
-							<a href="../symbols/src/src_object.js.html">object.js</a>で<i>定義されています</i>。
+						バイナリデータを指定したエンコーディングのテキストに変換します。
 						
 						
 					</div>
@@ -366,10 +464,16 @@ MadoJS
 							<dt class="heading">引数:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/Object.html">Object</a>}</span> <b>p</b>
+									<span class="light fixedFont">{<a href="../symbols/Object.html">Object</a>}</span> <b>data</b>
 									
 								</dt>
-								<dd>プロトタイプ</dd>
+								<dd>バイナリデータ</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>encoding</b>
+									
+								</dt>
+								<dd>変換先のエンコーディング</dd>
 							
 							</dl>
 						
@@ -380,42 +484,7 @@ MadoJS
 							<dl class="detailList">
 							<dt class="heading">戻り値:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/Object.html">Object</a>}</span> pをプロトタイプに持つオブジェクト</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="toString"> </a>
-					<div class="fixedFont">
-					
-					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
-					<b>toString</b>()
-					
-					</div>
-					<div class="description">
-						オブジェクトの値を表す文字列を返します。
-						
-							<br />
-							<a href="../symbols/src/src_object.js.html">object.js</a>で<i>定義されています</i>。
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">戻り値:</dt>
-							
-								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> オブジェクトの値を表す文字列</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> エンコーディングしたテキスト</dd>
 							
 							</dl>
 						
@@ -436,7 +505,7 @@ MadoJS
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			このドキュメントは、Wed Oct 02 2013 23:02:22 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
+			このドキュメントは、Wed Oct 02 2013 23:02:23 GMT+0900 (JST)に、<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0によって生成されました。
 		</div>
 	</body>
 </html>
